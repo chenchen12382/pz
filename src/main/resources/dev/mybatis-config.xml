@@ -12,7 +12,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="com.shsxt.model"/>
+		<package name="com.fh.model"/>
 	</typeAliases>
 	
 	<plugins>

@@ -1,9 +1,7 @@
 package com.fh.base;
-
-
+import org.apache.commons.lang3.StringUtils;
 
 import com.fh.exception.ParamException;
-
 public class AssertUtil {
 	
 	/**
