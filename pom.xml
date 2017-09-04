@@ -210,8 +210,8 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>2.3.2</version>
             <configuration>
-                <source>1.7</source>
-                <target>1.7</target>
+                <source>1.8</source>
+                <target>1.8</target>
                 <encoding>UTF-8</encoding>
                 <compilerArguments>
                     <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
@@ -241,9 +241,9 @@
              <version>2.1</version>
              <configuration>
                  <port>8080</port>
-                 <path>/crm</path>
+                 <path>/pz</path>
                  <uriEncoding>UTF-8</uriEncoding>
-                 <finalName>shsxt_crm</finalName>
+                 <finalName>pz_sh</finalName>
                  <server>tomcat7</server>
              </configuration>
          </plugin>
