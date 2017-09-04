@@ -11,7 +11,7 @@ import com.fh.model.User;
 import com.fh.util.MD5Util;
 import com.fh.vo.UserLoginIdentity;
 import com.fh.util.UserIDBase64;
-
+ 
 @Service
 public class UserService {
 
@@ -46,6 +46,21 @@ public class UserService {
 		userLoginIdentity.setUserIdString(UserIDBase64.encoderUserID(user.getId()));
 		userLoginIdentity.setRealName(user.getTrueName());
 		userLoginIdentity.setUserName(user.getUserName());
+		return userLoginIdentity;
+	}
+	
+	
+	/**
+	 * 获取用户登录信息
+	 * @param userId
+	 * @return
+	 */
+	public UserLoginIdentity findLoginUser(Integer userId) {
+		if(userId==null||userId<1){
+			throw new ParamException(100,"请登录");
+		}
+		User user = userDao.findById(userId);
+		UserLoginIdentity userLoginIdentity = buildLoginIdentity(user);
 		return userLoginIdentity;
 	}
 
