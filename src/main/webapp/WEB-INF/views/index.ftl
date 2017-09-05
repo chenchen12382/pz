@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
     <head>
         <meta charset="utf-8">
         <title>Login</title>
@@ -7,10 +7,12 @@
         <link href="${ctx}/assets/css/icons.css" rel="stylesheet"/>
         <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet"/>
         <link href="${ctx}/assets/css/main.css" rel="stylesheet"/>
+        
+        
     </head>
-    <body class="login-page">
+    <body class="login-page" style="background-image:url(static/1.jpg);"  >
         <!-- Start #login -->
-        <div id="login" class="animated bounceIn">
+        <div id="login" class="animated bounceIn"  >
             <div class="login-wrapper">
                 <ul id="myTab" class="nav nav-tabs nav-justified bn">
                     <li>
@@ -40,7 +42,7 @@
                                     </label>
                                 </div>
                                 <!-- col-lg-12 end here -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4" style="">
                                     <!-- col-lg-12 start here -->
                                     <button class="btn btn-success pull-right" type="button" id="submitBtn" >登录</button>
                                 </div>

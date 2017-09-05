@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fh.base.BaseController;
 import com.fh.service.UserService;
 import com.fh.util.LoginUserUtil;
 import com.fh.vo.UserLoginIdentity;
 
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
 	
 	
 	@Autowired
@@ -32,5 +33,6 @@ public class IndexController {
 				model.addAttribute("currentUser", userLoginIdentity);
 				return "main";
 	}
-	
+
+
 }
