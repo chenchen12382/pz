@@ -4,9 +4,9 @@ import com.fh.base.BaseQuery;
 
 public class ProgressQuery extends BaseQuery{
 
-	private String center;
-	private String centerName; 
-	private String createMan;
+	private String center;  //中心
+	private String centerName;  //中心名称
+	private String createMan;   //创建人
 	public String getCenter() {
 		return center;
 	}

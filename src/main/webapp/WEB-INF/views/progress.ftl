@@ -37,15 +37,15 @@
 	    	
 	    </div>
 	    <div>
-	        &nbsp;客户名称：&nbsp;<input type="text" id="s_customerName" size="20" onkeydown="if(event.keyCode==13) searchSaleChance()"/>
-	        &nbsp;概要：&nbsp;<input type="text" id="s_overview" size="20" onkeydown="if(event.keyCode==13) searchSaleChance()"/>
-	        &nbsp;创建人：&nbsp;<input type="text" id="s_createMan" size="20" onkeydown="if(event.keyCode==13) searchSaleChance()"/>
-	        &nbsp;分配状态：&nbsp;<select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
+	        &nbsp;中心：&nbsp;<input type="text" id="s_center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
+	        &nbsp;中心名称：&nbsp;<input type="text" id="s_centerName" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
+	        &nbsp;创建人：&nbsp;<input type="text" id="s_createMan" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
+	     <#--   &nbsp;分配状态：&nbsp;<select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
 	        <option value="">请选择...</option>
 	        <option value="0">未分配</option>
-	        <option value="1">已分配</option>
+	        <option value="1">已分配</option>-->
 	    </select>
-	        <a href="javascript:searchSaleChance()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+	        <a href="javascript:searchProgress()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>
 	

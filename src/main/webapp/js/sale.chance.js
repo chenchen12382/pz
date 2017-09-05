@@ -1,21 +1,21 @@
 // 格式化分配状态
-function formatState(value) {
-	if (value == null) {
-		return "未知";
-	}else if (value == 0) {
-		return "未分配";
-	} else {
-		return "已分配";
-	}
-}
+//function formatState(value) {
+//	if (value == null) {
+//		return "未知";
+//	}else if (value == 0) {
+//		return "未分配";
+//	} else {
+//		return "已分配";
+//	}
+//}
 
 // 搜索
-function searchSaleChance() {
+function searchProgress() {
 	var data = {
-			customerName: $("#s_customerName").val(),
-			overview: $("#s_overview").val(),
+			center: $("#s_center").val(),
+			centerName: $("#s_centerName").val(),
 			createMan: $("#s_createMan").val(),
-			state:$("#s_state").combobox('getValue')
+//			state:$("#s_state").combobox('getValue')
 	}
 	$("#dg").datagrid('load', data);
 }

@@ -31,7 +31,4 @@ public class UserController extends BaseController{
 		UserLoginIdentity userLoginIdentity = userService.login(userName,password);
 		return success(userLoginIdentity);
 	}
-	
-	
-	
 }
