@@ -3,6 +3,8 @@ package com.fh.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,18 @@ public class ProgressService {
 		result.put("total", paginator.getTotalCount());
 		return result;
 	}
+
+	/**
+	 * 新增
+	 * @param progress
+	 * @param request 
+	 */
+	public void insert(Progress progress, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 }

@@ -1,19 +1,20 @@
 package com.fh.model;
 
+import com.fh.base.BaseModel;
 
 /**
  * 报表
  * @author Administrator
  *
  */
-public class Report {
+public class Report extends BaseModel{
 	
-	private Integer reportfromsId;
+	
 	private String name;
 	private String mail;
-	private Integer phone;
+	private String phone;
 	private String center;
-	private String subscribePeople; // 预定人数
+	private Integer subscribePeople; // 预定人数
 	private Integer arrivePeople;  //实际人数
 	private Integer orderPeople;   // 下单人数
 	private Integer newOrder;   // 新增订单
@@ -24,12 +25,7 @@ public class Report {
 	private String marks;       //备注
 	
 	
-	public Integer getReportfromsId() {
-		return reportfromsId;
-	}
-	public void setReportfromsId(Integer reportfromsId) {
-		this.reportfromsId = reportfromsId;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -42,10 +38,11 @@ public class Report {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Integer getPhone() {
+	
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getCenter() {
@@ -54,10 +51,11 @@ public class Report {
 	public void setCenter(String center) {
 		this.center = center;
 	}
-	public String getSubscribePeople() {
+	
+	public Integer getSubscribePeople() {
 		return subscribePeople;
 	}
-	public void setSubscribePeople(String subscribePeople) {
+	public void setSubscribePeople(Integer subscribePeople) {
 		this.subscribePeople = subscribePeople;
 	}
 	public Integer getArrivePeople() {

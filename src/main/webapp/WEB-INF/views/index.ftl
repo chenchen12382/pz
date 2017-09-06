@@ -6,11 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="${ctx}/assets/css/icons.css" rel="stylesheet"/>
         <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet"/>
-        <link href="${ctx}/assets/css/main.css" rel="stylesheet"/>
-        
-        
+        <link href="${ctx}/assets/css/main.css" rel="stylesheet"/>   
     </head>
-    <body class="login-page" style="background-image:url(static/1.jpg);"  >
+    <body class="login-page" style="background-image:url(images/001.gif);background-size:100%;"  >
         <!-- Start #login -->
         <div id="login" class="animated bounceIn"  >
             <div class="login-wrapper">
@@ -51,9 +49,16 @@
                         </form>
                     </div>
                 </div>
-            </div>
+          
             <!-- End #.login-wrapper -->
+            
+            </br></br></br></br></br></br>        
+            <div region="south" style="height: 30px;padding: 5px;overflow: hidden;" align="center">
+                    ©   网络信息中心2017
+</div>
         </div>
+        
+         </div>
         <script src="${ctx}/jquery-easyui-1.3.3/jquery.min.js" ></script>
         <script src="${ctx}/js/jquery.cookie.js" ></script>
         <script src="${ctx}/js/index.js"></script>

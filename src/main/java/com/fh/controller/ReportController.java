@@ -12,56 +12,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fh.base.BaseController;
 import com.fh.base.Constant;
 import com.fh.base.ResultInfo;
-import com.fh.dto.ProgressQuery;
-import com.fh.model.Progress;
-import com.fh.service.ProgressService;
+import com.fh.dto.ReportQuery;
+import com.fh.model.Report;
+import com.fh.service.ReportService;
 
-
-/**
- * 进度管理
- * @author Administrator
- *
- */
 @Controller
-@RequestMapping("progress")
-public class ProgressController extends BaseController{
+@RequestMapping("report")
+public class ReportController extends BaseController {
 	
 	@Autowired
-	private ProgressService progressService;
+	private ReportService reportservice;
 	
-	/**
-	 * 定位
-	 * @return
-	 */
 	@RequestMapping("index")
 	public String index() {
-		return "progress";
+		
+		return "report";
 	}
 	
 	
-	/**
-	 * 分页模糊查询
-	 * @param query
-	 * @return
-	 */
 	@RequestMapping("list")
 	@ResponseBody
-	public Map<String, Object> SelectForPage(ProgressQuery query) {
-		
-		Map<String, Object> result = progressService.selectForPage(query);
-		
+	public Map<String, Object> List(ReportQuery query){
+		Map<String, Object> result = reportservice.selectForPage(query);
 		return result;
 		
 	}
 	
 	@RequestMapping("add")
 	@ResponseBody
-	public ResultInfo insert(Progress progress,HttpServletRequest request) {
+	public ResultInfo insert(Report report,HttpServletRequest request) {
+		reportservice.insert(report,request);
 		
-		progressService.insert(progress,request);
 		return success(Constant.SUCCESS_MSG);
 	}
 	
 	
+	
+	
 }
-
