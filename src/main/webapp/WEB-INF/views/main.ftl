@@ -66,7 +66,7 @@
     </div>
 </div>
 <div region="south" style="height: 25px;padding: 5px;overflow: hidden;" align="center">
-    版本所有 上海尚学堂 <a href="http://www.shsxt.com" target="_blank">www.shsxt.com</a>(2016-2026)
+    网络信息中心<a href="http://www.perchingkids.com" target="_blank">www.perchingkids.com</a>(2016-2026)
 </div>
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:250px;padding: 10px 20px"
