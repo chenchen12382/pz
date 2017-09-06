@@ -27,12 +27,8 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
-			
 				<a href="javascript:openSaleChanceAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
-			
-	        
-	        	<a href="javascript:openSaleChanceModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-	      
+            	<a href="javascript:openSaleChanceModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 	        	<a href="javascript:deleteSaleChance()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    	
 	    </div>
@@ -92,13 +88,13 @@
 	            <tr>
 	                <td>指派给：</td>
 	                <td><input class="easyui-combobox" id="assignMan" name="assignMan" 
-	                	data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/find_customer_manager'"/></td>
+	                   data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/find_customer_manager'"/></td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	            </tr>
 	        </table>
 	    </form>
 	</div>
-	
+
 	<#--弹出框按钮-->
 	<div id="dlg-buttons">
 	    <a href="javascript:saveSaleChance()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>

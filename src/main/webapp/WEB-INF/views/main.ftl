@@ -8,8 +8,8 @@
 <div region="north" style="height: 78px;background-color: #E0ECFF;overflow: hidden;">
     <table style="padding: 5px" width="100%">
         <tr>
-            <td width="50%">
-                <img alt="logo" src="${ctx}/images/bglogo.png">
+            <td width="80%">
+               <h1 style=color:red>培正信息管理系统</h1>
             </td>
             <td valign="bottom" align="right" width="50%">
                 <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.userName }</font>【${currentUser.realName }】
@@ -66,7 +66,7 @@
     </div>
 </div>
 <div region="south" style="height: 25px;padding: 5px;overflow: hidden;" align="center">
-    版本所有 上海尚学堂 <a href="http://www.shsxt.com" target="_blank">www.shsxt.com</a>(2016-2026)
+    网络信息中心<a href="http://www.perchingkids.com" target="_blank">www.perchingkids.com</a>(2016-2026)
 </div>
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:250px;padding: 10px 20px"
