@@ -11,7 +11,7 @@
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
-	        <th field="createman" width="100" align="center">创建人</th>
+	        <th field="createMan" width="100" align="center">创建人</th>
 	        <th field="center" width="100" align="center" >中心</th>
 	   <#--     <th field="centerName" width="100" align="center">中心名称</th>  -->
 	        <th field="phone" width="100" align="center" >电话</th>
@@ -27,9 +27,9 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
-				<a href="javascript:openSaleChanceAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
-            	<a href="javascript:openSaleChanceModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-	        	<a href="javascript:deleteSaleChance()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+				<a href="javascript:openProgressAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
+            	<a href="javascript:openProgressModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+	        	<a href="javascript:deleteProgress()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    	
 	    </div>
 	    <div>
@@ -57,10 +57,13 @@
 	                	<input type="hidden" id="id" name="id" />
 	                	<input id="createman" name="createman"
 	                	/> &nbsp;<font color="red">*</font>
-	                </tr>
-	                <tr>
-	                <td>中心</td>                
-	                <td><input type="text" id="center" name="center" class="easyui-numberbox" data-options="min:0,max:100" required="true"/>&nbsp;<font color="red">*</font></td>
+	                </tr> 
+	                <tr> 
+	                <td>中心</td>  
+	                             
+	                <td>
+	                <input type="hidden" name="id" id="id" /> 
+	                <input type="text" id="center" name="center" class="easyui-textbox"  required="true"/>&nbsp;<font color="red">*</font></td>
 	                <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	            </tr>
 	            <tr>
@@ -69,16 +72,16 @@
 	            </tr>
 	            <tr>
 	                <td>预计收入：</td>
-	                <td><input type="text" id="hopeMoney" name="hopeMoney" class="easyui-numberbox" data-options="min:0,max:100" required="true"/>&nbsp;<font color="red">*</font></td>
+	                <td><input type="text" id="hopeMoney" name="hopeMoney" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>
 	                <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	            </tr>
 	            <tr>
 	                <td>达成收入：</td>
-	                 <td><input type="text"  id="finishMoney" name="finishMoney" />      
+	                 <td><input type="text"  id="finishMoney" name="finishMoney" class="easyui-numberbox"  />      
 	            </tr>	            
 	            <tr>
 	                <td>未完成收入：</td>
-	                <td><input type="text"  id="unfinishMoney" name="unfinishMoney" />
+	                <td><input type="text"  id="unfinishMoney" name="unfinishMoney" class="easyui-numberbox"  />
 	                </td>
 	            </tr>
 	            <tr>
@@ -93,10 +96,10 @@
 	</div>
 	<#--弹出框按钮-->
 	<div id="dlg-buttons">
-	    <a href="javascript:saveSaleChance()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-	    <a href="javascript:closeSaleChanceDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+	    <a href="javascript:saveProgress()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+	    <a href="javascript:closeProgressDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
 	
-	<script src="${ctx}/js/sale.chance.js" ></script>
+	<script src="${ctx}/js/progress.js" ></script>
 </body>
 </html>

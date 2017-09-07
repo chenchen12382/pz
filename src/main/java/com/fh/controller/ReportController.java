@@ -42,11 +42,24 @@ public class ReportController extends BaseController {
 	@ResponseBody
 	public ResultInfo insert(Report report,HttpServletRequest request) {
 		reportservice.insert(report,request);
-		
 		return success(Constant.SUCCESS_MSG);
 	}
 	
+	@RequestMapping("update")
+	@ResponseBody
+	public ResultInfo update(Report report) {
 	
+		reportservice.update(report);
+		return success(Constant.SUCCESS_MSG);
+		
+	}
 	
+	@RequestMapping("delete")
+	@ResponseBody
+	public ResultInfo delete(String ids) {
+		reportservice.deleteBatch(ids);
+		return success("删除成功");
+		
+	}
 	
 }

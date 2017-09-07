@@ -41,6 +41,12 @@ function openReportModifyDialog() {
 
 // 保存
 function saveReport() {
+	
+	var url = "add";
+	var id = $("#id").val();
+	if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
+		url = "update";
+	}
 //    var customerName = $('#customerId').combobox('getText');
     var center = $('#center').val();
     var subscribePeople = $('#subscribePeople').val();
@@ -70,7 +76,7 @@ function saveReport() {
     
 //    $("#customerName").val(customerName);
     $("#fm").form("submit",{
-        url: 'add', // 相对路径
+        url: url, // 相对路径
         onSubmit: function() {
             return $(this).form("validate");
         },

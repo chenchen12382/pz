@@ -54,6 +54,13 @@ public class ProgressController extends BaseController{
 		
 	}
 	
+	
+	/**
+	 * 新增
+	 * @param progress
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("add")
 	@ResponseBody
 	public ResultInfo insert(Progress progress,HttpServletRequest request) {
@@ -62,6 +69,13 @@ public class ProgressController extends BaseController{
 		return success(Constant.SUCCESS_MSG);
 	}
 	
+	
+	@RequestMapping("update")
+	@ResponseBody
+	public ResultInfo update(Progress progress) {
+		progressService.update(progress);
+		return success(Constant.SUCCESS_MSG);
+	}
 	
 }
 

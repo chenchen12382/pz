@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +56,32 @@ public class ReportService {
 		report.setName(name);
 		
 		reportDao.insert(report);
+		
+	}
+	
+	/**
+	 * 更新字段
+	 * @param report
+	 */
+	public void update(Report report) {
+		AssertUtil.intIsNotEmpty(report.getSubscribePeople(), "预订人数不能为空");
+		AssertUtil.intIsNotEmpty(report.getArrivePeople(), "到达人数不能为空");
+		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
+		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
+		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
+		
+		reportDao.update(report);
+		
+	}
+	/**
+	 * 批量删除
+	 * @param ids
+	 */
+	public void deleteBatch(String ids) {
+		if (StringUtils.isBlank(ids)) {
+			throw new ParamException("请选择记录进行删除");
+		}
+		reportDao.deleteBatch(ids);
 		
 	}
 

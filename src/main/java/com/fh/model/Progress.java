@@ -12,11 +12,12 @@ import com.fh.base.BaseModel;
 public class Progress extends BaseModel{
 	
 	
-	private String createman;   //创建人
+	private String createMan;   //创建人
 	private String center;      //中心
 //	private String centerName;  //中心名
 	private String phone;       //电话
-	private Integer hopeMoney;  //预计收入
+//	private Integer hopeMoney;  //预计收入
+	private Integer hopeMoney;
 	private Integer finishMoney;  //达成收入
 	private Integer unfinishMoney;  //未达成收入
 	private String marks;         //备注
@@ -35,12 +36,7 @@ public class Progress extends BaseModel{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Integer getHopeMoney() {
-		return hopeMoney;
-	}
-	public void setHopeMoney(Integer hopeMoney) {
-		this.hopeMoney = hopeMoney;
-	}
+	
 	public Integer getFinishMoney() {
 		return finishMoney;
 	}
@@ -59,12 +55,19 @@ public class Progress extends BaseModel{
 	public void setMarks(String marks) {
 		this.marks = marks;
 	}
-	public String getCreateman() {
-		return createman;
+	public String getCreateMan() {
+		return createMan;
 	}
-	public void setCreateman(String createman) {
-		this.createman = createman;
+	public void setCreateMan(String createMan) {
+		this.createMan = createMan;
 	}
+	public Integer getHopeMoney() {
+		return hopeMoney;
+	}
+	public void setHopeMoney(Integer hopeMoney) {
+		this.hopeMoney = hopeMoney;
+	}
+	
 
 	
 	

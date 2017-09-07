@@ -3,15 +3,56 @@
 <head>
     <#include "include/common.header.ftl" >
     <script type="text/javascript" src="${ctx}/js/main.js"></script>
+    <script type="text/javascript">
+	  function setDateTime() {
+		var date = new Date();
+		var day = date.getDay();
+		var week;
+		switch (day) {
+		case 0:
+			week = "星期日";
+			break;
+		case 1:
+			week = "星期一";
+			break;
+		case 2:
+			week = "星期二";
+			break;
+		case 3:
+			week = "星期三";
+			break;
+		case 4:
+			week = "星期四";
+			break;
+		case 5:
+			week = "星期五";
+			break;
+		case 6:
+			week = "星期六";
+			break;
+		}
+	var today = date.getFullYear() + "年" + (date.getMonth() + 1) + "月"
+				+ date.getDate() + "日  " + week + " " + date.getHours() + ":"
+				+ date.getMinutes() + ":" + date.getSeconds();
+		document.getElementById("today").innerHTML = today;
+	}
+	  window.setInterval("setDateTime()", 1000);
+</script>
 </head>
 <body class="easyui-layout">
 <div region="north" style="height: 78px;background-color: #E0ECFF;overflow: hidden;">
     <table style="padding: 5px" width="100%">
         <tr>
-            <td width="80%">
+            <td width="1%">
+                <img alt="logo" src="${ctx}/images/b.png" height="60" width="150" >
             </td>
-            <td valign="bottom" align="right" width="50%">
-                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.userName }</font>【${currentUser.realName }】
+            <td width="30%">
+                <font size="6" color="#000066" face="KaiTi">培正信息管理系统</font>
+            </td>
+           <td valign="bottom"  width="10%">   
+              <font size="3">&nbsp;<strong>欢迎：</strong>${currentUser.userName }</font>【${currentUser.realName }】
+             <br/>
+                <font id="today"></font>
             </td>
         </tr>
     </table>
@@ -19,7 +60,7 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 100px"><font color="red" size="10">欢迎使用</font></div>
+            <div align="center" style="padding-top: 100px"><img alt="logo" src="${ctx}/images/002.gif" height="200" width="350" ></div>
         </div>
     </div>
 </div>
@@ -65,7 +106,7 @@
     </div>
 </div>
 <div region="south" style="height: 25px;padding: 5px;overflow: hidden;" align="center">
-    网络信息中心<a href="http://www.perchingkids.com" target="_blank">www.perchingkids.com</a>(2016-2026)
+   © 网络信息中心&nbsp;& &nbsp;<a href="http://www.perchingkids.com" target="_blank">www.perchingkids.com</a>2017
 </div>
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:250px;padding: 10px 20px"

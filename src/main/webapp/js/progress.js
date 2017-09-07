@@ -21,12 +21,12 @@ function searchProgress() {
 }
 
 // 弹出框弹出
-function openSaleChanceAddDialog() {
-	$("#dlg").dialog('open').dialog('setTitle', "添加营销机会");
+function openProgressAddDialog() {
+	$("#dlg").dialog('open').dialog('setTitle', "添加进度");
 }
 
 // 弹出修改窗体
-function openSaleChanceModifyDialog() {
+function openProgressModifyDialog() {
 	// 获取选中的行
 	var rows = $('#dg').datagrid('getSelections');
 	if (rows.length != 1) {
@@ -40,14 +40,34 @@ function openSaleChanceModifyDialog() {
 }
 
 // 保存
-function saveSaleChance() {
-    var customerName = $('#customerId').combobox('getText');
-    if (isEmpty(customerName)) {
-    	$.messager.alert("系统提示","请选择客户名称！");
+function saveProgress() {
+//    var customerName = $('#customerId').combobox('getText');
+	var url = "add";
+	var id = $("#id").val();
+	if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
+		url = "update";
+	}
+	var center = $('#center').val();
+    var hopeMoney = $('#hopeMoney').val();
+    var finishMoney = $('#finishMoney').val();
+    var unfinishMoney = $('#unfinishMoney').val();
+    if (isEmpty(center)) {
+    	$.messager.alert("系统提示","请输入中心名称！");
     }
-    $("#customerName").val(customerName);
+    if (isEmpty(hopeMoney)) {
+    	$.messager.alert("系统提示","请输入预定收入！");
+    }
+    if (isEmpty(finishMoney)) {
+    	$.messager.alert("系统提示","请输入达成收入！");
+    }
+    if (isEmpty(unfinishMoney)) {
+    	$.messager.alert("系统提示","请输入未完成收入！");
+    }
+   
+    
+//    $("#customerName").val(customerName);
     $("#fm").form("submit",{
-        url: 'add_update', // 相对路径
+        url: url, // 相对路径
         onSubmit: function() {
             return $(this).form("validate");
         },
@@ -59,7 +79,7 @@ function saveSaleChance() {
                 $("#dlg").dialog("close");
                 $("#dg").datagrid("reload");
             }else{
-                $.messager.alert("系统提示","保存失败！");
+                $.messager.alert("系统提示",result.resultMessage);
                 return;
             }
         }
@@ -67,7 +87,7 @@ function saveSaleChance() {
 }
 
 // 删除
-function deleteSaleChance() {
+function deleteProgress() {
 	// 获取选中的行
 	var rows = $('#dg').datagrid('getSelections');
 	if (rows.length == 0) {
@@ -102,19 +122,16 @@ function deleteSaleChance() {
 
 // 重置
 function resetValue(){
-	$("#customerId").combobox("setValue","");
-    $("#customerName").val("");
-    $("#chanceSource").val("");
-    $("#linkMan").val("");
-    $("#linkPhone").val("");
-    $("#cgjl").numberbox('setValue',"");
-    $("#overview").val("");
-    $("#description").val("");
-    $("#assignMan").combobox("setValue","");
+	$("#center").val("");
+    $("#phone").val("");
+    $("#hopeMoney").numberbox('setValue',"");
+    $("#finishMoney").numberbox('setValue',"");
+    $("#unfinishMoney").numberbox('setValue',"");
+    $("#marks").val("");
 }
 
 // 关闭弹出框
-function closeSaleChanceDialog() {
+function closeProgressDialog() {
 	// 置空
 	resetValue();
 	$("#dlg").dialog('close');
