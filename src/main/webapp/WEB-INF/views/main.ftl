@@ -9,7 +9,6 @@
     <table style="padding: 5px" width="100%">
         <tr>
             <td width="80%">
-               <h1 style=color:red>培正信息管理系统</h1>
             </td>
             <td valign="bottom" align="right" width="50%">
                 <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.userName }</font>【${currentUser.realName }】
@@ -28,7 +27,7 @@
     <div class="easyui-accordion" data-options="fit:true,border:false">
         
      <#--   <#if userPermissions?seq_contains('10') > -->
-        	<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+        	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
 	            <a href="javascript:openTab('业绩录入 ','report/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">业绩录入</a>
 	            <a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>
 	        </div>
@@ -93,7 +92,6 @@
         </table>
     </form>
 </div>
-
 <div id="dlg-buttons">
     <a href="javascript:modifyPassword()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="javascript:closePasswordModifyDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
