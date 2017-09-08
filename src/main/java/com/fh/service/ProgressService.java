@@ -58,7 +58,7 @@ public class ProgressService {
 		AssertUtil.isNotEmpty(progress.getCenter(), "请选择中心");
 		AssertUtil.intIsNotEmpty(progress.getHopeMoney(), "请填写期望薪资");
 		AssertUtil.intIsNotEmpty(progress.getFinishMoney(), "请填写达成收入");
-		progressDao.update();
+		progressDao.update(progress);
 		
 		
 	}

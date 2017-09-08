@@ -20,6 +20,6 @@ public interface ProgressDao {
 	@Update("update tb_progressforms set center=#{center},phone=#{phone},hope_money=#{hopeMoney}, "
 			+ " finish_money=#{finishMoney},unfinish_money=#{unfinishMoney},marks=#{marks},update_date=now()"
 			+ " where id=#{id} ")
-	void update();
+	void update(Progress progress);
 
 }

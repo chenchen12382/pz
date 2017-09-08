@@ -13,7 +13,9 @@
 	phone,hope_money,
 	finish_money,
      unfinish_money,
-     marks 
+     marks ,
+     create_date,
+     update_date
      from  
      tb_progressforms
      

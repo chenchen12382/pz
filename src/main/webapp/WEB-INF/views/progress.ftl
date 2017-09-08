@@ -52,19 +52,19 @@
 	    <form id="fm" method="post">
 	        <table cellspacing="8px">
 	            <tr>
-	                <td>创建人：</td>
+	                <td>中心：</td>
 	                <td>
 	                	<input type="hidden" id="id" name="id" />
-	                	<input id="createman" name="createman"
+	                	<input id="center" name="center" required="true"
 	                	/> &nbsp;<font color="red">*</font>
 	                </tr> 
-	                <tr> 
-	                <td>中心</td>  
+	             <#--     <tr> 
+	               <td>中心</td>  
 	                             
-	                <td>
+	               <td>
 	                <input type="hidden" name="id" id="id" /> 
 	                <input type="text" id="center" name="center" class="easyui-textbox"  required="true"/>&nbsp;<font color="red">*</font></td>
-	                <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	                <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>  -->
 	            </tr>
 	            <tr>
 	                <td>联系电话：</td>
