@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fh.base.AssertUtil;
 import com.fh.dao.ProgressDao;
 import com.fh.dto.ProgressQuery;
+import com.fh.exception.ParamException;
 import com.fh.model.Progress;
 import com.fh.util.CookieUtil;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
@@ -61,6 +63,14 @@ public class ProgressService {
 		progressDao.update(progress);
 		
 		
+	}
+
+	public void delete(String ids) {
+		if (StringUtils.isBlank(ids)) {
+			throw new ParamException("请选择需要删除的内容");
+		}
+		
+		progressDao.deleteBatch(ids);
 	}
 
 

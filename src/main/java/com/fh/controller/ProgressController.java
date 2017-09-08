@@ -28,7 +28,7 @@ public class ProgressController extends BaseController{
 	
 	@Autowired
 	private ProgressService progressService;
-	
+
 	/**
 	 * 定位
 	 * @return
@@ -77,5 +77,11 @@ public class ProgressController extends BaseController{
 		return success(Constant.SUCCESS_MSG);
 	}
 	
+	@RequestMapping("delete")
+	@ResponseBody
+	public ResultInfo deleteBatch(String ids) {
+		progressService.delete(ids);
+		return success(Constant.SUCCESS_MSG);
+	}
 }
 

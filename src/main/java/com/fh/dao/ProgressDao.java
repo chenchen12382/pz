@@ -1,6 +1,7 @@
 package com.fh.dao;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
 import com.fh.dto.ProgressQuery;
@@ -21,5 +22,8 @@ public interface ProgressDao {
 			+ " finish_money=#{finishMoney},unfinish_money=#{unfinishMoney},marks=#{marks},update_date=now()"
 			+ " where id=#{id} ")
 	void update(Progress progress);
+	
+	@Update("update tb_progressforms set is_valid=0,update_date=now() where id in (${ids})")
+	void deleteBatch(@Param("ids")String ids);
 
 }
