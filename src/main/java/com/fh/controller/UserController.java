@@ -54,20 +54,20 @@ public class UserController extends BaseController{
 		userService.add(user);
 		return success("添加成功");
 	}
-//
-//	@RequestMapping("update")
-//	@ResponseBody
-//	public ResultInfo update(User user) {
-//		userService.update(user);
-//		return success("修改成功");
-//	}
-//
-//	@RequestMapping("delete")
-//	@ResponseBody
-//	public ResultInfo delete(String ids) {
-//		userService.deleteBatch(ids);
-//		return success("删除成功");
-//	}
-//	
+
+	@RequestMapping("update")
+	@ResponseBody
+	public ResultInfo update(User user) {
+		userService.update(user);
+		return success("修改成功");
+	}
+
+	@RequestMapping("delete")
+	@ResponseBody
+	public ResultInfo delete(String ids) {
+		userService.deleteBatch(ids);
+		return success("删除成功");
+	}
+
 	
 }
