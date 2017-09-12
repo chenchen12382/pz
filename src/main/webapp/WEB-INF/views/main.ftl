@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <#include "include/common.header.ftl" >
+
+   <#include "include/common.header.ftl" >
     <script type="text/javascript" src="${ctx}/js/main.js"></script>
     <script type="text/javascript">
 	  function setDateTime() {
