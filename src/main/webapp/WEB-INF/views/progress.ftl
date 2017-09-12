@@ -3,12 +3,12 @@
 <head>
     <#include "include/common.header.ftl" >
 </head>
-<body style="margin: 1px">
-	<table id="dg" title="进度管理" class="easyui-datagrid"
+<body style="margin: 1px" >
+	<table id="dg" title="进度管理"  class="easyui-datagrid"
 	       fitColumns="true" pagination="true" rownumbers="true"
 	       url="${ctx}/progress/list" fit="true" toolbar="#tb">
-	    <thead>
-	    <tr>
+	    <thead >
+	    <tr >
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
 	        <th field="createMan" width="100" align="center">创建人</th>
@@ -44,7 +44,6 @@
 	        <a href="javascript:searchProgress()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>
-	
 	<#--弹出框-->
 	<div id="dlg" class="easyui-dialog" style="width:700px;height:450px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
@@ -59,8 +58,7 @@
 	                	/> &nbsp;<font color="red">*</font>
 	                </tr> 
 	             <#--     <tr> 
-	               <td>中心</td>  
-	                             
+	               <td>中心</td>             
 	               <td>
 	                <input type="hidden" name="id" id="id" /> 
 	                <input type="text" id="center" name="center" class="easyui-textbox"  required="true"/>&nbsp;<font color="red">*</font></td>
@@ -99,7 +97,6 @@
 	    <a href="javascript:saveProgress()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
 	    <a href="javascript:closeProgressDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
-	
 	<script src="${ctx}/js/progress.js" ></script>
 </body>
 </html>
