@@ -82,7 +82,7 @@
                     </td>
                 </tr>
             </table>
-        </form>
+        </form>n 
     </div>
 
     <div id="dlg-buttons">

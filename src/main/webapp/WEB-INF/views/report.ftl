@@ -13,7 +13,7 @@
 	        <th field="id" width="50" align="center">编号</th>
 	        <th field="name" width="100" align="center"  >创建人</th>
 	        <th field="center" width="100" align="center" >中心</th>
-	   <#--     <th field="centerName" width="100" align="center">中心名称</th>  -->
+	   <#--   <th field="centerName" width="100" align="center">中心名称</th>  -->
 	        <th field="phone" width="100" align="center" >电话</th>
 	        <th field="subscribePeople" width="200" align="center">预定人数</th>
 	        <th field="arrivePeople" width="100" align="center">实际人数</th>
@@ -29,14 +29,9 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
-			
-				<a href="javascript:openReportAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
-			
-	        
+	            <a href="javascript:openReportAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
 	        	<a href="javascript:openReportModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-	      
 	        	<a href="javascript:deleteReport()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
-	    	
 	    </div>
 	    <div>
 	        &nbsp;中心：&nbsp;<input type="text" id="s_center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
@@ -45,8 +40,8 @@
 	     <#--   &nbsp;分配状态：&nbsp;<select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
 	        <option value="">请选择...</option>
 	        <option value="0">未分配</option>
-	        <option value="1">已分配</option>-->
-	    </select>
+	        <option value="1">已分配</option>
+	    </select>-->
 	        <a href="javascript:searchProgress()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>

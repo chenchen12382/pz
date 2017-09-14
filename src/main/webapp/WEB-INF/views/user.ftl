@@ -4,7 +4,7 @@
     <#include "include/common.header.ftl" >
 </head>
 <body style="margin: 1px">
-	<table id="dg" title="销售机会信息管理" class="easyui-datagrid"
+	<table id="dg" title="用户管理" class="easyui-datagrid"
 	       fitColumns="true" pagination="true" rownumbers="true"
 	       url="${ctx}/user/list" fit="true" toolbar="#tb">
 	    <thead>
