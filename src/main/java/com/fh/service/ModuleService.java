@@ -4,14 +4,17 @@ import com.fh.base.AssertUtil;
 import com.fh.base.BaseQuery;
 import com.fh.constant.ModuleGrade;
 import com.fh.dao.ModuleDao;
+import com.fh.dao.PermissionDao;
 import com.fh.exception.ParamException;
 import com.fh.model.Module;
+import com.fh.vo.ModuleVO;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import freemarker.ext.beans.HashAdapter;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,9 @@ public class ModuleService {
 
     @Autowired
     private ModuleDao moduleDao;
+
+    @Autowired
+    private PermissionDao permissionDao;
 
     public Map<String,Object> selectForPage(BaseQuery query) {
         PageList<Module> modules = moduleDao.selectForPage(query.buildPageBounds());
@@ -122,4 +128,57 @@ public class ModuleService {
     }
 
 
+    public void update(Module module) {
+
+        // 基本参数验证
+        Integer id = module.getId();
+        AssertUtil.intIsNotEmpty(id, "请选择模块ID");
+        checkParams(module);
+
+        // 根据id获取模块记录
+        Module moduleFromDb = findById(module.getId());
+
+        // 验证模块名称唯一
+        String moduleName = module.getModuleName();
+        if (!moduleName.equals(moduleFromDb.getModuleName())
+                && module.getGrade() != ModuleGrade.ROOT.getGrade()) {
+            checkModuleNameIsUnique(module);
+        }
+
+        // 构建一个tree_path=,1,
+        String treePath = moduleFromDb.getTreePath();
+        if (module.getGrade() != ModuleGrade.ROOT.getGrade()
+                && !module.getParentId().equals(moduleFromDb.getParentId())) {
+            treePath = buildTreePath(module);
+        }
+        BeanUtils.copyProperties(module, moduleFromDb); // copy 属性
+        moduleFromDb.setUpdateDate(new Date());
+        moduleFromDb.setTreePath(treePath);
+
+        moduleDao.update(moduleFromDb);
+
+
+    }
+
+    public void deleteBatch(String ids) {
+        AssertUtil.isNotEmpty(ids, "请选择记录进行删除");
+        moduleDao.deleteBatch(ids);
+
+    }
+
+    public List<ModuleVO> findAllModules(Integer roleId) {
+        AssertUtil.intIsNotEmpty(roleId, "请选择角色");
+        List<ModuleVO> modules = moduleDao.findAll();
+        for (ModuleVO moduleVO : modules) {
+            Integer count = permissionDao.count(roleId, moduleVO.getId());
+            if (count == null ||count == 0) {
+                moduleVO.setChecked(false);
+            } else {
+                moduleVO.setChecked(true);
+            }
+        }
+
+        return modules;
+
+    }
 }

@@ -61,7 +61,7 @@ public class RoleService {
      * @param id
      * @return
      */
-    private Role findById(Integer id) {
+    public Role findById(Integer id) {
 
         AssertUtil.intIsNotEmpty(id, "请选择角色");
         Role role = roleDao.findById(id);
