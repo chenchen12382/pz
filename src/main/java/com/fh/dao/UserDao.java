@@ -19,11 +19,11 @@ public interface UserDao {
 	 * @param
 	 * @return
 	 */
-	@Select("select id, user_name, password, true_name, email, phone from t_user "
+	@Select("select id, user_name, password, true_name, center, phone from t_user "
 			+ "where user_name = #{userName} and is_valid = 1")
 	User findByUserName(@Param(value="userName")String userName);
 	
-	@Select("select id, user_name, password, true_name, email, phone from t_user where id = #{userId}")
+	@Select("select id, user_name, password, true_name, center, phone from t_user where id = #{userId}")
 	User findById(@Param(value="userId")Integer userId);
 
 	PageList<User> selectForPage(UserQuery query, PageBounds buildPageBounds);
@@ -32,7 +32,7 @@ public interface UserDao {
 //			" values (#{userName},#{password},#{trueName},#{email},#{phone},1,now(),now() )")
 //    void add(User user);
 
-	@Update("update t_user set user_name=#{userName},true_name=#{trueName},email=#{email}, " +
+	@Update("update t_user set user_name=#{userName},true_name=#{trueName},center=#{center}, " +
 			" phone=#{phone},update_date=#{updateDate} where id = #{id}")
 	void update(User user);
 
@@ -41,11 +41,11 @@ public interface UserDao {
 
 	void insert(User user);
 //
-	@Select("select id, user_name, password, true_name, email, phone from t_user " +
-			" where email = #{email} and is_valid = 1")
+	@Select("select id, user_name, password, true_name, center, phone from t_user " +
+			" where center = #{center} and is_valid = 1")
 	User findByEmail(String email);
 
-	@Select("select id, user_name, password, true_name, email, phone from t_user " +
+	@Select("select id, user_name, password, true_name, center, phone from t_user " +
 			" where phone = #{phone} and is_valid = 1")
 	User findByPhone(String phone);
 

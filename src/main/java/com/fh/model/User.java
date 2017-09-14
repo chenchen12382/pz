@@ -14,7 +14,7 @@ public class User extends BaseModel {
 	private String userName;
 	private String password;
 	private String trueName;
-	private String email;
+	private String center;
 	private String phone;
 	private Integer[] roleIds;
 	private List<RoleVO> roles;
@@ -37,12 +37,15 @@ public class User extends BaseModel {
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getCenter() {
+		return center;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setCenter(String center) {
+		this.center = center;
 	}
+
 	public String getPhone() {
 		return phone;
 	}

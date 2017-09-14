@@ -13,7 +13,7 @@
 	        <th field="id" width="50" align="center">编号</th>
 	        <th field="userName" width="100" align="center">用户名</th>
 	        <th field="trueName" width="200" align="center">真实姓名</th>
-	        <th field="email" width="100" align="center">邮箱</th>
+	        <th field="center" width="100" align="center">中心</th>
 	        <th field="phone" width="100" align="center">联系电话</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="roleIds" width="100" align="center" hidden="true">关联角色</th>
@@ -54,8 +54,13 @@
 	                <td>真实姓名：</td>
 	                <td><input type="text" id="trueName" name="trueName" /></td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	                <td>邮箱：</td>
-	                <td><input type="text" id="email" name="email" /></td>
+	                <td>中心：</td>
+                    <td>
+                        <input class="easyui-combobox" id="roleIds" name="roleIds"
+                               data-options="panelHeight:'auto', editable:false, valueField:'id',
+	                		textField:'roleName', url:'${ctx}/center/find_all'"/>
+
+                    </td>
 	            </tr>
 	            <tr>
 	                <td>联系电话：</td>

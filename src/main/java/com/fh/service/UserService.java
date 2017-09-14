@@ -110,9 +110,7 @@ public class UserService {
 		// 用户名唯一验证
 		User userByUserName = userDao.findByUserName(userName);
 		AssertUtil.isTrue(userByUserName != null, "该用户名已存在");
-		// 邮箱、手机号唯一验证 TODO
-		User findByEmail = userDao.findByEmail(user.getEmail());
-		AssertUtil.isTrue(findByEmail != null,"该邮箱已存在");
+
 
 		User findByPhone = userDao.findByPhone(user.getPhone());
 		AssertUtil.isTrue(findByPhone != null , "该手机号已存在");
@@ -168,9 +166,6 @@ public class UserService {
 			User findByUserName = userDao.findByUserName(user.getUserName());
 			AssertUtil.isTrue(findByUserName != null , "该用户名已存在");
 		}
-		if(!userFromDB.getEmail().equals(user.getEmail())){
-			AssertUtil.isTrue(userDao.findByEmail(user.getEmail()) !=null,"该邮箱已存在");
-		}
 
 		if(!userFromDB.getPhone().equals(user.getPhone())){
 			AssertUtil.isTrue(userDao.findByPhone(user.getPhone()) != null,"该手机已存在");
@@ -218,8 +213,7 @@ public class UserService {
 		AssertUtil.isNotEmpty(realName, "请输入真实姓名");
 		String phone = user.getPhone();
 		AssertUtil.isNotEmpty(phone, "请输入手机号");
-		String email = user.getEmail();
-		AssertUtil.isNotEmpty(email, "请输入邮箱");
+
 		Integer[] roleIds = user.getRoleIds();
 		AssertUtil.isTrue(roleIds == null || roleIds.length == 0, "请选择角色");
 	}
