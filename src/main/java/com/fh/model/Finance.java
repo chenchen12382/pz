@@ -1,16 +1,14 @@
 package com.fh.model;
 
 import com.fh.base.BaseModel;
-import com.sun.org.apache.xpath.internal.operations.String;
 
-import java.util.Date;
 
 /**
  * Created by Administrator on 2017/9/14.
  */
 public class Finance  extends BaseModel{
 
-    private Date date;   // 日期
+
     private  String xybh;      //协议编号
     private String sjbh; //收据编号
     private String hybh; //会员编号
@@ -18,6 +16,7 @@ public class Finance  extends BaseModel{
     private String saleClass; //乐博士
     private Integer saleNum;  //销售数量
     private String agreement; //协议签订类型
+    private Integer price;   //价格
     private Integer shouldMoney;  //应收金额
     private Integer realMoney;  //实际金额
     private String discount; //折扣
@@ -27,14 +26,6 @@ public class Finance  extends BaseModel{
     private String  promotion; //促销
     private String gift;  //赠送课程
     private String source ; //来源
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getXybh() {
         return xybh;
@@ -90,6 +81,14 @@ public class Finance  extends BaseModel{
 
     public void setAgreement(String agreement) {
         this.agreement = agreement;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public Integer getShouldMoney() {

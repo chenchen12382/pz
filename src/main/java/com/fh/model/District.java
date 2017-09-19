@@ -3,20 +3,12 @@ package com.fh.model;
 import com.fh.base.BaseModel;
 
 /**
- * Created by Administrator on 2017/9/14.
+ * Created by Administrator on 2017/9/18.
  */
-public class Center extends BaseModel{
+public class District extends BaseModel{
 
-    private String center;
     private String district;
-
-    public String getCenter() {
-        return center;
-    }
-
-    public void setCenter(String center) {
-        this.center = center;
-    }
+    private String remark;
 
     public String getDistrict() {
         return district;
@@ -24,5 +16,13 @@ public class Center extends BaseModel{
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

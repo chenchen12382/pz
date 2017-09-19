@@ -1,74 +1,35 @@
-// 格式化分配状态
-//function formatState(value) {
-//	if (value == null) {
-//		return "未知";
-//	}else if (value == 0) {
-//		return "未分配";
-//	} else {
-//		return "已分配";
-//	}
-//}
-
 // 搜索
-function searchProgress() {
-	var data = {
-			center: $("#xybh").val(),
-//			centerName: $("#s_centerName").val(),
-			name: $("#s_createMan").val()
-//			state:$("#s_state").combobox('getValue')
-	}
-	$("#dg").datagrid('load', data);
+function searchCustomer() {
+    var customerNo = $("#s_customerNo").val();
+    var customerName = $("#s_customerName").val();
+    var data = {'customerNo': customerNo, "customerName": customerName};
+    $("#dg").datagrid('load', data);
 }
 
-// 弹出框弹出
-function openReportAddDialog() {
-	$("#dlg").dialog('open').dialog('setTitle', "业绩录入");
+function openAddDialog() {
+    $("#dlg").dialog('open').dialog('setTitle', "添加客户信息");
 }
 
-// 弹出修改窗体
-function openReportModifyDialog() {
-	// 获取选中的行
-	var rows = $('#dg').datagrid('getSelections');
-	if (rows.length != 1) {
-		$.messager.alert("系统提示", "请选择一行进行修改");
-		return;
-	}
-	// 给form表单赋值
-	var row = rows[0];
-	$("#fm").form('load', row);
-	$("#dlg").dialog('open').dialog('setTitle', '修改')
+function openModifyDialog() {
+    // form 表单赋值 获取选中行
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length != 1) {
+        $.messager.alert("系统提示", "只能选择一条进行修改");
+        return;
+    }
+    var row = selectedRows[0];
+    $("#fm").form('load', row); // form 赋值
+    $("#dlg").dialog('open').dialog('setTitle', "修改客户信息");
 }
 
 // 保存
-function saveReport() {
-	
-	var url = "add";
-	var id = $("#id").val();
-	if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
-		url = "update";
-	}
-//    var customerName = $('#customerId').combobox('getText');
-    var xybh = $('#xybh').val();
-    var sjbh = $('#sjbh').val();
-    var hybh = $('#hybh').val();
-    var name = $('#name').val();
-   
-    
-    if (isEmpty(xybh)) {
-    	$.messager.alert("系统提示","请录入协议编号！");
+function saveCustomer() {
+
+    var url = "add";
+    var id = $("#id").val();
+    if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
+        url = "update";
     }
-    if (isEmpty(sjbh)) {
-    	$.messager.alert("系统提示","请录入收据编号！");
-    }
-    if (isEmpty(hybh)) {
-    	$.messager.alert("系统提示","请录入会员编号！");
-    }
-    if (isEmpty(name)) {
-    	$.messager.alert("系统提示","请录入会员姓名！");
-    }
-    
-    
-//    $("#customerName").val(customerName);
     $("#fm").form("submit",{
         url: url, // 相对路径
         onSubmit: function() {
@@ -78,61 +39,89 @@ function saveReport() {
             result = JSON.parse(result);
             if(result.resultCode == 1) {
                 $.messager.alert("系统提示", "保存成功！");
-                resetValue(); // 置空
-                $("#dlg").dialog("close");
+                closeCustomerDialog();
                 $("#dg").datagrid("reload");
             }else{
-                $.messager.alert("系统提示",result.resultMessage);
+                $.messager.alert("系统提示","保存失败！");
                 return;
             }
         }
     });
 }
 
-// 删除
-function deleteReport() {
-	// 获取选中的行
-	var rows = $('#dg').datagrid('getSelections');
-	if (rows.length == 0) {
-		$.messager.alert("系统提示", "至少选择一行进行删除");
-		return;
-	}
-	// 获取选中行的ID
-	var ids = [];
-	for(var i =0; i < rows.length; i++) {
-		console.log(JSON.stringify(rows[i])); // 将对象转化为json字符串
-		ids.push(rows[i].id);
-	}
-	var content = "您确定要删除这<font color=red>" + rows.length + "</font>条数据吗？";
-	1,2,3
-	$.messager.confirm("系统提示", content, function(r) {
-		if (r) {
-			$.post('delete', {ids:ids.join(',')}, function(resp) {
-				if(resp.resultCode == 1) { // 删除成功
-					$.messager.alert('系统提示', resp.resultMessage);
-					$("#dg").datagrid('load'); // 重新刷新数据
-				} else if (resp.resultCode == 201){
-					$.messager.alert('系统提示', resp.resultMessage);
-					window.parent.location.href= '/index';
-				} else {
-					$.messager.alert('系统提示', resp.resultMessage);
-				}
-			});
-		}
-	});
-	
+function deleteCustomer() {
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length < 1) {
+        $.messager.alert("系统提示", "至少选择一条进行删除");
+        return;
+    }
+    var ids = [];
+    for (var i = 0; i < selectedRows.length; i++) {
+        ids.push(selectedRows[i].id);
+    }
+    var tips = "您确定要删除<font color='red'>"+ ids.length +"</font>条记录吗？";
+    $.messager.confirm("系统提示", tips, function(r){
+        if (r) {
+            $.post('delete', {"ids": ids.join(",")}, function(resp) {
+                if (resp.resultCode == 1) {
+                    alert(resp.resultMessage);
+                    closeCustomerDialog();
+                    $("#dg").datagrid("reload");
+                } else {
+                    alert(resp.resultMessage);
+                }
+            });
+        }
+    });
 }
 
-// 重置
-function resetValue(){
-	$("#xybh").val("");
-    $("#sjbh").val("");
-    $("#hybh").val("");
-    $("#name").val("");
+// 关闭
+function closeCustomerDialog() {
+    resetValue();
+    $("#dlg").dialog('close');
 }
 
-// 关闭弹出框
-function closeReportDialog() {
-	resetValue();
-	$("#dlg").dialog('close');
+// 重新
+function resetValue() {
+    $("#fm").form('reset');
+}
+
+function openCustomerLinkMan() {
+    var id = loadSelectedId();
+    if (id == null) {
+        $.messager.alert("系统提示", "只能选择一条");
+        return;
+    }
+    var url = ctx + "linkman/index?customerId=" + id;
+    window.parent.openTab('联系人管理', url, 'icon-lxr');
+}
+
+function openCustomerContact() {
+    var id = loadSelectedId();
+    if (id == null) {
+        $.messager.alert("系统提示", "只能选择一条");
+        return;
+    }
+    var url = ctx + "contact/index?customerId=" + id;
+    window.parent.openTab('交往记录管理', url, 'icon-jwjl');
+}
+
+function openCustomerOrder() {
+    var id = loadSelectedId();
+    if (id == null) {
+        $.messager.alert("系统提示", "只能选择一条");
+        return;
+    }
+    var url = ctx + "order/index?customerId=" + id;
+    window.parent.openTab('历史订单查看', url, 'icon-lsdd');
+}
+
+function loadSelectedId() {
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length != 1) {
+        return;
+    }
+    var row = selectedRows[0];
+    var id = row.id;
+    return id;
 }

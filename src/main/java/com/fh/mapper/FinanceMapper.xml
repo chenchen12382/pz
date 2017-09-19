@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.FinanceDao">
+
+
+
+
+
+    <sql id="Finance_Columns">
+    t1.id,xybh,sjbh,hybh,name,t1.sale_class,sale_num,agreement,t2.price,should_money,
+   real_money,discount,pay_mode,card_num,counselor,promotion,gift,source,
+  t1.create_date,t1.update_date
+
+    </sql>
+
+    <select id="selectForPage" resultType="finance">
+        SELECT <include refid="Finance_Columns" /> from t_finance t1
+        LEFT JOIN t_class_price t2 ON t1.sale_class = t2.sale_class
+        <where>
+            t1.is_valid = 1;
+            <if test="@Ognl@isNotEmpty(name)">
+                and name like '%${name}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+
+        </where>
+
+
+    </select>
+
+
+
+
+    <insert id="insertBatch">
+        insert into t_user_role (
+          user_id, role_id, create_date, update_date, is_valid
+        ) values 
+        <foreach collection="userRoles" item="userRole" separator="," >
+        	(#{userRole.userId}, #{userRole.roleId}, now(), now(), 1)
+        </foreach>
+    </insert>
+
+
+</mapper>

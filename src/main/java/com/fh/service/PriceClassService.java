@@ -27,15 +27,18 @@ public class PriceClassService {
     }
 
     public void insert(PriceClass priceClass) {
-        AssertUtil.isNotEmpty(priceClass.getSaleClass(),"请输入课程");
-        AssertUtil.intIsNotEmpty(priceClass.getPrice(),"请输入课程价格");
+//        AssertUtil.isNotEmpty(priceClass.getSaleClass(),"请输入课程");
+//        AssertUtil.intIsNotEmpty(priceClass.getPrice(),"请输入课程价格");
+        chickParams(priceClass);
+
         priceClassDao.insert(priceClass);
 
     }
 
     public void update(PriceClass priceClass) {
-        AssertUtil.isNotEmpty(priceClass.getSaleClass(),"请输入课程");
-        AssertUtil.intIsNotEmpty(priceClass.getPrice(),"请输入课程价格");
+
+
+        chickParams(priceClass);
         priceClassDao.update(priceClass);
 
     }
@@ -45,4 +48,15 @@ public class PriceClassService {
         priceClassDao.deleteBatch(ids);
 
     }
+
+
+    public static void chickParams(PriceClass priceClass){
+
+        AssertUtil.isNotEmpty(priceClass.getSaleClass(),"请输入课程");
+        AssertUtil.intIsNotEmpty(priceClass.getPrice(),"请输入课程价格");
+        AssertUtil.intIsNotEmpty(priceClass.getClassHour(),"请输入课时");
+        AssertUtil.intIsNotEmpty(priceClass.getSitePrice(),"请输入现场报名价格");
+
+    }
+
 }

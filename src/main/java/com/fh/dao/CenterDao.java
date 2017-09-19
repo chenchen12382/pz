@@ -14,14 +14,14 @@ import java.util.List;
 public interface CenterDao {
 
 
-    @Select("select id,center,remark,create_date,update_date from t_center where is_valid=1 ")
+    @Select("select id,center,district,create_date,update_date from t_center where is_valid=1 ")
     List<Center> selectAll();
 
-    @Insert("insert into t_center (center,remark,is_valid,create_date,update_date )  values " +
-            " (#{center},#{remark},1,now(),now())")
+    @Insert("insert into t_center (center,district,is_valid,create_date,update_date )  values " +
+            " (#{center},#{district},1,now(),now())")
     void insert(Center center);
 
-    @Update("update t_center set center=#{center},remark=#{remark},update_date=#{updateDate} where id= #{id} ")
+    @Update("update t_center set center=#{center},district=#{district},update_date=now() where id= #{id} ")
     void update(Center center);
 
     @Update("update t_center set is_valid = 0 , update_date=now()  where id in (${ids})")

@@ -12,7 +12,7 @@
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
 	        <th field="center" width="200" align="center">中心</th>
-	        <th field="remark" width="300" align="center">备注</th>
+	        <th field="district" width="300" align="center">区域</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="updateDate" width="100" align="center">更新时间</th>
 	    </tr>
@@ -39,8 +39,13 @@
 	                <td colspan="4"><input type="text" id="center" name="center" style="width: 220px"/></td>
 	            </tr>
 	            <tr>
-	                <td>备注信息：</td>
-                    <td colspan="4"><input type="text" id="remark" name="remark" style="width: 220px"/></td>
+	                <td>区域信息：</td>
+                    <td>
+                        <input class="easyui-combobox" id="district" name="district"
+                               data-options="panelHeight:'auto', editable:false, valueField:'district',
+	                		textField:'district', url:'${ctx}/district/find_all'"/>
+
+                    </td>
 	                </td>
 	            </tr>
 	        </table>

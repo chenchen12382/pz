@@ -8,6 +8,8 @@ import com.fh.base.BaseModel;
 public class PriceClass extends BaseModel {
     private String saleClass;
     private Integer price;
+    private Integer classHour;
+    private Integer sitePrice;
 
     public Integer getPrice() {
         return price;
@@ -23,5 +25,22 @@ public class PriceClass extends BaseModel {
 
     public void setSaleClass(String saleClass) {
         this.saleClass = saleClass;
+    }
+
+
+    public Integer getClassHour() {
+        return classHour;
+    }
+
+    public void setClassHour(Integer classHour) {
+        this.classHour = classHour;
+    }
+
+    public Integer getSitePrice() {
+        return sitePrice;
+    }
+
+    public void setSitePrice(Integer sitePrice) {
+        this.sitePrice = sitePrice;
     }
 }

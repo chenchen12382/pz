@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +35,14 @@ public class CenterController extends BaseController {
     public Map<String,Object> selectForPage(){
         Map<String,Object> result = centerService.selectForPage();
         return result;
+    }
+
+    @RequestMapping("find_all")
+    @ResponseBody
+    public List<Center> findAll() {
+        Map<String, Object> result = centerService.selectForPage();
+        return (List<Center>) result.get("rows");
+
     }
 
     @RequestMapping("add")

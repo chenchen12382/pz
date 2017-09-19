@@ -10,9 +10,11 @@
 	    <thead>
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
-	        <th field="id" width="50" align="center">编号</th>
-	        <th field="saleClass" width="200" align="center">销售课程</th>
-	        <th field="price" width="300" align="center">标准单价</th>
+	        <th field="id" width="50" align="center" hidden="true">编号</th>
+            <th field="classHour" width="150" align="center">课时(次/月)</th>
+	        <th field="saleClass" width="150" align="center">销售课程</th>
+            <th field="sitePrice" width="150" align="center">现场报名价格</th>
+            <th field="price" width="150" align="center">标准单价</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="updateDate" width="100" align="center">更新时间</th>
 	    </tr>
@@ -28,21 +30,30 @@
 	</div>
 	
 	<#--弹出框-->
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:400px;height:300px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
 	
 	    <form id="fm" method="post">
 	        <table cellspacing="8px">
 	        	<input type="hidden" id="id" name="id" />
+                <tr>
+                    <td>课时(次/月)：</td>
+                    <td colspan="4"><input type="text" id="classHour" name="classHour" style="width: 220px"/></td>
+                </tr>
 	            <tr>
 	                <td>销售课程：</td>
-	                <td colspan="4"><input type="text" id="priceClassName" name="saleClass" style="width: 220px"/></td>
+	                <td colspan="4"><input type="text" id="saleClass" name="saleClass" style="width: 220px"/></td>
 	            </tr>
-	            <tr>
-	                <td>课程价格：</td>
-                    <td colspan="4"><input type="text" id="priceClassName" name="price" style="width: 220px"/></td>
-	                </td>
-	            </tr>
+                <tr>
+                    <td>现场价格：</td>
+                    <td colspan="4"><input type="text" id="sitePrice" name="sitePrice" style="width: 220px"/></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>标准单价：</td>
+                    <td colspan="4"><input type="text" id="price" name="price" style="width: 220px"/></td>
+                </tr>
+
 	        </table>
 	    </form>
 	</div>

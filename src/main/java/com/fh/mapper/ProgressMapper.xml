@@ -18,6 +18,7 @@
      update_date
      from  
      tb_progressforms
+
      
 			<where>
 				is_valid = 1 
