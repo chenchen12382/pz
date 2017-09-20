@@ -39,10 +39,10 @@ public class PriceClassController extends BaseController{
 
     @RequestMapping("find_all")
     @ResponseBody
-    public List<Center> findAll() {
-        Map<String, Object> result = priceClassService.findAll();
-        return (List<Center>) result.get("rows");
+    public List<PriceClass> findAll() {
+        List<PriceClass> result = priceClassService.findSaleClass();
 
+        return result;
     }
 
     @RequestMapping("add")

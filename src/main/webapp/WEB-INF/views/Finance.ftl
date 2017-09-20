@@ -33,7 +33,7 @@
 			        <th field="counselor" width="100" align="center" >顾问</th>
 			        <th field="promotion" width="100" align="center" >促销</th>
 			        <th field="gift"   width="100"  align="center" >赠送课程</th>
->			    </tr>
+			    </tr>
 			</thead>
 	</table>
 	<#--工具栏-->
@@ -70,23 +70,23 @@
 	            <tr>
 	                <td>会员编号：</td>
 	                <td>
-	                    <input class="text" id="hybh" name="hybh" class="easyui-validatebox" >
+	                    <input type="text" id="hybh" name="hybh" class="easyui-validatebox" >
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>客户姓名：</td>
 	                <td>
-                        <input class="text" id="name" name="name" class="easyui-validatebox" >
+                        <input type="text" id="name" name="name" class="easyui-validatebox" >
 	                </td>
 	            </tr>
 	            <tr>
 	                <td>销售课程：</td>
 	                <td>
-                        <input class="easyui-combobox" id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'"/>&nbsp;<font color="red">*</font>
+                        <input  class="easyui-combobox"   id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'"/>&nbsp;<font color="red">*</font>
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>销售数量：</td>
 	                <td>
-                        <input class="text" id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />
+                        <input type="text" id="saleNum" name="saleNum" class="easyui-numberbox" />
 	                </td>
 	            </tr>
 	            <tr>
@@ -101,7 +101,9 @@
 	                </td>
 	              <tr>  
 	                <td>实收金额：</td>
-	                <td><input class="text" id="realMoney" name="realMoney" class="easyui-numberbox" required="true" /> </td>
+	                <td>
+						<input type="text" id="realMoney" name="realMoney" class="easyui-numberbox" />
+					</td>
 	            </tr>
 	            <tr>
 	                <td>支付方式：</td>
@@ -113,7 +115,8 @@
                             <option value="2">微信</option>
                             <option value="3">现金</option>
                         </select>
-				    </td>    
+				    </td>
+
 				</tr>
 	            <tr id="parentIdDiv" >	                
                     <td>银行卡号:</td>

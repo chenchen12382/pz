@@ -57,7 +57,7 @@
 	                <td>中心：</td>
                     <td>
                         <input class="easyui-combobox" id="center" name="center"
-                               data-options="panelHeight:'auto', editable:false, valueField:'id',
+                               data-options="panelHeight:'auto', editable:false, valueField:'center',
 	                		textField:'center', url:'${ctx}/center/find_all'"/>
 
                     </td>

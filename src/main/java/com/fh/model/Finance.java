@@ -10,6 +10,7 @@ public class Finance  extends BaseModel{
 
 
     private  String xybh;      //协议编号
+    private String center;
     private String sjbh; //收据编号
     private String hybh; //会员编号
     private String name; //会员姓名
@@ -21,7 +22,8 @@ public class Finance  extends BaseModel{
     private Integer realMoney;  //实际金额
     private String discount; //折扣
     private String payMode; //支付方式
-    private Integer cardNum; //银行卡号
+    private String property; //付款性质
+    private String cardNum; //银行卡号
     private String counselor; //顾问
     private String  promotion; //促销
     private String gift;  //赠送课程
@@ -123,11 +125,11 @@ public class Finance  extends BaseModel{
         this.payMode = payMode;
     }
 
-    public Integer getCardNum() {
+    public String getCardNum() {
         return cardNum;
     }
 
-    public void setCardNum(Integer cardNum) {
+    public void setCardNum(String cardNum) {
         this.cardNum = cardNum;
     }
 
@@ -161,5 +163,21 @@ public class Finance  extends BaseModel{
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public void setCenter(String center) {
+        this.center = center;
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
     }
 }
