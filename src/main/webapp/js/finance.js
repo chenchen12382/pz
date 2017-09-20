@@ -1,3 +1,23 @@
+$(document).ready(function() {
+    $("#s_state").combobox({ // 层级改变
+        // 层级改变时触发
+        onChange:function(s_state) { // select的change事件
+             if(s_state == 0) {
+            	 $("#parentIdDiv").show();
+            } else {	
+            	 $("#parentIdDiv").hide();
+            }
+          
+        }
+    });
+})
+
+function resetValue() {
+    
+    $("#s_state").combobox('setValue', 0);
+}
+
+
 // 搜索
 function searchCustomer() {
     var customerNo = $("#s_customerNo").val();

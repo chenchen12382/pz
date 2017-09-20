@@ -32,7 +32,7 @@
 			        <th field="cardNum" width="100" align="center" >银行卡号</th>
 			        <th field="counselor" width="100" align="center" >顾问</th>
 			        <th field="promotion" width="100" align="center" >促销</th>
-			        <th field="gift" width="100" align="center" >赠送课程</th>
+			        <th field="gift"   width="100"  align="center" >赠送课程</th>
 >			    </tr>
 			</thead>
 	</table>
@@ -91,24 +91,38 @@
 	            </tr>
 	            <tr>
 	                <td>签订协议类型：</td>
-	                <td><input class="text" id="agreement" agreement="name" class="easyui-validatebox" ></td>
-	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	                <td>
+                        <select class="easyui-combobox" id="agreement" agreement="name" panelHeight="auto" class="easyui-validatebox" >
+                            <option value="">请选择...</option>
+                             <option value="新签约">新签约</option>
+                             <option value="续约">续约</option>
+                             <option value="赠送">赠送</option>
+                      </select>
+	                </td>
+	              <tr>  
 	                <td>实收金额：</td>
 	                <td><input class="text" id="realMoney" name="realMoney" class="easyui-numberbox" required="true" /> </td>
 	            </tr>
 	            <tr>
 	                <td>支付方式：</td>
 	                <td>
-                        <select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
-                            <option value="">请选择...</option>
-                            <option value="POS机">POS机</option>
-                            <option value="支付宝">支付宝</option>
-                            <option value="微信">微信</option>
-                            <option value="现金">现金</option>
+                        <select class="easyui-combobox" id="s_state" name="s_state" editable="false" panelHeight="auto" >                         
+                           
+                            <option value="0">POS机</option>
+                            <option value="1">支付宝</option>
+                            <option value="2">微信</option>
+                            <option value="3">现金</option>
                         </select>
-					</td>
-	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	                <td>顾问：</td>
+				    </td>    
+				</tr>
+	            <tr id="parentIdDiv" >	                
+                    <td>银行卡号:</td>
+                    <td>
+                        <input type="text" id="parentId" name="parentId" class="easyui-numberbox" />
+                    </td>
+                </tr>
+	            <tr> 
+	            	<td>顾问：</td>
 	                <td><input type="text" id="counselor" name="counselor" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
 	            </tr>
 	            <tr>
@@ -123,7 +137,7 @@
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>用户来源：</td>
                    <td>
-                       <select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
+                      <select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
                            <option value="">请选择...</option>
                            <option value="上门">上门</option>
                            <option value="电话">电话</option>
@@ -136,11 +150,10 @@
                            <option value="其他">其他</option>
                        </select>&nbsp;<font color="red">*</font>
 				   </td>
-	            </tr>
+	            </tr> 
 	        </table>
 	    </form>
 	</div>
-
 	<#--按钮-->
 	<div id="dlg-buttons">
 	    <a href="javascript:saveCustomer()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
