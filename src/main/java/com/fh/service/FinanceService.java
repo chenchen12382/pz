@@ -5,6 +5,7 @@ import com.fh.dao.FinanceDao;
 import com.fh.dao.PriceClassDao;
 import com.fh.dao.UserDao;
 import com.fh.dto.FinanceQuery;
+import com.fh.exception.ParamException;
 import com.fh.model.Finance;
 import com.fh.model.PriceClass;
 import com.fh.model.User;
@@ -12,9 +13,12 @@ import com.fh.util.CookieUtil;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -350,6 +354,16 @@ public class FinanceService {
 
     public void update(Finance finance) {
         chickParams(finance);
+        Integer id = finance.getId();
+        AssertUtil.intIsNotEmpty(id,"请选择记录进行删除");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date createDate=financeDao.findCreateDate(id);
+        String dateFromDB=sdf.format(createDate);
+        String now = sdf.format(new Date());
+        if(!dateFromDB.equals(now)){
+            throw new ParamException("您不能修改不是当天的记录");
+        }
+
         buildFinance(finance);
 
         financeDao.update(finance);
