@@ -12,15 +12,15 @@
 		    	<tr>
 			        <th field="cb" checkbox="true" align="center"></th>
                     <th field="id" width="30" align="center">编号</th>
-                    <th field="xybh" width="120" align="center"  >协议编号</th>
-			        <th field="sjbh" width="120" align="center"  >收据编号</th>
+                    <th field="xybh" width="120" align="center">协议编号</th>
+			        <th field="sjbh" width="120" align="center">收据编号</th>
 			        <th field="hybh" width="120" align="center">会员编号 </th>
 			        <th field="name" width="50" align="center">客户姓名</th>
 			        <th field="saleClass" width="50" align="center">销售课程</th>
 			        <th field="saleNum" width="50" align="center">销售数量 </th>
 			    </tr>
 		    </thead>
-		        <#--滚定-->
+		 <#--滚定-->
 			<thead>
 				<tr>
 			        <th field="agreement" width="80" align="center">签订协议类型</th>
@@ -33,7 +33,7 @@
 			        <th field="counselor" width="100" align="center" >顾问</th>
 			        <th field="promotion" width="100" align="center" >促销</th>
 			        <th field="gift"   width="100"  align="center" >赠送课程</th>
-			    </tr>
+	      	    </tr>
 			</thead>
 	</table>
 	<#--工具栏-->
@@ -70,24 +70,26 @@
 	            <tr>
 	                <td>会员编号：</td>
 	                <td>
-	                    <input type="text" id="hybh" name="hybh" class="easyui-validatebox" >
+	                    <input class="text" id="hybh" name="hybh" class="easyui-validatebox" >
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>客户姓名：</td>
 	                <td>
-                        <input type="text" id="name" name="name" class="easyui-validatebox" >
+                        <input class="text" id="name" name="name" class="easyui-validatebox" >
 	                </td>
 	            </tr>
 	            <tr>
 	                <td>销售课程：</td>
 	                <td>
-                        <input  class="easyui-combobox"   id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'"/>&nbsp;<font color="red">*</font>
+                        <input class="easyui-combobox" id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'"/>&nbsp;<font color="red">*</font>
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	                
 	                <td>销售数量：</td>
 	                <td>
-                        <input type="text" id="saleNum" name="saleNum" class="easyui-numberbox" />
+                        <input class="text" id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />
 	                </td>
+	                
 	            </tr>
 	            <tr>
 	                <td>签订协议类型：</td>
@@ -101,22 +103,18 @@
 	                </td>
 	              <tr>  
 	                <td>实收金额：</td>
-	                <td>
-						<input type="text" id="realMoney" name="realMoney" class="easyui-numberbox" />
-					</td>
+	                <td><input class="text" id="realMoney" name="realMoney" class="easyui-numberbox" required="true" /> </td>
 	            </tr>
 	            <tr>
 	                <td>支付方式：</td>
 	                <td>
-                        <select class="easyui-combobox" id="s_state" name="s_state" editable="false" panelHeight="auto" >                         
-                           
-                            <option value="0">POS机</option>
-                            <option value="1">支付宝</option>
-                            <option value="2">微信</option>
-                            <option value="3">现金</option>
+                        <select class="easyui-combobox" id="payMode" name="payMode" editable="false" panelHeight="auto" >                         
+                            <option value="POS机">POS机</option>
+                            <option value="支付宝">支付宝</option>
+                            <option value="微信">微信</option>
+                            <option value="现金">现金</option>
                         </select>
-				    </td>
-
+				    </td>    
 				</tr>
 	            <tr id="parentIdDiv" >	                
                     <td>银行卡号:</td>
@@ -161,8 +159,7 @@
 	<div id="dlg-buttons">
 	    <a href="javascript:saveCustomer()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
 	    <a href="javascript:closeCustomerDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-	</div>
-	
+	</div>	
 	<script src="${ctx}/js/finance.js" ></script>
 </body>
 </html>

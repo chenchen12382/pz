@@ -14,7 +14,7 @@
             <div class="login-wrapper">
                 <ul id="myTab" class="nav nav-tabs nav-justified bn">
                     <li>
-                        <a href="javascript:void(0);" data-toggle="tab">登录</a>
+                        <a href="javascript:void(0);" data-toggle="tab" style="color:red">登录</a>
                     </li>
                 </ul>
                 <div id="myTabContent" class="tab-content bn">

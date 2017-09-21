@@ -8,8 +8,7 @@ import com.fh.base.BaseModel;
  *
  */
 public class Report extends BaseModel{
-	
-	
+
 	private String name;
 	private String mail;
 	private String phone;
