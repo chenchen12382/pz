@@ -7,7 +7,6 @@ $(document).ready(function() {
             } else {	
             	 $("#parentIdDiv").hide();
             }
-          
         }
     });
 })
@@ -15,8 +14,23 @@ $(document).ready(function() {
 function resetValue() {
     
     $("#s_state").combobox('setValue', 0);
+    $("#saleClass").combobox('setValue', "");
 }
 
+
+$(document).ready(function() {
+    $("#saleClass").combobox({
+    	// 层级改变
+        // 层级改变时触发
+        onChange:function(saleClass) { // select的change事件
+             if(saleClass=="乐博士"||saleClass=="启稚课") {
+            	 $("#saleNum").html("月");
+            } else {	
+            	 $("#saleNum").html("节");
+            }
+        }
+    });
+})
 
 // 搜索
 function searchCustomer() {
