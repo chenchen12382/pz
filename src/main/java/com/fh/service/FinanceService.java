@@ -60,10 +60,27 @@ public class FinanceService {
         String userName = CookieUtil.getCookieValue(request,"userName");
         //查询中心
         User user=userDao.findByUserName(userName);
-        AssertUtil.notNull(user,"系统出错，请联系管理员");
+        AssertUtil.notNull(user,"请关闭浏览器重试！");
         String center = user.getCenter();
+        query.setUserCenter(center);
+        //时间匹配
+        Date start = query.getStart();
+        Date over = query.getOver();
+        if(start!=null||over!=null){
+            if(start==null){
+                throw new ParamException("请选择开始时间");
+            }
+            if(over==null){
+                throw new ParamException("请选择结束时间");
+            }
+            //计算时间为传进来的时间+1天-1s
+            long mm=over.getTime()+1000*60*60*24-1;
+            over=new Date(mm);
+            query.setOver(over);
+        }
 
-        PageList<Finance> finances = financeDao.selectCenterList(center,query,query.buildPageBounds());
+
+        PageList<Finance> finances = financeDao.selectCenterList(query,query.buildPageBounds());
         Paginator paginator = finances.getPaginator();
         Map<String,Object> result = new HashMap<>();
         result.put("paginator",paginator);

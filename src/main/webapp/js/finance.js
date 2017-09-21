@@ -18,16 +18,23 @@ $(document).ready(function() {
 
 function resetValue() {
     
-    $("#s_state").combobox('setValue', 0);
+    $("#payMode").combobox('setValue', 0);
 }
 
 
 // 搜索
 function searchCustomer() {
-    var customerNo = $("#s_customerNo").val();
-    var customerName = $("#s_customerName").val();
-    var data = {'customerNo': customerNo, "customerName": customerName};
+    var name = $("#name").val();
+    var saleClass = $("#saleClass").val();
+    var start = $("#start").datebox('getValue');
+    var over = $("#over").datebox('getValue');
+    if(start>over){
+
+        alert("开始时间不能大于结束时间！")
+    }
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over};
     $("#dg").datagrid('load', data);
+
 }
 
 function openAddDialog() {

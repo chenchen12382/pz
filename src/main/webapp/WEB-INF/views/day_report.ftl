@@ -11,13 +11,13 @@
 		    <thead data-options="frozen:true" >
 		    	<tr>
 			        <th field="cb" checkbox="true" align="center"></th>
-                    <th field="id" width="30" align="center">编号</th>
-                    <th field="xybh" width="120" align="center"  >协议编号</th>
-			        <th field="sjbh" width="120" align="center"  >收据编号</th>
-			        <th field="hybh" width="120" align="center">会员编号 </th>
-			        <th field="name" width="50" align="center">客户姓名</th>
-			        <th field="saleClass" width="50" align="center">销售课程</th>
-			        <th field="saleNum" width="50" align="center">销售数量 </th>
+                    <#--<th field="id" width="30" align="center">编号</th>-->
+                    <th field="name" width="50" align="center">客户姓名</th>
+                    <th field="xybh" width="100" align="center"  >协议编号</th>
+			        <th field="sjbh" width="100" align="center"  >收据编号</th>
+			        <th field="hybh" width="100" align="center">会员编号 </th>
+					<th field="saleClass" width="80" align="center">销售课程</th>
+			        <th field="saleNum" width="60" align="center">销售数量 </th>
 			    </tr>
 		    </thead>
 		        <#--滚定-->
@@ -25,8 +25,8 @@
 				<tr>
 			        <th field="agreement" width="80" align="center">签订协议类型</th>
 			        <th field="price" width="80" align="center">课程单价</th>
-			        <th field="shouldMoney" width="80" align="center">费用</th>
-			        <th field="realMoney" width="200" align="center" >实际金额</th>
+			        <th field="shouldMoney" width="80" align="center">标准金额</th>
+			        <th field="realMoney" width="100" align="center" >实际金额</th>
 			        <th field="discount" width="100" align="center" >折扣</th>
 			        <th field="payMode" width="100" align="center" >支付方式</th>
                     <th field="property" width="80" align="center">付款性质</th>
@@ -47,8 +47,10 @@
 
 	    </div>
 	    <div>
-	    	&nbsp;客户编号：&nbsp;<input type="text" id="s_customerNo" size="20" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-	        &nbsp;客户名称：&nbsp;<input type="text" id="s_customerName" size="20" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+	        &nbsp;课程：&nbsp;<input type="text" id="saleClass" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+            &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchCustomer()"/>
+            &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
 	    </select>
 	        <a href="javascript:searchCustomer()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
@@ -72,12 +74,12 @@
 	            <tr>
 	                <td>会员编号：</td>
 	                <td>
-	                    <input class="text" id="hybh" name="hybh" class="easyui-validatebox" >
+	                    <input type="text" id="hybh" name="hybh" class="easyui-validatebox" >
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>客户姓名：</td>
 	                <td>
-                        <input class="text" id="name" name="name" class="easyui-validatebox" required="true">
+                        <input type="text" id="name" name="name" class="easyui-validatebox" required="true">
 						&nbsp;<font color="red">*</font>
 
 	                </td>

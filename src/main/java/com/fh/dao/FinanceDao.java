@@ -19,7 +19,7 @@ public interface FinanceDao {
 
     PageList<Finance> selectForPage(FinanceQuery query, PageBounds pageBounds);
 
-    PageList<Finance> selectCenterList(@Param(value = "userCenter") String userCenter, FinanceQuery query, PageBounds pageBounds);
+    PageList<Finance> selectCenterList(FinanceQuery query, PageBounds pageBounds);
 
     void insert(Finance finance);
 
