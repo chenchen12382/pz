@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 function resetValue() {
     
-    $("#s_state").combobox('setValue', 0);
+    $("#payMode").combobox('setValue', 0);
 }
 
 
