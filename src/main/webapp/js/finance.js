@@ -1,36 +1,26 @@
 $(document).ready(function() {
-    $("#s_state").combobox({ // 层级改变
+    $("#payMode").combobox({ // 层级改变
         // 层级改变时触发
-        onChange:function(s_state) { // select的change事件
-             if(s_state == 0) {
+        onChange:function(payMode) { // select的change事件
+             if(payMode == "POS机") {
             	 $("#parentIdDiv").show();
             } else {	
             	 $("#parentIdDiv").hide();
             }
+          
         }
     });
 })
+
+
+
+
 
 function resetValue() {
     
     $("#s_state").combobox('setValue', 0);
-    $("#saleClass").combobox('setValue', "");
 }
 
-
-$(document).ready(function() {
-    $("#saleClass").combobox({
-    	// 层级改变
-        // 层级改变时触发
-        onChange:function(saleClass) { // select的change事件
-             if(saleClass=="乐博士"||saleClass=="启稚课") {
-            	 $("#saleNum").html("月");
-            } else {	
-            	 $("#saleNum").html("节");
-            }
-        }
-    });
-})
 
 // 搜索
 function searchCustomer() {
@@ -76,7 +66,7 @@ function saveCustomer() {
                 closeCustomerDialog();
                 $("#dg").datagrid("reload");
             }else{
-                $.messager.alert("系统提示","保存失败！");
+                $.messager.alert("系统提示",result.resultMessage);
                 return;
             }
         }
@@ -98,7 +88,7 @@ function deleteCustomer() {
         if (r) {
             $.post('delete', {"ids": ids.join(",")}, function(resp) {
                 if (resp.resultCode == 1) {
-                    alert(resp.resultMessage);
+                    $.messager.alert('系统提示', resp.resultMessage);
                     closeCustomerDialog();
                     $("#dg").datagrid("reload");
                 } else {
@@ -115,47 +105,5 @@ function closeCustomerDialog() {
     $("#dlg").dialog('close');
 }
 
-// 重新
-function resetValue() {
-    $("#fm").form('reset');
-}
 
-function openCustomerLinkMan() {
-    var id = loadSelectedId();
-    if (id == null) {
-        $.messager.alert("系统提示", "只能选择一条");
-        return;
-    }
-    var url = ctx + "linkman/index?customerId=" + id;
-    window.parent.openTab('联系人管理', url, 'icon-lxr');
-}
 
-function openCustomerContact() {
-    var id = loadSelectedId();
-    if (id == null) {
-        $.messager.alert("系统提示", "只能选择一条");
-        return;
-    }
-    var url = ctx + "contact/index?customerId=" + id;
-    window.parent.openTab('交往记录管理', url, 'icon-jwjl');
-}
-
-function openCustomerOrder() {
-    var id = loadSelectedId();
-    if (id == null) {
-        $.messager.alert("系统提示", "只能选择一条");
-        return;
-    }
-    var url = ctx + "order/index?customerId=" + id;
-    window.parent.openTab('历史订单查看', url, 'icon-lsdd');
-}
-
-function loadSelectedId() {
-    var selectedRows = $("#dg").datagrid('getSelections');
-    if (selectedRows == null || selectedRows.length != 1) {
-        return;
-    }
-    var row = selectedRows[0];
-    var id = row.id;
-    return id;
-}

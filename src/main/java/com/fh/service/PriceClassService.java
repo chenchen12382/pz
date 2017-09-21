@@ -2,6 +2,7 @@ package com.fh.service;
 
 import com.fh.base.AssertUtil;
 import com.fh.dao.PriceClassDao;
+import com.fh.model.Center;
 import com.fh.model.PriceClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,4 +60,9 @@ public class PriceClassService {
 
     }
 
+    public List<PriceClass> findSaleClass() {
+       List<PriceClass> result = priceClassDao.findSaleClass();
+       return result;
+
+    }
 }

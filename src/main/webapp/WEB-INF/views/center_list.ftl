@@ -45,6 +45,7 @@
                                data-options="panelHeight:'auto', editable:false, valueField:'district',
 	                		textField:'district', url:'${ctx}/district/find_all'"/>
 
+                    </td>
 	                </td>
 	            </tr>
 	        </table>

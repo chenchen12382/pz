@@ -70,8 +70,10 @@
         
      <#--   <#if userPermissions?seq_contains('10') > -->
         	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+                <a href="javascript:openTab('营收日报表','finance/index_center','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px">营收日报表</a>
 	            <a href="javascript:openTab('业绩录入 ','report/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">业绩录入</a>
 	            <a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>
+
 	        </div>
 	<#--	</#if>  -->
  <#-- <#if userPermissions?seq_contains('20') >  -->
