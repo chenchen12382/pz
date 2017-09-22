@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.ResultInfo;
 import com.fh.dao.PriceClassDao;
@@ -10,6 +11,7 @@ import com.fh.model.User;
 import com.fh.service.FinanceService;
 import com.fh.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +38,7 @@ public class FinanceController extends BaseController{
         return "finance";
     }
 
+    @RequirePermissions(permission="1010")
     @RequestMapping("index_center")
     public String indexCenter(){
         return "day_report";

@@ -92,7 +92,7 @@
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>销售数量：</td>
                 <td>
-                    <input type="text" id="saleNum"id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />&nbsp;
+                    <input type="text" id="saleNum"id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />&nbsp;<span id="sp"></span>
                     &nbsp;<font color="red">*</font>
 
                 </td>
