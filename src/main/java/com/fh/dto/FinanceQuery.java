@@ -11,7 +11,8 @@ import java.util.Date;
 public class FinanceQuery extends BaseQuery {
 
     private String name;
-    private String  saleClass; //乐博士
+    private String saleClass; //乐博士
+    private String center;
     private String userCenter;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date start;
@@ -57,5 +58,13 @@ public class FinanceQuery extends BaseQuery {
 
     public void setOver(Date over) {
         this.over = over;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public void setCenter(String center) {
+        this.center = center;
     }
 }

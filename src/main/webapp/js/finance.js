@@ -9,30 +9,67 @@ $(document).ready(function() {
             }
           
         }
+
+    });
+})
+
+
+$(document).ready(function() {
+    $("#saleClass").combobox({ // 层级改变
+        // 层级改变时触发
+        onSelect:function(saleClass) { // select的change事件
+            var v=saleClass.saleClass;
+            var i=document.getElementById("sp").innerHTML;
+            console.log(v);
+            console.log(i);
+            if(v == "亲子课" || v=="幼小衔接") {
+                document.getElementById('sp').innerHTML='节';
+
+            } else {
+                document.getElementById('sp').innerHTML='月';
+            }
+
+        }
+
     });
 })
 
 
 
 
-
 function resetValue() {
     
-    $("#payMode").combobox('setValue', 0);
+    // $("#dlg").combobox('setValue', 0);
+    $("#xybh").val("");
+    $("#sjbh").val("");
+    $("#hybh").val("");
+    $("#o_name").val('');
+    // $("#saleClass").combobox('setValue',0);
+    $("#gift").val("");
+    $("#saleNum").numberbox('setValue',"");
+    $("#realMoney").numberbox('setValue',"");
+    $("#unfinishMoney").numberbox('setValue',"");
+    $("#payMode").combobox('setValue',"请选择...");
+    $("#promotion").val('');
+    $("#cardNum").numberbox('setValue',"");
+    $("#source").combobox('setValue',"请选择...");
+    $("#counselor").val("");
+
 }
 
 
 // 搜索
 function searchCustomer() {
     var name = $("#name").val();
-    var saleClass = $("#saleClass").val();
+    var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
     var over = $("#over").datebox('getValue');
+    var center = $("#center").val();
     if(start>over){
 
         alert("开始时间不能大于结束时间！")
     }
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over};
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"center":center};
     $("#dg").datagrid('load', data);
 
 }

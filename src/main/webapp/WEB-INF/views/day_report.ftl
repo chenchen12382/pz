@@ -48,7 +48,7 @@
 	    </div>
 	    <div>
 	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-	        &nbsp;课程：&nbsp;<input type="text" id="saleClass" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+	        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
             &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchCustomer()"/>
             &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
 	    </select>
@@ -79,7 +79,7 @@
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>客户姓名：</td>
 	                <td>
-                        <input type="text" id="name" name="name" class="easyui-validatebox" required="true">
+                        <input type="text" id="o_name" name="name" class="easyui-validatebox" required="true">
 						&nbsp;<font color="red">*</font>
 
 	                </td>
@@ -87,12 +87,12 @@
 	            <tr>
 	                <td>销售课程：</td>
 	                <td>
-                        <input class="easyui-combobox" id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'"/>&nbsp;<font color="red">*</font>
+                        <input class="easyui-combobox" id="saleClass" name="saleClass" data-options="panelHeight:'auto',editable:false,valueField:'saleClass',textField:'saleClass',url:'${ctx}/priceClass/find_all'" />&nbsp;<font color="red">*</font>
 	                </td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>销售数量：</td>
 	                <td>
-                        <input type="text" id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />
+                        <input type="text" id="saleNum"id="saleNum" name="saleNum" class="easyui-numberbox" required="true" />&nbsp;<span id="sp">1</span>
                         &nbsp;<font color="red">*</font>
 
 	                </td>

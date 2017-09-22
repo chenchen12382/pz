@@ -230,7 +230,13 @@ public class FinanceService {
         //折扣
         int realMoney  = finance.getRealMoney();
         double temp = (double) realMoney /(double) shouldMoney*100;
-        String discount = (int)temp+"折";
+        if((int)temp>=100){
+            throw new ParamException("实收金额大于标准单价！");
+        }
+        if((int)temp<10){
+            throw new ParamException("输入的应收金额过低, 请检查课时或金额!");
+        }
+        String discount = (int)temp+"%";
         finance.setDiscount(discount);
 //           return finance;
 //        financeDao.insert(finance);
@@ -321,10 +327,16 @@ public class FinanceService {
             //折扣
             int realMoney  = finance.getRealMoney();
             double temp = (double) realMoney /(double) shouldMoney*100;
-            String discount = (int)temp+"折";
+            if((int)temp>=100){
+                throw new ParamException("实收金额大于标准单价！");
+            }
+            if((int)temp<10){
+                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
+            }
+            String discount = (int)temp+"%";
             finance.setDiscount(discount);
 
-            financeDao.insert(finance);
+//            financeDao.insert(finance);
 
         }
         //启稚课程
