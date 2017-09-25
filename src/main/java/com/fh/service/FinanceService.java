@@ -226,13 +226,18 @@ public class FinanceService {
         //销售数量/节
         int saleNum = finance.getSaleNum();
         int shouldMoney = price*saleNum;
+
+
+        int realMoney  = finance.getRealMoney();
+        if(realMoney>shouldMoney){
+            shouldMoney=realMoney;
+        }
         finance.setShouldMoney(shouldMoney);
         //折扣
-        int realMoney  = finance.getRealMoney();
         double temp = (double) realMoney /(double) shouldMoney*100;
-        if((int)temp>=100){
-            throw new ParamException("实收金额大于标准单价！");
-        }
+//        if((int)temp>100){
+//            throw new ParamException("实收金额大于标准单价！");
+//        }
         if((int)temp<10){
             throw new ParamException("输入的应收金额过低, 请检查课时或金额!");
         }

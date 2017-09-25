@@ -10,7 +10,16 @@ $(document).ready(function() {
 			alert("请输入密码");
 			return;
 		}
-		var data = {"userName":userName, "password":password};
+        var code = $("#code").val();
+        if (code == null || $.trim(code).length < 1) {
+            alert("请输入验证码");
+            return;
+        }
+
+		var data = {"userName":userName, "password":password ,"code":code };
+
+
+
 		$.post("user/login", data, function(resp) {
 			if (resp.resultCode == 1) { // 成功
 				// 把登录后的数据存入cookie
@@ -19,8 +28,25 @@ $(document).ready(function() {
 				$.cookie("realName", resp.result.realName);
 				window.location.href = "main";
 			} else { // 失败
-				alert(resp.message);
+				alert(resp.resultMessage);
 			}
 		});
 	});
 });
+
+
+function changeImg() {
+    var imgSrc = $("#codeImg");
+    var src = imgSrc.attr("src");
+    imgSrc.attr("src", chgUrl(src));
+}
+
+//加入时间戳，去缓存机制
+function chgUrl(url) {
+    var timestamp = (new Date()).valueOf();if ((url.indexOf("&") >= 0)) {
+        url = url + "&timestamp=" + timestamp;
+    } else {
+        url = url + "?timestamp=" + timestamp;
+    }
+    return url;
+}

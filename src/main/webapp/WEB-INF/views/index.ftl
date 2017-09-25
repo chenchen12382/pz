@@ -8,7 +8,7 @@
         <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet"/>
         <link href="${ctx}/assets/css/main.css" rel="stylesheet"/>   
     </head>
-    <body class="login-page" style="background-image:url(images/001.gif); background-size:100%;"  >
+    <body class="login-page" style="background-image:url(images/0001.jpg); background-size:100%;"  >
         <!-- Start #login -->
         <div id="login" class="animated bounceIn"  >
             <div class="login-wrapper">
@@ -33,6 +33,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="col-lg-8 col-md-8">
+                                    <input type="text" name="code" id="code" class="form-control left-icon" placeholder="请输入验证码">
+                                    <i class="ec-locked s16 left-input-icon"></i>
+                                </div>
+                                <div class="col-md-4">
+                                    <img id="codeImg" alt="验证码" src="${ctx}/authCode/code" onclick="changeImg()"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
                                     <!-- col-lg-12 start here -->
                                     <label class="checkbox">
@@ -55,7 +65,7 @@
             
         </div>
         </br></br></br></br></br></br>        
-            <div region="south" style="height: 30px;padding: 5px;overflow: hidden;" align="center">
+            <div region="south" style="height: 30px;padding: 5px;overflow: hidden; color: #080808" align="center">
                ©   网络信息中心2017
              </div>
          </div>

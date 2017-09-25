@@ -2,6 +2,7 @@ package com.fh.controller;
 
 import java.util.Map;
 
+import com.fh.exception.ParamException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.fh.model.User;
 import com.fh.service.UserService;
 import com.fh.vo.UserLoginIdentity;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping("user")
@@ -29,7 +32,12 @@ public class UserController extends BaseController{
 	
 	@RequestMapping("login")
 	@ResponseBody
-	public ResultInfo login(String userName, String password){
+	public ResultInfo login(String userName, String password, String code, HttpSession session){
+		//验证码
+//		String code=request.getParameter("code");
+		if (!(code.equalsIgnoreCase(session.getAttribute("code").toString()))) {  //忽略验证码大小写
+			throw new ParamException("验证码错误,请重新输入");
+		}
 		
 		logger.info("這是一個參數：userName={}, password={}", userName, password);
 		UserLoginIdentity userLoginIdentity = userService.login(userName,password);

@@ -58,7 +58,7 @@
         </tr>
     </table>
 </div>
-<div region="center">
+<div region="center" >
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
             <div align="center" style="padding-top: 100px"><img alt="logo" src="${ctx}/images/002.gif" height="200" width="350" ></div>
