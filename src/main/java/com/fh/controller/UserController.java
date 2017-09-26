@@ -2,7 +2,9 @@ package com.fh.controller;
 
 import java.util.Map;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.exception.ParamException;
+import com.fh.util.LoginUserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import com.fh.model.User;
 import com.fh.service.UserService;
 import com.fh.vo.UserLoginIdentity;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -48,7 +51,8 @@ public class UserController extends BaseController{
 	public String index(){
 		return "user";
 	}
-	
+
+	@RequirePermissions(permission = "9010")
 	@RequestMapping("list")
 	@ResponseBody
 	public Map<String, Object>selectForPage(UserQuery query) {
@@ -75,6 +79,14 @@ public class UserController extends BaseController{
 	public ResultInfo delete(String ids) {
 		userService.deleteBatch(ids);
 		return success("删除成功");
+	}
+
+	@RequestMapping("update_password")
+	public @ResponseBody Object updatePassword(String oldPassword,
+											   String newPassword, String confirmPassword, HttpServletRequest request) {
+		int userId = LoginUserUtil.releaseUserIdFromCookie(request);
+		userService.updatePassword(userId, oldPassword, newPassword, confirmPassword);
+		return success("更新成功, 系统将自动退出, 请重新登陆");
 	}
 
 	

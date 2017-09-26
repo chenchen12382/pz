@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.ResultInfo;
 import com.fh.model.Role;
@@ -28,6 +29,7 @@ public class RoleController extends BaseController {
         return "role";
     }
 
+    @RequirePermissions(permission = "9020")
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> findList(){

@@ -61,27 +61,37 @@
 <div region="center" >
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 100px"><img alt="logo" src="${ctx}/images/002.png" height="120" width="700" ></div>
+            <div align="center" style="padding-top: 150px"><img alt="logo" src="${ctx}/images/002.png" height="120" width="700" ></div>
         </div>
     </div>
 </div>
 <div region="west" style="width: 200px" title="导航菜单" split="true">
     <div class="easyui-accordion" data-options="fit:true,border:false">
         
-     <#--   <#if userPermissions?seq_contains('10') > -->
+        <#if userPermissions?seq_contains('10') >
         	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+            <#if userPermissions?seq_contains('1010') >
                 <a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>
+            </#if>
+            <#if userPermissions?seq_contains('1020') >
 	            <a href="javascript:openTab('业绩录入 ','report/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">业绩录入</a>
-	            <a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>
+            </#if>
+            <#if userPermissions?seq_contains('1030') >
+                <a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>
+            </#if>
 
 	        </div>
-	<#--	</#if>  -->
- <#-- <#if userPermissions?seq_contains('20') >  -->
+		</#if>
+            <#if userPermissions?seq_contains('20') >
 	        <div title="财务管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
-	            <a href="javascript:openTab('财务报表管理','finance/index','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">财务报表管理</a>
-	            <a href="javascript:openTab('课程价格管理','priceClass/index','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">课程价格管理</a>
+                <#if userPermissions?seq_contains('2010') >
+                    <a href="javascript:openTab('财务报表管理','finance/index','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">财务报表管理</a>
+                    </#if>
+                <#if userPermissions?seq_contains('2020') >
+                    <a href="javascript:openTab('课程价格管理','priceClass/index','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">课程价格管理</a>
+                </#if>
 	        </div>
-     <#--     </#if>  -->
+          </#if>
       <#--  <div title="服务管理" data-options="iconCls:'icon-fwgl'" style="padding:10px">
             <a href="javascript:openTab('服务创建','customer_serve/index/1','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">服务创建</a>
             <a href="javascript:openTab('服务分配','customer_serve/index/2','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">服务分配</a>
@@ -99,15 +109,27 @@
             <a href="javascript:openTab('数据字典管理','datadic/index','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 150px;">数据字典管理</a>
             <a href="javascript:openTab('产品信息查询','product/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
         </div> -->
-        <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
-            <a href="javascript:openTab('用户管理','user/index','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>
-            <a href="javascript:openTab('角色管理','role/index','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">角色管理</a>
-            <a href="javascript:openTab('模块管理','module/index','icon-tjbb')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-tjbb'" style="width: 150px;">模块管理</a>
-            <a href="javascript:openTab('中心管理','center/index','icon-jcsjgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-jcsjgl'" style="width: 150px;">中心管理</a>
-            <a href="javascript:openTab('区域管理','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">区域管理</a>
-            <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
+<#--<#if userPermissions?seq_contains('90') >-->
+    <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
+    <#if userPermissions?seq_contains('9010') >
+        <a href="javascript:openTab('用户管理','user/index','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>
+        </#if>
+    <#if userPermissions?seq_contains('9020') >
+        <a href="javascript:openTab('角色管理','role/index','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">角色管理</a>
+    </#if>
+    <#if userPermissions?seq_contains('9030') >
+        <a href="javascript:openTab('模块管理','module/index','icon-tjbb')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-tjbb'" style="width: 150px;">模块管理</a>
+    </#if>
+    <#if userPermissions?seq_contains('9040') >
+        <a href="javascript:openTab('中心管理','center/index','icon-jcsjgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-jcsjgl'" style="width: 150px;">中心管理</a>
+    </#if>
+    <#if userPermissions?seq_contains('9050') >
+        <a href="javascript:openTab('区域管理','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">区域管理</a>
+    </#if>
+        <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
             <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
         </div>
+<#--</#if>-->
     </div>
 </div>
 <div region="south" style="height: 25px;padding: 5px;overflow: hidden;" align="center">

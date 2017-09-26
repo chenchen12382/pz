@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.BaseQuery;
 import com.fh.base.ResultInfo;
@@ -30,6 +31,7 @@ public class DistrictController extends BaseController{
         return "district";
     }
 
+    @RequirePermissions(permission = "9050")
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectForPage(BaseQuery query){

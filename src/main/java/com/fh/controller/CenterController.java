@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.ResultInfo;
 import com.fh.model.Center;
@@ -29,7 +30,7 @@ public class CenterController extends BaseController {
 
     }
 
-
+    @RequirePermissions(permission = "9040")
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectForPage(){

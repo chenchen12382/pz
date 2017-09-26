@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.fh.annotation.RequirePermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class ReportController extends BaseController {
 		return "report";
 	}
 	
-	
+	@RequirePermissions(permission = "1020")
 	@RequestMapping("list")
 	@ResponseBody
 	public Map<String, Object> List(ReportQuery query){

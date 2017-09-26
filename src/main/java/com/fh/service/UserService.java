@@ -234,5 +234,24 @@ public class UserService {
 	}
 
 
+    public void updatePassword(int userId, String oldPassword, String newPassword, String confirmPassword) {
 
+		// 基本参数校验
+		AssertUtil.isTrue(userId == 0, "请重新登陆");
+		AssertUtil.isTrue(StringUtils.isBlank(oldPassword), "请输入旧密码");
+		AssertUtil.isTrue(StringUtils.isBlank(newPassword), "请输入新密码");
+		AssertUtil.isTrue(StringUtils.isBlank(confirmPassword), "请输入确认密码");
+		AssertUtil.isTrue(!newPassword.equals(confirmPassword), "新密码和确认密码不一致, 请重新输入");
+
+		// 查询用户判断旧密码输入是否正确
+		User user = userDao.findById(userId);
+		AssertUtil.notNull(user, "该用户不存在或已被注销");
+		String password = MD5Util.md5Method(oldPassword);
+		AssertUtil.isTrue(!password.equals(user.getPassword()), "旧密码输入错误, 请重新输入");
+		// 更新
+		String newPwd = MD5Util.md5Method(newPassword);
+		int mnt = userDao.updatePassword(user.getId(), newPwd);
+		AssertUtil.isTrue(mnt == 0, "更新失败, 请重试");
+
+    }
 }

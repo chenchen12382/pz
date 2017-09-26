@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.fh.annotation.RequirePermissions;
+import com.fh.model.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +46,7 @@ public class ProgressController extends BaseController{
 	 * @param query
 	 * @return
 	 */
+	@RequirePermissions(permission = "1030")
 	@RequestMapping("list")
 	@ResponseBody
 	public Map<String, Object> SelectForPage(ProgressQuery query) {

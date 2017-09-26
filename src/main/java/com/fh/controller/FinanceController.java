@@ -45,7 +45,7 @@ public class FinanceController extends BaseController{
     }
 
 
-
+    @RequirePermissions(permission = "2010")
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectForPage(FinanceQuery query){

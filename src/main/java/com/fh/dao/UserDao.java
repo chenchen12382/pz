@@ -49,5 +49,8 @@ public interface UserDao {
 			" where phone = #{phone} and is_valid = 1")
 	User findByPhone(String phone);
 
+	@Update("update t_user set password = #{password} where id = #{userId}")
+    int updatePassword(@Param(value = "userId") Integer userId, @Param(value = "password") String password);
+
 //    void insert(User user);
 }
