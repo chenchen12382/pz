@@ -75,7 +75,7 @@ function searchCustomer() {
 }
 
 function openAddDialog() {
-    $("#dlg").dialog('open').dialog('setTitle', "添加客户信息");
+    $("#dlg").dialog('open').dialog('setTitle', "添加营收日报  ");
 }
 
 function openModifyDialog() {
@@ -87,7 +87,7 @@ function openModifyDialog() {
     }
     var row = selectedRows[0];
     $("#fm").form('load', row); // form 赋值
-    $("#dlg").dialog('open').dialog('setTitle', "修改客户信息");
+    $("#dlg").dialog('open').dialog('setTitle', "修改营收日报");
 }
 
 // 保存
