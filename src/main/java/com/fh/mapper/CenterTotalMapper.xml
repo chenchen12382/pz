@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.CenterTotalDao">
+
+    <select id="selectForPage" resultType="CenterTotal" >
+
+        SELECT t1.center,t1.district,COUNT(1) as orderTotal ,SUM(t2.should_money) as shouldTotal,sum(t2.real_money) as realTotal,AVG(discount) as discount
+        from t_center t1 LEFT JOIN t_finance t2 on t1.center = t2.center
+where t1.is_valid = 1 and t1.center = #{center}
+
+
+
+    </select>
+
+    <select id="selectAllCenter" resultType="String">
+
+        SELECT center from t_center
+    </select>
+
+
+
+</mapper>

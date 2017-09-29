@@ -92,13 +92,13 @@
                 </#if>
 	        </div>
           </#if>
-      <#--  <div title="服务管理" data-options="iconCls:'icon-fwgl'" style="padding:10px">
-            <a href="javascript:openTab('服务创建','customer_serve/index/1','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">服务创建</a>
-            <a href="javascript:openTab('服务分配','customer_serve/index/2','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">服务分配</a>
-            <a href="javascript:openTab('服务处理','customer_serve/index/3','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">服务处理</a>
-            <a href="javascript:openTab('服务反馈','customer_serve/index/4','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">服务反馈</a>
-            <a href="javascript:openTab('服务归档','customer_serve/index/5','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">服务归档</a>
-        </div>--> 
+        <div title="运营分析" data-options="iconCls:'icon-fwgl'" style="padding:10px">
+            <a href="javascript:openTab('业绩统计','centerTotal/index','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">业绩统计</a>
+            <#--<a href="javascript:openTab('服务分配','customer_serve/index/2','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">服务分配</a>-->
+            <#--<a href="javascript:openTab('服务处理','customer_serve/index/3','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">服务处理</a>-->
+            <#--<a href="javascript:openTab('服务反馈','customer_serve/index/4','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">服务反馈</a>-->
+            <#--<a href="javascript:openTab('服务归档','customer_serve/index/5','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">服务归档</a>-->
+        </div>
     <#--	<div title="统计报表"  data-options="iconCls:'icon-tjbb'" style="padding:10px">
             <a href="javascript:openTab('客户贡献分析','report/0','icon-khgxfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgxfx'" style="width: 150px;">客户贡献分析</a>
             <a href="javascript:openTab('客户构成分析','report/1','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">客户构成分析</a>
