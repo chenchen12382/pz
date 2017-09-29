@@ -54,6 +54,7 @@ function resetValue() {
     $("#cardNum").numberbox('setValue',"");
     $("#source").combobox('setValue',"请选择...");
     $("#counselor").val("");
+    $("#id").val("");
 
 }
 
@@ -75,6 +76,11 @@ function searchCustomer() {
 }
 
 function openAddDialog() {
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if(selectedRows.length != 0){
+        $.messager.alert("系统提示","新增时不能选择记录");
+        return;
+    }
     $("#dlg").dialog('open').dialog('setTitle', "添加营收日报  ");
 }
 
@@ -142,6 +148,13 @@ function deleteCustomer() {
         }
     });
 }
+
+//关闭方法
+$("#dlg").dialog({
+    onClose: function () {
+        resetValue();
+    }
+});
 
 // 关闭
 function closeCustomerDialog() {

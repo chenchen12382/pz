@@ -24,6 +24,7 @@
 			<thead>
 				<tr>
 			        <th field="agreement" width="80" align="center">签订协议类型</th>
+                    <th field="contractTime" width="100" align="center">签约时间</th>
 			        <th field="price" width="80" align="center">课程单价</th>
 			        <th field="shouldMoney" width="80" align="center">标准金额</th>
 			        <th field="realMoney" width="100" align="center" >实际金额</th>
@@ -35,6 +36,7 @@
 			        <th field="promotion" width="100" align="center" >促销</th>
 			        <th field="gift"   width="100"  align="center" >赠送课程</th>
                     <th field="source"   width="100"  align="center" >客戶來源</th>
+                    <th field="createDate"   width="100"  align="center" >创建时间</th>
 			    </tr>
 			</thead>
 	</table>
@@ -103,6 +105,10 @@
                         <input type="radio" name="agreement" id="agreement" value="新签" checked="checked"/>新签
                         <input name="agreement" type="radio" id="agreement" value="续约"/> 续约
 	                </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>签约时间：</td>
+                    <td><input type="text" id="contractTime" name="contractTime" class="easyui-datebox" required="true"/>&nbsp;<font color="red">*</font></td>
+                    </td>
                 </tr>
 	              <tr>
 	                <td>实收金额：</td>

@@ -15,7 +15,7 @@
     <select id="selectForPage" resultType="finance">
         select
         id,center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-        real_money,discount,pay_mode,property,card_num,counselor,promotion,gift,source,
+        real_money,discount,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
         create_date,update_date
 
         FROM   t_finance
@@ -41,7 +41,7 @@
     <select id="selectCenterList" resultType="finance">
         select
         id,center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-   real_money,discount,pay_mode,property,card_num,counselor,promotion,gift,source,
+   real_money,discount,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
   create_date,update_date
 
         FROM   t_finance
@@ -73,11 +73,11 @@
     <insert id="insert" >
         INSERT into t_finance (
         center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-   real_money,discount,pay_mode,property,card_num,counselor,promotion,gift,source,is_valid,
+   real_money,discount,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,is_valid,
   create_date,update_date)
   values (
       #{center}, #{xybh},#{sjbh},#{hybh},#{name},#{saleClass},#{saleNum},#{agreement},#{price},#{shouldMoney},
-    #{realMoney},#{discount},#{payMode},#{property},#{cardNum},#{counselor},#{promotion},#{gift},#{source},1,
+    #{realMoney},#{discount},#{payMode},#{property},#{contractTime},#{cardNum},#{counselor},#{promotion},#{gift},#{source},1,
   now(),now() )
 
 
@@ -99,7 +99,7 @@
     <update id="update" >
         update t_finance SET
         xybh=#{xybh},sjbh=#{sjbh},hybh=#{hybh},name=#{name},sale_class=#{saleClass},sale_num=#{saleNum},
-        agreement=#{agreement},real_money=#{realMoney},discount=#{discount},pay_mode=#{payMode},property=#{property},
+        agreement=#{agreement},real_money=#{realMoney},discount=#{discount},pay_mode=#{payMode},property=#{property},contract_time=#{contractTime},
         card_num=#{cardNum},counselor=#{counselor},promotion=#{promotion},gift=#{gift},source=#{source},update_date=now()
 
         <where>
@@ -111,6 +111,79 @@
 
     </update>
 
+    <select id="findShouldCount" resultType="java.lang.Integer">
+        select SUM(should_money) from t_finance
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(center)">
+                and center like '%${center}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(start)">
+                and create_date BETWEEN #{start} AND #{over}
+
+            </if>
+        </where>
+
+
+    </select>
+
+    <select id="findRealCount" resultType="java.lang.Integer">
+        select SUM(real_money) from t_finance
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(center)">
+                and center like '%${center}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(start)">
+                and create_date BETWEEN #{start} AND #{over}
+
+            </if>
+        </where>
+
+    </select>
+
+    <select id="findDiscount" resultType="String">
+        select discount from t_finance
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(center)">
+                and center like '%${center}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(start)">
+                and create_date BETWEEN #{start} AND #{over}
+
+            </if>
+        </where>
+
+    </select>
+
+    <select id="findCount" resultType="java.lang.Integer">
+        select count(1) from t_finance
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(center)">
+                and center like '%${center}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(start)">
+                and create_date BETWEEN #{start} AND #{over}
+
+            </if>
+
+        </where>
+
+    </select>
 
 
 

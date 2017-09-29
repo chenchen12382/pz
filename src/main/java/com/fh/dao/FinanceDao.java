@@ -4,12 +4,12 @@ import com.fh.dto.FinanceQuery;
 import com.fh.model.Finance;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/15.
@@ -30,4 +30,12 @@ public interface FinanceDao {
 
     @Select("select create_date from t_finance where id=#{id}")
     Date findCreateDate(@Param(value = "id") Integer id);
+
+    Integer findShouldCount(FinanceQuery query);
+
+    Integer findRealCount(FinanceQuery query);
+
+    List<String> findDiscount(FinanceQuery query);
+
+    Integer findCount(FinanceQuery query);
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <#include "include/common.header.ftl" >
@@ -6,7 +6,7 @@
 <body style="margin: 1px">
 <table id="dg" title="营收日报表管理" class="easyui-datagrid"
        fitColumns="false" pagination="true" rownumbers="true"
-       url="${ctx}/finance/list" fit="true" toolbar="#tb">
+       url="${ctx}/finance/list" fit="true" toolbar="#tb" showFooter="true">
 
     <thead data-options="frozen:true" >
     <tr>
@@ -35,6 +35,7 @@
         <th field="promotion" width="100" align="center" >促销</th>
         <th field="gift"   width="100"  align="center" >赠送课程</th>
         <th field="source"   width="100"  align="center" >客戶來源</th>
+        <th field="createDate"   width="100"  align="center" >创建时间</th>
     </tr>
     </thead>
 </table>

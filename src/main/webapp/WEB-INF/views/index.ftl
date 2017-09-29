@@ -2,7 +2,7 @@
 <html lang="en" >
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>培正信息管理系统</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="${ctx}/assets/css/icons.css" rel="stylesheet"/>
         <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet"/>
@@ -38,7 +38,7 @@
                                     <i class="ec-locked s16 left-input-icon"></i>
                                 </div>
                                 <div class="col-md-4">
-                                    <img id="codeImg" alt="验证码" src="${ctx}/authCode/code" onclick="changeImg()"/>
+                                    <img id="codeImg" alt="验证码" src="${ctx}/authCode/code" onclick="changeImg();"/>
                                 </div>
                             </div>
 

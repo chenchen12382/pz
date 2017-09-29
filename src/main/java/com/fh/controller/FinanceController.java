@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,7 @@ public class FinanceController extends BaseController{
 
     }
 
-
+    @RequirePermissions(permission = "1010")
     @RequestMapping("center_list")
     @ResponseBody
     public Map<String,Object> selectCenterList(FinanceQuery query, HttpServletRequest request){
@@ -65,7 +66,7 @@ public class FinanceController extends BaseController{
 
 
 
-    @RequestMapping("add")
+    @RequestMapping(value="add" )
     @ResponseBody
     public ResultInfo insert(Finance finance,HttpServletRequest request){
         financeService.insert(finance,request);

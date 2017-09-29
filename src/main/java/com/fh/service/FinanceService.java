@@ -18,9 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/9/15.
@@ -39,12 +37,42 @@ public class FinanceService {
 
 
     public Map<String,Object> selectForPage(FinanceQuery query) {
+        //格式化时间
+        formartTime(query);
         PageList<Finance> finances = financeDao.selectForPage(query,query.buildPageBounds());
         Paginator paginator = finances.getPaginator();
         Map<String,Object> result = new HashMap<>();
+        //计算Footer统计
+        List footer = new ArrayList();
+        Map<String,Object> keys = new HashMap<>();
+        keys.put("center","总单量");
+        keys.put("name","总应收金额");
+        keys.put("xybh","总实收金额");
+        keys.put("sjbh","综合折扣率");
+        Map<String,Object> values = new HashMap<>();
+        Integer centerCount = financeDao.findCount(query);
+        values.put("center",centerCount);
+        Integer shouldCount = financeDao.findShouldCount(query);
+        values.put("name",shouldCount);
+        Integer realCount = financeDao.findRealCount(query);
+        values.put("xybh",realCount);
+        //计算综合折扣率
+        List<String> discount = financeDao.findDiscount(query);
+        Integer count = 0;
+        for ( int i = 0 ; i<discount.size();i++){
+            String str = discount.get(i);
+            String[] temp = str.split("%");
+             count += Integer.parseInt(temp[0]);
+        }
+
+        values.put("sjbh",count+"%");
+        footer.add(keys);
+        footer.add(values);
+
         result.put("paginator",paginator);
         result.put("rows",finances);
         result.put("total",paginator.getTotalCount());
+        result.put("footer",footer);
         return result;
 
     }
@@ -64,21 +92,7 @@ public class FinanceService {
         String center = user.getCenter();
         query.setUserCenter(center);
         //时间匹配
-        Date start = query.getStart();
-        Date over = query.getOver();
-        if(start!=null||over!=null){
-            if(start==null){
-                throw new ParamException("请选择开始时间");
-            }
-            if(over==null){
-                throw new ParamException("请选择结束时间");
-            }
-            //计算时间为传进来的时间+1天-1s
-            long mm=over.getTime()+1000*60*60*24-1;
-            over=new Date(mm);
-            query.setOver(over);
-        }
-
+        formartTime(query);
 
         PageList<Finance> finances = financeDao.selectCenterList(query,query.buildPageBounds());
         Paginator paginator = finances.getPaginator();
@@ -210,7 +224,24 @@ public class FinanceService {
 
     }
 
+    public void formartTime(FinanceQuery query){
 
+        //时间匹配
+        Date start = query.getStart();
+        Date over = query.getOver();
+        if(start!=null||over!=null) {
+            if (start == null) {
+                throw new ParamException("请选择开始时间");
+            }
+            if (over == null) {
+                throw new ParamException("请选择结束时间");
+            }
+            //计算时间为传进来的时间+1天-1s
+            long mm = over.getTime() + 1000 * 60 * 60 * 24 - 1;
+            over = new Date(mm);
+            query.setOver(over);
+        }
+    }
 
 
     /**
@@ -218,7 +249,7 @@ public class FinanceService {
      * @param finance
      * @param priceClasses
      */
-    private void makeFinance(Finance finance, PriceClass priceClasses) {
+    public void makeFinance(Finance finance, PriceClass priceClasses) {
         //price,shouldMoney，discount
         //标准单价
         Integer price=priceClasses.getPrice();
@@ -238,9 +269,9 @@ public class FinanceService {
 //        if((int)temp>100){
 //            throw new ParamException("实收金额大于标准单价！");
 //        }
-        if((int)temp<10){
-            throw new ParamException("输入的应收金额过低, 请检查课时或金额!");
-        }
+//       if((int)temp<10){
+//            throw new ParamException("输入的应收金额过低, 请检查课时或金额!");
+//        }
         String discount = (int)temp+"%";
         finance.setDiscount(discount);
 //           return finance;
@@ -335,9 +366,9 @@ public class FinanceService {
             if((int)temp>=100){
                 throw new ParamException("实收金额大于标准单价！");
             }
-            if((int)temp<10){
-                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
-            }
+//            if((int)temp<10){
+//                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
+//            }
             String discount = (int)temp+"%";
             finance.setDiscount(discount);
 
@@ -362,8 +393,7 @@ public class FinanceService {
             }
 
         }
-
-
+        
     }
 
 

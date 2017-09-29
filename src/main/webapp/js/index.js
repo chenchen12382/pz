@@ -35,7 +35,7 @@ $(document).ready(function() {
 });
 
 
-function changeImg() {
+changeImg = function () {
     var imgSrc = $("#codeImg");
     var src = imgSrc.attr("src");
     imgSrc.attr("src", chgUrl(src));

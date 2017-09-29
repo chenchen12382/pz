@@ -1,6 +1,9 @@
 package com.fh.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fh.base.BaseModel;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Date;
 
 
 /**
@@ -23,6 +26,9 @@ public class Finance  extends BaseModel{
     private String discount; //折扣
     private String payMode; //支付方式
     private String property; //付款性质
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date contractTime; //签约时间
     private String cardNum; //银行卡号
     private String counselor; //顾问
     private String  promotion; //促销
@@ -179,5 +185,13 @@ public class Finance  extends BaseModel{
 
     public void setProperty(String property) {
         this.property = property;
+    }
+
+    public Date getContractTime() {
+        return contractTime;
+    }
+
+    public void setContractTime(Date contractTime) {
+        this.contractTime = contractTime;
     }
 }
