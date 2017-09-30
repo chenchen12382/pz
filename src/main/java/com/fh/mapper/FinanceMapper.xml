@@ -32,6 +32,14 @@
                 and create_date BETWEEN #{start} AND #{over}
 
             </if>
+            <if test="@Ognl@isNotEmpty(sPayMode)">
+                and pay_mode = #{sPayMode}
+            </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
+            </if>
+
+
             order by id DESC
 
         </where>
@@ -123,8 +131,14 @@
             </if>
             <if test="@Ognl@isNotEmpty(start)">
                 and create_date BETWEEN #{start} AND #{over}
-
             </if>
+            <if test="@Ognl@isNotEmpty(sPayMode)">
+                and pay_mode = #{sPayMode}
+            </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
+            </if>
+
         </where>
 
 
@@ -144,12 +158,18 @@
                 and create_date BETWEEN #{start} AND #{over}
 
             </if>
+            <if test="@Ognl@isNotEmpty(sPayMode)">
+                and pay_mode = #{sPayMode}
+            </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
+            </if>
         </where>
 
     </select>
 
-    <select id="findDiscount" resultType="String">
-        select discount from t_finance
+    <select id="findDiscount" resultType="Integer">
+        select AVG (discount) from t_finance
         <where>
             is_valid = 1
             <if test="@Ognl@isNotEmpty(center)">
@@ -161,6 +181,12 @@
             <if test="@Ognl@isNotEmpty(start)">
                 and create_date BETWEEN #{start} AND #{over}
 
+            </if>
+            <if test="@Ognl@isNotEmpty(sPayMode)">
+                and pay_mode = #{sPayMode}
+            </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
             </if>
         </where>
 

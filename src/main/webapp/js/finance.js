@@ -35,6 +35,17 @@ $(document).ready(function() {
 })
 
 
+function formatDiscount(value) {
+    if(value!=null){
+        return value+'%' ;
+    }else{
+        return null ;
+    }
+
+
+
+}
+
 
 
 function resetValue() {
@@ -64,13 +75,24 @@ function searchCustomer() {
     var name = $("#name").val();
     var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
+    var sPayMode = $("#s_payMode").combobox('getValue');
+    var sProperty = $("#s_property").combobox('getValue');
     var over = $("#over").datebox('getValue');
     var center = $("#center").val();
     if(start>over){
 
         alert("开始时间不能大于结束时间！")
     }
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"center":center};
+    if(sPayMode == 0){
+        sPayMode = null ;
+    }
+
+    if(sProperty == 0){
+        sProperty = null;
+    }
+
+
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
     $("#dg").datagrid('load', data);
 
 }

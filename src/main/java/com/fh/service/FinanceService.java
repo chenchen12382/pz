@@ -57,15 +57,17 @@ public class FinanceService {
         Integer realCount = financeDao.findRealCount(query);
         values.put("xybh",realCount);
         //计算综合折扣率
-        List<String> discount = financeDao.findDiscount(query);
-        Integer count = 0;
-        for ( int i = 0 ; i<discount.size();i++){
-            String str = discount.get(i);
-            String[] temp = str.split("%");
-             count += Integer.parseInt(temp[0]);
-        }
+        Integer discount = financeDao.findDiscount(query);
+//        Integer counts = 0;
+//        for ( int i = 0 ; i<discount.size();i++){
+//            Integer temp = discount.get(i);
+//           String[] temp = str.split("%");
+//             counts += temp;
+//        }
+//        Integer count =  counts/discount.size();
 
-        values.put("sjbh",count+"%");
+
+        values.put("sjbh",discount+"%");
         footer.add(keys);
         footer.add(values);
 
@@ -265,15 +267,24 @@ public class FinanceService {
         }
         finance.setShouldMoney(shouldMoney);
         //折扣
-        double temp = (double) realMoney /(double) shouldMoney*100;
+        double discount = (double) realMoney /(double) shouldMoney*100;
 //        if((int)temp>100){
 //            throw new ParamException("实收金额大于标准单价！");
 //        }
 //       if((int)temp<10){
 //            throw new ParamException("输入的应收金额过低, 请检查课时或金额!");
 //        }
-        String discount = (int)temp+"%";
-        finance.setDiscount(discount);
+//        String discount = (int)temp+"%";
+        finance.setDiscount((int)discount);
+        if(finance.getProperty().equals("订金")){
+            //设置应收金额为实收金额
+            finance.setShouldMoney(finance.getRealMoney());
+            finance.setDiscount(100);
+
+        }
+
+
+
 //           return finance;
 //        financeDao.insert(finance);
     }
@@ -363,14 +374,21 @@ public class FinanceService {
             //折扣
             int realMoney  = finance.getRealMoney();
             double temp = (double) realMoney /(double) shouldMoney*100;
-            if((int)temp>=100){
-                throw new ParamException("实收金额大于标准单价！");
-            }
+//            if((int)temp>=100){
+//                throw new ParamException("实收金额大于标准单价！");
+//            }
 //            if((int)temp<10){
 //                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
 //            }
-            String discount = (int)temp+"%";
+            Integer discount = (int)temp;
             finance.setDiscount(discount);
+
+            if(finance.getProperty().equals("订金")){
+                //设置应收金额为实收金额
+                finance.setShouldMoney(finance.getRealMoney());
+                finance.setDiscount(100);
+
+            }
 
 //            financeDao.insert(finance);
 

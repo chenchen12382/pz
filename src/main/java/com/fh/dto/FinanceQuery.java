@@ -19,6 +19,10 @@ public class FinanceQuery extends BaseQuery {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date over;
 
+    private String sPayMode; //支付方式
+
+    private String sProperty; // 付款性质
+
 
     public String getUserCenter() {
         return userCenter;
@@ -66,5 +70,21 @@ public class FinanceQuery extends BaseQuery {
 
     public void setCenter(String center) {
         this.center = center;
+    }
+
+    public String getsPayMode() {
+        return sPayMode;
+    }
+
+    public void setsPayMode(String sPayMode) {
+        this.sPayMode = sPayMode;
+    }
+
+    public String getsProperty() {
+        return sProperty;
+    }
+
+    public void setsProperty(String sProperty) {
+        this.sProperty = sProperty;
     }
 }

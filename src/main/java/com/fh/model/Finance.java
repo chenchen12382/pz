@@ -23,7 +23,7 @@ public class Finance  extends BaseModel{
     private Integer price;   //价格
     private Integer shouldMoney;  //应收金额
     private Integer realMoney;  //实际金额
-    private String discount; //折扣
+    private Integer discount; //折扣
     private String payMode; //支付方式
     private String property; //付款性质
     @JsonFormat(pattern="yyyy-MM-dd")
@@ -115,11 +115,11 @@ public class Finance  extends BaseModel{
         this.realMoney = realMoney;
     }
 
-    public String getDiscount() {
+    public Integer getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(Integer discount) {
         this.discount = discount;
     }
 

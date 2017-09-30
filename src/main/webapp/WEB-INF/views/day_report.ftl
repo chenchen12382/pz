@@ -28,7 +28,7 @@
 			        <th field="price" width="80" align="center">课程单价</th>
 			        <th field="shouldMoney" width="80" align="center">标准金额</th>
 			        <th field="realMoney" width="100" align="center" >实际金额</th>
-			        <th field="discount" width="100" align="center" >折扣</th>
+			        <th field="discount" width="100" align="center" formatter="formatDiscount" >折扣</th>
 			        <th field="payMode" width="100" align="center" >支付方式</th>
                     <th field="property" width="80" align="center">付款性质</th>
 			        <th field="cardNum" width="100" align="center" >银行卡号</th>

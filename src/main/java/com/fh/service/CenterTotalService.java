@@ -6,10 +6,8 @@ import com.fh.model.CenterTotal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/9/29.
@@ -22,12 +20,31 @@ public class CenterTotalService {
 
 
     public Map<String,Object> selectForPage(CenterTotalQuery query) {
+
+        //时间判断
+        Date start =query.getStart();
+        Date over = query.getOver();
+        if(start==null){
+//            SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+            Calendar calendar=Calendar.getInstance();
+            Date theDate=calendar.getTime();
+            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+            gcLast.setTime(theDate);
+            //设置为第一天
+            gcLast.set(Calendar.DAY_OF_MONTH, 1);
+            Date day_first=gcLast.getTime();
+            query.setStart(day_first);
+        }
+        query.setOver(new Date());
         //查询区域 中心
         List<String> centers = centerTotalDao.selectAllCenter();
         List<CenterTotal> centerTotals =new ArrayList<>();
         for ( int i = 0; i<centers.size();i++){
-            String center = centers.get(i);
-            List<CenterTotal> selectForDB = centerTotalDao.selectForPage(center,query);
+            query.setCenter(centers.get(i));
+            List<CenterTotal> selectForDB = centerTotalDao.selectForPage(query);
+            if(selectForDB.get(0).getCenter()==null){
+                continue;
+            }
             centerTotals.addAll(selectForDB);
         }
 //        List<CenterTotal> centerTotals = centerTotalDao.selectForPage(center,query);
@@ -36,4 +53,6 @@ public class CenterTotalService {
         return  result;
 
     }
+
+
 }

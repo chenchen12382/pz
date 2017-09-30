@@ -14,6 +14,8 @@ public class CenterTotalQuery extends BaseQuery {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date over;
 
+    private  String center;
+
     public Date getStart() {
         return start;
     }
@@ -28,5 +30,13 @@ public class CenterTotalQuery extends BaseQuery {
 
     public void setOver(Date over) {
         this.over = over;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public void setCenter(String center) {
+        this.center = center;
     }
 }

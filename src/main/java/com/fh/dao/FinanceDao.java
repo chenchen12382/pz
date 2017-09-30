@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/15.
@@ -35,7 +34,7 @@ public interface FinanceDao {
 
     Integer findRealCount(FinanceQuery query);
 
-    List<String> findDiscount(FinanceQuery query);
+    Integer findDiscount(FinanceQuery query);
 
     Integer findCount(FinanceQuery query);
 }

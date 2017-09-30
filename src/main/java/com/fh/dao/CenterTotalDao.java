@@ -13,5 +13,5 @@ public interface CenterTotalDao {
 
     List<String> selectAllCenter();
 
-    List<CenterTotal> selectForPage(@Param("center") String center, CenterTotalQuery query);
+    List<CenterTotal> selectForPage(CenterTotalQuery query);
 }
