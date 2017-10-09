@@ -95,7 +95,7 @@
         <div title="运营分析" data-options="iconCls:'icon-fwgl'" style="padding:10px">
             <a href="javascript:openTab('业绩统计','centerTotal/index','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">业绩统计</a>
             <a href="javascript:openTab('指标录入','target/index','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">指标录入</a>
-            <#--<a href="javascript:openTab('服务处理','customer_serve/index/3','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">服务处理</a>-->
+            <a href="javascript:openTab('区域业绩汇总','report_count/index','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">区域业绩汇总</a>
             <#--<a href="javascript:openTab('服务反馈','customer_serve/index/4','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">服务反馈</a>-->
             <#--<a href="javascript:openTab('服务归档','customer_serve/index/5','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">服务归档</a>-->
         </div>

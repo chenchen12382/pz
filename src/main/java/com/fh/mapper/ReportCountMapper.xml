@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.ReportCountDao">
+
+    <select id="selectForPage" resultType="ReportCount" >
+
+        select t1.district,SUM(t3.real_money) as income ,AVG(t3.discount) as discount,t4.target FROM t_district t1 LEFT JOIN t_center t2 on t1.district = t2.district LEFT JOIN
+        t_finance t3 on t2.center = t3.center LEFT JOIN t_target t4 on t1.district= t4.district
+        WHERE t1.district = #{district}
+        <if test="@Ognl@isNotEmpty(start)">
+            and t2.create_date BETWEEN #{start} AND #{over}
+
+        </if>
+        ORDER BY t1.district
+
+    </select>
+
+    <select id="selectAll" resultType="String">
+
+        SELECT district from t_district WHERE is_valid = 1
+
+
+    </select>
+
+
+
+</mapper>

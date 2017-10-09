@@ -151,6 +151,24 @@ public class DateUtil {
 		return beforeDate;
 	}
 
+	/**
+	 * 获得当前时间的本月最小时间
+	 * @param date 2017-12-12
+	 * @return  2017-12-1
+	 */
+	public static Date getFisrtDayOfNow(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		Date theDate=calendar.getTime();
+		GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+		gcLast.setTime(theDate);
+		//设置为第一天
+		gcLast.set(Calendar.DAY_OF_MONTH, 1);
+		Date day_first=gcLast.getTime();
+		return day_first;
+	}
+
+
+
 	public static void main(String[] args) {
 		String date = "2016-12-22";
 		Date date1 = parseDate(date);

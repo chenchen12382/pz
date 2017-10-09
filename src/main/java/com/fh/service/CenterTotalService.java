@@ -3,6 +3,7 @@ package com.fh.service;
 import com.fh.dao.CenterTotalDao;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.model.CenterTotal;
+import com.fh.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,22 @@ public class CenterTotalService {
         Date start =query.getStart();
         Date over = query.getOver();
         if(start==null){
-//            SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
-            Calendar calendar=Calendar.getInstance();
-            Date theDate=calendar.getTime();
-            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
-            gcLast.setTime(theDate);
-            //设置为第一天
-            gcLast.set(Calendar.DAY_OF_MONTH, 1);
-            Date day_first=gcLast.getTime();
-            query.setStart(day_first);
+
+//            Calendar calendar=Calendar.getInstance();
+//            Date theDate=calendar.getTime();
+//            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+//            gcLast.setTime(theDate);
+//            //设置为第一天
+//            gcLast.set(Calendar.DAY_OF_MONTH, 1);
+//            Date day_first=gcLast.getTime();
+//            query.setStart(day_first);
+//            DateUtil.getFisrtDayOfNow(start);
+            query.setStart(DateUtil.getFisrtDayOfNow(start));
+
         }
-        query.setOver(new Date());
+        if(over==null) {
+            query.setOver(new Date());
+        }
         //查询区域 中心
         List<String> centers = centerTotalDao.selectAllCenter();
         List<CenterTotal> centerTotals =new ArrayList<>();
