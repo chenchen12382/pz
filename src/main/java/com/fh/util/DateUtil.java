@@ -70,7 +70,17 @@ public class DateUtil {
 	 * @return:String eg：2015-12-01 currentDate:2015-12-24
 	 * @throws
 	 */
-	public static String getFisrtDayOfMonth(Date date) {
+	public static Date getFisrtDayOfMonth(Date date) {
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.setTime(date);
+//		//获取某月最小天数
+//		int firstDay = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+//		//设置日历中月份的最小天数
+//		calendar.set(Calendar.DAY_OF_MONTH, firstDay);
+//		//格式化日期
+//		String firstDayOfMonth = formatDate(calendar.getTime());
+//		return firstDayOfMonth;
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		//获取某月最小天数
@@ -78,8 +88,9 @@ public class DateUtil {
 		//设置日历中月份的最小天数
 		calendar.set(Calendar.DAY_OF_MONTH, firstDay);
 		//格式化日期
-		String firstDayOfMonth = formatDate(calendar.getTime());
-		return firstDayOfMonth;
+		Date day_first=calendar.getTime();
+		return day_first;
+
 	}
 
 	/**
@@ -158,12 +169,13 @@ public class DateUtil {
 	 */
 	public static Date getFisrtDayOfNow(Date date) {
 		Calendar calendar=Calendar.getInstance();
-		Date theDate=calendar.getTime();
-		GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
-		gcLast.setTime(theDate);
-		//设置为第一天
-		gcLast.set(Calendar.DAY_OF_MONTH, 1);
-		Date day_first=gcLast.getTime();
+            Date theDate=calendar.getTime();
+            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+            gcLast.setTime(theDate);
+            //设置为第一天
+            gcLast.set(Calendar.DAY_OF_MONTH, 1);
+            Date day_first=gcLast.getTime();
+
 		return day_first;
 	}
 

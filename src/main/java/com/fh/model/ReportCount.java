@@ -7,9 +7,9 @@ import com.fh.base.BaseModel;
  */
 public class ReportCount extends BaseModel {
     private String district; //区域
-    private String income;  //总收入/完成业绩
-    private String target; //指标
-    private String discount; //完成率
+    private Integer income;  //总收入/完成业绩
+    private Integer target; //指标
+    private Integer discount; //完成率
 
     public String getDistrict() {
         return district;
@@ -19,27 +19,27 @@ public class ReportCount extends BaseModel {
         this.district = district;
     }
 
-    public String getIncome() {
+    public Integer getIncome() {
         return income;
     }
 
-    public void setIncome(String income) {
+    public void setIncome(Integer income) {
         this.income = income;
     }
 
-    public String getTarget() {
+    public Integer getTarget() {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(Integer target) {
         this.target = target;
     }
 
-    public String getDiscount() {
+    public Integer getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(Integer discount) {
         this.discount = discount;
     }
 }

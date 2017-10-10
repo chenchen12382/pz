@@ -6,13 +6,14 @@
 
     <select id="selectForPage" resultType="ReportCount" >
 
-        select t1.district,SUM(t3.real_money) as income ,AVG(t3.discount) as discount,t4.target FROM t_district t1 LEFT JOIN t_center t2 on t1.district = t2.district LEFT JOIN
+        select t1.district,SUM(t3.real_money) as income ,AVG(t3.discount) as discount,t4.target as target FROM t_district t1 LEFT JOIN t_center t2 on t1.district = t2.district LEFT JOIN
         t_finance t3 on t2.center = t3.center LEFT JOIN t_target t4 on t1.district= t4.district
         WHERE t1.district = #{district}
         <if test="@Ognl@isNotEmpty(start)">
-            and t2.create_date BETWEEN #{start} AND #{over}
+            and t3.create_date BETWEEN #{start} AND #{over}
 
         </if>
+
         ORDER BY t1.district
 
     </select>
