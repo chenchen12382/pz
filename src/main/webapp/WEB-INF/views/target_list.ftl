@@ -5,14 +5,14 @@
 </head>
 <body style="margin: 1px">
 	<table id="dg" title="指标录入" class="easyui-datagrid"
-	       fitColumns="true" pagination="false" rownumbers="true"
+	       fitColumns="true" pagination="true" rownumbers="true"
 	       url="${ctx}/target/list" fit="true" toolbar="#tb" singleSelect = "false">
 	    <thead>
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
             <th field="district" width="300" align="center">区域</th>
-            <th field="month" width="200" align="center">月份</th>
+            <th field="month" width="200" align="center" formatter="formatMonth">月份</th>
 	        <th field="target" width="200" align="center">指标</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="updateDate" width="100" align="center">更新时间</th>
@@ -26,8 +26,13 @@
 	        <a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 	        <a href="javascript:deletetargets()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    </div>
+	     <div>
+	      &nbsp;区域：&nbsp;<input type="text" id="district" size="20" onkeydown="if(event.keyCode==13) searchTarget()"/>
+     <#-- &nbsp;月份：&nbsp;<input type="text" id="month" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchTarget()"/>-->
+	        <a href="javascript:searchTarget()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+	    </div>
 	</div>
-	
+	 
 	<#--弹出框-->
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
@@ -46,7 +51,7 @@
 	            </tr>
 	            <tr>
 	                  &nbsp; &nbsp;月份：&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-	                  <select class="easyui-combobox" id="month" name="month"  editable="false" panelHeight="auto" >
+	                  <select class="easyui-combobox" id="months" name="months"  editable="false" panelHeight="auto" >
                         <option value="请选择...">请选择...</option>
                         <option value="本月">本月</option>
                         <option value="次月">次月</option>  
