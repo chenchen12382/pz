@@ -1,27 +1,21 @@
+function formatMonth(month){
+	var date = $("#month").datebox("getvalue");
+	var time = date.format("yyyy-MM");
+	 return time;
+}
 
-$(document).ready(function() {
-	    var date = new Date();  
-	    var year = date.getFullYear();  
-	    var month = date.getMonth()+1;  
-	    var day = date.getDate();  
-	    var hour = date.getHours();  
-	    var minute = date.getMinutes();  
-	    //alert(year+'年'+month+'月'+day+'日 '+hour+':'+minute+':'+second)  
-	    presentTime=year+'-'+month+'-'+day;  
-	    alert( year+'-'+month+'-'+day+''+hour+':'+minute);  
-	    //$("#time").val(presentTime); 
-    $("#month").combobox({ // 层级改变
-        // 层级改变时触发
-        onChange:function(month) { // select的change事件
-             if(month == "本月") {
-            	 $("#month").val(presentTime);
-            }else {	
-            	$("#month").val(presentTime);
-            } 
-        }
+//搜索
+function searchTarget() {
+	 var district = $("#district").val();
+	 var month = $("#month").val();
+	 
+	 var data = {	 
+			 district: $("#district").val(),
+			  month: $("#month").val(),
+	}
+	$("#dg").datagrid('load', data);
+}
 
-    });
-})
 
 function openAddDialog() {
     $("#dlg").dialog("open").dialog("setTitle","添加指标");

@@ -11,11 +11,19 @@ public class Target  extends BaseModel{
 	    @JsonFormat(pattern="yyyy-MM-dd")
 	    @DateTimeFormat(pattern="yyyy-MM-dd")
 	    private Date month;//月份
-	    private Integer target;//指标
+	    private String months;
+	    public String getMonths() {
+			return months;
+		}
+		public void setMonths(String months) {
+			this.months = months;
+		}
+		private Integer target;//指标
 		public String getDistrict() {
 			return district;
 		}
 		public void setDistrict(String district) {
+			
 			this.district = district;
 		}
 		public Date getMonth() {

@@ -32,7 +32,6 @@ public class ReportService {
 	 */
 	public Map<String, Object> selectForPage(ReportQuery query) {
 		PageList<Report> reports = reportDao.selectForPage(query, query.buildPageBounds());
-
 		Paginator paginator = reports.getPaginator(); //得到分页对象
 		Map<String, Object> result = new HashMap<>();
 		result.put("paginator", paginator);
@@ -69,7 +68,6 @@ public class ReportService {
 		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
 		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
 		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
-		
 		reportDao.update(report);
 		
 	}
