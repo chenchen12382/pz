@@ -213,6 +213,15 @@ public class DateUtil {
 		return max_time_of_month;
 	}
 
+	public static Date getAfterMonth(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.MONTH, 1);
+		calendar.set(Calendar.DAY_OF_MONTH,1);
+		Date after_month = calendar.getTime();
+		return after_month;
+	}
+
 
 
 	public static void main(String[] args) {

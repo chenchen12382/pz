@@ -28,7 +28,6 @@ public class TargetController extends BaseController {
 		return "target_list";
 	}
 
-	@RequirePermissions(permission = "9050")
 	@RequestMapping("list")
 	@ResponseBody
 	public Map<String, Object> List(TargetQuery query){

@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.fh.exception.ParamException;
+import com.fh.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fh.base.AssertUtil;
@@ -44,69 +47,25 @@ public class TargetService {
     	
         AssertUtil.isNotEmpty(target.getDistrict(),"请选择区域");
 		String months = target.getMonths();
-		System.out.println(months);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy:MM:dd");
-		Date date = new Date();
-		String T1 = dateFormat.format(date);
-		Date time1 = null;
-		try {
-			time1 = dateFormat.parse(T1);//本月
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date); // 设置为当前时间
-		calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1); // 设置为下一个月
-		date = calendar.getTime();
-		String T2 = dateFormat.format(date);
-		Date time2 = null;
-		try {
-			time2 = dateFormat.parse(T2);//次月
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		if (months.equals("本月")) {
-			target.setMonth(time1);
+			target.setMonth(new Date());
 		} else {
-			target.setMonth(time2);
+			target.setMonth(DateUtil.getAfterMonth(new Date()));
 		}
-        targetDao.insert(target);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String sMonth =  sdf.format(target.getMonth());
+		Integer selectForMonth =  targetDao.selectForMonth(target.getDistrict(),sMonth);
+		if(selectForMonth == 0){
+			targetDao.insert(target);
+		}else {
+			throw new ParamException("當月記錄已存在！請使用修改功能");
+
+		}
 
     }
 
     public void update(Target target) {
         AssertUtil.isNotEmpty(target.getDistrict(),"请选择区域");
-        String months = target.getMonths();
-		System.out.println(months);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy:MM:dd");
-		Date date = new Date();
-		String T1 = dateFormat.format(date);
-		Date time1 = null;
-		try {
-			time1 = dateFormat.parse(T1);//本月
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date); // 设置为当前时间
-		calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1); // 设置为下一个月
-		date = calendar.getTime();
-		String T2 = dateFormat.format(date);
-		Date time2 = null;
-		try {
-			time2 = dateFormat.parse(T2);//次月
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (months.equals("本月")) {
-			target.setMonth(time1);
-		} else {
-			target.setMonth(time2);
-		}
         targetDao.update(target);
     }
 

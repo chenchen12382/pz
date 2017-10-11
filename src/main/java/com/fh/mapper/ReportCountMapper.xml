@@ -9,6 +9,9 @@
         select t1.district,SUM(t3.real_money) as income ,AVG(t3.discount) as discount FROM t_district t1 LEFT JOIN t_center t2 on t1.district = t2.district LEFT JOIN
         t_finance t3 on t2.center = t3.center
         WHERE t1.district = #{district}
+        and t3.is_valid = 1
+        and t2.is_valid = 1
+        and t1.is_valid = 1
         <if test="@Ognl@isNotEmpty(start)">
             and t3.create_date BETWEEN #{start} AND #{over}
 
