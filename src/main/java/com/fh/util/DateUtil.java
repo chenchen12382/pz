@@ -164,10 +164,10 @@ public class DateUtil {
 
 	/**
 	 * 获得当前时间的本月最小时间
-	 * @param date 2017-12-12
+	 * @param  2017-12-12
 	 * @return  2017-12-1
 	 */
-	public static Date getFisrtDayOfNow(Date date) {
+	public static Date getFisrtDayOfNow() {
 		Calendar calendar=Calendar.getInstance();
             Date theDate=calendar.getTime();
             GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
@@ -177,6 +177,40 @@ public class DateUtil {
             Date day_first=gcLast.getTime();
 
 		return day_first;
+	}
+
+	/**
+	 * 获取当天最大时间
+	 * @param date
+	 * @return
+	 */
+	public static Date getMaxTimeOfDay(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.MILLISECOND, 999);
+		Date max_time = calendar.getTime();
+		return max_time;
+	}
+
+	/**
+	 * 获得本月最大时间
+	 * @param date
+	 * @return
+	 */
+	public static Date getLastDayOfNow(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+		calendar.set(Calendar.HOUR, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.MILLISECOND, 999);
+		Date max_time_of_month = calendar.getTime();
+
+		return max_time_of_month;
 	}
 
 

@@ -1,9 +1,7 @@
 package com.fh.service;
 
 import com.fh.dao.ReportCountDao;
-
 import com.fh.dto.ReportCountQuery;
-
 import com.fh.model.ReportCount;
 import com.fh.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +21,12 @@ public class ReportCountService {
 
     public Map<String,Object> selectForPage(ReportCountQuery query) {
 
-        if(query.getStart()!=null){
-            Date start=DateUtil.getFisrtDayOfMonth(query.getStart());
-            query.setStart(start);
+        if(query.getStart()==null){
+            query.setStart(DateUtil.getFisrtDayOfNow());
+        }else{
+            query.setStart(DateUtil.getFisrtDayOfMonth(query.getStart()));
         }
+
 
         if(query.getOver()==null && query.getStart()!=null){
             query.setOver(new Date());
@@ -42,6 +42,21 @@ public class ReportCountService {
             }
             reportCounts.addAll(selectForDB);
         }
+
+        //计算指标
+//        if(query.getStart()!=null&&query.getOver()!=null){
+            query.setOver(DateUtil.getLastDayOfNow(query.getOver()));
+
+        //设置target的值
+            for(int i=0;i<reportCounts.size();i++){
+                query.setDistrict(reportCounts.get(i).getDistrict());
+                Integer targets = reportCountDao.queryTargetByDistrict(query);
+                reportCounts.get(i).setTarget(targets);
+            }
+
+//        }
+
+
         //计算Footer统计
         List footer = new ArrayList<>();
         Map<String,Object> values = new HashMap<>();
@@ -62,14 +77,14 @@ public class ReportCountService {
             }
 
         }
-        discount = discount/count;
+        if(discount !=0 ) {
+            discount = discount / count;
+        }
         values.put("district","总计");
         values.put("income",income);
         values.put("target",target);
         values.put("discount",discount);
         footer.add(values);
-
-
 
 
         Map<String,Object> result = new HashMap<>();
