@@ -12,7 +12,7 @@
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
             <th field="district" width="300" align="center">区域</th>
-            <th field="month" width="200" align="center" formatter="formatMonth">月份</th>
+            <th field="month" width="200" align="center" >月份</th>
 	        <th field="target" width="200" align="center">指标</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="updateDate" width="100" align="center">更新时间</th>
