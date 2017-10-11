@@ -18,14 +18,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 public interface TargetDao {
 	
 	    PageList<Target> selectForPage(TargetQuery query, PageBounds buildPageBounds);
-	    //查询月份
-	    @Select("select month from t_target where is_valid=1 ")
-	    List<Target> selectMonth();
-	   //查询区域
-	    @Select("select district from t_target where is_valid=1 ")
-	    List<Target> selectDistrict();
 	
-	    
 	   @Select("select id,district,month,target,create_date,update_date from t_target where is_valid=1 ")
 	    List<Target> selectAll();
 

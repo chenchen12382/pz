@@ -1,8 +1,13 @@
-function formatMonth(month){
-	var date = $("#month").datebox("getvalue");
-	var time = date.format("yyyy-MM");
-	 return time;
-}
+
+//格式化日期
+
+/*
+$(function(){
+var mydate = new Date();
+var t=mydate.Format("yyyy-MM");
+$("#month").text(t);
+$("month").load("Untitled-1.html");
+});*/
 
 //搜索
 function searchTarget() {
