@@ -58,7 +58,7 @@ public class TargetService {
 		if(selectForMonth == 0){
 			targetDao.insert(target);
 		}else {
-			throw new ParamException("當月記錄已存在！請使用修改功能");
+			throw new ParamException("当月記錄已存在！請使用修改功能");
 
 		}
 
