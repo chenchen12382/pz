@@ -149,3 +149,5 @@ function closeReportDialog() {
 	resetValue();
 	$("#dlg").dialog('close');
 }
+
+

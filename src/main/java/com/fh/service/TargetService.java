@@ -27,9 +27,7 @@ public class TargetService {
     @Autowired
     private TargetDao targetDao;
     
-    /**
-     * 如果当月区域记录存在,不能插入只能修改
-     */
+
  
 
    public Map<String,Object> selectForPage(TargetQuery query) {

@@ -5,6 +5,7 @@ import com.fh.dto.ReportCountQuery;
 import com.fh.service.ReportCountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,9 +22,15 @@ public class ReportCountController extends BaseController{
     @Autowired
     private ReportCountService reportCountService;
 
-    @RequestMapping("index")
-    public String index(){
-        return "report_count";
+    @RequestMapping("index/{type}")
+    public String index(@PathVariable Integer type){
+        switch (type){
+            default:
+                return "report_count";
+            case 2 :
+                return "yjfx";
+        }
+
     }
 
 
@@ -36,6 +43,13 @@ public class ReportCountController extends BaseController{
 
     }
 
+
+    @RequestMapping("yjfx")
+    @ResponseBody
+    public Map<String, Object> selectYjfx(ReportCountQuery query){
+        Map<String,Object> result = reportCountService.selectYjfx(query);
+        return result;
+    }
 
 
 }

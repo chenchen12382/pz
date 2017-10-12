@@ -1,7 +1,9 @@
 package com.fh.service;
 
+import com.fh.dao.DistrictDao;
 import com.fh.dao.ReportCountDao;
 import com.fh.dto.ReportCountQuery;
+import com.fh.model.District;
 import com.fh.model.ReportCount;
 import com.fh.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class ReportCountService {
     @Autowired
     private ReportCountDao reportCountDao;
 
+    @Autowired
+    private DistrictDao districtDao;
 
     public Map<String,Object> selectForPage(ReportCountQuery query) {
 
@@ -91,6 +95,35 @@ public class ReportCountService {
         result.put("rows",reportCounts);
         result.put("footer",footer);
         return  result;
+
+    }
+
+    /**
+     * 业绩分析
+     * @param query
+     * @return
+     */
+    public Map<String,Object> selectYjfx(ReportCountQuery query) {
+
+        //查询区域信息
+        List<String> district = districtDao.findAllDistrict();
+        List total = new ArrayList();
+        //查询区域总收入
+        for (int i=0;i<district.size();i++) {
+            String  d = district.get(i);
+            Integer count = reportCountDao.findTotalByDistrict(d);
+            if(count != null) {
+                total.add(count);
+            }else {
+                total.add(0);
+            }
+        }
+
+        Map<String,Object> result = new HashMap<>();
+        result.put("district",district);
+        result.put("total",total);
+        return result;
+
 
     }
 }

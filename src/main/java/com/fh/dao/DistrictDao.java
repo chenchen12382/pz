@@ -33,4 +33,7 @@ public interface DistrictDao {
     @Select("select id,district,remark,create_date,update_date from t_district where is_valid = 1" +
             " order by id ")
     List<District> findAll();
+
+    @Select("select district from t_district where is_valid = 1 ")
+    List<String> findAllDistrict();
 }
