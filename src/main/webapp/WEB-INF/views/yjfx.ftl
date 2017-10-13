@@ -34,10 +34,10 @@
                         type: 'column'
                     },
                     title: {
-                        text: '月平均降雨量'
+                        text: '区域业绩分析'
                     },
                     subtitle: {
-                        text: '数据来源: WorldClimate.com'
+                        text: '数据来源: 培正信息管理系统'
                     },
                     xAxis: {
                         categories: categories,
@@ -52,7 +52,7 @@
                     tooltip: {
                         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                        '<td style="padding:0"><b>{point.y:.1f} 元</b></td></tr>',
                         footerFormat: '</table>',
                         shared: true,
                         useHTML: true
@@ -64,7 +64,7 @@
                         }
                     },
                     series: [{
-                        name: '东京',
+                        name: '收入',
                         data: data
                     }]
                 });

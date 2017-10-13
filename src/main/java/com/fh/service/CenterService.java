@@ -1,8 +1,11 @@
 package com.fh.service;
 
 import com.fh.base.AssertUtil;
+import com.fh.base.BaseQuery;
 import com.fh.dao.CenterDao;
 import com.fh.model.Center;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +22,12 @@ public class CenterService {
     @Autowired
     private CenterDao centerDao;
 
-    public  Map<String,Object> selectForPage() {
+    public  Map<String,Object> selectForPage(BaseQuery query) {
 
-        List<Center>  centers = centerDao.selectAll();
+        PageList<Center>  centers = centerDao.selectAll(query.buildPageBounds());
            Map<String,Object> result = new HashMap<>();
            result.put("rows",centers);
+           result.put("total",centers.getPaginator().getTotalCount());
            return  result;
 
 
@@ -31,7 +35,10 @@ public class CenterService {
     }
 
     public void insert(Center center) {
-        AssertUtil.isNotEmpty(center.getCenter(),"请选择中心");
+        AssertUtil.isNotEmpty(center.getCenter(),"请输入中心");
+        String temp = centerDao.findByCenter(center.getCenter());
+        AssertUtil.isNotEmpty(temp,"您输入的中心已存在！请检查后输入！");
+
         centerDao.insert(center);
 
     }
@@ -44,5 +51,12 @@ public class CenterService {
     public void deleteBatch(String ids) {
         AssertUtil.isNotEmpty(ids,"请选择记录进行删除");
         centerDao.deleteBatch(ids);
+    }
+
+    public Map<String,Object> selectAll() {
+        List<Center> centers=centerDao.selectCenter();
+        Map<String,Object> result = new HashMap<>();
+        result.put("rows",centers);
+        return result;
     }
 }

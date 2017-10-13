@@ -7,14 +7,14 @@ function formatDiscount(value){
        }
 }
 
-function formartOrderTotal(value) {
-    if(value == 1){
-        return 0 ;
-    }else {
-        return value;
-    }
-    
-}
+// function formartOrderTotal(value) {
+//     if(value == 1){
+//         return 0 ;
+//     }else {
+//         return value;
+//     }
+//
+// }
 
 
 function searchCustomer() {

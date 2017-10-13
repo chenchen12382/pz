@@ -2,7 +2,10 @@ package com.fh.controller;
 
 import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
+import com.fh.base.BaseQuery;
 import com.fh.base.ResultInfo;
+import com.fh.dao.CenterDao;
+import com.fh.dao.CenterTotalDao;
 import com.fh.model.Center;
 import com.fh.service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class CenterController extends BaseController {
     @Autowired
     private CenterService centerService;
 
+
+
     @RequestMapping("index")
     public String index(){
         return "center_list";
@@ -33,15 +38,15 @@ public class CenterController extends BaseController {
     @RequirePermissions(permission = "9040")
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object> selectForPage(){
-        Map<String,Object> result = centerService.selectForPage();
+    public Map<String,Object> selectForPage(BaseQuery query){
+        Map<String,Object> result = centerService.selectForPage(query);
         return result;
     }
 
     @RequestMapping("find_all")
     @ResponseBody
     public List<Center> findAll() {
-        Map<String, Object> result = centerService.selectForPage();
+        Map<String, Object> result = centerService.selectAll();
         return (List<Center>) result.get("rows");
 
     }

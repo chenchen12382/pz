@@ -5,7 +5,7 @@
 </head>
 <body style="margin: 1px">
 	<table id="dg" title="中心管理" class="easyui-datagrid"
-	       fitColumns="true" pagination="false" rownumbers="true"
+	       fitColumns="true" pagination="true" rownumbers="true"
 	       url="${ctx}/center/list" fit="true" toolbar="#tb" singleSelect = "false">
 	    <thead>
 	    <tr>

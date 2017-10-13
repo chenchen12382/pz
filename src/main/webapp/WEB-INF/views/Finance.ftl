@@ -48,25 +48,25 @@
 
     <#--</div>-->
     <div>
-        &nbsp;中心：&nbsp;<input type="text" id="center" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-        &nbsp;支付方式：&nbsp;<select class="easyui-combobox" id="s_payMode" name="s_payMode"  editable="false" panelHeight="auto"  style="width:150px" onkeydown="if(event.keyCode==13) searchCustomer()" >
+        &nbsp;中心：&nbsp;<input type="text" id="center" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;支付方式：&nbsp;<select class="easyui-combobox" id="s_payMode" name="s_payMode"  editable="false" panelHeight="auto"  style="width:150px" onkeydown="if(event.keyCode==13) searchFinance()" >
                                 <option value="0">请选择...</option>
                                 <option value="POS机">POS机</option>
                                 <option value="支付宝">支付宝</option>
                                 <option value="微信">微信</option>
                                 <option value="现金">现金</option>
                             </select>
-        &nbsp;付款性质：&nbsp;<select class="easyui-combobox" id="s_property" name="s_property"  editable="false" panelHeight="auto" style="width:150px" onkeydown="if(event.keyCode==13) searchCustomer()" >
+        &nbsp;付款性质：&nbsp;<select class="easyui-combobox" id="s_property" name="s_property"  editable="false" panelHeight="auto" style="width:150px" onkeydown="if(event.keyCode==13) searchFinance()" >
         <option value="0">请选择...</option>
         <option value="全款">全款</option>
         <option value="订金">订金</option>
         </select>
         </br>
-        &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchCustomer()"/>
-        &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+        &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
         </select>
-        <a href="javascript:searchCustomer()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+        <a href="javascript:searchFinance()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
     </div>
 </div>
 

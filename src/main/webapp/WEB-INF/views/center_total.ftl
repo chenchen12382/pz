@@ -14,7 +14,7 @@
             <th field="district" width="100" align="center">区域</th>
 	        <th field="center" width="150" align="center">中心</th>
 
-            <th field="orderTotal" width="100" align="center" formatter="formartOrderTotal">总订单</th>
+            <th field="orderTotal" width="100" align="center" >总订单</th>
 	        <th field="shouldTotal" width="100" align="center">总应收</th>
 	        <th field="realTotal" width="100" align="center">总实收</th>
             <th field="discount" width="100" align="center" formatter="formatDiscount">平均折扣</th>

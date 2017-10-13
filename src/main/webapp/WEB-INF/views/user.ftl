@@ -57,7 +57,7 @@
 	                <td>中心：</td>
                     <td>
                         <input class="easyui-combobox" id="center" name="center"
-                               data-options="panelHeight:'auto', editable:false, valueField:'center',
+                               data-options=" editable:false, valueField:'center',
 	                		textField:'center', url:'${ctx}/center/find_all'"/>
 
                     </td>
@@ -70,7 +70,7 @@
 	                <td>
 	                	<input class="easyui-combobox" id="roleIds" name="roleIds" 
 	                		data-options="panelHeight:'auto', editable:false, valueField:'id',
-	                		textField:'roleName', url:'${ctx}/role/find_all', multiple:'true'"/>
+	                		textField:'roleName', url:'${ctx}/role/find_all' "/>
 	                
 	                </td>
 	            </tr>

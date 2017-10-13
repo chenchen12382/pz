@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.model.CenterTotal;
@@ -27,6 +28,7 @@ public class CenterTotalController extends BaseController {
         return "center_total";
     }
 
+    @RequirePermissions(permission = "3010")
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectForPage(CenterTotalQuery query){

@@ -60,19 +60,32 @@ function resetValue() {
     $("#saleNum").numberbox('setValue',"");
     $("#realMoney").numberbox('setValue',"");
     $("#unfinishMoney").numberbox('setValue',"");
-    $("#payMode").combobox('setValue',"请选择...");
+    $("#payMode").combobox('setValue',"0");
     $("#promotion").val('');
     $("#cardNum").numberbox('setValue',"");
-    $("#source").combobox('setValue',"请选择...");
+    $("#source").combobox('setValue',"0");
     $("#counselor").val("");
     $("#id").val("");
+    $("#contractTime").datebox('setValue',"");
+    $("input[name='agreement'][value='新签']").attr("checked",true);
+    $("input[name='property'][value='全款']").attr("checked",true);
 
 }
 
+function searchDayReport() {
+    var name = $("#name").val();
+    var saleClass = $("#s_class").val();
+    var start = $("#start").datebox('getValue');
+    var over = $("#over").datebox('getValue');
+
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over}
+
+    $("#dg").datagrid('load', data);
+
+}
 
 // 搜索
-function searchCustomer() {
-    var name = $("#name").val();
+function searchFinance() {
     var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
     var sPayMode = $("#s_payMode").combobox('getValue');
@@ -92,7 +105,7 @@ function searchCustomer() {
     }
 
 
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
+    var data = {"saleClass": saleClass,"start":start,"over":over,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
     $("#dg").datagrid('load', data);
 
 }
@@ -123,6 +136,17 @@ function saveCustomer() {
 
     var url = "add";
     var id = $("#id").val();
+    var payMode = $("#payMode").combobox('getValue');
+    var source = $("#source").combobox('getValue');
+    if (payMode == 0){
+        $.messager.alert("系统提示",'请选择支付方式');
+        return;
+    }
+    if (source == 0){
+        $.messager.alert("系统提示",'请选择用户来源');
+        return;
+    }
+
     if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
         url = "update";
     }

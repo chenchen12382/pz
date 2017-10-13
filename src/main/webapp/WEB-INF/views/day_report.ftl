@@ -43,18 +43,24 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
+	<#if userPermissions?seq_contains('101001') >
 			<a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
+		</#if>
+<#if userPermissions?seq_contains('101002') >
         	<a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+</#if>
+<#if userPermissions?seq_contains('101003') >
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+</#if>
 
 	    </div>
 	    <div>
-	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-	        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-            &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchCustomer()"/>
-            &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
+	        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
+            &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchDayReport()"/>
+            &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
 	    </select>
-	        <a href="javascript:searchCustomer()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+	        <a href="javascript:searchDayReport()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>
 	
@@ -126,7 +132,7 @@
                     <td>支付方式：</td>
                     <td>
                         <select class="easyui-combobox" id="payMode" name="payMode"  editable="false" panelHeight="auto" >
-                            <option value="请选择...">请选择...</option>
+                            <option value="0">请选择...</option>
                             <option value="POS机">POS机</option>
                             <option value="支付宝">支付宝</option>
                             <option value="微信">微信</option>
@@ -164,7 +170,7 @@
 	                <td>用户来源：</td>
                    <td>
                       <select class="easyui-combobox" id="source" name="source"  editable="false" panelHeight="auto" >
-                           <option value="">请选择...</option>
+                           <option value="0">请选择...</option>
                            <option value="上门">上门</option>
                            <option value="电话">电话</option>
                            <option value="转介绍">转介绍</option>

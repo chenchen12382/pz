@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.dto.ReportCountQuery;
 import com.fh.service.ReportCountService;
@@ -22,6 +23,7 @@ public class ReportCountController extends BaseController{
     @Autowired
     private ReportCountService reportCountService;
 
+
     @RequestMapping("index/{type}")
     public String index(@PathVariable Integer type){
         switch (type){
@@ -34,6 +36,7 @@ public class ReportCountController extends BaseController{
     }
 
 
+    @RequirePermissions(permission = "3030")
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectForPage(ReportCountQuery query){
@@ -43,7 +46,7 @@ public class ReportCountController extends BaseController{
 
     }
 
-
+    @RequirePermissions(permission = "3040")
     @RequestMapping("yjfx")
     @ResponseBody
     public Map<String, Object> selectYjfx(ReportCountQuery query){

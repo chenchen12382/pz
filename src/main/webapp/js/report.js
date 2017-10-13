@@ -141,6 +141,7 @@ function resetValue(){
     $("#oneDayMoney").numberbox('setValue',"");
     $("#hopeMoney").numberbox('setValue',"");
     $("#marks").val("");
+    $("#id").val("");
 }
 
 // 关闭弹出框
