@@ -44,7 +44,7 @@
 	<div id="tb">
 		<div>
 	<#if userPermissions?seq_contains('101001') >
-			<a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
+			<a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
 		</#if>
 <#if userPermissions?seq_contains('101002') >
         	<a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>

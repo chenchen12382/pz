@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="pz.war">
       <element id="artifact" artifact-name="pz:war exploded" />
+      <element id="dir-copy" path="E:/javaCode" />
     </root>
   </artifact>
 </component>
