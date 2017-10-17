@@ -171,15 +171,15 @@
                    <td>
                       <select class="easyui-combobox" id="source" name="source"  editable="false" panelHeight="auto" >
                            <option value="0">请选择...</option>
-                           <option value="上门">上门</option>
-                           <option value="电话">电话</option>
+                           <option value="walk in">walk in</option>
+                           <option value="地推">地推</option>
+                           <option value="陌call">陌call</option>
                            <option value="转介绍">转介绍</option>
-                           <option value="肄业合作">肄业合作</option>
                            <option value="大众点评">大众点评</option>
-                           <option value="官网">官网</option>
-                           <option value="微信">微信</option>
-                           <option value="口碑">口碑</option>
-                           <option value="其他">其他</option>
+                           <option value="肄业">肄业</option>
+                           <option value="转中心">转中心</option>
+                           <option value="市推">市推</option>
+                           <option value="续费">续费</option>
                        </select>&nbsp;<font color="red">*</font>
 				   </td>
 	            </tr> 

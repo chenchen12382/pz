@@ -15,7 +15,7 @@
 					and district like '%${district}%'
 				</if>
 				<if test="@Ognl@isNotEmpty(month)">
-					and month like '%${month}%'
+					and month BETWEEN #{start} AND #{over}
 				</if> 
 			</where>
 	</select>

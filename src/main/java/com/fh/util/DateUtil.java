@@ -169,12 +169,12 @@ public class DateUtil {
 	 */
 	public static Date getFisrtDayOfNow() {
 		Calendar calendar=Calendar.getInstance();
-            Date theDate=calendar.getTime();
-            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
-            gcLast.setTime(theDate);
-            //设置为第一天
-            gcLast.set(Calendar.DAY_OF_MONTH, 1);
-            Date day_first=gcLast.getTime();
+		Date theDate=calendar.getTime();
+		GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
+		gcLast.setTime(theDate);
+		//设置为第一天
+		gcLast.set(Calendar.DAY_OF_MONTH, 1);
+		Date day_first=gcLast.getTime();
 
 		return day_first;
 	}
@@ -196,11 +196,11 @@ public class DateUtil {
 	}
 
 	/**
-	 * 获得本月最大时间
-	 * @param date
-	 * @return
+	 * 获得当月最大时间
+	 * @param date 2017-6-6
+	 * @return 2017-6-31
 	 */
-	public static Date getLastDayOfNow(Date date) {
+	public static Date getLastDayOfDate(Date date) {
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
@@ -212,6 +212,27 @@ public class DateUtil {
 
 		return max_time_of_month;
 	}
+
+
+	/**
+	 * 获得当月最大时间
+	 * @param date 2017-6-6
+	 * @return 2017-6-31
+	 */
+	public static Date getFirstDayOfDate(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		Date min_time_of_month = calendar.getTime();
+
+		return min_time_of_month;
+	}
+
+
 
 	public static Date getAfterMonth(Date date) {
 		Calendar calendar=Calendar.getInstance();

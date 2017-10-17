@@ -13,6 +13,11 @@ public class TargetQuery extends BaseQuery{
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
 	 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
 	 private Date month;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date start;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date over;
+
 	
 	public String getDistrict() {
 		return district;
@@ -26,6 +31,20 @@ public class TargetQuery extends BaseQuery{
 	public void setMonth(Date month) {
 		this.month = month;
 	}
-	
-   
+
+	public Date getStart() {
+		return start;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+	public Date getOver() {
+		return over;
+	}
+
+	public void setOver(Date over) {
+		this.over = over;
+	}
 }

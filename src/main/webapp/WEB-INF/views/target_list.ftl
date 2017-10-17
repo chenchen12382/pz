@@ -28,7 +28,8 @@
 	    </div>
 	     <div>
 	      &nbsp;区域：&nbsp;<input type="text" id="district" size="20" onkeydown="if(event.keyCode==13) searchTarget()"/>
-     <#-- &nbsp;月份：&nbsp;<input type="text" id="month" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchTarget()"/>-->
+      		&nbsp;月份：&nbsp;<input type="text" id="month" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchTarget()"/>
+             &nbsp;&nbsp; <font color="red">日期请随意选择！</font>&nbsp;&nbsp;
 	        <a href="javascript:searchTarget()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>

@@ -66,7 +66,7 @@ public class FinanceController extends BaseController{
 
 
 
-    @RequestMapping(value="add" )
+    @RequestMapping("add")
     @ResponseBody
     public ResultInfo insert(Finance finance,HttpServletRequest request){
         financeService.insert(finance,request);
@@ -89,7 +89,6 @@ public class FinanceController extends BaseController{
     public ResultInfo deleteBatch(String ids){
         financeService.deleteBatch(ids);
         return success("删除成功");
-
     }
 
 }

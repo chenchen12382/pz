@@ -31,6 +31,13 @@ public class TargetService {
  
 
    public Map<String,Object> selectForPage(TargetQuery query) {
+   	//设置时间
+	   Date month=query.getMonth();
+	   if(month!=null){
+		   query.setStart(DateUtil.getFirstDayOfDate(month));
+		   query.setOver(DateUtil.getLastDayOfDate(month));
+	   }
+
 	   PageList<Target> targets = targetDao.selectForPage(query, query.buildPageBounds());
 		Paginator paginator = targets.getPaginator(); //得到分页对象
 		Map<String, Object> result = new HashMap<>();

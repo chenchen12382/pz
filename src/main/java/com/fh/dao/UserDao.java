@@ -32,7 +32,7 @@ public interface UserDao {
 //			" values (#{userName},#{password},#{trueName},#{email},#{phone},1,now(),now() )")
 //    void add(User user);
 
-	@Update("update t_user set user_name=#{userName},true_name=#{trueName},center=#{center}, " +
+	@Update("update t_user set user_name=#{userName},password=#{password},true_name=#{trueName},center=#{center}, " +
 			" phone=#{phone},update_date=#{updateDate} where id = #{id}")
 	void update(User user);
 

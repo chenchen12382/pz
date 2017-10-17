@@ -171,6 +171,8 @@ public class UserService {
 			AssertUtil.isTrue(userDao.findByPhone(user.getPhone()) != null,"该手机已存在");
 		}
 
+		String password = MD5Util.md5Method(user.getPassword());
+		user.setPassword(password);
 
 //		// 邮箱、手机号唯一验证 TODO
 //		User findByEmail = userDao.findByEmail(user.getEmail());

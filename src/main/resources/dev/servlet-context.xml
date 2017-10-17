@@ -43,7 +43,7 @@
 		<property name="suffix" value=".ftl" />
 		<property name="contentType" value="text/html;charset=UTF-8"/>
 	</bean>
-	
+
 	<!-- 文本转化 -->
 	<mvc:annotation-driven>
 	     <mvc:message-converters>

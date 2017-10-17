@@ -49,13 +49,20 @@ public class ReportCountService {
 
         //计算指标
 //        if(query.getStart()!=null&&query.getOver()!=null){
-            query.setOver(DateUtil.getLastDayOfNow(query.getOver()));
+            query.setOver(DateUtil.getLastDayOfDate(query.getOver()));
 
         //设置target的值
             for(int i=0;i<reportCounts.size();i++){
                 query.setDistrict(reportCounts.get(i).getDistrict());
+                Integer income = reportCounts.get(i).getIncome();
                 Integer targets = reportCountDao.queryTargetByDistrict(query);
                 reportCounts.get(i).setTarget(targets);
+                //转换成浮点数
+                double a = income;
+                double b = targets;
+                double c = a/b*100;
+                Integer discount = (int) c ;
+                reportCounts.get(i).setDiscount(discount);
             }
 
 //        }
@@ -66,7 +73,7 @@ public class ReportCountService {
         Map<String,Object> values = new HashMap<>();
         Integer income = 0;
         Integer target = 0;
-        Integer discount = 0;
+        Integer discounts = 0;
         int count = 0 ;
         for(int i = 0 ; i < reportCounts.size(); i++){
             if(reportCounts.get(i).getIncome()!=null) {
@@ -76,18 +83,18 @@ public class ReportCountService {
                 target += reportCounts.get(i).getTarget();
             }
             if(reportCounts.get(i).getDiscount()!=null) {
-                discount += reportCounts.get(i).getDiscount();
+                discounts += reportCounts.get(i).getDiscount();
                 count++;
             }
 
         }
-        if(discount !=0 ) {
-            discount = discount / count;
+        if(discounts !=0 ) {
+            discounts = discounts / count;
         }
         values.put("district","总计");
         values.put("income",income);
         values.put("target",target);
-        values.put("discount",discount);
+        values.put("discount",discounts);
         footer.add(values);
 
 

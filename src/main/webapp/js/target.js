@@ -1,13 +1,15 @@
 
 //格式化日期
 
-/*
-$(function(){
-var mydate = new Date();
-var t=mydate.Format("yyyy-MM");
-$("#month").text(t);
-$("month").load("Untitled-1.html");
-});*/
+
+// $(function(){
+// var mydate = new Date();
+// var t=mydate.Format("yyyy-MM");
+// $("#month").text(t);
+// $("month").load("Untitled-1.html");
+// });
+
+
 
 //搜索
 function searchTarget() {
@@ -16,7 +18,7 @@ function searchTarget() {
 	 
 	 var data = {	 
 			 district: $("#district").val(),
-			  month: $("#month").val(),
+			  month: $("#month").datebox("getValue"),
 	}
 	$("#dg").datagrid('load', data);
 }

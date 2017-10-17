@@ -12,14 +12,14 @@
             var categories = [];
             var data = [];
             $.ajax({
-                url: '/report_count/yjfx',
+                url: '${ctx}/report_count/yjfx',
                 dataType: 'json',
                 data: {},
                 async: false,
                 success: function(resp) {
                     for (var i = 0; i < resp.district.length; i++) {
                         categories.push(resp.district[i]);
-                        data.push(resp.total[i]);
+                        data.push(resp.total[i]/10000);
                     }
 //                    console.log(JSON.stringify(data));
                 },
@@ -46,13 +46,13 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: '降雨量 (mm)'
+                            text: '总收入 (万元)'
                         }
                     },
                     tooltip: {
                         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} 元</b></td></tr>',
+                        '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
                         footerFormat: '</table>',
                         shared: true,
                         useHTML: true
@@ -64,7 +64,7 @@
                         }
                     },
                     series: [{
-                        name: '收入',
+                        name: '区域总收入',
                         data: data
                     }]
                 });

@@ -1,12 +1,14 @@
 package com.fh.proxy;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.fh.annotation.RequirePermissions;
 import com.fh.base.AssertUtil;
 import com.fh.base.Constant;
-import com.fh.exception.LoginException;
+import com.fh.exception.UnAuthPermissionException;
 import com.fh.model.UserRole;
 import com.fh.service.PermissionService;
 import com.fh.service.UserRoleService;
@@ -15,9 +17,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 
 @Component
@@ -50,18 +52,8 @@ public class PermissionProxy {
 			return pjp.proceed();
 		}
 
-			if (userId == null || userId < 1) {
-				throw new LoginException(201, "请先登录");
-			}
+			AssertUtil.intIsNotEmpty(userId, "请登录");
 
-		
-		
-		// 先从session查询是否存在用户的权限，如果存在就通过
-//		List<String> permissions = (List<String>) request.getSession()
-//				.getAttribute(Constant.USER_PERMISSION_SESSION_KEY);
-//		if (permissions != null && !permissions.isEmpty()) {
-//			return pjp.proceed();
-//		}
 		// 获取用户权限--》先获取角色 --》获取权限
 		List<UserRole> userRoles = userRoleService.findUserRoles(userId);
 		AssertUtil.isTrue(userRoles == null || userRoles.isEmpty(), "您无权访问此系统");
@@ -70,8 +62,19 @@ public class PermissionProxy {
 			roleIds += userRole.getRoleId() + ",";
 		}
 		List<String> permissions = permissionService.findRolePermissions(roleIds.substring(0, roleIds.lastIndexOf(",")));
-//		String permissioFront = request.getParameter("permission"); // 后台权限认证
-//		AssertUtil.isTrue(!permissions.contains(permissioFront), "您无权操作此模块");
+		
+		
+		MethodSignature ms = (MethodSignature) pjp.getSignature();
+		Method method = ms.getMethod();
+		RequirePermissions requirePermissions = method.getAnnotation(RequirePermissions.class);
+		if (requirePermissions != null) {
+			String permission = requirePermissions.permission(); // 后台权限认证
+			if(!permissions.contains(permission)){
+				throw new UnAuthPermissionException(permission, "您无权操作此模块");
+			}
+		}
+		
+		
 		
 		// 将权限存入session
 		request.getSession().setAttribute(Constant.USER_PERMISSION_SESSION_KEY, permissions);

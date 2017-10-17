@@ -39,7 +39,7 @@ public class ReportController extends BaseController {
 		
 	}
 	
-	@RequestMapping("add")
+	@RequestMapping(value = "add")
 	@ResponseBody
 	public ResultInfo insert(Report report,HttpServletRequest request) {
 		reportservice.insert(report,request);
@@ -49,7 +49,7 @@ public class ReportController extends BaseController {
 	@RequestMapping("update")
 	@ResponseBody
 	public ResultInfo update(Report report) {
-	
+
 		reportservice.update(report);
 		return success(Constant.SUCCESS_MSG);
 		

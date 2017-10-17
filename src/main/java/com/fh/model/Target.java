@@ -8,8 +8,8 @@ import com.fh.base.BaseModel;
 public class Target  extends BaseModel{
 	
 	    private String district;//区域
-	    @JsonFormat(pattern="yyyy-MM-dd")
-	    @DateTimeFormat(pattern="yyyy-MM-dd")
+	    @JsonFormat(pattern="yyyy-MM")
+	    @DateTimeFormat(pattern="yyyy-MM")
 	    private Date month;//月份
 	    private String months;
 	    public String getMonths() {
