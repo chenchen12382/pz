@@ -91,4 +91,22 @@ public class FinanceController extends BaseController{
         return success("删除成功");
     }
 
+    //作废单据
+    @RequestMapping("add_agreement")
+    @ResponseBody
+    public ResultInfo addAgreement(HttpServletRequest request,Finance finance){
+        financeService.addAgreement(request,finance);
+        return success("添加成功");
+
+    }
+
+    //作废单据修改
+    @RequestMapping("update_agreement")
+    @ResponseBody
+    public ResultInfo updateAgreement(Finance finance){
+        financeService.updateAgreement(finance);
+        return success("修改成功");
+
+    }
+
 }

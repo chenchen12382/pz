@@ -104,9 +104,9 @@
             <a href="javascript:openTab('区域业绩汇总','report_count/index/1','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">区域业绩汇总</a>
         </#if>
         <#if userPermissions?seq_contains('3040') >
-            <a href="javascript:openTab('业绩分析','report_count/index/2','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">业绩分析</a>
+            <a href="javascript:openTab('区域业绩分析','report_count/index/2','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">区域业绩分析</a>
         </#if>
-            <#--<a href="javascript:openTab('服务归档','customer_serve/index/5','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">服务归档</a>-->
+            <a href="javascript:openTab('中心收入分析','report_count/index/3','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">中心收入分析</a>
         </div>
     </#if>
     <#--	<div title="统计报表"  data-options="iconCls:'icon-tjbb'" style="padding:10px">

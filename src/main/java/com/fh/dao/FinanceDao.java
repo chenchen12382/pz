@@ -4,6 +4,7 @@ import com.fh.dto.FinanceQuery;
 import com.fh.model.Finance;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -37,4 +38,10 @@ public interface FinanceDao {
     Integer findDiscount(FinanceQuery query);
 
     Integer findCount(FinanceQuery query);
+
+    @Insert("INSERT INTO t_finance SET name=#{name},center=#{center},xybh =#{xybh},sjbh=#{sjbh},hybh=#{hybh},is_valid = 1,create_date=now(),update_date=now()")
+    void addAgreement(Finance finance);
+
+    @Update("update t_finance set xybh =#{xybh},sjbh=#{sjbh},hybh=#{hybh} where id = #{id}")
+    void updateAgreement(Finance finance);
 }

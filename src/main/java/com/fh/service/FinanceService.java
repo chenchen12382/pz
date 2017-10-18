@@ -459,4 +459,31 @@ public class FinanceService {
 
         financeDao.deleteBatch(ids);
     }
+
+
+    public void addAgreement(HttpServletRequest request, Finance finance) {
+        //判断是哪个中心
+        String userName = CookieUtil.getCookieValue(request,"userName");
+        //查询中心
+        User user=userDao.findByUserName(userName);
+        AssertUtil.notNull(user,"系统出错，请联系管理员");
+        String center = user.getCenter();
+        finance.setName("作废单据");
+        finance.setCenter(center);
+        financeDao.addAgreement(finance);
+
+    }
+
+    public void updateAgreement(Finance finance) {
+        Integer id = finance.getId();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date createDate=financeDao.findCreateDate(id);
+        String dateFromDB=sdf.format(createDate);
+        String now = sdf.format(new Date());
+        if(!dateFromDB.equals(now)){
+            throw new ParamException("您不能修改不是当天的记录");
+        }
+        financeDao.updateAgreement(finance);
+
+    }
 }

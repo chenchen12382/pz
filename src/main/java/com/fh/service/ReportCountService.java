@@ -1,5 +1,6 @@
 package com.fh.service;
 
+import com.fh.dao.CenterDao;
 import com.fh.dao.DistrictDao;
 import com.fh.dao.ReportCountDao;
 import com.fh.dto.ReportCountQuery;
@@ -22,6 +23,9 @@ public class ReportCountService {
 
     @Autowired
     private DistrictDao districtDao;
+
+    @Autowired
+    private CenterDao centerDao;
 
     public Map<String,Object> selectForPage(ReportCountQuery query) {
 
@@ -133,4 +137,28 @@ public class ReportCountService {
 
 
     }
+
+    public Map<String,Object> selectZxsrfx(ReportCountQuery query) {
+        //查询中心信息
+        List<String> center = centerDao.selectAllCenter();
+        List total = new ArrayList();
+
+        for (int i=0;i<center.size();i++){
+            String  d = center.get(i);
+            Integer count = reportCountDao.findTotalByCenter(d);
+            if(count != null) {
+                total.add(count);
+            }else {
+                total.add(0);
+            }
+        }
+        Map<String,Object> result = new HashMap<>();
+        result.put("center",center);
+        result.put("total",total);
+        return result;
+
+
+    }
+
+
 }

@@ -31,6 +31,8 @@ public class ReportCountController extends BaseController{
                 return "report_count";
             case 2 :
                 return "yjfx";
+            case 3:
+                return "zxsrfx";
         }
 
     }
@@ -51,6 +53,13 @@ public class ReportCountController extends BaseController{
     @ResponseBody
     public Map<String, Object> selectYjfx(ReportCountQuery query){
         Map<String,Object> result = reportCountService.selectYjfx(query);
+        return result;
+    }
+
+    @RequestMapping("zxsrfx")
+    @ResponseBody
+    public Map<String, Object> selectZxsrfx(ReportCountQuery query){
+        Map<String,Object> result = reportCountService.selectZxsrfx(query);
         return result;
     }
 

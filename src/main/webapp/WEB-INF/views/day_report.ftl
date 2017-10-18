@@ -52,7 +52,8 @@
 <#if userPermissions?seq_contains('101003') >
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 </#if>
-
+        	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">作废单据</a>
+        	<a href="javascript:openAgreementModify()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">作废单据修改</a>
 	    </div>
 	    <div>
 	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
@@ -73,10 +74,10 @@
 	        <table cellspacing="8px">
 	            <tr>
 	                <td>协议编号：</td>
-	                <td><input type="text" id="xybh" name="xybh" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
+	                <td><input type="text" id="xybh" name="xybh" class="easyui-numberbox" required="true"/>&nbsp;<font color="red">*</font></td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>收据编号：</td>
-                    <td><input type="text" id="sjbh" name="sjbh" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
+                    <td><input type="text" id="sjbh" name="sjbh" class="easyui-numberbox" required="true"/>&nbsp;<font color="red">*</font></td>
 	                </td>
 	            </tr>
 	            <tr>
@@ -186,6 +187,42 @@
 	        </table>
 	    </form>
 	</div>
+
+
+	<#--弹出框-->
+    <div id="agreementdlg" class="easyui-dialog" style="width:600px;height:250px;padding: 10px 20px"
+         closed="true" buttons="#agreementdlg-buttons">
+
+        <form id="a_fm" method="post">
+            <input type="hidden" id="a_id" name="id" />
+            <table cellspacing="8px">
+
+                <tr>
+                    <td>协议编号：</td>
+                    <td colspan="4"><input type="text" class="easyui-numberbox" id="xybh" name="xybh" style="width: 300px"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                </tr>
+                <tr>
+                    <td>收据编号：</td>
+                    <td colspan="4"><input type="text" class="easyui-numberbox" id="sjbh" name="sjbh" style="width: 300px"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                </tr>
+                <tr>
+                    <td>备注：</td>
+                    <td colspan="4">
+                        <textarea rows="5" cols="50" id="hybh" name="hybh" style="margin: 0px;width: 350px;height: 50px;resize: none;"></textarea>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+	<#--按钮-->
+    <div id="agreementdlg-buttons">
+        <a href="javascript:saveAgreement()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+        <a href="javascript:closeAgreementDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+    </div>
+
+
 	<#--按钮-->
 	<div id="dlg-buttons">
 	    <a href="javascript:saveCustomer()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>

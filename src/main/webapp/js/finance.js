@@ -51,8 +51,8 @@ function formatDiscount(value) {
 function resetValue() {
     
     // $("#dlg").combobox('setValue', 0);
-    $("#xybh").val("");
-    $("#sjbh").val("");
+    $("#xybh").numberbox('setValue',"");
+    $("#sjbh").numberbox('setValue',"");
     $("#hybh").val("");
     $("#o_name").val('');
     // $("#saleClass").combobox('setValue',0);
@@ -119,6 +119,17 @@ function openAddDialog() {
     $("#dlg").dialog('open').dialog('setTitle', "添加营收日报  ");
 }
 
+function openAgreement(){
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if(selectedRows.length != 0){
+        $.messager.alert("系统提示","新增时不能选择记录");
+        return;
+    }
+    $("#agreementdlg").dialog('open').dialog('setTitle', "作废单据  ");
+}
+
+
+
 function openModifyDialog() {
     // form 表单赋值 获取选中行
     var selectedRows = $("#dg").datagrid('getSelections');
@@ -126,10 +137,39 @@ function openModifyDialog() {
         $.messager.alert("系统提示", "只能选择一条进行修改");
         return;
     }
+
     var row = selectedRows[0];
+    if (row.saleClass == null){
+        $.messager.alert("系统提示", "不能作废数据进行修改！");
+        return;
+    }
+
     $("#fm").form('load', row); // form 赋值
     $("#dlg").dialog('open').dialog('setTitle', "修改营收日报");
 }
+
+
+function openAgreementModify() {
+    // form 表单赋值 获取选中行
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length != 1) {
+        $.messager.alert("系统提示", "请选择一条进行修改");
+        return;
+    }
+
+    var row = selectedRows[0];
+    if (row.saleClass != null){
+        $.messager.alert("系统提示", "只能选择作废数据进行修改！");
+        return;
+    }
+
+    $("#a_fm").form('load', row); // form 赋值
+    $("#agreementdlg").dialog('open').dialog('setTitle', "作废单据修改");
+}
+
+
+
+
 
 // 保存
 function saveCustomer() {
@@ -202,6 +242,7 @@ $("#dlg").dialog({
     }
 });
 
+
 // 关闭
 function closeCustomerDialog() {
     resetValue();
@@ -210,3 +251,37 @@ function closeCustomerDialog() {
 
 
 
+// 保存
+function saveAgreement() {
+
+    var url = "add_agreement";
+
+    var id = $("#a_id").val();
+    if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
+        url = "update_agreement";
+    }
+
+    $("#a_fm").form("submit",{
+        url: url, // 相对路径
+        onSubmit: function() {
+            return $(this).form("validate");
+        },
+        success:function(result) {
+            result = JSON.parse(result);
+            if(result.resultCode == 1) {
+                $.messager.alert("系统提示", "保存成功！");
+                closeAgreementDialog();
+                $("#dg").datagrid("reload");
+            }else{
+                $.messager.alert("系统提示",result.resultMessage);
+                return;
+            }
+        }
+    });
+}
+
+
+function closeAgreementDialog() {
+    resetValue();
+    $("#agreementdlg").dialog('close');
+}

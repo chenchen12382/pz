@@ -1,5 +1,6 @@
 package com.fh.dao;
 
+import com.fh.dto.ReportCountQuery;
 import com.fh.model.Center;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
@@ -34,4 +35,7 @@ public interface CenterDao {
 
     @Select("select id,center,district,create_date,update_date from t_center where is_valid=1 order by district  ")
     List<Center> selectCenter();
+
+    @Select("select center from t_center where is_valid = 1")
+    List<String> selectAllCenter();
 }
