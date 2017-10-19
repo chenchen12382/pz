@@ -122,7 +122,8 @@ public class ReportCountService {
         //查询区域总收入
         for (int i=0;i<district.size();i++) {
             String  d = district.get(i);
-            Integer count = reportCountDao.findTotalByDistrict(d);
+            query.setDistrict(d);
+            Integer count = reportCountDao.findTotalByDistrict(query);
             if(count != null) {
                 total.add(count);
             }else {

@@ -20,9 +20,8 @@ public interface ReportCountDao {
 
     Integer queryTargetByDistrict(ReportCountQuery query);
 
-    @Select("select sum(real_money) as total  from t_district t1 LEFT JOIN t_center t2 on t1.district = t2.district " +
-            " LEFT JOIN t_finance t3 on t2.center = t3.center where t1.district = #{district} and t3.is_valid = 1 ")
-    Integer findTotalByDistrict(@Param(value = "district") String district);
+
+    Integer findTotalByDistrict(ReportCountQuery query);
 
     @Select("select SUM(real_money) as count from t_finance where center = #{center} and is_valid = 1 ")
     Integer findTotalByCenter(@Param(value = "center") String center);

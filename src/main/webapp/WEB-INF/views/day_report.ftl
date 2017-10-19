@@ -53,7 +53,7 @@
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 </#if>
         	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">作废单据</a>
-        	<a href="javascript:openAgreementModify()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">作废单据修改</a>
+
 	    </div>
 	    <div>
 	    	&nbsp;客户姓名：&nbsp;<input type="text" id="name" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>

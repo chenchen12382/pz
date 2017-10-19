@@ -4,7 +4,7 @@
     <title>客户关系管理系统</title>
     <script src="${ctx}/highcharts4/jquery-1.8.3.min.js" type="text/javascript"></script>
     <script src="${ctx}/highcharts4/js/highcharts.js" type="text/javascript"></script>
-    <script type="text/javascript" src="${ctx}/js/report.js"></script>
+    <#--<script type="text/javascript" src="${ctx}/js/report.js"></script>-->
     <title>培正信息管理系统</title>
     <script>
 

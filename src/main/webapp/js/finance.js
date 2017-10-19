@@ -119,6 +119,7 @@ function openAddDialog() {
     $("#dlg").dialog('open').dialog('setTitle', "添加营收日报  ");
 }
 
+
 function openAgreement(){
     var selectedRows = $("#dg").datagrid('getSelections');
     if(selectedRows.length != 0){
@@ -140,35 +141,14 @@ function openModifyDialog() {
 
     var row = selectedRows[0];
     if (row.saleClass == null){
-        $.messager.alert("系统提示", "不能作废数据进行修改！");
-        return;
+        $("#a_fm").form('load', row); // form 赋值
+        $("#agreementdlg").dialog('open').dialog('setTitle', "作废单据修改");
+    }else{
+        $("#fm").form('load', row); // form 赋值
+        $("#dlg").dialog('open').dialog('setTitle', "修改营收日报");
     }
 
-    $("#fm").form('load', row); // form 赋值
-    $("#dlg").dialog('open').dialog('setTitle', "修改营收日报");
 }
-
-
-function openAgreementModify() {
-    // form 表单赋值 获取选中行
-    var selectedRows = $("#dg").datagrid('getSelections');
-    if (selectedRows == null || selectedRows.length != 1) {
-        $.messager.alert("系统提示", "请选择一条进行修改");
-        return;
-    }
-
-    var row = selectedRows[0];
-    if (row.saleClass != null){
-        $.messager.alert("系统提示", "只能选择作废数据进行修改！");
-        return;
-    }
-
-    $("#a_fm").form('load', row); // form 赋值
-    $("#agreementdlg").dialog('open').dialog('setTitle', "作废单据修改");
-}
-
-
-
 
 
 // 保存
