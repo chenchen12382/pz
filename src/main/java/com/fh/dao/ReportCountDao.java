@@ -23,6 +23,5 @@ public interface ReportCountDao {
 
     Integer findTotalByDistrict(ReportCountQuery query);
 
-    @Select("select SUM(real_money) as count from t_finance where center = #{center} and is_valid = 1 ")
-    Integer findTotalByCenter(@Param(value = "center") String center);
+    Integer findTotalByCenter(ReportCountQuery query);
 }

@@ -29,16 +29,7 @@ public class ReportCountService {
 
     public Map<String,Object> selectForPage(ReportCountQuery query) {
 
-        if(query.getStart()==null){
-            query.setStart(DateUtil.getFisrtDayOfNow());
-        }else{
-            query.setStart(DateUtil.getFisrtDayOfMonth(query.getStart()));
-        }
-
-
-        if(query.getOver()==null && query.getStart()!=null){
-            query.setOver(new Date());
-        }
+        buildQueryTime(query);
         //查询区域业绩,完成率
         List<ReportCount> reportCounts = new ArrayList<>();
         List<String> district =  reportCountDao.selectAll();
@@ -62,6 +53,10 @@ public class ReportCountService {
                 Integer targets = reportCountDao.queryTargetByDistrict(query);
                 reportCounts.get(i).setTarget(targets);
                 //转换成浮点数
+                if(targets == null){
+                    reportCounts.get(i).setDiscount(0);
+                    continue;
+                }
                 double a = income;
                 double b = targets;
                 double c = a/b*100;
@@ -119,6 +114,16 @@ public class ReportCountService {
         //查询区域信息
         List<String> district = districtDao.findAllDistrict();
         List total = new ArrayList();
+//        if(query.getStart() == null){
+//            query.setStart(DateUtil.getFirstDayOfDate(new Date()));
+//            query.setOver(DateUtil.getLastDayOfDate(new Date()));
+//        }
+//
+//        if(query.getStart() !=null && query.getOver()==null){
+//            query.setOver(new Date());
+//        }
+
+        buildQueryTime(query);
         //查询区域总收入
         for (int i=0;i<district.size();i++) {
             String  d = district.get(i);
@@ -143,10 +148,11 @@ public class ReportCountService {
         //查询中心信息
         List<String> center = centerDao.selectAllCenter();
         List total = new ArrayList();
-
+        buildQueryTime(query);
         for (int i=0;i<center.size();i++){
             String  d = center.get(i);
-            Integer count = reportCountDao.findTotalByCenter(d);
+            query.setCenter(d);
+            Integer count = reportCountDao.findTotalByCenter(query);
             if(count != null) {
                 total.add(count);
             }else {
@@ -160,6 +166,22 @@ public class ReportCountService {
 
 
     }
+
+    /**
+     * 时间判断
+     * @param query
+     */
+    public void buildQueryTime(ReportCountQuery query){
+        if(query.getStart() == null){
+            query.setStart(DateUtil.getFirstDayOfDate(new Date()));
+            query.setOver(DateUtil.getLastDayOfDate(new Date()));
+        }
+
+        if(query.getStart() !=null && query.getOver()==null){
+            query.setOver(new Date());
+        }
+    }
+
 
 
 }

@@ -16,6 +16,8 @@ public class ReportCountQuery extends BaseQuery {
 
     private  String district;  //区域
 
+    private String center; //中心
+
     public Date getStart() {
         return start;
     }
@@ -38,5 +40,13 @@ public class ReportCountQuery extends BaseQuery {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public void setCenter(String center) {
+        this.center = center;
     }
 }

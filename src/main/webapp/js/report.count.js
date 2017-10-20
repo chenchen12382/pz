@@ -10,9 +10,9 @@ function formatDiscount(value){
 
 
 
-function searchCustomer() {
-    var start = $("#start").datebox('getValue');
-    var over = $("#over").datebox('getValue');
+function searchReportCount() {
+    var start = $("#s_start").datebox('getValue');
+    var over = $("#s_over").datebox('getValue');
 
     if(start>over && over!=""){
 

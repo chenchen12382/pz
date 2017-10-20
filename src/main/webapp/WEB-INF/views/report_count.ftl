@@ -22,10 +22,10 @@
 
     <div id="tb">
         <div>
-            &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
-            &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchCustomer()"/>
+            &nbsp;开始时间：&nbsp;<input type="text" id="s_start" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchReportCount()"/>
+            &nbsp;结束时间：&nbsp;<input type="text" id="s_over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchReportCount()"/>
 
-            <a href="javascript:searchCustomer()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+            <a href="javascript:searchReportCount()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 		</div>
 	</div>
 	

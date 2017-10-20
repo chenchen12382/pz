@@ -341,54 +341,74 @@ public class FinanceService {
         if(saleClass.contains("乐博士")){
             //乐博士全天/半天/双语班
 
-            if(saleNum<3){
+            if(saleClass.contains("乐博士晚托班A")){
+
+                if(saleClass.contains("乐博士晚托班A一小时")){
                 classHour = 1;
                 PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
                 makeFinance(finance,priceClasses);
-            }
-            if(saleNum>=3&&saleNum<=6){
-                classHour = 3;
+                }else{
+                    classHour = 2;
+                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+                    makeFinance(finance,priceClasses);
+                }
+            } else if (saleClass.contains("乐博士晚托班B")){
+                classHour = 1;
                 PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
                 makeFinance(finance,priceClasses);
+            }else{
+
+                if(saleNum<3){
+                    classHour = 1;
+                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+                    makeFinance(finance,priceClasses);
+                }
+                if(saleNum>=3&&saleNum<=6){
+                    classHour = 3;
+                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+                    makeFinance(finance,priceClasses);
+                }
+
+                if(saleNum>6){
+                    classHour = 6;
+                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+                    makeFinance(finance,priceClasses);
+                }
+
             }
 
-            if(saleNum>6){
-                classHour = 6;
-                PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-                makeFinance(finance,priceClasses);
-            }
+            //幼小衔接
+            if(saleClass.equals("幼小衔接")){
+                //price,shouldMoney，discount
+                //标准单价  110/天
 
-        }
+                finance.setPrice(110);
 
-        //幼小衔接
-        if(saleClass.equals("幼小衔接")){
-            //price,shouldMoney，discount
-            //标准单价  110/天
+                //销售数量/节
+                int shouldMoney = 110*saleNum;
+                finance.setShouldMoney(shouldMoney);
 
-            finance.setPrice(110);
-
-            //销售数量/节
-            int shouldMoney = 110*saleNum;
-            finance.setShouldMoney(shouldMoney);
-
-            //折扣
-            int realMoney  = finance.getRealMoney();
-            double temp = (double) realMoney /(double) shouldMoney*100;
+                //折扣
+                int realMoney  = finance.getRealMoney();
+                double temp = (double) realMoney /(double) shouldMoney*100;
 //            if((int)temp>=100){
 //                throw new ParamException("实收金额大于标准单价！");
 //            }
 //            if((int)temp<10){
 //                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
 //            }
-            Integer discount = (int)temp;
-            finance.setDiscount(discount);
+                Integer discount = (int)temp;
+                finance.setDiscount(discount);
 
-            if(finance.getProperty().equals("订金")){
-                //设置应收金额为实收金额
-                finance.setShouldMoney(finance.getRealMoney());
-                finance.setDiscount(100);
+                if(finance.getProperty().equals("订金")){
+                    //设置应收金额为实收金额
+                    finance.setShouldMoney(finance.getRealMoney());
+                    finance.setDiscount(100);
+
+                }
 
             }
+
 
 //            financeDao.insert(finance);
 

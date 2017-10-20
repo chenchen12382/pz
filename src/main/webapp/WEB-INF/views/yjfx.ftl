@@ -19,6 +19,12 @@
     <title>培正信息管理系统</title>
     <script>
 
+        $(document).ready(function() {
+            //每隔3秒自动调用方法，实现图表的实时更新
+            window.setInterval(s_time,1000*60*5);
+
+        });
+
         function s_time() {
             var start = $("#start").datebox('getValue');
             var over = $("#over").datebox('getValue');
@@ -65,7 +71,14 @@
                     },
                     xAxis: {
                         categories: categories,
-                        crosshair: true
+                        crosshair: true,
+                        labels : {
+                            style : {
+                                'fontSize' : '18px',
+                                'fontFamily' : '黑体'
+
+                            }
+                        }
                     },
                     yAxis: {
                         min: 0,
@@ -84,15 +97,24 @@
                     plotOptions: {
                         column: {
                             pointPadding: 0.2,
-                            borderWidth: 0
+                            borderWidth: 0,
+                            dataLabels:{
+                                enabled:true, // dataLabels设为true
+                                style:{
+                                    color:'#50B432'
+                                }
+                            }
                         }
                     },
                     series: [{
-                        name: '区域总收入',
+                        name: '区域总收入(万元)',
                         data: data
                     }]
                 });
             });
+
+
+
         }
 
         $(function () {
@@ -139,7 +161,14 @@
                     },
                     xAxis: {
                         categories: categories,
-                        crosshair: true
+                        crosshair: true,
+                        labels : {
+                            style : {
+                                'fontSize' : '18px',
+                                'fontFamily' : '黑体'
+
+                            }
+                        }
                     },
                     yAxis: {
                         min: 0,
@@ -158,11 +187,17 @@
                     plotOptions: {
                         column: {
                             pointPadding: 0.2,
-                            borderWidth: 0
+                            borderWidth: 0,
+                            dataLabels:{
+                                enabled:true, // dataLabels设为true
+                                style:{
+                                    color:'#50B432'
+                                }
+                            }
                         }
                     },
                     series: [{
-                        name: '区域总收入',
+                        name: '区域总收入(万元)',
                         data: data
                     }]
                 });
@@ -179,7 +214,7 @@
     </div>
 </div>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
 
 </body>
 </html>
