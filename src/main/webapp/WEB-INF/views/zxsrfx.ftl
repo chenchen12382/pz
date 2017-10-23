@@ -174,6 +174,9 @@
                             }
                         }
                     },
+                    scrollbar: {
+                        enabled: true
+                    },
                     series: [{
                         name: '中心总收入（千元）',
                         data: data
@@ -190,6 +193,6 @@
         <a class="easyui-linkbutton" iconCls="icon-search" plain="true" type="submit" onclick="s_time()"  >搜索</a>
     </div>
 </div>
-	<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+	<div id="container" style="min-width: 1510px; height: 600px; margin: 0 auto"></div>
 </body>
 </html>

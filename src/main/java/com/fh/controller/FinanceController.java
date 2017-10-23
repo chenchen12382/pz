@@ -86,8 +86,8 @@ public class FinanceController extends BaseController{
 
     @RequestMapping("delete")
     @ResponseBody
-    public ResultInfo deleteBatch(String ids){
-        financeService.deleteBatch(ids);
+    public ResultInfo deleteBatch(String ids,HttpServletRequest request){
+        financeService.deleteBatch(ids,request);
         return success("删除成功");
     }
 

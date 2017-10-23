@@ -32,8 +32,9 @@
 			        <th field="payMode" width="100" align="center" >支付方式</th>
                     <th field="property" width="80" align="center">付款性质</th>
 			        <th field="cardNum" width="100" align="center" >银行卡号</th>
-			        <th field="counselor" width="100" align="center" >顾问</th>
-			        <th field="promotion" width="100" align="center" >促销</th>
+			        <th field="counselor" width="100" align="center" >顾问/老师</th>
+                    <th field="teacher" width="100" align="center" formatter="formatTeacher">职位</th>
+			        <th field="promotion" width="100" align="center" formatter="formatPromotion">促销</th>
 			        <th field="gift"   width="100"  align="center" >赠送课程</th>
                     <th field="source"   width="100"  align="center" >客戶來源</th>
                     <th field="createDate"   width="100"  align="center" >创建时间</th>
@@ -124,7 +125,10 @@
 						&nbsp;<font color="red">*</font>
 					</td>
                       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                      <td>顾问：</td>
+                      <td> <select class="easyui-combobox" id="teacher" name="teacher"  editable="false" panelHeight="auto" >
+                          <option value="0">顾问：</option>
+                          <option value="1">老师：</option>
+                      </select></td>
                       <td><input type="text" id="counselor" name="counselor" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
                       </td>
 				  </tr>

@@ -41,12 +41,25 @@ function formatDiscount(value) {
     }else{
         return null ;
     }
-
-
-
 }
 
+function formatTeacher(value) {
+    if(value==0){
+        return '顾问' ;
+    }else if(value == 1){
+        return '老师' ;
+    }else{
+        return '';
+    }
+}
 
+function formatPromotion(value) {
+    if (value != null) {
+        return "<span title='" + value + "'>" + value + "</span>";
+    }
+    return '';
+
+}
 
 function resetValue() {
     
@@ -60,6 +73,7 @@ function resetValue() {
     $("#saleNum").numberbox('setValue',"");
     $("#realMoney").numberbox('setValue',"");
     $("#unfinishMoney").numberbox('setValue',"");
+    $("#teacher").combobox('setValue',"0");
     $("#payMode").combobox('setValue',"0");
     $("#promotion").val('');
     $("#cardNum").numberbox('setValue',"");

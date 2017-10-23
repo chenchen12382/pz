@@ -52,5 +52,9 @@ public interface UserDao {
 	@Update("update t_user set password = #{password} where id = #{userId}")
     int updatePassword(@Param(value = "userId") Integer userId, @Param(value = "password") String password);
 
+	@Select("SELECT t3.role_name FROM t_user t1 LEFT JOIN t_user_role t2 ON t1.id = t2.user_id LEFT JOIN t_role t3 ON t2.role_id = t3.id " +
+			"WHERE t1.user_name = #{userName}")
+	String findUserRole(@Param("userName") String userName);
+
 //    void insert(User user);
 }

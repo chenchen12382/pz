@@ -39,9 +39,9 @@ public class UserService {
 		// 根据用户名查询用户在验证
 		User user = userDao.findByUserName(userName.trim());
 
-		AssertUtil.notNull(user);
+		AssertUtil.notNull(user,"用户名或密码错误,请重新输入!");
 		if (!MD5Util.md5Method(password).equals(user.getPassword())) {
-			throw new ParamException(103, "用户名或密码错误,请重新输入");
+			throw new ParamException(103, "用户名或密码错误,请重新输入!");
 		}
 		UserLoginIdentity userLoginIdentity = buildLoginIdentity(user);
 		return userLoginIdentity;

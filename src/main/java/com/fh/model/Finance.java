@@ -24,9 +24,10 @@ public class Finance  extends BaseModel{
     private Integer shouldMoney;  //应收金额
     private Integer realMoney;  //实际金额
     private Integer discount; //折扣
+    private Integer teacher;
     private String payMode; //支付方式
     private String property; //付款性质
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date contractTime; //签约时间
     private String cardNum; //银行卡号
@@ -193,5 +194,13 @@ public class Finance  extends BaseModel{
 
     public void setContractTime(Date contractTime) {
         this.contractTime = contractTime;
+    }
+
+    public Integer getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Integer teacher) {
+        this.teacher = teacher;
     }
 }

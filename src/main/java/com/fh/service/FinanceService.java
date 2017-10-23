@@ -88,6 +88,9 @@ public class FinanceService {
     public Map<String,Object> selectCenterList(FinanceQuery query, HttpServletRequest request) {
         //判断是哪个中心
         String userName = CookieUtil.getCookieValue(request,"userName");
+        //管理员
+        String userRole = userDao.findUserRole(userName);
+
         //查询中心
         User user=userDao.findByUserName(userName);
         AssertUtil.notNull(user,"请关闭浏览器重试！");
@@ -95,6 +98,18 @@ public class FinanceService {
         query.setUserCenter(center);
         //时间匹配
         formartTime(query);
+
+
+        if(userRole.equals("系统管理员")){
+            PageList<Finance> finances = financeDao.selectForPage(query,query.buildPageBounds());
+            Paginator paginator = finances.getPaginator();
+            Map<String,Object> result = new HashMap<>();
+            result.put("paginator",paginator);
+            result.put("rows",finances);
+            result.put("total",paginator.getTotalCount());
+            return result;
+
+        }
 
         PageList<Finance> finances = financeDao.selectCenterList(query,query.buildPageBounds());
         Paginator paginator = finances.getPaginator();
@@ -122,106 +137,9 @@ public class FinanceService {
         AssertUtil.notNull(user,"系统出错，请联系管理员");
         String center = user.getCenter();
         finance.setCenter(center);
-
+        //构建日报表信息
         buildFinance(finance);
-
-        //亲子课
-//        if(saleClass.equals("亲子课")){
-//           if(saleNum<=48){
-//               classHour = 48;
-//               PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//               //做计算
-//               makeFinance(finance,priceClasses);
-//
-//           }
-//           if(saleNum>48&&saleNum<=60){
-//               classHour = 60;
-//               PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//               //做计算
-//               makeFinance(finance,priceClasses);
-//
-//           }
-//
-//           if(saleNum>60&&saleNum<=96){
-//               classHour = 96;
-//               PriceClass priceClasses = priceClassDao.findByClassHour(classHour,saleClass);
-//               //做计算
-//               makeFinance(finance,priceClasses);
-//
-//           }
-//
-//           if(saleNum>96){
-//               classHour = 192;
-//               PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//               //做计算
-//               makeFinance(finance,priceClasses);
-//           }
-//
-//
-//        }
-//
-//        //乐博士
-//        if(saleClass.contains("乐博士")){
-//            //乐博士全天/半天/双语班
-//
-//                if(saleNum<3){
-//                    classHour = 1;
-//                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//                    makeFinance(finance,priceClasses);
-//                }
-//                if(saleNum>=3&&saleNum<=6){
-//                    classHour = 3;
-//                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//                    makeFinance(finance,priceClasses);
-//                }
-//
-//                if(saleNum>6){
-//                    classHour = 6;
-//                    PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//                    makeFinance(finance,priceClasses);
-//                }
-//
-//            }
-//
-//            //幼小衔接
-//        if(saleClass.equals("幼小衔接")){
-//            //price,shouldMoney，discount
-//            //标准单价  110/天
-//
-//            finance.setPrice(110);
-//
-//            //销售数量/节
-//            int shouldMoney = 110*saleNum;
-//            finance.setShouldMoney(shouldMoney);
-//
-//            //折扣
-//            int realMoney  = finance.getRealMoney();
-//            double temp = (double) realMoney /(double) shouldMoney*100;
-//            String discount = (int)temp+"折";
-//            finance.setDiscount(discount);
-//
-//            financeDao.insert(finance);
-//
-//        }
-//        //启稚课程
-//        if(saleClass.equals("启稚课程")){
-//            if(saleNum<=3){
-//                classHour=1;
-//                PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-////                int price=priceClasses.getPrice();
-//                makeFinance(finance,priceClasses);
-//            }else if(saleNum>3&&saleNum<6){
-//                classHour=3;
-//                PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//                makeFinance(finance,priceClasses);
-//            }else{
-//                classHour=6;
-//                PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
-//                makeFinance(finance,priceClasses);
-//            }
-//
-//        }
-
+        //添加
         financeDao.insert(finance);
 
     }
@@ -377,42 +295,45 @@ public class FinanceService {
 
             }
 
-            //幼小衔接
-            if(saleClass.equals("幼小衔接")){
-                //price,shouldMoney，discount
-                //标准单价  110/天
+//            financeDao.insert(finance);
 
-                finance.setPrice(110);
+        }
 
-                //销售数量/节
-                int shouldMoney = 110*saleNum;
-                finance.setShouldMoney(shouldMoney);
 
-                //折扣
-                int realMoney  = finance.getRealMoney();
-                double temp = (double) realMoney /(double) shouldMoney*100;
+        //幼小衔接
+        if(saleClass.equals("幼小衔接")){
+            //price,shouldMoney，discount
+            //标准单价  110/天
+
+            finance.setPrice(110);
+
+            //销售数量/节
+            int shouldMoney = 110*saleNum;
+            finance.setShouldMoney(shouldMoney);
+
+            //折扣
+            int realMoney  = finance.getRealMoney();
+            double temp = (double) realMoney /(double) shouldMoney*100;
 //            if((int)temp>=100){
 //                throw new ParamException("实收金额大于标准单价！");
 //            }
 //            if((int)temp<10){
 //                throw new ParamException("输入的应收金额过低, 请检查课时或金额 ! ");
 //            }
-                Integer discount = (int)temp;
-                finance.setDiscount(discount);
+            Integer discount = (int)temp;
+            finance.setDiscount(discount);
 
-                if(finance.getProperty().equals("订金")){
-                    //设置应收金额为实收金额
-                    finance.setShouldMoney(finance.getRealMoney());
-                    finance.setDiscount(100);
-
-                }
+            if(finance.getProperty().equals("订金")){
+                //设置应收金额为实收金额
+                finance.setShouldMoney(finance.getRealMoney());
+                finance.setDiscount(100);
 
             }
 
-
-//            financeDao.insert(finance);
-
         }
+
+
+
         //启稚课程
         if(saleClass.equals("启稚课程")){
             if(saleNum<=3){
@@ -474,9 +395,33 @@ public class FinanceService {
     }
 
 
-    public void deleteBatch(String ids) {
+    public void deleteBatch(String ids, HttpServletRequest request) {
         AssertUtil.isNotEmpty(ids,"请选择记录");
 
+        //判断是哪个中心
+        String userName = CookieUtil.getCookieValue(request,"userName");
+        //管理员
+        String userRole = userDao.findUserRole(userName);
+
+        if(userRole.equals("系统管理员")) {
+
+            financeDao.deleteBatch(ids);
+            return;
+        }
+
+        if(ids.contains(",")){
+                throw new ParamException("只能选择一条数据删除！");
+        }
+        Integer id = Integer.parseInt(ids);
+
+        AssertUtil.intIsNotEmpty(id,"请选择记录进行删除");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date createDate=financeDao.findCreateDate(id);
+        String dateFromDB=sdf.format(createDate);
+        String now = sdf.format(new Date());
+        if(!dateFromDB.equals(now)){
+            throw new ParamException("您不能修改不是当天的记录");
+        }
         financeDao.deleteBatch(ids);
     }
 
