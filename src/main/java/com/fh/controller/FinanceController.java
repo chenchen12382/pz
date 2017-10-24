@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -106,6 +107,14 @@ public class FinanceController extends BaseController{
     public ResultInfo updateAgreement(Finance finance){
         financeService.updateAgreement(finance);
         return success("修改成功");
+
+    }
+
+    //导出excel
+    @RequestMapping("excel")
+    public ResultInfo exportExcel(){
+        financeService.exportExcel();
+        return success("导出成功");
 
     }
 

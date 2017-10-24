@@ -36,6 +36,8 @@ function openModifyDialog() {
     }
     var row = selectedRows[0];
     console.log(row)
+    $("#district").combobox({disabled: true});
+    $("#months").combobox({disabled: true});
     $("#fm").form("load", row);
     $("#dlg").dialog("open").dialog("setTitle","编辑指标内容");
 }

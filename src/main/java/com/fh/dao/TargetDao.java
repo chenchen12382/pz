@@ -25,7 +25,7 @@ public interface TargetDao {
 	            " (#{district},#{month},#{target},1,now(),now())")
 	    void insert(Target target);
 
-	    @Update("update  t_target  set district=#{district},month=#{month},target=#{target},update_date=now() where id= #{id} ")
+	    @Update("update  t_target  set target=#{target},update_date=now() where id= #{id} ")
 	    void update(Target target);
 
 	    @Update("update t_target set is_valid = 0 , update_date=now()  where id in (${ids})")

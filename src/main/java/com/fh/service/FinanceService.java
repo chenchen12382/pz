@@ -12,8 +12,8 @@ import com.fh.model.User;
 import com.fh.util.CookieUtil;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
+import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -451,4 +451,31 @@ public class FinanceService {
         financeDao.updateAgreement(finance);
 
     }
+
+    /**
+     * 导出excel
+     */
+    public void exportExcel() {
+        // 第一步，创建一个workbook，对应一个Excel文件
+        HSSFWorkbook workbook = new HSSFWorkbook();
+
+        // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
+        HSSFSheet hssfSheet = workbook.createSheet("sheet1");
+
+        // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
+
+        HSSFRow hssfRow = hssfSheet.createRow(0);
+
+        // 第四步，创建单元格，并设置值表头 设置表头居中
+        HSSFCellStyle hssfCellStyle = workbook.createCellStyle();
+
+        //居中样式
+
+        hssfCellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        HSSFCell hssfCell = null;
+
+
+
+    }
+
 }
