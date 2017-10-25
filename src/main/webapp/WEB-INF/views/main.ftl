@@ -136,6 +136,7 @@
     <#if userPermissions?seq_contains('9050') >
         <a href="javascript:openTab('区域管理','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">区域管理</a>
     </#if>
+        <a href="javascript:openTab('更新日志','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">更新日志</a>
         <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
             <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
         </div>
