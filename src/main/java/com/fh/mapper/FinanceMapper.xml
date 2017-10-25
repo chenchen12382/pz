@@ -212,5 +212,39 @@
     </select>
 
 
+    <select id="selectForExcel" resultType="finance">
+        select
+        id,center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
+        real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
+        create_date,update_date
+
+        FROM   t_finance
+
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(center)">
+                and center like '%${center}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(saleClass)">
+                and sale_class like '%${saleClass}%'
+            </if>
+            <if test="@Ognl@isNotEmpty(start)">
+                and create_date BETWEEN #{start} AND #{over}
+
+            </if>
+            <if test="@Ognl@isNotEmpty(sPayMode)">
+                and pay_mode = #{sPayMode}
+            </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
+            </if>
+
+
+            order by id DESC
+
+        </where>
+
+    </select>
+
 
 </mapper>

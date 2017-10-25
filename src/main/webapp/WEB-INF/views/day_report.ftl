@@ -63,6 +63,7 @@
             &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
 	    </select>
 	        <a href="javascript:searchDayReport()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+            <#--<a href="javascript:fileDownload()" class="easyui-linkbutton" id="download" iconCls="icon-download" plain="true">导出excel</a>-->
 	    </div>
 	</div>
 	

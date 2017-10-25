@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/15.
@@ -44,4 +45,6 @@ public interface FinanceDao {
 
     @Update("update t_finance set xybh =#{xybh},sjbh=#{sjbh},hybh=#{hybh} where id = #{id}")
     void updateAgreement(Finance finance);
+
+    List<Finance> selectForExcel(FinanceQuery query);
 }

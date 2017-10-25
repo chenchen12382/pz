@@ -124,6 +124,55 @@ function searchFinance() {
 
 }
 
+function post(URL, PARAMS)
+{
+    var temp = document.createElement("form");
+    temp.action = URL;
+    temp.method = "post";
+    temp.style.display = "none";
+    for (var x in PARAMS)
+    {
+        var opt = document.createElement("textarea");
+        opt.name = x;
+        opt.value = PARAMS[x];
+// alert(opt.name)
+        temp.appendChild(opt);
+    }
+    document.body.appendChild(temp);
+    temp.submit();
+    return temp;
+}
+
+
+// 搜索
+function fileDownload() {
+    var saleClass = $("#s_class").val();
+    var start = $("#start").datebox('getValue');
+    var sPayMode = $("#s_payMode").combobox('getValue');
+    var sProperty = $("#s_property").combobox('getValue');
+    var over = $("#over").datebox('getValue');
+    var center = $("#center").val();
+    if(start>over){
+
+        alert("开始时间不能大于结束时间！")
+    }
+    if(sPayMode == 0){
+        sPayMode = null ;
+    }
+
+    if(sProperty == 0){
+        sProperty = null;
+    }
+
+
+    var data = {"saleClass": saleClass,"start":start,"over":over,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
+    $("#dg").datagrid('load', data);
+    post('excel', data);
+    // location.reload();
+
+}
+
+
 function openAddDialog() {
     var selectedRows = $("#dg").datagrid('getSelections');
     if(selectedRows.length != 0){

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
 import java.util.Map;
 
 /**
@@ -112,8 +114,9 @@ public class FinanceController extends BaseController{
 
     //导出excel
     @RequestMapping("excel")
-    public ResultInfo exportExcel(){
-        financeService.exportExcel();
+    @ResponseBody
+    public ResultInfo exportExcel(FinanceQuery query,HttpServletResponse response){
+        financeService.exportExcel(query,response);
         return success("导出成功");
 
     }
