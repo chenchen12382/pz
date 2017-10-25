@@ -33,7 +33,6 @@
 	        <a href="javascript:searchTarget()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>
-	 
 	<#--弹出框-->
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
