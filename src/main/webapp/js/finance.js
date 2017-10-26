@@ -154,7 +154,8 @@ function fileDownload() {
     var center = $("#center").val();
     if(start>over){
 
-        alert("开始时间不能大于结束时间！")
+        alert("开始时间不能大于结束时间！");
+        return;
     }
     if(sPayMode == 0){
         sPayMode = null ;

@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Administrator on 2017/10/25.
  */
-public class ExcelUtil<T> {
+public class ExcelUtil<T>   {
     public void exportExcel(Collection<T> dataset, OutputStream out) {
         exportExcel("测试POI导出EXCEL文档", null, dataset, out, "yyyy-MM-dd");
     }
@@ -45,7 +45,7 @@ public class ExcelUtil<T> {
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyy-MM-dd"
      */
     @SuppressWarnings("unchecked")
-    public void exportExcel(String title, String[] headers,
+    public synchronized void exportExcel(String title, String[] headers,
                             Collection<T> dataset, OutputStream out, String pattern) {
         // 声明一个工作薄
         HSSFWorkbook workbook = new HSSFWorkbook();

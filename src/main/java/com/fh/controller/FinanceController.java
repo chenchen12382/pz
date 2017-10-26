@@ -115,9 +115,9 @@ public class FinanceController extends BaseController{
     //导出excel
     @RequestMapping("excel")
     @ResponseBody
-    public ResultInfo exportExcel(FinanceQuery query,HttpServletResponse response){
+    public void exportExcel(FinanceQuery query,HttpServletResponse response){
         financeService.exportExcel(query,response);
-        return success("导出成功");
+//        return success("导出成功");
 
     }
 

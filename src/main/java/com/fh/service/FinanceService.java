@@ -467,15 +467,19 @@ public class FinanceService {
         String title = "营收日报表";
         ExcelUtil<Finance> ex = new ExcelUtil<>();
         String[] headers =
-                {"学号", "姓名", "年龄", "性别", "出生日期"};
+                {"协议编号", "中心", "收据编号", "会员编号", "会员姓名","销售课程","销售数量","协议签订类型","价格","应收金额","实际金额","折扣","顾问0、教师/1","支付方式",
+                        "付款性质","签约时间","银行卡号","顾问姓名","促销/备注","赠送课程","来源",};
 
         List<Finance> finances = financeDao.selectForExcel(query);
         OutputStream out = null;
         try {
             out = response.getOutputStream();
-            String fileName=new String(("pz"+ new SimpleDateFormat("yyyy-MM-dd").format(new Date())).getBytes(),"UTF-8");
+            String time=System.currentTimeMillis()+"";
+
+            String fileName=new String("pz"+ time);
             response.setHeader("Content-disposition", "attachment; filename=" + fileName + ".xls");
             ex.exportExcel(headers,finances,out);
+            out.flush();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

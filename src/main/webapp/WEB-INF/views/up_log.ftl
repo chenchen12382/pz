@@ -28,25 +28,24 @@
 	</div>
 	
 	<#--弹出框-->
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:600px;height:250px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
-	
-	    <form id="fm" method="post">
-	        <table>
-	        	<input type="hidden" id="id" name="id"/>
-	            <tr>
-	                <td>标题：</td>
-	                <td ><input type="text" id="title" name="title" style="width: 100px"/></td>
-	            </tr>   
-	           
-	            <tr>
-	               <td>日志信息：</td>
-                    <td>
-                       <td><input type="text" id="log" name="log" style="width: 100px"/></td>
-	                </td>
-	            </tr>
-	        </table>
-	    </form>
+
+        <form id="fm" method="post">
+            <table cellspacing="8px">
+                <input type="hidden" id="id" name="id" />
+                <tr>
+                    <td>角色名称：</td>
+                    <td colspan="4"><input type="text" id="roleName" name="roleName" style="width: 420px"/></td>
+                </tr>
+                <tr>
+                    <td>角色描述：</td>
+                    <td colspan="4">
+                        <textarea rows="5" cols="50" id="roleRemark" name="roleRemark" style="margin: 0px;width: 421px;height: 75px;resize: none;"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
 	</div>	
 	<#--弹出框按钮-->
 	<div id="dlg-buttons">

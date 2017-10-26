@@ -1,9 +1,11 @@
 package com.fh.model;
 
+import com.fh.base.BaseModel;
+
 /**
  * Created by Administrator on 2017/10/25.
  */
-public class upLog {
+public class UpLog extends BaseModel{
     private String title;
     private String log;
 
