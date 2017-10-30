@@ -43,14 +43,14 @@ public class ReportService {
 	}
 
 	public void insert(Report report, HttpServletRequest request) {
-		AssertUtil.intIsNotEmpty(report.getSubscribePeople(), "预订人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getArrivePeople(), "到达人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
-		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
-		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
-		if(report.getNewOrder()+report.getOldOrder()!=report.getOrderPeople()){
-			throw new ParamException("总订单数为新订单和续约订单之和");
-		}
+//		AssertUtil.intIsNotEmpty(report.getSubscribePeople(), "预订人数不能为空");
+//		AssertUtil.intIsNotEmpty(report.getArrivePeople(), "到达人数不能为空");
+//		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
+//		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
+//		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
+//		if(report.getNewOrder()+report.getOldOrder()!=report.getOrderPeople()){
+//			throw new ParamException("总订单数为新订单和续约订单之和");
+//		}
 		String name= CookieUtil.getCookieValue(request,"realName");
 		report.setName(name);
 		
@@ -63,11 +63,11 @@ public class ReportService {
 	 * @param report
 	 */
 	public void update(Report report) {
-		AssertUtil.intIsNotEmpty(report.getSubscribePeople(), "预订人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getArrivePeople(), "到达人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
-		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
-		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
+//		AssertUtil.intIsNotEmpty(report.getSubscribePeople(), "预订人数不能为空");
+//		AssertUtil.intIsNotEmpty(report.getArrivePeople(), "到达人数不能为空");
+//		AssertUtil.intIsNotEmpty(report.getOrderPeople(), "总订单不能为空");
+//		AssertUtil.intIsNotEmpty(report.getNewOrder(), "新订单不能为空");
+//		AssertUtil.intIsNotEmpty(report.getOldOrder(), "续约订单不能为空");
 		reportDao.update(report);
 		
 	}

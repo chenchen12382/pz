@@ -12,6 +12,7 @@ import com.fh.exception.UnAuthPermissionException;
 import com.fh.model.UserRole;
 import com.fh.service.PermissionService;
 import com.fh.service.UserRoleService;
+import com.fh.util.CookieUtil;
 import com.fh.util.LoginUserUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -19,6 +20,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.stereotype.Component;
 
 
@@ -78,6 +80,9 @@ public class PermissionProxy {
 		
 		// 将权限存入session
 		request.getSession().setAttribute(Constant.USER_PERMISSION_SESSION_KEY, permissions);
+		//讲角色Id存入session
+		Integer roleId = userRoles.get(0).getRoleId();
+		request.getSession().setAttribute(Constant.ROLE_SESSION_KEY,roleId);
 		// 执行代码
 		Object result = pjp.proceed();
 		return result;

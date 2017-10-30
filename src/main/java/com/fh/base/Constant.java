@@ -7,4 +7,5 @@ public class Constant {
 	public static final String SUCCESS_MSG = "操作成功";
 	
 	public static final String USER_PERMISSION_SESSION_KEY = "userPermissions";
+	public static final String ROLE_SESSION_KEY = "roleId";
 }

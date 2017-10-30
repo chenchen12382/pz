@@ -4,41 +4,42 @@
 
    <#include "include/common.header.ftl" >
     <script type="text/javascript" src="${ctx}/js/main.js"></script>
-    <script type="text/javascript">
-	  function setDateTime() {
-		var date = new Date();
-		var day = date.getDay();
-		var week;
-		switch (day) {
-		case 0:
-			week = "星期日";
-			break;
-		case 1:
-			week = "星期一";
-			break;
-		case 2:
-			week = "星期二";
-			break;
-		case 3:
-			week = "星期三";
-			break;
-		case 4:
-			week = "星期四";
-			break;
-		case 5:
-			week = "星期五";
-			break;
-		case 6:
-			week = "星期六";
-			break;
-		}
-	var today = date.getFullYear() + "年" + (date.getMonth() + 1) + "月"
-				+ date.getDate() + "日  " + week + " " + date.getHours() + ":"
-				+ date.getMinutes() + ":" + date.getSeconds();
-		document.getElementById("today").innerHTML = today;
-	}
-	  window.setInterval("setDateTime()", 1000);
-</script>
+       <link rel="stylesheet" href="${ctx}/ztree/css/zTreeStyle.css" type="text/css">
+       <#--<script type="text/javascript" src="${ctx}/ztree/js/jquery-1.4.4.min.js"></script>-->
+       <script type="text/javascript" src="${ctx}/ztree/js/jquery.ztree.core.js"></script>
+       <script type="text/javascript" src="${ctx}/ztree/js/jquery.ztree.excheck.js"></script>
+
+
+    <script>
+        var setting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes =[
+            { id:1, pId:0, name:"展开、折叠 自定义图标不同", open:true, iconOpen:"../../../css/zTreeStyle/img/diy/1_open.png", iconClose:"../../../css/zTreeStyle/img/diy/1_close.png"},
+            { id:11, pId:1, name:"叶子节点1", icon:"../../../css/zTreeStyle/img/diy/2.png"},
+            { id:12, pId:1, name:"叶子节点2", icon:"../../../css/zTreeStyle/img/diy/3.png"},
+            { id:13, pId:1, name:"叶子节点3", icon:"../../../css/zTreeStyle/img/diy/5.png"},
+            { id:2, pId:0, name:"展开、折叠 自定义图标相同", open:true, icon:"../../../css/zTreeStyle/img/diy/4.png"},
+            { id:21, pId:2, name:"叶子节点1", icon:"../../../css/zTreeStyle/img/diy/6.png"},
+            { id:22, pId:2, name:"叶子节点2", icon:"../../../css/zTreeStyle/img/diy/7.png"},
+            { id:23, pId:2, name:"叶子节点3", icon:"../../../css/zTreeStyle/img/diy/8.png"},
+            { id:3, pId:0, name:"不使用自定义图标", open:true },
+            { id:31, pId:3, name:"叶子节点1"},
+            { id:32, pId:3, name:"叶子节点2"},
+            { id:33, pId:3, name:"叶子节点3"}
+
+        ];
+
+        $(document).ready(function() {
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+
+    </script>
 </head>
 <body class="easyui-layout">
 <div region="north" style="height: 78px;background-color: #E0ECFF;overflow: hidden;">
@@ -67,9 +68,13 @@
 </div>
 <div region="west" style="width: 200px" title="导航菜单" split="true">
     <div class="easyui-accordion" data-options="fit:true,border:false">
+
         
         <#if userPermissions?seq_contains('10') >
         	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+                <div class="zTreeDemoBackground left">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
             <#if userPermissions?seq_contains('1010') >
                 <a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>
             </#if>
@@ -177,4 +182,39 @@
 </div>
 
 </body>
+<script type="text/javascript">
+    function setDateTime() {
+        var date = new Date();
+        var day = date.getDay();
+        var week;
+        switch (day) {
+            case 0:
+                week = "星期日";
+                break;
+            case 1:
+                week = "星期一";
+                break;
+            case 2:
+                week = "星期二";
+                break;
+            case 3:
+                week = "星期三";
+                break;
+            case 4:
+                week = "星期四";
+                break;
+            case 5:
+                week = "星期五";
+                break;
+            case 6:
+                week = "星期六";
+                break;
+        }
+        var today = date.getFullYear() + "年" + (date.getMonth() + 1) + "月"
+                + date.getDate() + "日  " + week + " " + date.getHours() + ":"
+                + date.getMinutes() + ":" + date.getSeconds();
+        document.getElementById("today").innerHTML = today;
+    }
+    window.setInterval("setDateTime()", 1000);
+</script>
 </html>
