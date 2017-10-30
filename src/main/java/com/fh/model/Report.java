@@ -9,103 +9,97 @@ import com.fh.base.BaseModel;
  */
 public class Report extends BaseModel{
 
-	private String name;
-	private String mail;
-	private String phone;
-	private String center;
-	private Integer subscribePeople; // 预定人数
-	private Integer arrivePeople;  //实际人数
-	private Integer orderPeople;   // 下单人数
-	private Integer newOrder;   // 新增订单
-	private Integer oldOrder;   // 续约订单
-	private Integer oneDayMoney;  //一天收入
-	private Integer hopeMoney;   //预定收入
-	private Integer difference;   //差别
-	private String marks;       //备注
-	
-	
-	
+	private String name;  //顾问姓名
+	private String phone_num; //电话量
+	private String center;  // 中心
+	private Integer plan_num; // 邀约量
+	private Integer arrive_num;  //到访量
+	private Integer in_num;   // 接待人数
+	private Integer source;   // 来源
+	private Integer order_num;   // 下单人数
+	private Integer money;  //收入金额
+	private Integer analysis;   //未报名分析
+//	private Integer difference;   //差别
+//	private String marks;       //备注
+
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMail() {
-		return mail;
+
+	public String getPhone_num() {
+		return phone_num;
 	}
-	public void setMail(String mail) {
-		this.mail = mail;
+
+	public void setPhone_num(String phone_num) {
+		this.phone_num = phone_num;
 	}
-	
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+
 	public String getCenter() {
 		return center;
 	}
+
 	public void setCenter(String center) {
 		this.center = center;
 	}
-	
-	public Integer getSubscribePeople() {
-		return subscribePeople;
+
+	public Integer getPlan_num() {
+		return plan_num;
 	}
-	public void setSubscribePeople(Integer subscribePeople) {
-		this.subscribePeople = subscribePeople;
+
+	public void setPlan_num(Integer plan_num) {
+		this.plan_num = plan_num;
 	}
-	public Integer getArrivePeople() {
-		return arrivePeople;
+
+	public Integer getArrive_num() {
+		return arrive_num;
 	}
-	public void setArrivePeople(Integer arrivePeople) {
-		this.arrivePeople = arrivePeople;
+
+	public void setArrive_num(Integer arrive_num) {
+		this.arrive_num = arrive_num;
 	}
-	public Integer getOrderPeople() {
-		return orderPeople;
+
+	public Integer getIn_num() {
+		return in_num;
 	}
-	public void setOrderPeople(Integer orderPeople) {
-		this.orderPeople = orderPeople;
+
+	public void setIn_num(Integer in_num) {
+		this.in_num = in_num;
 	}
-	public Integer getNewOrder() {
-		return newOrder;
+
+	public Integer getSource() {
+		return source;
 	}
-	public void setNewOrder(Integer newOrder) {
-		this.newOrder = newOrder;
+
+	public void setSource(Integer source) {
+		this.source = source;
 	}
-	public Integer getOldOrder() {
-		return oldOrder;
+
+	public Integer getOrder_num() {
+		return order_num;
 	}
-	public void setOldOrder(Integer oldOrder) {
-		this.oldOrder = oldOrder;
+
+	public void setOrder_num(Integer order_num) {
+		this.order_num = order_num;
 	}
-	
-	public Integer getHopeMoney() {
-		return hopeMoney;
+
+	public Integer getMoney() {
+		return money;
 	}
-	public void setHopeMoney(Integer hopeMoney) {
-		this.hopeMoney = hopeMoney;
+
+	public void setMoney(Integer money) {
+		this.money = money;
 	}
-	
-	public String getMarks() {
-		return marks;
+
+	public Integer getAnalysis() {
+		return analysis;
 	}
-	public void setMarks(String marks) {
-		this.marks = marks;
+
+	public void setAnalysis(Integer analysis) {
+		this.analysis = analysis;
 	}
-	public Integer getOneDayMoney() {
-		return oneDayMoney;
-	}
-	public void setOneDayMoney(Integer oneDayMoney) {
-		this.oneDayMoney = oneDayMoney;
-	}
-	public Integer getDifference() {
-		return difference;
-	}
-	public void setDifference(Integer difference) {
-		this.difference = difference;
-	}
-	
 }

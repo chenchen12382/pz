@@ -48,7 +48,7 @@ public class PermissionProxy {
 		// 用户是否登录
 		Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
 		String uri = request.getRequestURI();
-		if ("/index".equals(uri) || "/user/login".equals(uri)||"/authCode/code".equals(uri)) { // 放行
+		if ("/index".equals(uri) || "/user/login".equals(uri)||"/authCode/code".equals(uri)|| "/test".equals(uri)) { // 放行
 			return pjp.proceed();
 		}
 
