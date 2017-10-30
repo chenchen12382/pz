@@ -12,9 +12,9 @@
 // 搜索
 function searchProgress() {
 	var data = {
-			center: $("#s_center").val(),
+			center: $("#center").val(),
 //			centerName: $("#s_centerName").val(),
-			name: $("#s_createMan").val()
+			name: $("#name").val()
 //			state:$("#s_state").combobox('getValue')
 	}
 	$("#dg").datagrid('load', data);
@@ -49,30 +49,28 @@ function saveReport() {
 	}
 //    var customerName = $('#customerId').combobox('getText');
     var center = $('#center').val();
-    var subscribePeople = $('#subscribePeople').val();
-    var arrivePeople = $('#arrivePeople').val();
-    var orderPeople = $('#orderPeople').val();
-    var newOrder = $('#newOrder').val();
-    var oldOrder = $('#oldOrder').val();
+    var plan_num = $('#plan_num').val();
+    var arrive_num = $('#arrive_num').val();
+    var in_num = $('#in_num').val();
+    var order_num = $('#order_num').val();
+    
     
     if (isEmpty(center)) {
     	$.messager.alert("系统提示","请选择中心！");
     }
-    if (isEmpty(subscribePeople)) {
-    	$.messager.alert("系统提示","请填写预定人数！");
+    if (isEmpty(plan_num)) {
+    	$.messager.alert("系统提示","请填写邀约人数！");
     }
-    if (isEmpty(arrivePeople)) {
+    if (isEmpty(arrive_num)) {
     	$.messager.alert("系统提示","请填写实际人数！");
     }
-    if (isEmpty(orderPeople)) {
+    if (isEmpty(order_num)) {
     	$.messager.alert("系统提示","请填写下单人数！");
     }
-    if (isEmpty(newOrder)) {
-    	$.messager.alert("系统提示","请填写新订单个数！");
+    if (isEmpty(in_num)) {
+    	$.messager.alert("系统提示","请填写到访人数！");
     }
-    if (isEmpty(oldOrder)) {
-    	$.messager.alert("系统提示","请填写续约人数！");
-    }
+   
     
 //    $("#customerName").val(customerName);
     $("#fm").form("submit",{
@@ -131,17 +129,15 @@ function deleteReport() {
 
 // 重置
 function resetValue(){
-	$("#center").val("");
-    $("#phone").val("");
-    $("#subscribePeople").numberbox('setValue',"");
-    $("#arrivePeople").numberbox('setValue',"");
-    $("#orderPeople").numberbox('setValue',"");
-    $("#newOrder").numberbox('setValue',"");
-    $("#oldOrder").numberbox('setValue',"");
-    $("#oneDayMoney").numberbox('setValue',"");
-    $("#hopeMoney").numberbox('setValue',"");
-    $("#marks").val("");
-    $("#id").val("");
+	//$("#center").val("");
+    $("#phone_num").val("");
+    $("#plan_num").numberbox('setValue',"");
+    $("#arrive_num").numberbox('setValue',"");
+    $("#in_num").numberbox('setValue',"");
+    $("#order_num").numberbox('setValue',"");
+    $("#money").numberbox('setValue',"");
+    $("#analysis").numberbox('setValue',"");
+    
 }
 
 // 关闭弹出框

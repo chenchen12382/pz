@@ -14,16 +14,16 @@ public interface ReportDao {
 	PageList<Report> selectForPage(ReportQuery query, PageBounds buildPageBounds);
 	
 	
-	@Insert("insert into tb_reportforms (name,phone,center,subscribe_people,arrive_people, "
-			+ " order_people,new_order,old_order,one_day_money,hope_money,marks,is_valid,create_date,update_date) "
-			+ " values (#{name},#{phone},#{center},#{subscribePeople},#{arrivePeople}, "
-			+ " #{orderPeople},#{newOrder},#{oldOrder},#{oneDayMoney},#{hopeMoney},#{marks},1,now(),now()) ")
+	@Insert("insert into tb_reportforms (name,phone_num,center,plan_num,arrive_num, "
+			+ " in_num,source,order_num,money,analysis) "
+			+ " values (#{name},#{phone_num},#{center},#{plan_num},#{arrive_num}, "
+			+ " #{in_num},#{source},#{order_num},#{money},#{analysis},1,now(),now()) ")
 	void insert(Report report);
 
 	
-	@Update("update tb_reportforms set phone=#{phone}, center=#{center},subscribe_people=#{subscribePeople}, "
-			+ "  arrive_people=#{arrivePeople},order_people=#{orderPeople},new_order=#{newOrder},"
-			+ " old_order=#{oldOrder},one_day_money=#{oneDayMoney},hope_money=#{hopeMoney},marks=#{marks},update_date=now() where id = #{id} ")
+	@Update("update tb_reportforms set name=#{name} phone_num=#{phone_num}, center=#{center},plan_num=#{plan_num}, "
+			+ "  arrive_num=#{arrive_num},in_num=#{in_num},source=#{source},"
+			+ " order_num=#{order_num},money=#{money},analysis=#{analysis},update_date=now() where id = #{id} ")
 	void update(Report report);
 
 	@Update("update tb_reportforms set is_valid=0,update_date=now() where id in (${ids})")

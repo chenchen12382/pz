@@ -11,18 +11,16 @@
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
-	        <th field="name" width="100" align="center"  >创建人</th>
+	        <th field="name" width="100" align="center"  >顾问</th>
 	        <th field="center" width="100" align="center" >中心</th>
-	   <#--   <th field="centerName" width="100" align="center">中心名称</th>  -->
-	        <th field="phone" width="100" align="center" >电话</th>
-	        <th field="subscribePeople" width="200" align="center">预定人数</th>
-	        <th field="arrivePeople" width="100" align="center">实际人数</th>
-	        <th field="orderPeople" width="100" align="center">下单人数</th>
-	        <th field="newOrder" width="200" align="center" >新增订单</th>
-	        <th field="oldOrder" width="100" align="center">续约订单</th>
-	        <th field="oneDayMoney" width="200" align="center" >当天收入</th>
-	        <th field="hopeMoney" width="200" align="center" >预定收入</th>
-	        <th field="marks" width="200" align="center" >备注</th>
+	        <th field="phone_num" width="100" align="center" >电话量</th>
+	        <th field="arrive_num" width="200" align="center">到访人数</th>
+	        <th field="in_num" width="100" align="center">实际人数</th>
+	        <th field="order_num" width="200" align="center" >下单人数</th>
+	        <th field="source" width="100" align="center">来源</th> 
+	        <th field="money" width="100" align="center">收入金额</th>
+	        <th field="analysis" width="200" align="center" >未报名分析</th>
+	       <#-- <th field="marks" width="200" align="center" >备注</th>-->
 	    </tr>
 	    </thead>
 	</table>
@@ -34,9 +32,9 @@
 	        	<a href="javascript:deleteReport()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    </div>
 	    <div>
-	        &nbsp;中心：&nbsp;<input type="text" id="s_center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
+	        &nbsp;中心：&nbsp;<input type="text" id="center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
 	     <#--   &nbsp;中心名称：&nbsp;<input type="text" id="s_centerName" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>  -->
-	        &nbsp;创建人：&nbsp;<input type="text" id="s_createMan" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
+	        &nbsp;顾问：&nbsp;<input type="text" id="name" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
 	     <#--   &nbsp;分配状态：&nbsp;<select class="easyui-combobox" id="s_state" editable="false" panelHeight="auto" >
 	        <option value="">请选择...</option>
 	        <option value="0">未分配</option>
@@ -47,71 +45,81 @@
 	</div>
 	
 	<#--弹出框-->
-	<div id="dlg" class="easyui-dialog" style="width:620px;height:450px;padding: 10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:620px;height:300px;padding: 10px 20px"
          closed="true" buttons="#dlg-buttons">
 
         <form id="fm" method="post">
             <input type="hidden" name="id" id="id" />
             <table cellspacing="8px">
-                <tr>
+             <tr>
+                    <td>顾问：</td>
+                   <td>
+                        <input type="text" id="name" name="name" class="easyui-validatebox" required="true"/>&nbsp;
+                        <font color="red">*</font>
+                   </td>
+              
                     <td>中心：</td>
-                    <td>
+                   <td>
                         <input type="text" id="center" name="center" class="easyui-validatebox" required="true"/>&nbsp;
                         <font color="red">*</font>
                     </td>
+                </tr>
+                <tr>
                     <td>电话：</td>
                     <td>
-                        <input type="text" id="phone" name="phone" />
+                        <input type="text" id="phone_num" name="phone_num" />
                     </td>
-                </tr>
-                <tr>
-                    <td>预定人数：</td>
-                    <td>
-                        <input type="text" id="subscribePeople" name="subscribePeople" class="easyui-numberbox" required="true"/>&nbsp;
+           
+                    <td>到访人数：</td>
+                   <td>
+                        <input type="text" id="arrive_num" name="arrive_num" class="easyui-numberbox" required="true"/>&nbsp;
                         <font color="red">*</font>
                     </td>
+                  </tr>  
+                   <tr>
                     <td>实际人数：</td>
                     <td>
-                        <input type="text" id="arrivePeople" name="arrivePeople" class="easyui-numberbox" required="true"/>&nbsp;
+                        <input type="text" id="in_num" name="in_num" class="easyui-numberbox" required="true"/>&nbsp;
                         <font color="red">*</font>
                     </td>
-                </tr>
-                <tr id="parentIdDiv">
+              
                     <td>下单人数</td>
-                    <td colspan="4"><input type="text" id="orderPeople" name="orderPeople" class="easyui-numberbox" style="width: 420px"/>
+                    <td><input type="text" id="order_num" name="order_num" class="easyui-numberbox"/>
                     <font color="red">*</font>
                     </td>
+                 </tr>
+                 <tr>
+                    <td>金额：</td>
+                    <td>
+                        <input type="text" id="money" name="money" class="easyui-numberbox" required="true"/>&nbsp;
+                    </td>
+                    <td>来源：</td>
+                    <td>
+                      <select class="easyui-combobox" id="source" name="source"  editable="false" panelHeight="auto" >
+                           <option value="0">请选择...</option>
+                           <option value="walk in">walk in</option>
+                           <option value="地推">地推</option>
+                           <option value="陌call">陌call</option>
+                           <option value="转介绍">转介绍</option>
+                           <option value="大众点评">大众点评</option>
+                           <option value="肄业">肄业</option>
+                           <option value="转中心">转中心</option>
+                           <option value="市推">市推</option>
+                           <option value="续费">续费</option>
+                       </select>&nbsp;<font color="red">*</font>          
+                </tr>
+               
+                    <td>未报名分析：</td>
                     
-                </tr>
-                <tr>
-                    <td>新增订单：</td>
-                    <td>
-                        <input type="text" id="newOrder" name="newOrder" class="easyui-numberbox" required="true"/>&nbsp;
-                        <font color="red">*</font>
+                     <td colspan="4">
+                        <textarea rows="5" cols="50" id="analysis" name="analysis" style="margin: 0px;width: 401px;height: 38px;resize: none;"></textarea>
                     </td>
 
-                    <td>续约订单：</td>
-                    <td>
-                        <input type="text" id="oldOrder" name="oldOrder" class="easyui-numberbox" required="true"/>&nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>当天收入：</td>
-                    <td>
-                        <input type="text" id="oneDayMoney" name="oneDayMoney" class="easyui-numberbox" required="true"/>&nbsp;
-                        <font color="red">*</font>
-                    </td>
-
-                    <td>预定收入：</td>
-                    <td>
-                        <input type="text" id="hopeMoney" name="hopeMoney" class="easyui-numberbox" required="true"/>&nbsp;
-                    </td>
-                </tr>
-                <tr id="parentIdDiv">
+                <#--   
                     <td>备注</td>
                     <td colspan="4">
 	                    <textarea rows="5" cols="50" id="marks" name="marks" style="margin: 0px;width: 421px;height: 75px;resize: none;"></textarea>
-	                </td>
+	                </td>   -->
                 </tr>
             </table>
         </form>
