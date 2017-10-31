@@ -34,6 +34,66 @@ $(document).ready(function() {
     });
 })
 
+function uploadFiles() {
+    $("#fm").ajaxSubmit({
+        type: "POST",
+        url:"uploadImg",
+        dataType: "json",
+        success: function(result){
+            // result = JSON.parse(result);
+            if(result.resultCode == 1) {
+                 $.messager.alert("系统提示", "文件上传成功！");
+                // closeCustomerDialog();
+                // $("#dg").datagrid("reload");
+                $("#src").val(result.result);
+            }else{
+                $.messager.alert("系统提示",result.resultMessage);
+                return;
+            }
+        }
+    });
+}
+
+function formatImg(value) {
+    if (value != null) {
+        alert("<img src='"+value+"' />");
+        return "<img src='"+value+"' />"
+    }
+    return '';
+
+}
+
+// //图片添加路径
+// function imgFormatter(value,row,index){
+//     if('' != value && null != value){
+//         var strs = new Array(); //定义一数组
+//         if(value.substr(value.length-1,1)==","){
+//             value=value.substr(0,value.length-1)
+//         }
+//         strs = value.split(","); //字符分割
+//         var rvalue ="";
+//         for (var i=0;i<strs.length ;i++ ){
+//             rvalue += "<img onclick=download(\""+strs[i]+"\") style='width:66px; height:60px;margin-left:3px;' src='<%=path%>" + strs[i] + "' title='点击查看图片'/>";
+//         }
+//         return  rvalue;
+//     }
+// }
+//
+// //这里需要自己定义一个div   来创建一个easyui的弹窗展示图片
+// function download(img){
+//     var simg =  "http://....com/"+ img;
+//     $('#dlg').dialog({
+//         title: '预览',
+//         width: 600,
+//         height:750,
+//         resizable:true,
+//         closed: false,
+//         cache: false,
+//         modal: true
+//     });
+//     $("#simg").attr("src",simg);
+//
+// }
 
 function formatDiscount(value) {
     if(value!=null){
@@ -83,6 +143,7 @@ function resetValue() {
     $("#contractTime").datebox('setValue',"");
     $("input[name='agreement'][value='新签']").attr("checked",true);
     $("input[name='property'][value='全款']").attr("checked",true);
+    $("#src").val("");
 
 }
 
@@ -193,6 +254,23 @@ function openAgreement(){
     $("#agreementdlg").dialog('open').dialog('setTitle', "作废单据  ");
 }
 
+
+function showImg() {
+
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length < 1) {
+        $.messager.alert("系统提示", "请选择一列查看图片");
+        return;
+    }
+    if (selectedRows.length>1){
+        $.messager.alert("系统提示", "只能选择一列");
+    }
+    var src=selectedRows[0].src;
+
+    return "<img src='"+src+"' />";
+
+
+}
 
 
 function openModifyDialog() {

@@ -15,7 +15,7 @@
     <select id="selectForPage" resultType="finance">
         select
         id,center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-        real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
+        real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,src,
         create_date,update_date
 
         FROM   t_finance
@@ -81,11 +81,11 @@
     <insert id="insert" >
         INSERT into t_finance (
         center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-   real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,is_valid,
+   real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,src,is_valid,
   create_date,update_date)
   values (
       #{center}, #{xybh},#{sjbh},#{hybh},#{name},#{saleClass},#{saleNum},#{agreement},#{price},#{shouldMoney},
-    #{realMoney},#{discount},#{teacher},#{payMode},#{property},#{contractTime},#{cardNum},#{counselor},#{promotion},#{gift},#{source},1,
+    #{realMoney},#{discount},#{teacher},#{payMode},#{property},#{contractTime},#{cardNum},#{counselor},#{promotion},#{gift},#{source},#{src},1,
   now(),now() )
 
 
@@ -108,14 +108,15 @@
         update t_finance SET
         xybh=#{xybh},sjbh=#{sjbh},hybh=#{hybh},name=#{name},sale_class=#{saleClass},sale_num=#{saleNum},
         agreement=#{agreement},real_money=#{realMoney},discount=#{discount},pay_mode=#{payMode},property=#{property},contract_time=#{contractTime},
-        card_num=#{cardNum},counselor=#{counselor},promotion=#{promotion},gift=#{gift},source=#{source},update_date=now()
+        card_num=#{cardNum},counselor=#{counselor},promotion=#{promotion},gift=#{gift},source=#{source},
+        <if test="@Ognl@isNotEmpty(src)">
+        src=#{src}
+        </if>
+        ,update_date=now()
 
         <where>
             id=#{id}
-
         </where>
-
-
 
     </update>
 

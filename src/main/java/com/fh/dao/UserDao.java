@@ -56,5 +56,8 @@ public interface UserDao {
 			"WHERE t1.user_name = #{userName}")
 	String findUserRole(@Param("userName") String userName);
 
+	@Select("select center from t_user where user_name = #{userName} and is_valid = 1")
+    String findUserCenter(@Param("userName") String userName);
+
 //    void insert(User user);
 }

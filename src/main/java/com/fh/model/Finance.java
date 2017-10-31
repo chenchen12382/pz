@@ -35,6 +35,7 @@ public class Finance  extends BaseModel{
     private String  promotion; //促销
     private String gift;  //赠送课程
     private String source ; //来源
+    private String src; //上传路径
 
     public String getXybh() {
         return xybh;
@@ -202,5 +203,13 @@ public class Finance  extends BaseModel{
 
     public void setTeacher(Integer teacher) {
         this.teacher = teacher;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 }

@@ -1,6 +1,7 @@
 package com.fh.service;
 
 import com.fh.base.AssertUtil;
+import com.fh.dao.CenterDao;
 import com.fh.dao.FinanceDao;
 import com.fh.dao.PriceClassDao;
 import com.fh.dao.UserDao;
@@ -16,6 +17,7 @@ import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +39,9 @@ public class FinanceService {
 
     @Autowired
     private PriceClassDao priceClassDao;
+
+    @Autowired
+    private CenterDao centerDao;
 
 
     public Map<String,Object> selectForPage(FinanceQuery query) {
@@ -498,4 +503,31 @@ public class FinanceService {
 
     }
 
+    public String uploadImg(MultipartFile file, HttpServletRequest request) {
+        String userName=CookieUtil.getCookieValue(request,"userName");
+
+
+        String center = userDao.findUserCenter(userName);
+
+        String path = "d:/upload/"+center;
+
+        System.out.println(path);
+        String time=System.currentTimeMillis()+"";
+
+        String fileName=new String("pz"+ time+".jpg");
+//        String fileName = file.getOriginalFilename();
+        File targetFile = new File(path,fileName);
+        if(!targetFile.exists()){
+            targetFile.mkdirs();
+        }
+        //保存
+        try {
+            file.transferTo(targetFile);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        String result = targetFile.getPath();
+
+        return result;
+    }
 }

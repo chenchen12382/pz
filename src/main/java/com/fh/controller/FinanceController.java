@@ -3,24 +3,19 @@ package com.fh.controller;
 import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.ResultInfo;
-import com.fh.dao.PriceClassDao;
 import com.fh.dto.FinanceQuery;
-import com.fh.model.District;
 import com.fh.model.Finance;
-import com.fh.model.User;
 import com.fh.service.FinanceService;
-import com.fh.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -119,6 +114,17 @@ public class FinanceController extends BaseController{
         financeService.exportExcel(query,response);
 //        return success("导出成功");
 
+    }
+
+    //上传图片
+    @RequestMapping("uploadImg")
+    @ResponseBody
+    public ResultInfo uploadImg(@RequestParam(value = "uploadImg", required = false) MultipartFile file, HttpServletRequest request){
+
+        String result = financeService.uploadImg(file,request);
+
+
+        return success(result);
     }
 
 }

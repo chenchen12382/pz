@@ -37,7 +37,9 @@
 			        <th field="promotion" width="100" align="center" formatter="formatPromotion">促销</th>
 			        <th field="gift"   width="100"  align="center" >赠送课程</th>
                     <th field="source"   width="100"  align="center" >客戶來源</th>
+                    <th field="src"  width="100"  align="center" hidden="hidden" >合同图片</th>
                     <th field="createDate"   width="100"  align="center" >创建时间</th>
+
 			    </tr>
 			</thead>
 	</table>
@@ -54,6 +56,7 @@
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 </#if>
         	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">作废单据</a>
+        	<a href="javascript:showImg()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">合同图片</a>
 
 	    </div>
 	    <div>
@@ -68,11 +71,12 @@
 	</div>
 	
 	<#--弹出框-->
-	<div id="dlg" class="easyui-dialog" style="width:700px;height:400px;padding: 10px 20px"
-     closed="true" buttons="#dlg-buttons">
+	<div id="dlg" class="easyui-dialog" style="width:700px;height:450px;padding: 10px 20px"
+     closed="true" buttons="#dlg-buttons" enctype="multipart/form-data" >
 
 	    <form id="fm" method="post">
 	        <input type="hidden" id="id" name="id" />
+            <input type="hidden" id="src" name="src" />
 	        <table cellspacing="8px">
 	            <tr>
 	                <td>协议编号：</td>
@@ -188,7 +192,15 @@
                            <option value="续费">续费</option>
                        </select>&nbsp;<font color="red">*</font>
 				   </td>
-	            </tr> 
+	            </tr>
+				<tr>
+                    <td>上传合同图片：</td>
+                    <td> <input type="file" id="uploadImg" name="uploadImg" style="width:170px;" onchange="uploadFiles()"></td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><font color="red">只能上传jpg</font></td>
+                    <td><font color="red">文件大小不超过2M！</font> </td>
+                   <#--<td><</td>-->
+				</tr>
 	        </table>
 	    </form>
 	</div>
