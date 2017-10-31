@@ -35,13 +35,13 @@
             <table cellspacing="8px">
                 <input type="hidden" id="id" name="id" />
                 <tr>
-                    <td>角色名称：</td>
-                    <td colspan="4"><input type="text" id="roleName" name="roleName" style="width: 420px"/></td>
+                    <td>标题：</td>
+                    <td colspan="4"><input type="text" id="title" name="title" style="width: 350px"/></td>
                 </tr>
                 <tr>
-                    <td>角色描述：</td>
+                    <td>日志信息：</td>
                     <td colspan="4">
-                        <textarea rows="5" cols="50" id="roleRemark" name="roleRemark" style="margin: 0px;width: 421px;height: 75px;resize: none;"></textarea>
+                        <textarea rows="5" cols="50" id="log" name="log" style="margin: 0px;width: 350px;height: 75px;resize: none;"></textarea>
                     </td>
                 </tr>
             </table>

@@ -5,12 +5,10 @@
 <mapper namespace="com.fh.dao.ReportDao">
 	
 <select id="selectForPage" resultType="report">
-	select id, name,phone_num,center,plan_num,arrive_num,in_num,source,order_num ,money,analysis
-	 from tb_reportforms
-     
+	select id,name,phone_num,center,plan_num,arrive_num,in_num,source,order_num ,money,analysis
+	 from tb_reportforms 
 			<where>
-				is_valid = 1 
-				
+				is_valid = 1 				
 			 <if test="@Ognl@isNotEmpty(name)">
 					and name like '%${name}%'
 				</if>

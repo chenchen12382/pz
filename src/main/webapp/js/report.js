@@ -1,21 +1,10 @@
-// 格式化分配状态
-//function formatState(value) {
-//	if (value == null) {
-//		return "未知";
-//	}else if (value == 0) {
-//		return "未分配";
-//	} else {
-//		return "已分配";
-//	}
-//}
 
 // 搜索
 function searchProgress() {
 	var data = {
 			center: $("#center").val(),
-//			centerName: $("#s_centerName").val(),
 			name: $("#name").val()
-//			state:$("#s_state").combobox('getValue')
+
 	}
 	$("#dg").datagrid('load', data);
 }
@@ -27,53 +16,43 @@ function openReportAddDialog() {
 
 // 弹出修改窗体
 function openReportModifyDialog() {
-	// 获取选中的行
-	var rows = $('#dg').datagrid('getSelections');
-	if (rows.length != 1) {
-		$.messager.alert("系统提示", "请选择一行进行修改");
-		return;
-	}
-	// 给form表单赋值
-	var row = rows[0];
-	$("#fm").form('load', row);
-	$("#dlg").dialog('open').dialog('setTitle', '修改')
-}
+	 var selectedRows = $("#dg").datagrid("getSelections");
+	    if(selectedRows.length != 1) {
+	        $.messager.alert("系统提示","请选择一条要编辑的数据！");
+	        return;
+	    }
+	    var row = selectedRows[0];
+	    console.log(row)
+	    $("#fm").form("load", row);
+	    $("#dlg").dialog("open").dialog("setTitle","编辑报表信息");}
 
 // 保存
 function saveReport() {
 	
-	var url = "add";
 	var id = $("#id").val();
+	var url = "add";
 	if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
 		url = "update";
 	}
-//    var customerName = $('#customerId').combobox('getText');
     var center = $('#center').val();
-    var plan_num = $('#plan_num').val();
-    var arrive_num = $('#arrive_num').val();
-    var in_num = $('#in_num').val();
-    var order_num = $('#order_num').val();
-    
-    
-    if (isEmpty(center)) {
-    	$.messager.alert("系统提示","请选择中心！");
-    }
-    if (isEmpty(plan_num)) {
+    var plan_num = $('#planNum').val();
+    var arrive_num = $('#arriveNum').val();
+    var in_num = $('#inNum').val();
+    var order_num = $('#orderNum').val();
+    if (isEmpty(planNum)) {
     	$.messager.alert("系统提示","请填写邀约人数！");
     }
-    if (isEmpty(arrive_num)) {
+    if (isEmpty(arriveNum)) {
     	$.messager.alert("系统提示","请填写实际人数！");
     }
-    if (isEmpty(order_num)) {
+    if (isEmpty(orderNum)) {
     	$.messager.alert("系统提示","请填写下单人数！");
     }
-    if (isEmpty(in_num)) {
+    if (isEmpty(inNum)) {
     	$.messager.alert("系统提示","请填写到访人数！");
-    }
-   
+    } 
     
-//    $("#customerName").val(customerName);
-    $("#fm").form("submit",{
+  $("#fm").form("submit",{
         url: url, // 相对路径
         onSubmit: function() {
             return $(this).form("validate");
@@ -129,22 +108,25 @@ function deleteReport() {
 
 // 重置
 function resetValue(){
-	//$("#center").val("");
-    $("#phone_num").val("");
-    $("#plan_num").numberbox('setValue',"");
-    $("#arrive_num").numberbox('setValue',"");
-    $("#in_num").numberbox('setValue',"");
-    $("#order_num").numberbox('setValue',"");
+	$("#center").val("");
+	$("#name").val("");
+	$("#phoneNum").numberbox('setValue',"");
+    $("#phoneNum").numberbox('setValue',"");
+    $("#planNum").numberbox('setValue',"");
+    $("#arriveNum").numberbox('setValue',"");
+    $("#inNum").numberbox('setValue',"");
+    $("#orderNum").numberbox('setValue',"");
     $("#money").numberbox('setValue',"");
-    $("#analysis").numberbox('setValue',"");
+    $("#analysis").val("");
     
 }
 
 // 关闭弹出框
 function closeReportDialog() {
+	$("#dlg").dialog('close');
 	// 置空
 	resetValue();
-	$("#dlg").dialog('close');
+	
 }
 
 
