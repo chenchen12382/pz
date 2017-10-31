@@ -15,17 +15,18 @@ public interface ReportDao {
 	
 	
 	@Insert("insert into tb_reportforms (name,phone_num,center,plan_num,arrive_num, "
-			+ " in_num,source,order_num,money,analysis) "
-			+ " values (#{name},#{phone_num},#{center},#{plan_num},#{arrive_num}, "
-			+ " #{in_num},#{source},#{order_num},#{money},#{analysis},1,now(),now()) ")
+			+ " in_num,source,order_num,money,analysis,is_valid,create_date,update_date) "
+			+ " values (#{name},#{phoneNum},#{center},#{planNum},#{arriveNum}, "
+			+ " #{inNum},#{source},#{orderNum},#{money},#{analysis},1,now(),now()) ")
 	void insert(Report report);
-
 	
-	@Update("update tb_reportforms set name=#{name} phone_num=#{phone_num}, center=#{center},plan_num=#{plan_num}, "
-			+ "  arrive_num=#{arrive_num},in_num=#{in_num},source=#{source},"
-			+ " order_num=#{order_num},money=#{money},analysis=#{analysis},update_date=now() where id = #{id} ")
+	
+	@Update("update tb_reportforms set name=#{name}, phone_num=#{phoneNum},center=#{center},plan_num=#{planNum}, "
+			+ " arrive_num=#{arriveNum},in_num=#{inNum},source=#{source},"
+			+ " order_num=#{orderNum},money=#{money},analysis=#{analysis},update_date=now() where id = #{id} ")
 	void update(Report report);
-
+	
+	
 	@Update("update tb_reportforms set is_valid=0,update_date=now() where id in (${ids})")
 	void deleteBatch(@Param("ids")String ids);
 	

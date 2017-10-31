@@ -43,12 +43,7 @@ public class ReportService {
 	}
 
 	public void insert(Report report, HttpServletRequest request) {
-		/*AssertUtil.isNotEmpty(report.getName(), "电话量不能为空");
-		AssertUtil.intIsNotEmpty(report.getPlan_num(), "邀约人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getArrive_num(), "到访量不能为空");
-		AssertUtil.intIsNotEmpty(report.getIn_num(), "接收量不能为空");*/
-		String name = CookieUtil.getCookieValue(request, "realName");
-		report.setName(name);
+		
 		reportDao.insert(report);
 
 	}
@@ -58,10 +53,7 @@ public class ReportService {
 	 * @param report
 	 */
 	public void update(Report report) {
-		/*AssertUtil.isNotEmpty(report.getName(), "电话量不能为空");
-		AssertUtil.intIsNotEmpty(report.getPlan_num(), "邀约人数不能为空");
-		AssertUtil.intIsNotEmpty(report.getArrive_num(), "到访量不能为空");
-		AssertUtil.intIsNotEmpty(report.getIn_num(), "接收量不能为空");*/
+		
 		reportDao.update(report);
 
 	}
