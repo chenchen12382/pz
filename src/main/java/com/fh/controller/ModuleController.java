@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -94,6 +95,17 @@ public class ModuleController extends BaseController{
         permissionService.addDoRelate(roleId, moduleId, checked);
         return success("操作成功");
     }
+
+
+    @RequestMapping("menu")
+    @ResponseBody
+    public Map<String,Object> treeMenu(HttpServletRequest request){
+       Map<String,Object> result =moduleService.treeMenu(request);
+       return result;
+
+
+    }
+
 
 
 }

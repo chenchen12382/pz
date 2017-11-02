@@ -15,29 +15,54 @@
             data: {
                 simpleData: {
                     enable: true
+                },
+                callback : {
+                    onClick : onClick
                 }
             }
         };
 
-        var zNodes =[
-            { id:1, pId:0, name:"展开、折叠 自定义图标不同", open:true, iconOpen:"../../../css/zTreeStyle/img/diy/1_open.png", iconClose:"../../../css/zTreeStyle/img/diy/1_close.png"},
-            { id:11, pId:1, name:"叶子节点1", icon:"../../../css/zTreeStyle/img/diy/2.png"},
-            { id:12, pId:1, name:"叶子节点2", icon:"../../../css/zTreeStyle/img/diy/3.png"},
-            { id:13, pId:1, name:"叶子节点3", icon:"../../../css/zTreeStyle/img/diy/5.png"},
-            { id:2, pId:0, name:"展开、折叠 自定义图标相同", open:true, icon:"../../../css/zTreeStyle/img/diy/4.png"},
-            { id:21, pId:2, name:"叶子节点1", icon:"../../../css/zTreeStyle/img/diy/6.png"},
-            { id:22, pId:2, name:"叶子节点2", icon:"../../../css/zTreeStyle/img/diy/7.png"},
-            { id:23, pId:2, name:"叶子节点3", icon:"../../../css/zTreeStyle/img/diy/8.png"},
-            { id:3, pId:0, name:"不使用自定义图标", open:true },
-            { id:31, pId:3, name:"叶子节点1"},
-            { id:32, pId:3, name:"叶子节点2"},
-            { id:33, pId:3, name:"叶子节点3"}
+//        var zNodes =[ ];
 
-        ];
-
-        $(document).ready(function() {
-            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        // 基本功能菜单加载
+        $.ajax({
+            url : '${ctx}/module/menu',
+            type : 'POST',
+//            dataType : 'text',
+            success : function(data) {
+                var zNodes = data.menu;
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            },
+            error : function(msg) {
+                alert('菜单加载异常!');
+            }
         });
+
+        function onClick(event, treeId, treeNode) {
+            // 判断树菜单节点是否含有 page属性
+            if (treeNode.page!=undefined && treeNode.page!= "") {
+                if ($("#tabs").tabs('exists', treeNode.name)) {// 判断tab是否存在
+                    $('#tabs').tabs('select', treeNode.name); // 切换tab
+                } else {
+                    // 开启一个新的tab页面
+                    var content = '<div style="width:100%;height:100%;overflow:hidden;">'
+                            + '<iframe src="'
+                            + treeNode.page
+                            + '" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
+
+                    $('#tabs').tabs('add', {
+                        title : treeNode.name,
+                        content : content,
+                        closable : true
+                    });
+                }
+            }
+        }
+
+
+//        $(document).ready(function() {
+//            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+//        });
 
     </script>
 </head>
@@ -72,9 +97,9 @@
         
         <#if userPermissions?seq_contains('10') >
         	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
-                <#--<div class="zTreeDemoBackground left">-->
-                    <#--<ul id="treeDemo" class="ztree"></ul>-->
-                <#--</div>-->
+                <div class="zTreeDemoBackground left">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
             <#if userPermissions?seq_contains('1010') >
                 <a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>
             </#if>
@@ -119,7 +144,7 @@
             <a href="javascript:openTab('客户构成分析','report/1','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">客户构成分析</a>
             <a href="javascript:openTab('客户服务分析','report/2','icon-khfwfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khfwfx'" style="width: 150px;">客户服务分析</a>
             <a href="javascript:openTab('客户流失分析','report/3','icon-khlsfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 150px;">客户流失分析</a>
-        </div> 
+        </div>
         <div title="基础数据管理"  data-options="iconCls:'icon-jcsjgl'" style="padding:10px">
             <a href="javascript:openTab('数据字典管理','datadic/index','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 150px;">数据字典管理</a>
             <a href="javascript:openTab('产品信息查询','product/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>

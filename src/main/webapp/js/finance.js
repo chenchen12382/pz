@@ -300,6 +300,20 @@ function saveCustomer() {
     var id = $("#id").val();
     var payMode = $("#payMode").combobox('getValue');
     var source = $("#source").combobox('getValue');
+    // var xybh = $("#xybh").numberbox('getValue');
+    // var sjbh = $("#sjbh").numberbox('getValue');
+    //
+    // if(xybh.trim().length != 10){
+    //     $.messager.alert("系统提示",'请填写完整的协议编号,为10位数字！');
+    //     return;
+    // }
+    //
+    // if(sjbh.trim().length != 6){
+    //     $.messager.alert("系统提示",'请填写完整的收据编号,为6位数字！');
+    //     return;
+    // }
+
+
     if (payMode == 0){
         $.messager.alert("系统提示",'请选择支付方式');
         return;

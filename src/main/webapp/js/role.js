@@ -87,6 +87,6 @@ function relatePermissions() {
         return;
     }
     var roleId = selectedRows[0].id;
-    var url = ctx + 'module/relate_permission?roleId=' + roleId;
+    var url = 'module/relate_permission?roleId=' + roleId;
     window.parent.openTab('角色关联权限', url, 'icon-user');
 }

@@ -5,8 +5,11 @@ import com.fh.base.BaseQuery;
 import com.fh.constant.ModuleGrade;
 import com.fh.dao.ModuleDao;
 import com.fh.dao.PermissionDao;
+import com.fh.dao.UserDao;
 import com.fh.exception.ParamException;
 import com.fh.model.Module;
+import com.fh.model.TreeMenu;
+import com.fh.util.CookieUtil;
 import com.fh.vo.ModuleVO;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +17,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +34,7 @@ public class ModuleService {
 
     @Autowired
     private PermissionDao permissionDao;
+
 
     public Map<String,Object> selectForPage(BaseQuery query) {
         PageList<Module> modules = moduleDao.selectForPage(query.buildPageBounds());
@@ -180,5 +185,33 @@ public class ModuleService {
 
         return modules;
 
+    }
+
+    public Map<String,Object> treeMenu(HttpServletRequest request) {
+//        String userName=CookieUtil.getCookieValue(request,"userName");
+        List<String> permissions= (List<String>) request.getSession().getAttribute("userPermissions");
+        String permission = "";
+//        int count = 0;
+        for (int i=0;i<permissions.size();i++){
+
+            if(i!=permissions.size()-1){
+                permission+=permissions.get(i)+",";
+                continue;
+            }
+            permission+=permissions.get(i);
+        }
+
+        List<TreeMenu> treeMenus = moduleDao.findTreeMenu(permission);
+//        Integer pId = 0;
+        for(int i=0;i<treeMenus.size();i++){
+            if(treeMenus.get(i).getpId() == null){
+                treeMenus.get(i).setpId(0);
+            }
+        }
+
+
+        Map<String,Object> result = new HashMap<>();
+        result.put("menu",treeMenus);
+        return  result;
     }
 }

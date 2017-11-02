@@ -417,6 +417,13 @@ public class FinanceService {
             }
         }
 
+        if(finance.getXybh().trim().length()!=10){
+            throw new ParamException("请填写完整的协议编号,为10位数字！");
+        }
+
+        if(finance.getSjbh().trim().length()!=6){
+            throw new ParamException("请填写完整的收据编号,为6位数字！位数不够前面补0");
+        }
 
     }
 
