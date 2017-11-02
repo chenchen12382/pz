@@ -154,6 +154,7 @@
                     <td>
                         <input type="radio" name="property" id="property" value="全款" checked="checked"/>全款
                         <input name="property" type="radio" id="property" value="订金"/> 订金
+                        <input type="radio" name="property" id="property" value="尾款" />尾款
                     </td>
 
 				</tr>

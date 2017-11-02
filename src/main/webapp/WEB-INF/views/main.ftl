@@ -72,9 +72,9 @@
         
         <#if userPermissions?seq_contains('10') >
         	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
-                <div class="zTreeDemoBackground left">
-                    <ul id="treeDemo" class="ztree"></ul>
-                </div>
+                <#--<div class="zTreeDemoBackground left">-->
+                    <#--<ul id="treeDemo" class="ztree"></ul>-->
+                <#--</div>-->
             <#if userPermissions?seq_contains('1010') >
                 <a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>
             </#if>

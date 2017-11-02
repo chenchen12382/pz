@@ -47,4 +47,10 @@ public interface FinanceDao {
     void updateAgreement(Finance finance);
 
     List<Finance> selectForExcel(FinanceQuery query);
+
+    @Select("select count(1) from t_finance where xybh=#{xybh} and is_valid=1 ")
+    Integer queryFinanceXybh(String xybh);
+
+    @Select("select count(1) from t_finance where sjbh=#{sjbh} and is_valid=1 ")
+    Integer queryFinanceSjbh(String sjbh);
 }

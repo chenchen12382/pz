@@ -36,7 +36,7 @@ public class CenterTotalService {
 //            Date day_first=gcLast.getTime();
 //            query.setStart(day_first);
 //            DateUtil.getFisrtDayOfNow(start);
-            query.setStart(DateUtil.getFisrtDayOfNow());
+            query.setStart(DateUtil.getFirstDayOfDate(new Date()));
 
         }
         if(over==null) {

@@ -25,6 +25,9 @@
             <if test="@Ognl@isNotEmpty(center)">
                 and center like '%${center}%'
             </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                and name like '%${name}%'
+            </if>
             <if test="@Ognl@isNotEmpty(saleClass)">
                 and sale_class like '%${saleClass}%'
             </if>
@@ -38,7 +41,6 @@
             <if test="@Ognl@isNotEmpty(sProperty)">
                 and property = #{sProperty}
             </if>
-
 
             order by id DESC
 

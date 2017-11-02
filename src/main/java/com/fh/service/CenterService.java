@@ -3,6 +3,7 @@ package com.fh.service;
 import com.fh.base.AssertUtil;
 import com.fh.base.BaseQuery;
 import com.fh.dao.CenterDao;
+import com.fh.exception.ParamException;
 import com.fh.model.Center;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
@@ -36,8 +37,12 @@ public class CenterService {
 
     public void insert(Center center) {
         AssertUtil.isNotEmpty(center.getCenter(),"请输入中心");
-        String temp = centerDao.findByCenter(center.getCenter());
-        AssertUtil.isNotEmpty(temp,"您输入的中心已存在！请检查后输入！");
+        Integer temp = centerDao.findByCenter(center.getCenter());
+        if(temp != 0 ){
+            throw  new ParamException("您输入的中心已存在！请检查后输入");
+        }
+
+//        AssertUtil.intIsNotEmpty(temp,"您输入的中心已存在！请检查后输入！");
 
         centerDao.insert(center);
 

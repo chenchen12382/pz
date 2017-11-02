@@ -187,12 +187,28 @@ public class DateUtil {
 	public static Date getMaxTimeOfDay(Date date) {
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTime(date);
-		calendar.set(Calendar.HOUR, 23);
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
 		calendar.set(Calendar.MINUTE, 59);
 		calendar.set(Calendar.SECOND, 59);
 		calendar.set(Calendar.MILLISECOND, 999);
 		Date max_time = calendar.getTime();
 		return max_time;
+	}
+
+	/**
+	 * 获取当天最小时间
+	 * @param date
+	 * @return
+	 */
+	public static Date getMinTimeOfDay(Date date) {
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		Date min_time = calendar.getTime();
+		return min_time;
 	}
 
 	/**
@@ -215,7 +231,7 @@ public class DateUtil {
 
 
 	/**
-	 * 获得当月最大时间
+	 * 获得当月最小时间
 	 * @param date 2017-6-6
 	 * @return 2017-6-31
 	 */
@@ -223,7 +239,7 @@ public class DateUtil {
 		Calendar calendar=Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
-		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
 		calendar.set(Calendar.MILLISECOND, 0);

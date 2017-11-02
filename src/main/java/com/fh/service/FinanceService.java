@@ -11,6 +11,7 @@ import com.fh.model.Finance;
 import com.fh.model.PriceClass;
 import com.fh.model.User;
 import com.fh.util.CookieUtil;
+import com.fh.util.DateUtil;
 import com.fh.util.ExcelUtil;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
@@ -155,20 +156,31 @@ public class FinanceService {
     public void formartTime(FinanceQuery query){
 
         //时间匹配
-        Date start = query.getStart();
-        Date over = query.getOver();
-        if(start!=null||over!=null) {
-            if (start == null) {
-                throw new ParamException("请选择开始时间");
-            }
-            if (over == null) {
-                throw new ParamException("请选择结束时间");
-            }
-            //计算时间为传进来的时间+1天-1s
-            long mm = over.getTime() + 1000 * 60 * 60 * 24 - 1;
-            over = new Date(mm);
-            query.setOver(over);
+
+        if(query.getStart()!=null){
+           query.setOver(new Date());
         }
+
+        if(query.getStart()==null){
+            query.setStart(DateUtil.getMinTimeOfDay(new Date()));
+            query.setOver(new Date());
+
+        }
+
+//        Date start = query.getStart();
+//        Date over = query.getOver();
+//        if(start!=null||over!=null) {
+//            if (start == null) {
+//                throw new ParamException("请选择开始时间");
+//            }
+//            if (over == null) {
+//                throw new ParamException("请选择结束时间");
+//            }
+//            //计算时间为传进来的时间+1天-1s
+//            long mm = over.getTime() + 1000 * 60 * 60 * 24 - 1;
+//            over = new Date(mm);
+//            query.setOver(over);
+//        }
     }
 
 
@@ -319,9 +331,19 @@ public class FinanceService {
             int shouldMoney = 110*saleNum;
             finance.setShouldMoney(shouldMoney);
 
+
+
             //折扣
             int realMoney  = finance.getRealMoney();
+//            int realMoney  = finance.getRealMoney();
+            if(realMoney>shouldMoney){
+                shouldMoney=realMoney;
+            }
+            finance.setShouldMoney(shouldMoney);
             double temp = (double) realMoney /(double) shouldMoney*100;
+//            if(temp>100){
+//                temp = 100;
+//            }
 //            if((int)temp>=100){
 //                throw new ParamException("实收金额大于标准单价！");
 //            }
@@ -369,7 +391,7 @@ public class FinanceService {
      * 基本参数验证
      * @param finance
      */
-    public static void chickParams(Finance finance){
+    public void chickParams(Finance finance){
         AssertUtil.isNotEmpty(finance.getXybh(),"请填写协议编号");
         AssertUtil.isNotEmpty(finance.getSjbh(),"请填写收据编号");
         AssertUtil.isNotEmpty(finance.getName(),"请填写客户姓名");
@@ -379,6 +401,22 @@ public class FinanceService {
         AssertUtil.isNotEmpty(finance.getPayMode(),"请填写支付方式");
         AssertUtil.isNotEmpty(finance.getCounselor(),"请填写销售顾问");
         AssertUtil.isNotEmpty(finance.getSource(),"请选择来源");
+
+        if(finance.getProperty().equals("全款")) {
+
+            Integer countXybh = financeDao.queryFinanceXybh(finance.getXybh());
+//            AssertUtil.intIsNotEmpty(countXybh,"该协议编号已存在，请检查");
+            if(countXybh>0){
+                throw new ParamException("该协议编号已存在，请检查!");
+            }
+
+            Integer countSjbh = financeDao.queryFinanceSjbh(finance.getSjbh());
+//            AssertUtil.intIsNotEmpty(countSjbh,"该收据编号已存在，请检查");
+            if(countSjbh>0){
+                throw new ParamException("该收据编号已存在，请检查!");
+            }
+        }
+
 
     }
 
@@ -474,6 +512,7 @@ public class FinanceService {
         String[] headers =
                 {"协议编号", "中心", "收据编号", "会员编号", "会员姓名","销售课程","销售数量","协议签订类型","价格","应收金额","实际金额","折扣","顾问0、教师/1","支付方式",
                         "付款性质","签约时间","银行卡号","顾问姓名","促销/备注","赠送课程","来源",};
+        formartTime(query);
 
         List<Finance> finances = financeDao.selectForExcel(query);
         OutputStream out = null;

@@ -1,6 +1,5 @@
 package com.fh.dao;
 
-import com.fh.dto.ReportCountQuery;
 import com.fh.model.Center;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
@@ -30,8 +29,8 @@ public interface CenterDao {
     @Update("update t_center set is_valid = 0 , update_date=now()  where id in (${ids})")
     void deleteBatch(@Param("ids") String ids);
 
-    @Select("select center from t_center where center = #{center} and is_valid = 1 ")
-    String findByCenter(@Param("center") String center);
+    @Select("select count(1) from t_center where center = #{center} and is_valid = 1 ")
+    Integer findByCenter(@Param("center") String center);
 
     @Select("select id,center,district,create_date,update_date from t_center where is_valid=1 order by district  ")
     List<Center> selectCenter();
