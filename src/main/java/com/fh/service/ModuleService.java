@@ -207,6 +207,11 @@ public class ModuleService {
             if(treeMenus.get(i).getpId() == null){
                 treeMenus.get(i).setpId(0);
             }
+            String opt = treeMenus.get(i).getOptValue().trim();
+            if( null !=opt && opt.length()>4){
+                treeMenus.remove(i);
+                i--;
+            }
         }
 
 

@@ -10,6 +10,7 @@ public class TreeMenu {
     private String icon;
     private String page;
     private Integer id;
+    private String optValue;
 
     public Integer getpId() {
         return pId;
@@ -49,5 +50,13 @@ public class TreeMenu {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOptValue() {
+        return optValue;
+    }
+
+    public void setOptValue(String optValue) {
+        this.optValue = optValue;
     }
 }

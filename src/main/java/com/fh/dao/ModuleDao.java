@@ -46,6 +46,6 @@ public interface ModuleDao {
             + " from t_module where is_valid=1 and tree_path LIKE '${treePath}%'")
     List<Module> findSunModules(@Param(value = "treePath") String treePath);
 
-    @Select("select id,parent_id as pId,module_name as name ,module_style as icon,url as page from t_module where is_valid=1 and opt_value in (${permission}) ")
+    @Select("select id,parent_id as pId,module_name as name ,module_style as icon,url as page,opt_value from t_module where is_valid=1 and opt_value in (${permission}) order by orders ")
     List<TreeMenu> findTreeMenu(@Param("permission") String permission);
 }

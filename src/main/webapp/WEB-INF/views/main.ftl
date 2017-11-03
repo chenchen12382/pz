@@ -7,7 +7,7 @@
        <link rel="stylesheet" href="${ctx}/ztree/css/zTreeStyle.css" type="text/css">
        <#--<script type="text/javascript" src="${ctx}/ztree/js/jquery-1.4.4.min.js"></script>-->
        <script type="text/javascript" src="${ctx}/ztree/js/jquery.ztree.core.js"></script>
-       <script type="text/javascript" src="${ctx}/ztree/js/jquery.ztree.excheck.js"></script>
+       <#--<script type="text/javascript" src="${ctx}/ztree/js/jquery.ztree.excheck.js"></script>-->
 
 
     <script>
@@ -15,10 +15,10 @@
             data: {
                 simpleData: {
                     enable: true
-                },
-                callback : {
-                    onClick : onClick
                 }
+            },
+            callback: {
+                onClick: onClick
             }
         };
 
@@ -32,6 +32,8 @@
             success : function(data) {
                 var zNodes = data.menu;
                 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+                treeObj.expandAll(true);
             },
             error : function(msg) {
                 alert('菜单加载异常!');
@@ -39,29 +41,42 @@
         });
 
         function onClick(event, treeId, treeNode) {
-            // 判断树菜单节点是否含有 page属性
-            if (treeNode.page!=undefined && treeNode.page!= "") {
-                if ($("#tabs").tabs('exists', treeNode.name)) {// 判断tab是否存在
-                    $('#tabs').tabs('select', treeNode.name); // 切换tab
-                } else {
-                    // 开启一个新的tab页面
-                    var content = '<div style="width:100%;height:100%;overflow:hidden;">'
-                            + '<iframe src="'
-                            + treeNode.page
-                            + '" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
+                    // 判断树菜单节点是否含有 page属性
+                    if (treeNode.page!=undefined && treeNode.page!= ""&&treeNode.page!= "#") {
+                        if ($("#tabs").tabs('exists', treeNode.name)) {// 判断tab是否存在
+                            $('#tabs').tabs('select', treeNode.name); // 切换tab
+                        } else {
+                            // 开启一个新的tab页面
+                            var content = '<div style="width:100%;height:100%;overflow:hidden;">'
+                                    + '<iframe src="'
+                                    + treeNode.page
+                                    + '" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
 
-                    $('#tabs').tabs('add', {
-                        title : treeNode.name,
-                        content : content,
-                        closable : true
-                    });
-                }
+                            $('#tabs').tabs('add', {
+                                title : treeNode.name,
+                                content : content,
+                                closable : true
+                            });
+                        }
+                    }
+                    if(treeNode.name=="修改密码"){
+                        openPasswordModifyDialog();
+                    }
+
+            if(treeNode.name=="安全退出"){
+                logout();
             }
-        }
+
+                }
+
+//        function zTreeOnClick(event, treeId, treeNode) {
+//            alert(treeNode.tId + ", " + treeNode.name);
+//        };
 
 
 //        $(document).ready(function() {
-//            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+//            var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+//            treeObj.expandAll(true);
 //        });
 
     </script>
@@ -93,52 +108,50 @@
 </div>
 <div region="west" style="width: 200px" title="导航菜单" split="true">
     <div class="easyui-accordion" data-options="fit:true,border:false">
-
-        
-        <#if userPermissions?seq_contains('10') >
-        	<div title="业务管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+        <#--<#if userPermissions?seq_contains('10') >-->
+        	<div title="功能菜单" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
                 <div class="zTreeDemoBackground left">
                     <ul id="treeDemo" class="ztree"></ul>
                 </div>
-            <#if userPermissions?seq_contains('1010') >
-                <a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>
-            </#if>
-            <#if userPermissions?seq_contains('1020') >
-	            <a href="javascript:openTab('业绩录入 ','report/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">业绩录入</a>
-            </#if>
-            <#if userPermissions?seq_contains('1030') >
-                <a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>
-            </#if>
+            <#--<#if userPermissions?seq_contains('1010') >-->
+                <#--<a href="javascript:openTab('营收日报表','finance/index_center','icon-zzkf')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-zzkf'" style="width: 150px">营收日报表</a>-->
+            <#--</#if>-->
+            <#--<#if userPermissions?seq_contains('1020') >-->
+	            <#--<a href="javascript:openTab('业绩录入 ','report/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">业绩录入</a>-->
+            <#--</#if>-->
+            <#--<#if userPermissions?seq_contains('1030') >-->
+                <#--<a href="javascript:openTab('进度管理','progress/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">进度管理</a>-->
+            <#--</#if>-->
 
 	        </div>
-		</#if>
-            <#if userPermissions?seq_contains('20') >
-	        <div title="财务管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
-                <#if userPermissions?seq_contains('2010') >
-                    <a href="javascript:openTab('财务报表管理','finance/index','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">财务报表管理</a>
-                    </#if>
-                <#if userPermissions?seq_contains('2020') >
-                    <a href="javascript:openTab('课程价格管理','priceClass/index','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">课程价格管理</a>
-                </#if>
-	        </div>
-          </#if>
-    <#if userPermissions?seq_contains('30') >
-        <div title="运营分析" data-options="iconCls:'icon-fwgl'" style="padding:10px">
-        <#if userPermissions?seq_contains('3010') >
-            <a href="javascript:openTab('业绩统计','centerTotal/index','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">业绩统计</a>
-            </#if>
-        <#if userPermissions?seq_contains('3020') >
-            <a href="javascript:openTab('指标录入','target/index','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">指标录入</a>
-        </#if>
-        <#if userPermissions?seq_contains('3030') >
-            <a href="javascript:openTab('区域业绩汇总','report_count/index/1','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">区域业绩汇总</a>
-        </#if>
-        <#if userPermissions?seq_contains('3040') >
-            <a href="javascript:openTab('区域业绩分析','report_count/index/2','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">区域业绩分析</a>
-        </#if>
-            <a href="javascript:openTab('中心收入分析','report_count/index/3','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">中心收入分析</a>
-        </div>
-    </#if>
+		<#--</#if>-->
+            <#--<#if userPermissions?seq_contains('20') >-->
+	        <#--<div title="财务管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">-->
+                <#--<#if userPermissions?seq_contains('2010') >-->
+                    <#--<a href="javascript:openTab('财务报表管理','finance/index','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">财务报表管理</a>-->
+                    <#--</#if>-->
+                <#--<#if userPermissions?seq_contains('2020') >-->
+                    <#--<a href="javascript:openTab('课程价格管理','priceClass/index','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">课程价格管理</a>-->
+                <#--</#if>-->
+	        <#--</div>-->
+          <#--</#if>-->
+    <#--<#if userPermissions?seq_contains('30') >-->
+        <#--<div title="运营分析" data-options="iconCls:'icon-fwgl'" style="padding:10px">-->
+        <#--<#if userPermissions?seq_contains('3010') >-->
+            <#--<a href="javascript:openTab('业绩统计','centerTotal/index','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">业绩统计</a>-->
+            <#--</#if>-->
+        <#--<#if userPermissions?seq_contains('3020') >-->
+            <#--<a href="javascript:openTab('指标录入','target/index','icon-fwfp')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">指标录入</a>-->
+        <#--</#if>-->
+        <#--<#if userPermissions?seq_contains('3030') >-->
+            <#--<a href="javascript:openTab('区域业绩汇总','report_count/index/1','icon-fwcl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">区域业绩汇总</a>-->
+        <#--</#if>-->
+        <#--<#if userPermissions?seq_contains('3040') >-->
+            <#--<a href="javascript:openTab('区域业绩分析','report_count/index/2','icon-fwfk')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">区域业绩分析</a>-->
+        <#--</#if>-->
+            <#--<a href="javascript:openTab('中心收入分析','report_count/index/3','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">中心收入分析</a>-->
+        <#--</div>-->
+    <#--</#if>-->
     <#--	<div title="统计报表"  data-options="iconCls:'icon-tjbb'" style="padding:10px">
             <a href="javascript:openTab('客户贡献分析','report/0','icon-khgxfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgxfx'" style="width: 150px;">客户贡献分析</a>
             <a href="javascript:openTab('客户构成分析','report/1','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">客户构成分析</a>
@@ -242,4 +255,5 @@
     }
     window.setInterval("setDateTime()", 1000);
 </script>
+
 </html>
