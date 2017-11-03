@@ -1,7 +1,11 @@
 
 function formatDiscount(value){
        if(value != null ) {
-           return parseInt(value) + '%';
+
+           var val=value.toString();
+           var result=val.substr(0,val.length-1)+'.'+val.substr(val.length-1);
+
+           return result + '%';
        }else {
            return "无记录"
        }

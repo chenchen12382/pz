@@ -59,7 +59,7 @@ public class ReportCountService {
                 }
                 double a = income;
                 double b = targets;
-                double c = a/b*100;
+                double c = a/b*1000;
                 Integer discount = (int) c ;
                 reportCounts.get(i).setDiscount(discount);
             }
