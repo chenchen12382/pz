@@ -133,6 +133,22 @@ public class FinanceService {
     public void insert(Finance finance, HttpServletRequest request) {
         //基本参数验证
         chickParams(finance);
+
+        if(finance.getProperty().equals("全款")) {
+
+            Integer countXybh = financeDao.queryFinanceXybh(finance.getXybh());
+//            AssertUtil.intIsNotEmpty(countXybh,"该协议编号已存在，请检查");
+            if(countXybh>0){
+                throw new ParamException("该协议编号已存在，请检查!");
+            }
+
+            Integer countSjbh = financeDao.queryFinanceSjbh(finance.getSjbh());
+//            AssertUtil.intIsNotEmpty(countSjbh,"该收据编号已存在，请检查");
+            if(countSjbh>0){
+                throw new ParamException("该收据编号已存在，请检查!");
+            }
+        }
+
         //课程判断
         //price,shouldMoney
 //        String saleClass=finance.getSaleClass();
@@ -148,6 +164,8 @@ public class FinanceService {
         finance.setCenter(center);
         //构建日报表信息
         buildFinance(finance);
+
+
         //添加
         financeDao.insert(finance);
 
@@ -402,28 +420,15 @@ public class FinanceService {
         AssertUtil.isNotEmpty(finance.getCounselor(),"请填写销售顾问");
         AssertUtil.isNotEmpty(finance.getSource(),"请选择来源");
 
-        if(finance.getProperty().equals("全款")) {
 
-            Integer countXybh = financeDao.queryFinanceXybh(finance.getXybh());
-//            AssertUtil.intIsNotEmpty(countXybh,"该协议编号已存在，请检查");
-            if(countXybh>0){
-                throw new ParamException("该协议编号已存在，请检查!");
-            }
 
-            Integer countSjbh = financeDao.queryFinanceSjbh(finance.getSjbh());
-//            AssertUtil.intIsNotEmpty(countSjbh,"该收据编号已存在，请检查");
-            if(countSjbh>0){
-                throw new ParamException("该收据编号已存在，请检查!");
-            }
+        if(finance.getXybh().trim().length()!=11){
+            throw new ParamException("请填写完整的协议编号,为11位数字！");
         }
 
-        if(finance.getXybh().trim().length()!=10){
-            throw new ParamException("请填写完整的协议编号,为10位数字！");
-        }
-
-        if(finance.getSjbh().trim().length()!=6){
-            throw new ParamException("请填写完整的收据编号,为6位数字！位数不够前面补0");
-        }
+//        if(finance.getSjbh().trim().length()!=6){
+//            throw new ParamException("请填写完整的收据编号,为6位数字！位数不够前面补0");
+//        }
 
     }
 

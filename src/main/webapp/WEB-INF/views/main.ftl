@@ -34,6 +34,7 @@
                 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
                 var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
                 treeObj.expandAll(true);
+
             },
             error : function(msg) {
                 alert('菜单加载异常!');
@@ -67,7 +68,9 @@
                 logout();
             }
 
-                }
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            zTree.expandNode(treeNode);
+        }
 
 //        function zTreeOnClick(event, treeId, treeNode) {
 //            alert(treeNode.tId + ", " + treeNode.name);
@@ -75,8 +78,7 @@
 
 
 //        $(document).ready(function() {
-//            var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
-//            treeObj.expandAll(true);
+//            zTree.expandNode(treeNode);
 //        });
 
     </script>
@@ -163,26 +165,26 @@
             <a href="javascript:openTab('产品信息查询','product/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
         </div> -->
 <#--<#if userPermissions?seq_contains('90') >-->
-    <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
-    <#if userPermissions?seq_contains('9010') >
-        <a href="javascript:openTab('用户管理','user/index','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>
-        </#if>
-    <#if userPermissions?seq_contains('9020') >
-        <a href="javascript:openTab('角色管理','role/index','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">角色管理</a>
-    </#if>
-    <#if userPermissions?seq_contains('9030') >
-        <a href="javascript:openTab('模块管理','module/index','icon-tjbb')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-tjbb'" style="width: 150px;">模块管理</a>
-    </#if>
-    <#if userPermissions?seq_contains('9040') >
-        <a href="javascript:openTab('中心管理','center/index','icon-jcsjgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-jcsjgl'" style="width: 150px;">中心管理</a>
-    </#if>
-    <#if userPermissions?seq_contains('9050') >
-        <a href="javascript:openTab('区域管理','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">区域管理</a>
-    </#if>
-        <a href="javascript:openTab('更新日志','up_log/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">更新日志</a>
-        <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
-            <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
-        </div>
+    <#--<div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">-->
+    <#--<#if userPermissions?seq_contains('9010') >-->
+        <#--<a href="javascript:openTab('用户管理','user/index','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>-->
+        <#--</#if>-->
+    <#--<#if userPermissions?seq_contains('9020') >-->
+        <#--<a href="javascript:openTab('角色管理','role/index','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">角色管理</a>-->
+    <#--</#if>-->
+    <#--<#if userPermissions?seq_contains('9030') >-->
+        <#--<a href="javascript:openTab('模块管理','module/index','icon-tjbb')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-tjbb'" style="width: 150px;">模块管理</a>-->
+    <#--</#if>-->
+    <#--<#if userPermissions?seq_contains('9040') >-->
+        <#--<a href="javascript:openTab('中心管理','center/index','icon-jcsjgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-jcsjgl'" style="width: 150px;">中心管理</a>-->
+    <#--</#if>-->
+    <#--<#if userPermissions?seq_contains('9050') >-->
+        <#--<a href="javascript:openTab('区域管理','district/index','icon-reset')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reset'" style="width: 150px;">区域管理</a>-->
+    <#--</#if>-->
+        <#--<a href="javascript:openTab('更新日志','up_log/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">更新日志</a>-->
+        <#--<a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>-->
+            <#--<a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>-->
+        <#--</div>-->
 <#--</#if>-->
     </div>
 </div>

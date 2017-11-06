@@ -10,69 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95be98a3-57a4-46b2-88d4-c5e93b4d0a36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/业务管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/业绩录入.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/业绩统计.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/中心收入分析.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/中心管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/修改密码.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/区域业绩分析.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/区域业绩汇总.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/区域管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/安全退出.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/指标录入.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/更新日志.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/模块管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/用户管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/系统管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/营收日报表.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/角色管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/课程价格管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/财务报表管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/财务管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/运营分析.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/进度管理.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/confirm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/cpxxgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/download.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/exit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwcj.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwcl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwfk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwfp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwgd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/fwgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/item.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/jcsjgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/jwjl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/kfcg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khfwfx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khgcfx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khgxfx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khkfjh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khlsfx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khlsgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/khxxgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/lsdd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/lxr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/modifyPassword.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/reset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/sjzdgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/sjzdlbgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/tjbb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/user.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/yxgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/yxjhgl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/zxsrfx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/img/diy/zzkf.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fh/dao/ModuleDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/fh/dao/ModuleDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fh/model/TreeMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/fh/model/TreeMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fh/service/ModuleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/fh/service/ModuleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fh/mapper/FinanceMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/fh/mapper/FinanceMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/ztree/css/zTreeStyle.css" afterPath="$PROJECT_DIR$/src/main/webapp/ztree/css/zTreeStyle.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,81 +27,87 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.ftl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="111" column="28" lean-forward="false" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+            <state relative-caret-position="318">
+              <caret line="125" column="16" lean-forward="false" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
               <folding>
-                <marker date="1509695923833" expanded="true" signature="1768:1807" ph="..." />
-                <marker date="1509695923833" expanded="true" signature="1982:2014" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="4541:4553" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="4822:4834" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="5106:5118" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="5326:5339" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="5586:5599" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="5893:5906" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="6124:6136" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="6365:6378" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="6636:6649" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="6913:6926" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="7192:7205" ph="..." />
-                <marker date="1509695923833" expanded="false" signature="7412:7425" ph="..." />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1509957884256" expanded="true" signature="1769:1808" ph="..." />
+                <marker date="1509957884256" expanded="true" signature="1983:2015" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="5358:5371" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="5618:5631" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="5925:5938" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="6156:6168" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="6397:6410" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="6668:6681" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="6945:6958" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="7224:7237" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="7444:7457" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="8946:8958" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="9172:9185" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="9433:9446" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="9688:9701" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="9947:9960" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="10206:10219" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="10410:10423" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="10586:10599" ph="..." />
+                <marker date="1509957884256" expanded="false" signature="10738:10751" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModuleService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/ModuleService.java">
+      <file leaf-file-name="FinanceController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/controller/FinanceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+            <state relative-caret-position="212">
+              <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModuleDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/ModuleDao.java">
+      <file leaf-file-name="FinanceService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="48" column="103" lean-forward="false" selection-start-line="48" selection-start-column="103" selection-end-line="48" selection-end-column="103" />
+            <state relative-caret-position="2646">
+              <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TreeMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/model/TreeMenu.java">
+      <file leaf-file-name="FinanceDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/FinanceDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+            <state relative-caret-position="173">
+              <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PermissionProxy.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/proxy/PermissionProxy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="day_report.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="210" column="56" lean-forward="true" selection-start-line="210" selection-start-column="56" selection-end-line="210" selection-end-column="56" />
               <folding>
-                <element signature="e#951#952#0" expanded="true" />
-                <element signature="e#999#1000#0" expanded="true" />
-                <element signature="e#1039#1040#0" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportCountDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/ReportCountDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.count.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/report.count.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -227,15 +175,11 @@
         <option value="$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.2.RELEASE/spring-aop-4.3.2.RELEASE.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.class" />
         <option value="$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.2.RELEASE/spring-tx-4.3.2.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionInterceptor.class" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/service/CenterTotalService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fh/mapper/FinanceMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/util/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Finance.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/dao/CenterDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/service/CenterService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fh/proxy/PermissionProxy.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/finance.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/controller/ModuleController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/role.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/service/ReportCountService.java" />
@@ -244,7 +188,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fh/model/TreeMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/dao/ModuleDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fh/service/ModuleService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fh/mapper/FinanceMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fh/proxy/PermissionProxy.java" />
       </list>
     </option>
   </component>
@@ -413,10 +361,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1026,7 +1004,8 @@
       <workItem from="1509411339646" duration="27647000" />
       <workItem from="1509498490345" duration="19585000" />
       <workItem from="1509584606847" duration="16880000" />
-      <workItem from="1509670468968" duration="15547000" />
+      <workItem from="1509670468968" duration="17425000" />
+      <workItem from="1509930097435" duration="8208000" />
     </task>
     <task id="LOCAL-00001" summary="财务修改删除">
       <created>1505901725752</created>
@@ -1252,11 +1231,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509674751335</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="侧面菜单">
+      <created>1509696698137</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1509696698137</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="539593000" />
+    <option name="totallyTimeSpent" value="549679000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1272,8 +1258,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4142132" sideWeight="0.4890625" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28629443" sideWeight="0.4890625" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328934" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1290,7 +1277,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328934" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1302,7 +1288,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="财务统计" />
     <MESSAGE value="运营分析页面展示" />
     <MESSAGE value="解决一些小BUG,优化" />
     <MESSAGE value="指标录入" />
@@ -1327,11 +1312,12 @@
     <MESSAGE value="BUG修改优化" />
     <MESSAGE value="左侧树状图" />
     <MESSAGE value="百分比" />
-    <option name="LAST_COMMIT_MESSAGE" value="百分比" />
+    <MESSAGE value="侧面菜单" />
+    <option name="LAST_COMMIT_MESSAGE" value="侧面菜单" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="192" />
+      <option name="time" value="193" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1340,46 +1326,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/fwfp.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/fwgd.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/fwgl.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/home.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/yxjhgl.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/yxgl.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/user.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/khgxfx.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery-easyui-1.3.3/themes/usericons/khgl.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1418,24 +1364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3437">
-          <caret line="417" column="8" lean-forward="false" selection-start-line="417" selection-start-column="8" selection-end-line="417" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/controller/FinanceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="59" column="56" lean-forward="true" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/finance.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-25">
@@ -1446,19 +1374,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="82" column="51" lean-forward="false" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/zxsrfx.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1551,14 +1470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/proxy/PermissionProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/PermissionService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1594,6 +1505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1625,7 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-882">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1638,7 +1549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="90" column="93" lean-forward="true" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1654,7 +1564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1668,7 +1577,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/ReportCountDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
+        <state relative-caret-position="315">
           <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding />
         </state>
@@ -1676,19 +1585,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/model/TreeMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="714">
           <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
           <folding>
-            <element signature="e#951#952#0" expanded="true" />
-            <element signature="e#999#1000#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
+            <element signature="e#951#952#0" expanded="false" />
+            <element signature="e#999#1000#0" expanded="false" />
+            <element signature="e#1039#1040#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/ModuleDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
+        <state relative-caret-position="798">
           <caret line="48" column="103" lean-forward="false" selection-start-line="48" selection-start-column="103" selection-end-line="48" selection-end-column="103" />
           <folding />
         </state>
@@ -1696,32 +1605,140 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/ModuleService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
+        <state relative-caret-position="3906">
           <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/exception/LoginException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dev/servlet-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-882">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dev/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1656">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/base/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/exception/UnAuthPermissionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/service/FinanceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2646">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/controller/FinanceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/exception/ParamException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/mapper/FinanceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <marker date="1509954137294" expanded="true" signature="2502:3037" ph="INSERT into t_finance... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/dao/FinanceDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/day_report.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="210" column="56" lean-forward="true" selection-start-line="210" selection-start-column="56" selection-end-line="210" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="111" column="28" lean-forward="false" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+        <state relative-caret-position="318">
+          <caret line="125" column="16" lean-forward="false" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
           <folding>
-            <marker date="1509695923833" expanded="true" signature="1768:1807" ph="..." />
-            <marker date="1509695923833" expanded="true" signature="1982:2014" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="4541:4553" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="4822:4834" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="5106:5118" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="5326:5339" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="5586:5599" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="5893:5906" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="6124:6136" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="6365:6378" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="6636:6649" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="6913:6926" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="7192:7205" ph="..." />
-            <marker date="1509695923833" expanded="false" signature="7412:7425" ph="..." />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1509957884256" expanded="true" signature="1769:1808" ph="..." />
+            <marker date="1509957884256" expanded="true" signature="1983:2015" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="5358:5371" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="5618:5631" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="5925:5938" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="6156:6168" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="6397:6410" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="6668:6681" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="6945:6958" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="7224:7237" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="7444:7457" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="8946:8958" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="9172:9185" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="9433:9446" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="9688:9701" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="9947:9960" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="10206:10219" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="10410:10423" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="10586:10599" ph="..." />
+            <marker date="1509957884256" expanded="false" signature="10738:10751" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fh/proxy/PermissionProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

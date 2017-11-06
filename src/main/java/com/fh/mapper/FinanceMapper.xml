@@ -114,7 +114,7 @@
         <if test="@Ognl@isNotEmpty(src)">
         src=#{src}
         </if>
-        ,update_date=now()
+        update_date=now()
 
         <where>
             id=#{id}
