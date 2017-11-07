@@ -131,23 +131,6 @@ public class ExcelUtil<T>   {
                             {});
                     // 判断值的类型后进行强制类型转换
                     String textValue = null;
-                    // if (value instanceof Integer) {
-                    // int intValue = (Integer) value;
-                    // cell.setCellValue(intValue);
-                    // } else if (value instanceof Float) {
-                    // float fValue = (Float) value;
-                    // textValue = new HSSFRichTextString(
-                    // String.valueOf(fValue));
-                    // cell.setCellValue(textValue);
-                    // } else if (value instanceof Double) {
-                    // double dValue = (Double) value;
-                    // textValue = new HSSFRichTextString(
-                    // String.valueOf(dValue));
-                    // cell.setCellValue(textValue);
-                    // } else if (value instanceof Long) {
-                    // long longValue = (Long) value;
-                    // cell.setCellValue(longValue);
-                    // }
                     if (value instanceof Boolean) {
                         boolean bValue = (Boolean) value;
                         textValue = "男";
@@ -213,6 +196,58 @@ public class ExcelUtil<T>   {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public static List<Map<String, String>> readExcel(InputStream fis) {
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();;
+        try {
+            HSSFWorkbook book = new HSSFWorkbook(fis);
+            HSSFSheet sheet = book.getSheetAt(0);
+            int firstRow = sheet.getFirstRowNum();
+            int lastRow = sheet.getLastRowNum();
+            //除去表头和第一行
+//          ComnDao dao = SysBeans.getComnDao();
+            for(int i = firstRow + 1; i<lastRow+1; i++) {
+                Map map = new HashMap();
+
+                HSSFRow row = sheet.getRow(i);
+                int firstCell = row.getFirstCellNum();
+                int lastCell = row.getLastCellNum();
+
+
+                for(int j=firstCell; j<lastCell; j++) {
+
+                    HSSFCell cell2 = sheet.getRow(firstRow + 1).getCell(j);
+                    String key = cell2.getStringCellValue();
+
+                    HSSFCell cell = row.getCell(j);
+
+                    if(cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
+                        cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+                    }
+                    String val = cell.getStringCellValue();
+
+//              System.out.println(val);
+
+                    if(i == firstRow + 1) {
+                        break;
+                    }else{
+                        map.put(key, val);
+
+                    }
+//              System.out.println(map);
+                }
+                if(i != firstRow + 1) {
+                    data.add(map);
+                    System.out.println(map);
+                }
+            }
+            System.out.println(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 
     public static void main(String[] args) {

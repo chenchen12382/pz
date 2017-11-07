@@ -24,6 +24,7 @@
 	        <a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
 	        <a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 	        <a href="javascript:deletecenters()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+            <a href="javascript:openExcelDialog()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量导入</a>
 	    </div>
 	</div>
 	
@@ -51,12 +52,34 @@
 	        </table>
 	    </form>
 	</div>
-	
+
 	<#--弹出框按钮-->
 	<div id="dlg-buttons">
 	    <a href="javascript:savecenter()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
 	    <a href="javascript:closecenterDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
+
+	<#--弹出框-->
+    <div id="edlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
+         closed="true" buttons="#rex-buttons">
+
+        <form id="exfm" method="post">
+            <table cellspacing="8px">
+                <input type="hidden" id="centerId" name="id" />
+                <tr>
+                    <td>批量导入：</td>
+                    <td> <input type="file" id="uploadExl" name="uploadExl" style="width:170px;" ></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+	<#--弹出框按钮-->
+    <div id="rex-buttons">
+        <a href="javascript:saveExcel()" class="easyui-linkbutton" iconCls="icon-ok">批量导入</a>
+        <a href="javascript:closecenterDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+    </div>
+
 	
 	<script src="${ctx}/js/center.list.js?datsdfsdf" ></script>
 </body>

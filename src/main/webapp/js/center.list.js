@@ -15,6 +15,46 @@ function openModifyDialog() {
     $("#dlg").dialog("open").dialog("setTitle","编辑中心内容");
 }
 
+function openExcelDialog() {
+    var selectedRows = $("#dg").datagrid("getSelections");
+    if(selectedRows.length != 1) {
+        $.messager.alert("系统提示","请选择一条要编辑的数据！");
+        return;
+    }
+    var row = selectedRows[0];
+    console.log(row)
+    $("#exfm").form("load", row);
+    $("#edlg").dialog("open").dialog("setTitle","上传EXCEL");
+}
+
+function  saveExcel() {
+    var centerId = $("#centerId").val();
+    var data = {"centerId":centerId};
+    $("#fm").ajaxSubmit({
+        type: "POST",
+        url:"readExcel",
+        dataType: "json",
+        data:data,
+        success: function(result){
+            // result = JSON.parse(result);
+            if(result.resultCode == 1) {
+                $.messager.alert("系统提示", "文件上传成功！");
+                // closeCustomerDialog();
+                // $("#dg").datagrid("reload");
+                $("#src").val(result.result);
+            }else{
+                $.messager.alert("系统提示",result.resultMessage);
+                return;
+            }
+        }
+    });
+
+
+}
+
+
+
+
 function savecenter() {
 	
 	var id = $("#id").val();

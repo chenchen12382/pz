@@ -1,6 +1,7 @@
 package com.fh.dao;
 
 import com.fh.model.Center;
+import com.fh.model.ProtocolNum;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.ibatis.annotations.Insert;
@@ -37,4 +38,8 @@ public interface CenterDao {
 
     @Select("select center from t_center where is_valid = 1")
     List<String> selectAllCenter();
+
+    @Insert("insert into t_xybh (center_id,xybh,is_valid,create_date,update_date) values " +
+            " (#{centerId},#{xybh},1,now(),now() )")
+    void insertXybh(ProtocolNum protocolNum);
 }

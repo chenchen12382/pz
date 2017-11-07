@@ -75,9 +75,7 @@ public class PermissionProxy {
 				throw new UnAuthPermissionException(permission, "您无权操作此模块");
 			}
 		}
-		
-		
-		
+
 		// 将权限存入session
 		request.getSession().setAttribute(Constant.USER_PERMISSION_SESSION_KEY, permissions);
 		//讲角色Id存入session
