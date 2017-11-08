@@ -30,7 +30,20 @@ function openExcelDialog() {
 function  saveExcel() {
     var centerId = $("#centerId").val();
     var data = {"centerId":centerId};
-    $("#fm").ajaxSubmit({
+    var xybh = $("#upExl").val();
+    var sjbh = $("#upSjbh").val();
+    if(xybh != "" && sjbh !=""){
+        $.messager.alert("系统提示", "只能选择一个文件上传！");
+        return;
+    }
+    if(xybh == "" && sjbh == ""){
+        $.messager.alert("系统提示", "请选择文件上传！");
+        return;
+    }
+
+
+
+    $("#exfm").ajaxSubmit({
         type: "POST",
         url:"readExcel",
         dataType: "json",
@@ -96,6 +109,14 @@ function closecenterDialog(){
     $("#dlg").dialog("close");
     resetValue();
 }
+
+function closeUploadDialog() {
+    $("#edlg").dialog("close");
+    $("#upExl").val("");
+    $("#upSjbh").val("");
+
+}
+
 
 function deletecenters() {
 

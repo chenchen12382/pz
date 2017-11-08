@@ -78,10 +78,9 @@ public class CenterController extends BaseController {
 
     @RequestMapping("readExcel")
     @ResponseBody
-    public ResultInfo readExcel(@RequestParam(value = "uploadExl", required = false) MultipartFile file, ProtocolNum protocolNum){
-        centerService.readExcel(file,protocolNum);
+    public ResultInfo readExcel(@RequestParam(value = "upExl", required = false) MultipartFile xybh,
+                                @RequestParam(value = "upSjbh", required = false) MultipartFile sjbh,ProtocolNum protocolNum){
+        centerService.readExcel(xybh,sjbh,protocolNum);
         return success("导入成功");
     }
-
-
 }

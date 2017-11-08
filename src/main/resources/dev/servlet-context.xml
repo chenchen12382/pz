@@ -51,6 +51,7 @@
 		<property name="maxInMemorySize" value="40960"></property>
 	</bean>
 
+
 	<!-- 文本转化 -->
 	<mvc:annotation-driven>
 	     <mvc:message-converters>

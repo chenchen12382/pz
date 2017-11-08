@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.CenterDao">
+    
+    <insert id="insertXybh">
+
+        insert into t_xybh (center_id,xybh,is_valid,create_date,update_date) values
+
+        <foreach collection ="protocolNums" item="protocolNum" index= "index" separator =",">
+            (
+              #{protocolNum.centerId},#{protocolNum.xybh},1,now(),now()
+            )
+
+        </foreach>
+
+    </insert>
+
+    <insert id="insertSjbh">
+
+        insert into t_sjbh (center_id,sjbh,is_valid,create_date,update_date) values
+
+        <foreach collection ="protocolNums" item="protocolNum" index= "index" separator =",">
+            (
+            #{protocolNum.centerId},#{protocolNum.sjbh},1,now(),now()
+            )
+
+        </foreach>
+
+    </insert>
+   
+
+
+
+</mapper>

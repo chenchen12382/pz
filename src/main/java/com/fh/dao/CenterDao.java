@@ -39,7 +39,15 @@ public interface CenterDao {
     @Select("select center from t_center where is_valid = 1")
     List<String> selectAllCenter();
 
-    @Insert("insert into t_xybh (center_id,xybh,is_valid,create_date,update_date) values " +
-            " (#{centerId},#{xybh},1,now(),now() )")
-    void insertXybh(ProtocolNum protocolNum);
+
+    void insertXybh(@Param("protocolNums") List<ProtocolNum> protocolNums);
+
+    @Select("select count(1) from t_xybh where xybh = #{xybh} and is_valid = 1")
+    Integer findXybh(@Param(value = "xybh") String xybh );
+
+    @Select("select count(1) from t_sjbh where sjbh = #{sjbh} and is_valid = 1")
+    Integer findSjbh(@Param(value = "sjbh") String sjbh);
+
+
+    void insertSjbh(@Param("protocolNums") List<ProtocolNum> protocolNums);
 }
