@@ -36,6 +36,7 @@ public class Finance  extends BaseModel{
     private String gift;  //赠送课程
     private String source ; //来源
     private String src; //上传路径
+    private Integer state;  //审核状态
 
     public String getXybh() {
         return xybh;
@@ -211,5 +212,13 @@ public class Finance  extends BaseModel{
 
     public void setSrc(String src) {
         this.src = src;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }
