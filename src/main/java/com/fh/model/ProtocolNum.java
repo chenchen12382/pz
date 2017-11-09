@@ -1,9 +1,11 @@
 package com.fh.model;
 
+import com.fh.base.BaseModel;
+
 /**
  * Created by Administrator on 2017/11/7.
  */
-public class ProtocolNum {
+public class ProtocolNum extends BaseModel{
     private Integer centerId;
     private String xybh;
     private String sjbh;

@@ -154,7 +154,6 @@ public class CenterService {
                             }
                         }
                     }
-
                 }
 
                 centerDao.insertSjbh(protocolNums);
