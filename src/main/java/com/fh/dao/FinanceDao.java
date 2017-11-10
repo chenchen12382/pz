@@ -53,4 +53,9 @@ public interface FinanceDao {
 
     @Select("select count(1) from t_finance where sjbh=#{sjbh} and is_valid=1 ")
     Integer queryFinanceSjbh(String sjbh);
+
+    List<Finance> findExamineList();
+
+    @Update("update t_finance set state=#{state},update_date=now() where id=#{id}")
+    void examineInsert(@Param("state") Integer state, @Param("id") Integer id);
 }
