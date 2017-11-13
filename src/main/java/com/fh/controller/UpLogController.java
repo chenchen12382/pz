@@ -6,13 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.fh.annotation.RequirePermissions;
 import com.fh.base.BaseController;
 import com.fh.base.BaseQuery;
 import com.fh.base.ResultInfo;
-import com.fh.model.Center;
 import com.fh.model.UpLog;
-import com.fh.service.CenterService;
 import com.fh.service.UpLogService;
 
 /**
