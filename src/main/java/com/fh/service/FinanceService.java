@@ -581,4 +581,25 @@ public class FinanceService {
 
         return result;
     }
+
+    /**
+     * 报表审核
+     * @return
+     */
+    public Map<String,Object> selectExamine() {
+        List<Finance> finances = financeDao.findExamineList();
+        Map<String,Object> result = new HashMap<>();
+        result.put("rows",finances);
+        return result;
+
+    }
+
+    public void examineInsert(Integer state, Integer id) {
+        AssertUtil.intIsNotEmpty(id,"请选择要审核的内容");
+        AssertUtil.intIsNotEmpty(state,"请填写审核意见");
+        financeDao.examineInsert(state,id);
+    }
+
+
+
 }

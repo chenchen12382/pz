@@ -121,8 +121,31 @@ public class FinanceController extends BaseController{
 
         String result = financeService.uploadImg(file,request);
 
-
         return success(result);
+    }
+
+    @RequestMapping("examine")
+    public String texamineIndex(){
+       return "examine";
+    }
+
+    /**
+     * 审核报表
+     * @return
+     */
+    @RequestMapping("examine_list")
+    @ResponseBody
+    public Map<String,Object> selectExamine(){
+        Map<String,Object> result=financeService.selectExamine();
+        return result;
+
+    }
+
+    @RequestMapping("examine_insert")
+    @ResponseBody
+    public ResultInfo examineInsert(Integer state,Integer id){
+        financeService.examineInsert(state,id);
+        return success("状态修改成功");
     }
 
 }

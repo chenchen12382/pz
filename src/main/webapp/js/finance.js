@@ -293,6 +293,49 @@ function openModifyDialog() {
 }
 
 
+function examineDialog() {
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length != 1) {
+        $.messager.alert("系统提示", "只能选择一条进行审核");
+        return;
+    }
+    var row = selectedRows[0];
+    $("#fm").form('load', row); // form 赋值
+    $("#dlg").dialog('open').dialog('setTitle', "报表审核");
+}
+
+function saveExamine() {
+    var examine = $("#state").val();
+    var id = $("#id").val();
+    if(examine == null){
+        $.messager.alert("系统提示",'请填写审核意见！');
+        return;
+    }
+    var data = {"state":examine,"id":id};
+
+    $("#fm").form("submit",{
+        url: "examine_insert", // 相对路径
+        data:data,
+        onSubmit: function() {
+            return $(this).form("validate");
+        },
+        success:function(result) {
+            result = JSON.parse(result);
+            if(result.resultCode == 1) {
+                $.messager.alert("系统提示", "保存成功！");
+                closeCustomerDialog();
+                $("#dg").datagrid("reload");
+            }else{
+                $.messager.alert("系统提示",result.resultMessage);
+                return;
+            }
+        }
+    });
+
+
+}
+
+
 // 保存
 function saveCustomer() {
 
