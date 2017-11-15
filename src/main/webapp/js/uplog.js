@@ -61,7 +61,7 @@ function deletecenters() {
 
     var strIds=[];
     var selectedRows = $("#dg").datagrid('getSelections');
-    console.log(selectedRows);
+    //console.log(selectedRows);
     for(var i=0; i<selectedRows.length; i++) {
         strIds.push(selectedRows[i].id);
     }

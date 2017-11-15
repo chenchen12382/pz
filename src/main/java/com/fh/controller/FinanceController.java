@@ -63,7 +63,6 @@ public class FinanceController extends BaseController{
     }
 
 
-
     @RequestMapping("add")
     @ResponseBody
     public ResultInfo insert(Finance finance,HttpServletRequest request){
@@ -71,7 +70,6 @@ public class FinanceController extends BaseController{
         return success("添加成功");
 
     }
-
 
 
     @RequestMapping("update")

@@ -35,39 +35,15 @@ public class ProtocolNumService {
 		result.put("total", protocolNum.getPaginator().getTotalCount());
 		return result;
 	}
-	
-/*
-	public void insert1(ProtocolNum protocolNum) {
-		AssertUtil.isNotEmpty(protocolNum.getXybh(), "请输入收据编号");
-		String temp = protocolNumDao.findBySjbh(protocolNum.getSjbh());
-		AssertUtil.isNotEmpty(temp, "您输入的收据编号已存在！请检查后输入！");
-		protocolNumDao.insert1(protocolNum);
-	}
-	public void insert2(ProtocolNum protocolNum) {
-		AssertUtil.isNotEmpty(protocolNum.getXybh(), "请输入协议编号");
-		String temp = protocolNumDao.findByXybh(protocolNum.getXybh());
-		AssertUtil.isNotEmpty(temp, "您输入的协议编号已存在！请检查后输入！");
-		protocolNumDao.insert2(protocolNum);
-	}*/	
-	/*
-	public void update1(ProtocolNum protocolNum) {
-		// AssertUtil.isNotEmpty(protocolNum.getSjbh(),"请选择数据编号");
-		protocolNumDao.update1(protocolNum);	
-	}
-	public void update2(ProtocolNum protocolNum) {
-			// AssertUtil.isNotEmpty(protocolNum.getSjbh(),"请选择数据编号");
-			protocolNumDao.update2(protocolNum);
-	}
-		*/
-	
-	 public void deleteBatch1(String ids) {
+
+	 public void deleteBatchSjbh(String ids) {
 	        AssertUtil.isNotEmpty(ids,"请选择记录进行删除");
-	        protocolNumDao.deleteBatch1(ids);
+	        protocolNumDao.deleteBatchSjbh(ids);
 	    }
 		
-	 public void deleteBatch2(String ids) {
+	 public void deleteBatchXybh(String ids) {
 	        AssertUtil.isNotEmpty(ids,"请选择记录进行删除");
-	        protocolNumDao.deleteBatch2(ids);
+	        protocolNumDao.deleteBatchXybh(ids);
 	    }
 	 
 	 
