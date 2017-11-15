@@ -26,7 +26,17 @@ $(document).ready(function() {
 				$.cookie("userIdString", resp.result.userIdString);
 				$.cookie("userName", resp.result.userName);
 				$.cookie("realName", resp.result.realName);
-				window.location.href = "main";
+                var system ={};
+                var p = navigator.platform;
+                system.win = p.indexOf("Win") == 0;
+                system.mac = p.indexOf("Mac") == 0;
+                // system.xll = (p == "Xll") || (p.indexOf("Linux") == 0);
+                if(system.win||system.mac||system.xll){//如果是电脑
+                    window.location.href = "main";
+                }else{  //如果是手机
+                    window.location.href="mobile_main";
+                }
+
 			} else { // 失败
 				alert(resp.resultMessage);
 			}

@@ -40,6 +40,18 @@ public class IndexController extends BaseController{
 				return "main";
 	}
 
+	@RequestMapping("mobile_main")
+	public String mobileMain(Model model,HttpServletRequest request){
+		// 获取登录用户的信息
+		Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
+		UserLoginIdentity userLoginIdentity = userService.findLoginUser(userId);
+		model.addAttribute("currentUser", userLoginIdentity);
+		return "mobile_main";
+	}
+
+
+
+
 	@RequestMapping("test")
 	@ResponseBody
 	public Map<String, Object> clintTest(String name,String password){

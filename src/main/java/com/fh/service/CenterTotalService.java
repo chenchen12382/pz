@@ -22,20 +22,20 @@ public class CenterTotalService {
 
     public Map<String,Object> selectForPage(CenterTotalQuery query) {
 
+        List<CenterTotal> centerTotal= bulidList(query);
+//        List<CenterTotal> centerTotals = centerTotalDao.selectForPage(center,query);
+        Map<String,Object> result = new HashMap<>();
+        result.put("rows",centerTotal);
+        return  result;
+
+    }
+
+    public  List bulidList(CenterTotalQuery query){
         //时间判断
         Date start =query.getStart();
         Date over = query.getOver();
         if(start==null){
 
-//            Calendar calendar=Calendar.getInstance();
-//            Date theDate=calendar.getTime();
-//            GregorianCalendar gcLast=(GregorianCalendar)Calendar.getInstance();
-//            gcLast.setTime(theDate);
-//            //设置为第一天
-//            gcLast.set(Calendar.DAY_OF_MONTH, 1);
-//            Date day_first=gcLast.getTime();
-//            query.setStart(day_first);
-//            DateUtil.getFisrtDayOfNow(start);
             query.setStart(DateUtil.getFirstDayOfDate(new Date()));
 
         }
@@ -53,12 +53,11 @@ public class CenterTotalService {
             }
             centerTotals.addAll(selectForDB);
         }
-//        List<CenterTotal> centerTotals = centerTotalDao.selectForPage(center,query);
-        Map<String,Object> result = new HashMap<>();
-        result.put("rows",centerTotals);
-        return  result;
-
+        return  centerTotals ;
     }
 
-
+    public List<CenterTotal> selectForMobilePage(CenterTotalQuery query) {
+        List<CenterTotal> result=bulidList(query);
+        return result;
+    }
 }
