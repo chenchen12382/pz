@@ -6,14 +6,14 @@
 <body style="margin: 1px">
 	<table id="dg" title="业绩录入" class="easyui-datagrid"
 	       fitColumns="true" pagination="true" rownumbers="true"
-	       url="${ctx}/report/list" fit="true" toolbar="#tb">
+	       url="${ctx}/report/center_list" fit="true" toolbar="#tb">
 	    <thead>
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
 	        <th field="id" width="50" align="center">编号</th>
 	        <th field="name" width="100" align="center">顾问</th>
 	        <th field="phoneNum" width="100" align="center" >电话量</th>
-	        <th field="center" width="100" align="center" >中心</th>	    
+	       <#-- <th field="center" width="100" align="center" >中心</th>	-->    
 	        <th field="planNum" width="200" align="center">邀约量</th>
 	        <th field="arriveNum" width="200" align="center">到访人数</th>
 	        <th field="inNum" width="100" align="center">接待人数</th>
@@ -54,14 +54,14 @@
                         <input type="text" id="phoneNum" name="phoneNum" class="easyui-numberbox" required="true"/>
                     </td>  
                  </tr>  
-                 <tr>
+             <#--    <tr>
                    <td>中心：</td>
                     <td>
                         <input class="easyui-combobox" id="center" name="center"
                              data-options=" editable:false, valueField:'center',
 	                	textField:'center', url:'${ctx}/center/find_all'"/>
                     </td>             
-                </tr>  
+                </tr>  -->
                 <tr>
                 
                  <td>邀约量：</td>

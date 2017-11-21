@@ -4,7 +4,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
+import com.fh.dto.FinanceQuery;
 import com.fh.dto.ReportQuery;
+import com.fh.model.Finance;
 import com.fh.model.Report;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
@@ -12,6 +14,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 public interface ReportDao {
 
 	PageList<Report> selectForPage(ReportQuery query, PageBounds buildPageBounds);
+	PageList<Report> selectCenterList(ReportQuery query, PageBounds pageBounds);
 	
 	
 	@Insert("insert into tb_reportforms (name,phone_num,center,plan_num,arrive_num, "
