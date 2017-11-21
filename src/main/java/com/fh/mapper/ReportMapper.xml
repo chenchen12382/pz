@@ -18,4 +18,25 @@
 			</where>
 	</select>
 	
+
+   <select id="selectCenterList" resultType="report">
+        
+      	select id,name,phone_num,center,plan_num,arrive_num,in_num,source,order_num ,money,analysis
+	       
+	        from tb_reportforms 
+        <where>
+            is_valid = 1
+            <if test="@Ognl@isNotEmpty(userCenter)">
+            and center = #{userCenter}
+            </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                and name like '%${name}%'
+            </if>
+            order by id DESC
+
+        </where>
+
+    </select> 
+	
+	
 </mapper>

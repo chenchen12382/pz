@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fh.base.BaseController;
 import com.fh.base.Constant;
 import com.fh.base.ResultInfo;
+import com.fh.dto.FinanceQuery;
 import com.fh.dto.ReportQuery;
 import com.fh.model.Report;
 import com.fh.service.ReportService;
@@ -38,6 +39,16 @@ public class ReportController extends BaseController {
 		return result;
 		
 	}
+	
+	@RequestMapping("center_list")
+    @ResponseBody
+    public Map<String,Object> selectCenterList(ReportQuery query, HttpServletRequest request){
+        Map<String,Object> result=reportservice.selectCenterList(query, request);
+        return result;
+
+    }
+	
+	
 	
 	@RequestMapping(value = "add")
 	@ResponseBody

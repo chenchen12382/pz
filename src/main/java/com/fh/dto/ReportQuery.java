@@ -6,6 +6,14 @@ public class ReportQuery extends BaseQuery{
 	
 	private String name;
 	private String center;
+	private String userCenter;
+	 
+	public String getUserCenter() {
+		return userCenter;
+	}
+	public void setUserCenter(String userCenter) {
+		this.userCenter = userCenter;
+	}
 	public String getName() {
 		return name;
 	}
