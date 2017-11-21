@@ -1,6 +1,5 @@
 package com.fh.dao;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -58,6 +57,9 @@ public interface UserDao {
 
 	@Select("select center from t_user where user_name = #{userName} and is_valid = 1")
     String findUserCenter(@Param("userName") String userName);
+
+	@Select("select t2.id from t_user t1 LEFT JOIN t_center t2 on t1.center=t2.center where t1.user_name =#{userName} and t1.is_valid=1 and t2.is_valid=1")
+	Integer findUserCenterID(@Param("userName") String userName);
 
 //    void insert(User user);
 }

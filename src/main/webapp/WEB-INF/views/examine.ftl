@@ -59,7 +59,7 @@
 	        <table cellspacing="8px">
 	            <tr>
 	                <td>协议编号：</td>
-	                <td><input type="text" id="xybh" name="xybh" class="easyui-numberbox"  required="true" readonly="readonly"/>&nbsp;<font color="red">*</font></td>
+	                <td><input type="text" id="xybh" name="xybh" class="easyui-combobox"  required="true" readonly="readonly"/>&nbsp;<font color="red">*</font></td>
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>收据编号：</td>
                     <td><input type="text" id="sjbh" name="sjbh" class="easyui-numberbox"  required="true" readonly="readonly" />&nbsp;<font color="red">*</font></td>

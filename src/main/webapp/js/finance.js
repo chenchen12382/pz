@@ -63,6 +63,24 @@ function formatImg(value) {
 
 }
 
+$(function () {
+    $('#xybh').combo({
+        editable:true,
+        required:true,
+    });
+    // $.post('/priceClass/find_all',{},function (result) {
+    //     // var result = JSON.parse(result);
+    //     console.log(result);
+    //        for (var i=0;i<result.length;i++){
+    //            $("#xybh").combo('setValue',result[i].saleClass);
+    //            alert(result[i].saleClass);
+    //        }
+    //
+    //
+    // })
+
+})
+
 // //图片添加路径
 // function imgFormatter(value,row,index){
 //     if('' != value && null != value){
@@ -124,7 +142,7 @@ function formatPromotion(value) {
 function resetValue() {
     
     // $("#dlg").combobox('setValue', 0);
-    $("#xybh").numberbox('setValue',"");
+    $("#xybh").combo('setValue',"");
     $("#sjbh").numberbox('setValue',"");
     $("#hybh").val("");
     $("#o_name").val('');

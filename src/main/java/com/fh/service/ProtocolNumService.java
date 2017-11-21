@@ -3,6 +3,7 @@ package com.fh.service;
 import com.fh.base.AssertUtil;
 import com.fh.base.BaseQuery;
 import com.fh.dao.ProtocolNumDao;
+import com.fh.dao.UserDao;
 import com.fh.model.ProtocolNum;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import java.util.HashMap;
@@ -19,6 +20,9 @@ public class ProtocolNumService {
 
 	@Autowired
 	private ProtocolNumDao protocolNumDao;
+
+	@Autowired
+	private UserDao userDao;
 
 	public Map<String, Object> selectForPage1(BaseQuery query) {
 		PageList<ProtocolNum> protocolNum = protocolNumDao.selectAll1(query.buildPageBounds());
@@ -59,4 +63,11 @@ public class ProtocolNumService {
 	        result.put("rows",protocolNum);
 	        return result;
 	    }
+
+    public List<ProtocolNum> findAll(String userName) {
+		Integer centerId=userDao.findUserCenterID(userName);
+		List<ProtocolNum> result = protocolNumDao.selectXybhById(centerId);
+		return result;
+
+	}
 }

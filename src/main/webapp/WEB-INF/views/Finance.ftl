@@ -62,6 +62,7 @@
         <option value="0">请选择...</option>
         <option value="全款">全款</option>
         <option value="订金">订金</option>
+        <option value="尾款">尾款</option>
         </select>
         </br>
         &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>

@@ -15,7 +15,5 @@
 
 <script>
           var ctx = "${ctx}/";
-          $('.ui-header .ui-btn').click(function(){
-              location.href= 'mobile_main';
-          });
+
 </script>

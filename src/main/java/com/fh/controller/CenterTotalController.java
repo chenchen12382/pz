@@ -5,6 +5,7 @@ import com.fh.base.BaseController;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.model.CenterTotal;
 import com.fh.service.CenterTotalService;
+import com.fh.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -33,20 +35,32 @@ public class CenterTotalController extends BaseController {
     @RequirePermissions(permission = "3010")
     @RequestMapping("list")
     @ResponseBody
-    public Map<String, Object> selectForPage(CenterTotalQuery query){
-
-        Map<String,Object> result=centerTotalService.selectForPage(query);
+    public Map<String, Object> selectForPage(CenterTotalQuery query, HttpServletRequest request){
+        String userName = CookieUtil.getCookieValue(request,"userName");
+        Map<String,Object> result=centerTotalService.selectForPage(query,userName);
         return result;
 
     }
 
 
     @RequestMapping("mobile_index")
-    public String mIndex(CenterTotalQuery query,Model model ){
-        List<CenterTotal> result=centerTotalService.selectForMobilePage(query);
+    public String mIndex(CenterTotalQuery query,Model model,HttpServletRequest request ){
+        String userName = CookieUtil.getCookieValue(request,"userName");
+        List<CenterTotal> result=centerTotalService.selectForMobilePage(query,userName);
         model.addAttribute("centerTotals",result);
 
        return "center_total_m";
     }
+
+    @RequestMapping("m_list")
+    @ResponseBody
+    public List<CenterTotal> mList(CenterTotalQuery query,Model model,HttpServletRequest request ){
+        String userName = CookieUtil.getCookieValue(request,"userName");
+        List<CenterTotal> result=centerTotalService.selectForMobilePage(query,userName);
+//        model.addAttribute("centerTotals",result);
+        return result;
+//        return "center_total_m";
+    }
+
 
 }

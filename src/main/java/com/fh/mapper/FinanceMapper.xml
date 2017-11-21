@@ -51,7 +51,7 @@
     <select id="selectCenterList" resultType="finance">
         select
         id,center,xybh,sjbh,hybh,name,sale_class,sale_num,agreement,price,should_money,
-   real_money,discount,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
+   real_money,discount,teacher,pay_mode,property,contract_time,card_num,counselor,promotion,gift,source,
   create_date,update_date
 
         FROM   t_finance

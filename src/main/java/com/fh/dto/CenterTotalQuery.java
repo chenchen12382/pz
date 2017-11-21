@@ -16,6 +16,8 @@ public class CenterTotalQuery extends BaseQuery {
 
     private  String center;
 
+    private Integer time; //前台数据 0为当天 1为当月
+
     public Date getStart() {
         return start;
     }
@@ -38,5 +40,13 @@ public class CenterTotalQuery extends BaseQuery {
 
     public void setCenter(String center) {
         this.center = center;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
     }
 }

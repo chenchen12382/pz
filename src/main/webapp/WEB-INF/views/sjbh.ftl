@@ -21,10 +21,37 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
+            <a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">批量导入</a>
 	        <a href="javascript:deleteSjbhs()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    </div>
 	</div>
-		
+
+	<#--弹出框-->
+    <div id="edlg" class="easyui-dialog" style="width:400px;height:200px;padding: 10px 20px"
+         closed="true" buttons="#rex-buttons" >
+
+        <form id="exfm" method="post" enctype="multipart/form-data">
+            <table cellspacing="8px">
+                <input type="hidden" id="centerId" name="id" />
+                <tr>
+                    <td>协议编号导入：</td>
+                    <td> <input type="file" id="upExl" name="upExl" style="width:170px;" ></td>
+                </tr>
+                <tr>
+                    <td>收据编号导入：</td>
+                    <td> <input type="file" id="upSjbh" name="upSjbh" style="width:170px;" ></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+	<#--弹出框按钮-->
+    <div id="rex-buttons">
+        <a href="javascript:saveExcel()" class="easyui-linkbutton" iconCls="icon-ok">批量导入</a>
+        <a href="javascript:closeUploadDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+    </div>
+
+
 	<script src="${ctx}/js/sjbh.js" ></script>
 </body>
 </html>
