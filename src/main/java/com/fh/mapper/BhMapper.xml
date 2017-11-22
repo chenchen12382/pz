@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.ProtocolNumDao">
+
+    <select id="selectAll1" resultType="ProtocolNum" >
+
+        select sjbh,center,t1.create_date,t1.update_date from t_sjbh t1 LEFT JOIN t_center t2 ON t1.center_id=t2.id
+        where t1.is_valid = 1 and t2.is_valid = 1
+        <if test="@Ognl@isNotEmpty(center)">
+            and t2.center like '%${center}%'
+        </if>
+      ORDER by sjbh
+
+
+    </select>
+
+    <select id="selectAll2" resultType="ProtocolNum" >
+
+        select xybh,center,t1.create_date,t1.update_date from t_xybh t1 LEFT JOIN t_center t2 ON t1.center_id=t2.id
+        where t1.is_valid = 1 and t2.is_valid = 1
+        <if test="@Ognl@isNotEmpty(center)">
+            and t2.center like '%${center}%'
+        </if>
+        ORDER by xybh
+
+
+    </select>
+
+
+
+</mapper>

@@ -1,6 +1,8 @@
 package com.fh.dao;
 import java.util.List;
 
+import com.fh.dto.CenterTotalQuery;
+import com.fh.dto.ProtocolNumQuery;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -15,11 +17,11 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
  */
 public interface ProtocolNumDao {
 
-    @Select("select id, center_id,sjbh,create_date,update_date from t_sjbh where is_valid = 1" + " order by id ")
-    PageList<ProtocolNum> selectAll1(PageBounds pageBounds);
+
+    PageList<ProtocolNum> selectAll1(ProtocolNumQuery query, PageBounds pageBounds);
     
-    @Select("select id, center_id,xybh,create_date,update_date from t_xybh where is_valid = 1" + " order by id ")
-    PageList<ProtocolNum> selectAll2(PageBounds pageBounds);
+
+    PageList<ProtocolNum> selectAll2(ProtocolNumQuery query, PageBounds pageBounds);
 
     
 
@@ -37,4 +39,7 @@ public interface ProtocolNumDao {
 
     @Select("select id,center_id,xybh,create_date,update_date from t_xybh where is_valid=1 and center_id=#{centerId}")
     List<ProtocolNum> selectXybhById(@Param("centerId") Integer centerId);
+
+    @Select("select id,center_id,sjbh,create_date,update_date from t_sjbh where is_valid=1 and center_id=#{centerId}")
+    List<ProtocolNum> selectSjbhById(@Param("centerId") Integer centerId);
 }

@@ -20,3 +20,11 @@ function deleteSjbhs() {
         }
     });
 }
+
+function searchCenter() {
+    var center = $("#s_center").val();
+    // var over = $("#over").datebox('getValue');
+
+    var data = { "center":center};
+    $("#dg").datagrid('load', data);
+}

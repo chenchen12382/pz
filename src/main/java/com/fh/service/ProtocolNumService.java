@@ -4,8 +4,12 @@ import com.fh.base.AssertUtil;
 import com.fh.base.BaseQuery;
 import com.fh.dao.ProtocolNumDao;
 import com.fh.dao.UserDao;
+import com.fh.dto.CenterTotalQuery;
+import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.ProtocolNum;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,16 +28,16 @@ public class ProtocolNumService {
 	@Autowired
 	private UserDao userDao;
 
-	public Map<String, Object> selectForPage1(BaseQuery query) {
-		PageList<ProtocolNum> protocolNum = protocolNumDao.selectAll1(query.buildPageBounds());
+	public Map<String, Object> selectForPage1(ProtocolNumQuery query) {
+		PageList<ProtocolNum> protocolNum = protocolNumDao.selectAll1(query,query.buildPageBounds());
 		Map<String, Object> result = new HashMap<>();
 		result.put("rows", protocolNum);
 		result.put("total", protocolNum.getPaginator().getTotalCount());
 		return result;
 	}
 	
-	public Map<String, Object> selectForPage2(BaseQuery query) {
-		PageList<ProtocolNum> protocolNum = protocolNumDao.selectAll2(query.buildPageBounds());
+	public Map<String, Object> selectForPage2(ProtocolNumQuery query) {
+		PageList<ProtocolNum> protocolNum = protocolNumDao.selectAll2(query,query.buildPageBounds());
 		Map<String, Object> result = new HashMap<>();
 		result.put("rows", protocolNum);
 		result.put("total", protocolNum.getPaginator().getTotalCount());
@@ -64,9 +68,15 @@ public class ProtocolNumService {
 	        return result;
 	    }
 
-    public List<ProtocolNum> findAll(String userName) {
+    public List<ProtocolNum> findAll(String userName, Integer type) {
+
 		Integer centerId=userDao.findUserCenterID(userName);
-		List<ProtocolNum> result = protocolNumDao.selectXybhById(centerId);
+		List<ProtocolNum> result;
+		if(type==1) {
+			result = protocolNumDao.selectXybhById(centerId);
+		}else{
+			result = protocolNumDao.selectSjbhById(centerId);
+		}
 		return result;
 
 	}

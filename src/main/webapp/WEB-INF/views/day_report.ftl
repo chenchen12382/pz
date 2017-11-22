@@ -81,11 +81,11 @@
 	            <tr>
 	                <td>协议编号：</td>
 	                <#--<td><input type="text" id="xybh" name="xybh" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>-->
-					<td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'xybh',textField:'xybh',url:'${ctx}/protocol/find_all'" />&nbsp;<font color="red">*</font></td>
+					<td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'xybh',textField:'xybh',url:'${ctx}/protocol/find_all?type=1'" />&nbsp;<font color="red">*</font></td>
 
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>收据编号：</td>
-                    <td><input type="text" id="sjbh" name="sjbh" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>
+                    <td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
 	                </td>
 	            </tr>
 	            <tr>

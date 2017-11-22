@@ -3,6 +3,8 @@ package com.fh.controller;
 import com.fh.base.BaseController;
 import com.fh.base.BaseQuery;
 import com.fh.base.ResultInfo;
+import com.fh.dto.CenterTotalQuery;
+import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.ProtocolNum;
 import com.fh.service.ProtocolNumService;
 
@@ -41,7 +43,7 @@ public class ProtocolNumController extends BaseController {
     /*收据编号*/
     @RequestMapping("listSjbh")
     @ResponseBody
-    public Map<String, Object> selectForPage1(BaseQuery query) {
+    public Map<String, Object> selectForPage1(ProtocolNumQuery query) {
 
         Map<String, Object> result = protocolNumService.selectForPage1(query);
         return result;
@@ -57,7 +59,7 @@ public class ProtocolNumController extends BaseController {
     /*协议编号*/
     @RequestMapping("listXybh")
     @ResponseBody
-    public Map<String, Object> selectForPage2(BaseQuery query) {
+    public Map<String, Object> selectForPage2(ProtocolNumQuery query) {
         Map<String, Object> result = protocolNumService.selectForPage2(query);
         return result;
     }
@@ -72,10 +74,10 @@ public class ProtocolNumController extends BaseController {
 
     @RequestMapping("find_all")
     @ResponseBody
-    public List<ProtocolNum> findAll(HttpServletRequest request) {
+    public List<ProtocolNum> findAll(HttpServletRequest request,Integer type) {
         String userName = CookieUtil.getCookieValue(request, "userName");
 
-        List<ProtocolNum> result = protocolNumService.findAll(userName);
+        List<ProtocolNum> result = protocolNumService.findAll(userName,type);
         return result;
     }
 
