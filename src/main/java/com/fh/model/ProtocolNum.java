@@ -10,6 +10,15 @@ public class ProtocolNum extends BaseModel{
     private String xybh;
     private String sjbh;
     private String center;
+    private Integer centerId;
+
+    public Integer getCenterId() {
+        return centerId;
+    }
+
+    public void setCenterId(Integer centerId) {
+        this.centerId = centerId;
+    }
 
     public String getCenter() {
         return center;

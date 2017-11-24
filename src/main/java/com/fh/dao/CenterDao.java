@@ -50,4 +50,10 @@ public interface CenterDao {
 
 
     void insertSjbh(@Param("protocolNums") List<ProtocolNum> protocolNums);
+
+    @Update("update t_sjbh set is_valid=0 where sjbh=#{sjbh}")
+    void deleteSjbh(@Param("sjbh") String sjbh);
+
+    @Update("update t_xybh set is_valid=0 where xybh=#{xybh}")
+    void deleteXybh(@Param("xybh") String xybh);
 }

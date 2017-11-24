@@ -52,11 +52,13 @@
 <#if userPermissions?seq_contains('101002') >
         	<a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 </#if>
+       	 <a href="javascript:openRestMoneyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">尾款</a>
 <#if userPermissions?seq_contains('101003') >
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 </#if>
         	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">作废单据</a>
         	<a href="javascript:showImg()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">合同图片</a>
+
 
 	    </div>
 	    <div>
@@ -85,7 +87,7 @@
 
 	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	                <td>收据编号：</td>
-                    <td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
+                    <td><input class="easyui-combobox" id="sjbh" name="sjbh" data-options="panelHeight:'auto',editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
 	                </td>
 	            </tr>
 	            <tr>
@@ -241,6 +243,50 @@
         <a href="javascript:saveAgreement()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
         <a href="javascript:closeAgreementDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
     </div>
+
+
+
+	<#--尾款弹出框-->
+	<#--弹出框-->
+    <div id="restdlg" class="easyui-dialog" style="width:600px;height:250px;padding: 10px 20px"
+         closed="true" buttons="#restdlg-buttons">
+
+        <form id="r_fm" method="post">
+            <input type="hidden" id="r_id" name="id" />
+            <table cellspacing="8px">
+                <tr>
+                    <td>客户姓名：</td>
+
+                    <td><input type="text" id="r_name" name="name" class="easyui-validatebox" required="true" readonly="readonly"/>
+                        &nbsp;<font color="red">*</font></td>
+                </tr>
+
+                <tr>
+                    <td>协议编号：</td>
+                    <td colspan="4"><input type="text" class="easyui-numberbox" id="r_xybh" name="xybh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                </tr>
+                <tr>
+                    <td>收据编号：</td>
+                    <td colspan="4"><input type="text" class="easyui-validatebox" id="r_sjbh" name="sjbh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                </tr>
+                <tr>
+                    <td>尾款：</td>
+                    <td>
+                        <input type="text" id="restMoney" name="restMoney" class="easyui-numberbox" required="true" />
+                        &nbsp;<font color="red">*</font>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+	<#--按钮-->
+    <div id="restdlg-buttons">
+        <a href="javascript:saveRestMoney()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+        <a href="javascript:closeRestMoneyDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+    </div>
+
 
 
 	<#--按钮-->
