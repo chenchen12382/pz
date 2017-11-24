@@ -63,23 +63,14 @@ function formatImg(value) {
 
 }
 
-$(function () {
-    $('#xybh').combo({
-        editable:true,
-        required:true,
-    });
-    // $.post('/priceClass/find_all',{},function (result) {
-    //     // var result = JSON.parse(result);
-    //     console.log(result);
-    //        for (var i=0;i<result.length;i++){
-    //            $("#xybh").combo('setValue',result[i].saleClass);
-    //            alert(result[i].saleClass);
-    //        }
-    //
-    //
-    // })
-
-})
+// $(function () {
+//     $('#xybh').combo({
+//         editable:true,
+//         required:true,
+//     });
+//
+//
+// })
 
 // //图片添加路径
 // function imgFormatter(value,row,index){
@@ -142,8 +133,8 @@ function formatPromotion(value) {
 function resetValue() {
     
     // $("#dlg").combobox('setValue', 0);
-    $("#xybh").combo('setValue',"");
-    $("#sjbh").numberbox('setValue',"");
+    $("#xybh").combobox('setValue',"");
+    $("#sjbh").combobox('setValue',"");
     $("#hybh").val("");
     $("#o_name").val('');
     // $("#saleClass").combobox('setValue',0);
@@ -162,6 +153,7 @@ function resetValue() {
     $("input[name='agreement'][value='新签']").attr("checked",true);
     $("input[name='property'][value='全款']").attr("checked",true);
     $("#src").val("");
+    $("#restMoney").numberbox('setValue',"");
 
 }
 
@@ -310,6 +302,27 @@ function openModifyDialog() {
 
 }
 
+//尾款
+function openRestMoneyDialog() {
+    // form 表单赋值 获取选中行
+    var selectedRows = $("#dg").datagrid('getSelections');
+    if (selectedRows == null || selectedRows.length != 1) {
+        $.messager.alert("系统提示", "只能选择一条增加尾款");
+        return;
+    }
+    var row = selectedRows[0];
+    if(row.property!="订金"){
+        $.messager.alert("系统提示", "只能选择\<订金\>的数据增加尾款");
+        return;
+    }
+
+    $("#r_fm").form('load', row); // form 赋值
+    $("#restdlg").dialog('open').dialog('setTitle', "增加尾款");
+
+}
+
+
+
 
 function examineDialog() {
     var selectedRows = $("#dg").datagrid('getSelections');
@@ -398,6 +411,8 @@ function saveCustomer() {
                 $.messager.alert("系统提示", "保存成功！");
                 closeCustomerDialog();
                 $("#dg").datagrid("reload");
+                $('#sjbh').combobox('reload');
+                $('#xybh').combobox('reload');
             }else{
                 $.messager.alert("系统提示",result.resultMessage);
                 return;
@@ -448,7 +463,7 @@ function closeCustomerDialog() {
 
 
 
-// 保存
+// 保存作废单据
 function saveAgreement() {
 
     var url = "add_agreement";
@@ -481,4 +496,57 @@ function saveAgreement() {
 function closeAgreementDialog() {
     resetValue();
     $("#agreementdlg").dialog('close');
+}
+
+
+// 保存作废单据
+function saveRestMoney() {
+
+    var url = ctx+"finance/add";
+
+    var id = $("#r_id").val();
+    if (id==null) {
+        $.messager.alert("系统提示","请选择记录填写尾款！");
+    }
+    var restMoney = $("#restMoney").numberbox("getValue");
+    var selectedRows = $("#dg").datagrid('getSelections');
+    var row = selectedRows[0];
+    row.realMoney=restMoney;
+    row.property="尾款";
+
+    $.post(url,row,function (result) {
+        if(result.resultCode == 1) {
+            $.messager.alert("系统提示", "保存成功！");
+            closeRestMoneyDialog();
+            $("#dg").datagrid("reload");
+        }else{
+            $.messager.alert("系统提示",result.resultMessage);
+            return;
+        }
+    })
+
+    // $("#r_fm").form("submit",{
+    //     url: url, // 相对路径
+    //     data:row,
+    //     // onSubmit: function() {
+    //     //     return $(this).form("validate");
+    //     // },
+    //     success:function(result) {
+    //         result = JSON.parse(result);
+    //         if(result.resultCode == 1) {
+    //             $.messager.alert("系统提示", "保存成功！");
+    //             closeRestMoneyDialog();
+    //             $("#dg").datagrid("reload");
+    //         }else{
+    //             $.messager.alert("系统提示",result.resultMessage);
+    //             return;
+    //         }
+    //     }
+    // });
+}
+
+
+function closeRestMoneyDialog() {
+    resetValue();
+    $("#restdlg").dialog('close');
 }

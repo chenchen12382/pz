@@ -133,6 +133,9 @@ public class FinanceService {
     public void insert(Finance finance, HttpServletRequest request) {
         //基本参数验证
         chickParams(finance);
+        if(finance.getProperty().equals("订金")){
+
+        }
 
         if(finance.getProperty().equals("全款")) {
 
@@ -168,6 +171,11 @@ public class FinanceService {
 
         //添加
         financeDao.insert(finance);
+
+        //设置协议编号收据编号为不可用
+        centerDao.deleteSjbh(finance.getSjbh());
+        centerDao.deleteXybh(finance.getXybh());
+
 
     }
 

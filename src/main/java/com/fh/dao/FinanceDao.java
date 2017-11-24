@@ -49,10 +49,10 @@ public interface FinanceDao {
     List<Finance> selectForExcel(FinanceQuery query);
 
     @Select("select count(1) from t_finance where xybh=#{xybh} and is_valid=1 ")
-    Integer queryFinanceXybh(String xybh);
+    Integer queryFinanceXybh(@Param("xybh") String xybh);
 
     @Select("select count(1) from t_finance where sjbh=#{sjbh} and is_valid=1 ")
-    Integer queryFinanceSjbh(String sjbh);
+    Integer queryFinanceSjbh(@Param("sjbh")String sjbh);
 
     List<Finance> findExamineList();
 

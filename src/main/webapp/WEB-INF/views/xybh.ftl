@@ -10,9 +10,9 @@
 	    <thead>
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
-	        <th field="id" width="50" align="center">编号</th>
-	        <th field="centerId" width="200" align="center">中心ID</th>
-	        <th field="xybh" width="300" align="center">协议编号</th>
+	        <th field="id" width="50" align="center" hidden="hidden">编号</th>
+	        <th field="center" width="100" align="center">中心</th>
+	        <th field="xybh" width="100" align="center">协议编号</th>
 	        <th field="createDate" width="100" align="center">创建时间</th>
 	        <th field="updateDate" width="100" align="center">更新时间</th>
 	    </tr>
@@ -20,6 +20,11 @@
 	</table>
 	<#--工具栏-->
 	<div id="tb">
+        <div>
+            &nbsp;中心：&nbsp;<input type="text" id="s_center"  size="15" onkeydown="if(event.keyCode==13) searchCenter()"/>
+            <a href="javascript:searchCenter()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+        </div>
+
 		<div>
 	       <a href="javascript:deleteXybhs()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    </div>

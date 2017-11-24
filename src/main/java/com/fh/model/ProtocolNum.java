@@ -6,9 +6,11 @@ import com.fh.base.BaseModel;
  * Created by Administrator on 2017/11/7.
  */
 public class ProtocolNum extends BaseModel{
-    private Integer centerId;
+//    private Integer centerId;
     private String xybh;
     private String sjbh;
+    private String center;
+    private Integer centerId;
 
     public Integer getCenterId() {
         return centerId;
@@ -16,6 +18,14 @@ public class ProtocolNum extends BaseModel{
 
     public void setCenterId(Integer centerId) {
         this.centerId = centerId;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public void setCenter(String center) {
+        this.center = center;
     }
 
     public String getXybh() {
