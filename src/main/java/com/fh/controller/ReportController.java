@@ -1,19 +1,14 @@
 package com.fh.controller;
 
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
-import com.fh.annotation.RequirePermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.fh.base.BaseController;
 import com.fh.base.Constant;
 import com.fh.base.ResultInfo;
-import com.fh.dto.FinanceQuery;
 import com.fh.dto.ReportQuery;
 import com.fh.model.Report;
 import com.fh.service.ReportService;
@@ -31,13 +26,18 @@ public class ReportController extends BaseController {
 		return "report";
 	}
 	
-	@RequirePermissions(permission = "1020")
+	
+    @RequestMapping("index_center")
+    public String indexCenter(){
+        return "adviserReport";
+    }
+
+	
 	@RequestMapping("list")
 	@ResponseBody
-	public Map<String, Object> List(ReportQuery query){
-		Map<String, Object> result = reportservice.selectForPage(query);
-		return result;
-		
+	public Map<String, Object> List(ReportQuery query, HttpServletRequest request){
+		Map<String, Object> result = reportservice.selectForPage(query, request);
+		return result;		
 	}
 	
 	@RequestMapping("center_list")
@@ -48,8 +48,6 @@ public class ReportController extends BaseController {
 
     }
 	
-	
-	
 	@RequestMapping(value = "add")
 	@ResponseBody
 	public ResultInfo insert(Report report,HttpServletRequest request) {
@@ -59,9 +57,8 @@ public class ReportController extends BaseController {
 	
 	@RequestMapping("update")
 	@ResponseBody
-	public ResultInfo update(Report report) {
-
-		reportservice.update(report);
+	public ResultInfo update(Report report,HttpServletRequest request) {
+		reportservice.update(report,request);
 		return success(Constant.SUCCESS_MSG);
 		
 	}

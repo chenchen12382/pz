@@ -21,21 +21,23 @@
 	        <th field="source" width="100" align="center">来源</th> 
 	        <th field="money" width="100" align="center">收入金额</th>
 	        <th field="analysis" width="200" align="center" >未报名分析</th>
+	       <#--   <th field="createDate" width="100" align="center">日期</th>
+	      <th field="updateDate" width="100" align="center">更新日期</th>	-->  
 	    </tr>
 	    </thead>
 	</table>
 	<#--工具栏-->
-	<div id="tb">
+   <div id="tb">
 		<div>
 	           <a href="javascript:openReportAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
 	           <a href="javascript:openReportModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 	        <a href="javascript:deleteReport()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	    </div>
-	    <div>
+    <#-- <div>
 	        &nbsp;中心：&nbsp;<input type="text" id="center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
 	        &nbsp;顾问：&nbsp;<input type="text" id="name" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>	     
 	        <a href="javascript:searchProgress()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
-	    </div>
+	    </div>-->
 	</div>
 	
 	<#--弹出框-->

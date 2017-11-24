@@ -33,21 +33,40 @@ public class ReportService {
 
 	/**
 	 * 查询列表
+	 * 
 	 * @param query
 	 * @return
 	 */
-    public Map<String, Object> selectForPage(ReportQuery query) {
-    	PageList<Report> reports = reportDao.selectForPage(query,query.buildPageBounds());
-    	Paginator paginator =reports.getPaginator();
-    	// 得到分页对象 
-    	Map<String, Object> result = new HashMap<>(); 
-    	result.put("paginator", paginator);
-    	result.put("rows", reports);
-    	result.put("total", paginator.getTotalCount()); 
-		 return result;	  
-	  }
-		
-   //各中心报表
+	public Map<String, Object> selectForPage(ReportQuery query, HttpServletRequest request) {
+		// 判断是哪个中心
+		String userName = CookieUtil.getCookieValue(request, "userName");
+		// 管理员
+		String userRole = userDao.findUserRole(userName);
+		// 查询中心
+		User user = userDao.findByUserName(userName);
+		AssertUtil.notNull(user, "请关闭浏览器重试！");
+		String center = user.getCenter();
+		query.setUserCenter(center);
+		if (userRole.equals("系统管理员")) {
+			PageList<Report> reports = reportDao.adminSelectPage(query, query.buildPageBounds());
+			Paginator paginator = reports.getPaginator();
+			Map<String, Object> result = new HashMap<>();
+			result.put("paginator", paginator);
+			result.put("rows", reports);
+			result.put("total", paginator.getTotalCount());
+			return result;
+		}
+		PageList<Report> reports = reportDao.selectForPage(query, query.buildPageBounds());
+		Paginator paginator = reports.getPaginator();
+		// 得到分页对象
+		Map<String, Object> result = new HashMap<>();
+		result.put("paginator", paginator);
+		result.put("rows", reports);
+		result.put("total", paginator.getTotalCount());
+		return result;
+	}
+
+	// 各中心报表
 	public Map<String, Object> selectCenterList(ReportQuery query, HttpServletRequest request) {
 		// 判断是哪个中心
 		String userName = CookieUtil.getCookieValue(request, "userName");
@@ -58,9 +77,9 @@ public class ReportService {
 		AssertUtil.notNull(user, "请关闭浏览器重试！");
 		String center = user.getCenter();
 		query.setUserCenter(center);
-//		System.out.println(query.getCenter()+"*********************************");
+		query.setUserName(userName);
 		if (userRole.equals("系统管理员")) {
-			PageList<Report> reports = reportDao.selectForPage(query, query.buildPageBounds());
+			PageList<Report> reports = reportDao.adminSelectPage(query, query.buildPageBounds());
 			Paginator paginator = reports.getPaginator();
 			Map<String, Object> result = new HashMap<>();
 			result.put("paginator", paginator);
@@ -78,16 +97,15 @@ public class ReportService {
 		return result;
 	}
 
-
 	public void insert(Report report, HttpServletRequest request) {
-		 //判断是哪个中心
-        String userName = CookieUtil.getCookieValue(request,"userName");
-        //查询中心
-        User user=userDao.findByUserName(userName);
-        AssertUtil.notNull(user,"系统出错，请联系管理员");
-        String userCenter = user.getCenter();
-        report.setCenter(userCenter);
-        System.out.println(userCenter+userName);
+		// 判断是哪个中心
+		String userName = CookieUtil.getCookieValue(request, "userName");
+		// 查询中心
+		User user = userDao.findByUserName(userName);
+		AssertUtil.notNull(user, "系统出错，请联系管理员");
+		String userCenter = user.getCenter();
+		report.setCenter(userCenter);
+		//report.setAdviser(userName);
 		reportDao.insert(report);
 	}
 
@@ -96,8 +114,14 @@ public class ReportService {
 	 * 
 	 * @param report
 	 */
-	public void update(Report report) {
-
+	public void update(Report report, HttpServletRequest request) {
+		String userName = CookieUtil.getCookieValue(request, "userName");
+		// 查询中心
+		User user = userDao.findByUserName(userName);
+		AssertUtil.notNull(user, "系统出错，请联系管理员");
+		String userCenter = user.getCenter();
+		report.setCenter(userCenter);
+		//report.setAdviser(userName);
 		reportDao.update(report);
 
 	}

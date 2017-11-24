@@ -48,6 +48,8 @@
         <#--&lt;#&ndash;<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>&ndash;&gt;-->
 
     <#--</div>-->
+
+
     <div>
         &nbsp;中心：&nbsp;<input type="text" id="center" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
         &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>

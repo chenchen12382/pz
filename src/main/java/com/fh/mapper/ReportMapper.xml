@@ -12,28 +12,41 @@
 			 <if test="@Ognl@isNotEmpty(name)">
 					and name like '%${name}%'
 				</if>
+				<if test="@Ognl@isNotEmpty(userCenter)">
+					  and center like '%${userCenter}%'
+				</if> 
+			</where>
+	</select>
+	
+	<select id="adminSelectPage" resultType="report">
+	select id,name,phone_num,center,plan_num,arrive_num,in_num,source,order_num ,money,analysis
+	 from tb_reportforms 
+			<where>
+				is_valid = 1 				
+			 <if test="@Ognl@isNotEmpty(name)">
+					and name like '%${name}%'
+				</if>
 				<if test="@Ognl@isNotEmpty(center)">
 					and center like '%${center}%'
 				</if> 
 			</where>
 	</select>
 	
-
    <select id="selectCenterList" resultType="report">
         
-      	select id,name,phone_num,center,plan_num,arrive_num,in_num,source,order_num ,money,analysis
-	       
-	        from tb_reportforms 
+      	select t1.id,t1.name,t1.phone_num,t1.plan_num,t1.arrive_num,t1.in_num,t1.source,t1.order_num ,t1.money,t1.analysis,
+          	t2.user_name
+	        from  tb_reportforms t1
+	        LEFT JOIN t_user t2 on t1.center = t2.center    
         <where>
-            is_valid = 1
-            <if test="@Ognl@isNotEmpty(userCenter)">
-            and center = #{userCenter}
+             t1.is_valid = 1 and t2.is_valid = 1 and t2.center = #{userCenter}
+              <if test="@Ognl@isNotEmpty(userName)">
+                and t2.user_name like '%${userName}%'
             </if>
             <if test="@Ognl@isNotEmpty(name)">
-                and name like '%${name}%'
+                and t1.name like '%${name}%'
             </if>
             order by id DESC
-
         </where>
 
     </select> 
