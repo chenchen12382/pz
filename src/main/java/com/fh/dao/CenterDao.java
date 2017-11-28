@@ -56,4 +56,12 @@ public interface CenterDao {
 
     @Update("update t_xybh set is_valid=0 where xybh=#{xybh}")
     void deleteXybh(@Param("xybh") String xybh);
+
+    void insertXybhLbs(@Param("protocolNums")List<ProtocolNum> protocolNums);
+
+    @Select("select count(1) from t_xybh_lbs where xybh = #{xybh} and is_valid = 1")
+    Integer findXybhLbs(String xybh);
+
+    @Update("update t_xybh_lbs set is_valid= 0 where xybh=#{xybh}")
+    void deleteXybhLbs(String xybh);
 }

@@ -52,12 +52,12 @@
 <#if userPermissions?seq_contains('101002') >
         	<a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 </#if>
-       	 <a href="javascript:openRestMoneyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">尾款</a>
+       	 <a href="javascript:openRestMoneyDialog()" class="easyui-linkbutton" iconCls="icon-wk" plain="true">尾款</a>
 <#if userPermissions?seq_contains('101003') >
         	<a href="javascript:deleteCustomer()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 </#if>
-        	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">作废单据</a>
-        	<a href="javascript:showImg()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">合同图片</a>
+        	<a href="javascript:openAgreement()" class="easyui-linkbutton" iconCls="icon-zfdj" plain="true">作废单据</a>
+        	<a href="javascript:showImg()" class="easyui-linkbutton" iconCls="icon-http" plain="true">合同图片</a>
 
 
 	    </div>
@@ -80,28 +80,30 @@
 	        <input type="hidden" id="id" name="id" />
             <input type="hidden" id="src" name="src" />
 	        <table cellspacing="8px">
-	            <tr>
-	                <td>协议编号：</td>
-	                <#--<td><input type="text" id="xybh" name="xybh" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>-->
-					<td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'xybh',textField:'xybh',url:'${ctx}/protocol/find_all?type=1'" />&nbsp;<font color="red">*</font></td>
+	            <#--<tr>-->
+	                <#--<td>协议编号：</td>-->
+	                <#--&lt;#&ndash;<td><input type="text" id="xybh" name="xybh" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>&ndash;&gt;-->
+					<#--<td><input class="easyui-combobox" id="xybh" name="xybh" data-options="panelHeight:'auto',editable:false,valueField:'xybh',textField:'xybh',url:'${ctx}/protocol/find_all?type=1'" />&nbsp;<font color="red">*</font></td>-->
 
-	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	                <td>收据编号：</td>
-                    <td><input class="easyui-combobox" id="sjbh" name="sjbh" data-options="panelHeight:'auto',editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
-	                </td>
-	            </tr>
+	                <#--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+	                <#--<td>收据编号：</td>-->
+                    <#--<td><input class="easyui-combobox" id="sjbh" name="sjbh" data-options="panelHeight:'auto',editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>-->
+	                <#--</td>-->
+	            <#--</tr>-->
 	            <tr>
-	                <td>会员编号：</td>
-	                <td>
-	                    <input type="text" id="hybh" name="hybh" class="easyui-validatebox" >
-	                </td>
-	                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+
 	                <td>客户姓名：</td>
 	                <td>
                         <input type="text" id="o_name" name="name" class="easyui-validatebox" required="true">
 						&nbsp;<font color="red">*</font>
 
 	                </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>会员编号：</td>
+                    <td>
+                        <input type="text" id="hybh" name="hybh" class="easyui-validatebox" >
+                    </td>
 	            </tr>
 	            <tr>
 	                <td>销售课程：</td>
@@ -116,6 +118,16 @@
 
 	                </td>
 	            </tr>
+                <tr>
+                    <td>协议编号：</td>
+                <#--<td><input type="text" id="xybh" name="xybh" class="easyui-numberbox"  required="true"/>&nbsp;<font color="red">*</font></td>-->
+                    <td><input class="easyui-combobox" id="xybh" name="xybh" data-options="editable:false,valueField:'xybh',textField:'xybh'" />&nbsp;<font color="red">*</font></td>
+
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>收据编号：</td>
+                    <td><input class="easyui-combobox" id="sjbh" name="sjbh" data-options="editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
+                    </td>
+                </tr>
 	            <tr>
 	                <td>签订协议类型：</td>
 	                <td>
@@ -158,7 +170,6 @@
                     <td>
                         <input type="radio" name="property" id="property" value="全款" checked="checked"/>全款
                         <input name="property" type="radio" id="property" value="订金"/> 订金
-                        <input type="radio" name="property" id="property" value="尾款" />尾款
                     </td>
 
 				</tr>
@@ -212,25 +223,35 @@
 
 
 	<#--弹出框-->
-    <div id="agreementdlg" class="easyui-dialog" style="width:600px;height:250px;padding: 10px 20px"
+    <div id="agreementdlg" class="easyui-dialog" style="width:600px;height:280px;padding: 10px 20px"
          closed="true" buttons="#agreementdlg-buttons">
 
         <form id="a_fm" method="post">
             <input type="hidden" id="a_id" name="id" />
             <table cellspacing="8px">
-
                 <tr>
+                    <td>协议编号类型：</td>
+                    <td>
+                        <select class="easyui-combobox" id="xybhMode" name="xybhMode"  editable="false" panelHeight="auto" >
+                            <option value="0">请选择...</option>
+                            <option value="1">会员协议</option>
+                            <option value="2">乐博士协议</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr >
                     <td>协议编号：</td>
-                    <td colspan="4"><input type="text" class="easyui-numberbox" id="xybh" name="xybh" style="width: 300px"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                   <td> <input class="easyui-combobox" id="zf_xybh" name="xybh" data-options="editable:false,valueField:'xybh',textField:'xybh'" /></td>
                 </tr>
                 <tr>
                     <td>收据编号：</td>
-                    <td colspan="4"><input type="text" class="easyui-numberbox" id="sjbh" name="sjbh" style="width: 300px"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                    <td colspan="4"><input class="easyui-combobox" id="zf_sjbh" name="sjbh" data-options="editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;<font color="red">*</font></td>
                 </tr>
                 <tr>
                     <td>备注：</td>
                     <td colspan="4">
-                        <textarea rows="5" cols="50" id="hybh" name="hybh" style="margin: 0px;width: 350px;height: 50px;resize: none;"></textarea>
+                        <textarea rows="5" cols="50" id="zf_hybh" name="hybh" style="margin: 0px;width: 350px;height: 50px;resize: none;"></textarea>
                     </td>
                 </tr>
 
@@ -263,7 +284,7 @@
 
                 <tr>
                     <td>协议编号：</td>
-                    <td colspan="4"><input type="text" class="easyui-numberbox" id="r_xybh" name="xybh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                    <td colspan="4"><input type="text" class="easyui-validatebox" id="r_xybh" name="xybh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
                 </tr>
                 <tr>
                     <td>收据编号：</td>

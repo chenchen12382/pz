@@ -1,18 +1,52 @@
 $(document).ready(function() {
-    $("#payMode").combobox({ // 层级改变
+    $("#saleClass").combobox({ // 层级改变
         // 层级改变时触发
-        onChange:function(payMode) { // select的change事件
-             if(payMode == "POS机") {
-            	 $("#parentIdDiv").show();
-            } else {	
-            	 $("#parentIdDiv").hide();
-            }
-          
+        onChange:function(saleClass) { // select的change事件
+
+             if(saleClass=="亲子课"||saleClass=="幼小衔接"||saleClass=="启稚课程"){
+                 $('#xybh').combobox('reload','/protocol/find_all?type=1');
+             }else {
+                 $("#xybh").combobox("reload", "/protocol/find_all?type=3");
+                 // $("#xybh").combobox("reload");
+             }
         }
 
     });
 })
 
+$(document).ready(function() {
+    $("#xybhMode").combobox({ // 层级改变
+
+        // 层级改变时触发
+        onChange:function(xybhMode) { // select的change事件
+            // $('#h_xybh').attr('hidden', false);
+            if(xybhMode==1){
+                $('#zf_xybh').combobox('reload','/protocol/find_all?type=1');
+            }else if(xybhMode==2) {
+                $("#zf_xybh").combobox("reload", "/protocol/find_all?type=3");
+                // $("#xybh").combobox("reload");
+            }
+        }
+
+    });
+})
+
+
+
+$(document).ready(function() {
+    $("#payMode").combobox({ // 层级改变
+        // 层级改变时触发
+        onChange:function(payMode) { // select的change事件
+            if(payMode == "POS机") {
+                $("#parentIdDiv").show();
+            } else {
+                $("#parentIdDiv").hide();
+            }
+
+        }
+
+    });
+})
 
 $(document).ready(function() {
     $("#saleClass").combobox({ // 层级改变
@@ -137,6 +171,7 @@ function resetValue() {
     $("#sjbh").combobox('setValue',"");
     $("#hybh").val("");
     $("#o_name").val('');
+    $("#saleClass").combobox('setValue',"");
     // $("#saleClass").combobox('setValue',0);
     $("#gift").val("");
     $("#saleNum").numberbox('setValue',"");
@@ -154,7 +189,10 @@ function resetValue() {
     $("input[name='property'][value='全款']").attr("checked",true);
     $("#src").val("");
     $("#restMoney").numberbox('setValue',"");
-
+    $("#xybhMode").combobox('setValue',"0");
+    $("#zf_xybh").combobox('setValue',"");
+    $("#zf_sjbh").combobox('setValue',"");
+    $("#zf_hybh").val("");
 }
 
 function searchDayReport() {
@@ -411,8 +449,8 @@ function saveCustomer() {
                 $.messager.alert("系统提示", "保存成功！");
                 closeCustomerDialog();
                 $("#dg").datagrid("reload");
-                $('#sjbh').combobox('reload');
-                $('#xybh').combobox('reload');
+                $('#sjbh').combobox('reload','');
+                $('#xybh').combobox('reload','');
             }else{
                 $.messager.alert("系统提示",result.resultMessage);
                 return;

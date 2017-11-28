@@ -76,7 +76,7 @@ public class CenterService {
         return result;
     }
 
-    public void readExcel(MultipartFile xybh, MultipartFile sjbh, ProtocolNum protocolNum) {
+    public void readExcel( MultipartFile xybh, MultipartFile sjbh,MultipartFile sjbh_lbs, ProtocolNum protocolNum) {
 
         HSSFWorkbook workbook = null;
         List<ProtocolNum> protocolNums = new ArrayList<>();
@@ -100,12 +100,12 @@ public class CenterService {
                                 HSSFCell xybhRead = row.getCell(j);
                                 xybhRead.setCellType(HSSFCell.CELL_TYPE_STRING);
                                 String cellValue = xybhRead.getStringCellValue();
-                                if(cellValue.length()!=11){
-                                    throw new ParamException("协议编号"+cellValue +" 不是11位  请检查");
-                                }
-                                Pattern pattern = Pattern.compile("[0-9]*");
+//                                if(cellValue.length()!=13){
+//                                    throw new ParamException("协议编号"+cellValue +" 不是13位  请检查");
+//                                }
+                                Pattern pattern = Pattern.compile("PZ[0-9]{11}");
                                 if(!pattern.matcher(cellValue).matches()){
-                                    throw new ParamException("只能是数字,不能包含其它符号");
+                                    throw new ParamException("只能以大写PZ开头并包含11位数字,不能包含其它符号");
                                 }
                                 protocolNum.setXybh(cellValue);
                                 Integer count = centerDao.findXybh(protocolNum.getXybh());
@@ -122,7 +122,7 @@ public class CenterService {
                 }
 
                 centerDao.insertXybh(protocolNums);
-            } else if (xybh == null && sjbh != null) {
+            } else if (xybh == null && sjbh != null&&sjbh_lbs==null) {
 
                 workbook = new HSSFWorkbook(sjbh.getInputStream());
                 HSSFSheet sheet = workbook.getSheetAt(0);
@@ -134,12 +134,12 @@ public class CenterService {
                                 HSSFCell sjbhRead = row.getCell(j);
                                 sjbhRead.setCellType(HSSFCell.CELL_TYPE_STRING);
                                 String cellValue = sjbhRead.getStringCellValue();
-                                if(cellValue.length()!=6){
-                                    throw new ParamException("收据编号"+cellValue +" 不是6位  请检查");
-                                }
-                                Pattern pattern = Pattern.compile("[0-9]*");
+//                                if(cellValue.length()!=9){
+//                                    throw new ParamException("收据编号"+cellValue +" 不是9位  请检查");
+//                                }
+                                Pattern pattern = Pattern.compile("PZ[0-9]{7}");
                                 if(!pattern.matcher(cellValue).matches()){
-                                   throw new ParamException("只能是数字,不能包含其它符号");
+                                   throw new ParamException("只能以大写PZ开头并包含7位数字,不能包含其它符号");
                                 }
 
                                 protocolNum.setSjbh(cellValue);
@@ -157,11 +157,53 @@ public class CenterService {
                 }
 
                 centerDao.insertSjbh(protocolNums);
+            }else if(xybh == null && sjbh == null&&sjbh_lbs!=null){
+                workbook = new HSSFWorkbook(sjbh_lbs.getInputStream());
+//            workbook = new HSSFWorkbook(new FileInputStream(new File("E:/2.xls")));
+                HSSFSheet sheet = workbook.getSheetAt(0);
+//            List<ProtocolNum> xybh = new ArrayList<>();
+
+//            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+//                sheet = workbook.getSheetAt(i);
+                for (int i = 0; i < sheet.getLastRowNum() + 1; i++) {// getLastRowNum，获取最后一行的行标
+                    HSSFRow row = sheet.getRow(i);
+                    if (row != null) {
+                        for (int j = 0; j < row.getLastCellNum(); j++) {// getLastCellNum，是获取最后一个不为空的列是第几个
+                            if (row.getCell(j) != null) { // getCell 获取单元格数据
+//                                System.out.print(row.getCell(k) + "\t");
+                                HSSFCell xybhRead = row.getCell(j);
+                                xybhRead.setCellType(HSSFCell.CELL_TYPE_STRING);
+                                String cellValue = xybhRead.getStringCellValue();
+//                                if(cellValue.length()!=13){
+//                                    throw new ParamException("乐博士协议编号"+cellValue +" 不是13位  请检查");
+//                                }
+                                Pattern pattern = Pattern.compile("PL[0-9]{11}");
+                                if(!pattern.matcher(cellValue).matches()){
+                                    throw new ParamException("只能以大写PZ开头并包含11位数字,不能包含其它符号");
+                                }
+                                protocolNum.setXybh(cellValue);
+                                Integer count = centerDao.findXybhLbs(protocolNum.getXybh());
+                                if (count != 0) {
+                                    throw new ParamException("\" 乐博士协议编号" + protocolNum.getXybh() + "\"  已存在,请检查!");
+                                }
+                                protocolNums.add(protocolNum);
+                                protocolNum=new ProtocolNum();
+                                protocolNum.setCenterId(centerId);
+//                                centerDao.insertXybh(protocolNum);
+                            }
+                        }
+                    }
+                }
+
+                centerDao.insertXybhLbs(protocolNums);
+
             }else{
                 throw  new ParamException("参数错误，请联系管理员！");
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new ParamException("文件有误,只能上传xls格式的excel文件!");
+
         }
     }
 }

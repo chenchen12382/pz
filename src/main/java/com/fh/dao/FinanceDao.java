@@ -58,4 +58,7 @@ public interface FinanceDao {
 
     @Update("update t_finance set state=#{state},update_date=now() where id=#{id}")
     void examineInsert(@Param("state") Integer state, @Param("id") Integer id);
+
+//    @Select("select count(1) from t_finance where xybh=#{xybh} and is_valid=1 ")
+//    Integer queryFinanceXybhLbs(String xybh);
 }

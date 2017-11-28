@@ -67,8 +67,12 @@
             <table cellspacing="8px">
                 <input type="hidden" id="centerId" name="id" />
                 <tr>
-                    <td>协议编号导入：</td>
+                    <td>会员协议编号导入：</td>
                     <td> <input type="file" id="upExl" name="upExl" style="width:170px;" ></td>
+                </tr>
+                <tr>
+                    <td>乐博士议编号导入：</td>
+                    <td> <input type="file" id="upLbs" name="upLbs" style="width:170px;" ></td>
                 </tr>
                 <tr>
                     <td>收据编号导入：</td>

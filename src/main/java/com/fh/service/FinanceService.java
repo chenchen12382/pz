@@ -133,11 +133,7 @@ public class FinanceService {
     public void insert(Finance finance, HttpServletRequest request) {
         //基本参数验证
         chickParams(finance);
-        if(finance.getProperty().equals("订金")){
-
-        }
-
-        if(finance.getProperty().equals("全款")) {
+        if(finance.getProperty().equals("全款")||finance.getProperty().equals("订金")) {
 
             Integer countXybh = financeDao.queryFinanceXybh(finance.getXybh());
 //            AssertUtil.intIsNotEmpty(countXybh,"该协议编号已存在，请检查");
@@ -150,6 +146,9 @@ public class FinanceService {
             if(countSjbh>0){
                 throw new ParamException("该收据编号已存在，请检查!");
             }
+
+
+
         }
 
         //课程判断
@@ -173,8 +172,16 @@ public class FinanceService {
         financeDao.insert(finance);
 
         //设置协议编号收据编号为不可用
-        centerDao.deleteSjbh(finance.getSjbh());
-        centerDao.deleteXybh(finance.getXybh());
+//        centerDao.deleteSjbh(finance.getSjbh());
+//        String xybh=finance.getXybh();
+//        if(xybh.contains("PZ")){
+//            centerDao.deleteXybh(xybh);
+//        }else if(xybh.contains("PL")){
+//            centerDao.deleteXybhLbs(xybh);
+//        }
+
+        deleteXYSJ(finance);
+
 
 
     }
@@ -429,15 +436,6 @@ public class FinanceService {
         AssertUtil.isNotEmpty(finance.getSource(),"请选择来源");
 
 
-
-        if(finance.getXybh().trim().length()!=11){
-            throw new ParamException("请填写完整的协议编号,为11位数字！");
-        }
-
-//        if(finance.getSjbh().trim().length()!=6){
-//            throw new ParamException("请填写完整的收据编号,为6位数字！位数不够前面补0");
-//        }
-
     }
 
 
@@ -502,7 +500,7 @@ public class FinanceService {
         finance.setName("作废单据");
         finance.setCenter(center);
         financeDao.addAgreement(finance);
-
+        deleteXYSJ(finance);
     }
 
     public void updateAgreement(Finance finance) {
@@ -608,6 +606,22 @@ public class FinanceService {
         financeDao.examineInsert(state,id);
     }
 
-
+    /**
+     * 设置收据协议编号为不可用
+     *
+     * @param finance
+     */
+    public void deleteXYSJ(Finance finance){
+        //设置协议编号收据编号为不可用
+        centerDao.deleteSjbh(finance.getSjbh());
+        String xybh=finance.getXybh();
+        if(xybh.contains("PZ")){
+            centerDao.deleteXybh(xybh);
+        }else if(xybh.contains("PL")){
+            centerDao.deleteXybhLbs(xybh);
+        }else{
+            throw new ParamException("格式错误!请联系财务");
+        }
+    }
 
 }
