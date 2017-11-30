@@ -42,4 +42,7 @@ public interface ProtocolNumDao {
 
     @Select("select id,center_id,sjbh,create_date,update_date from t_sjbh where is_valid=1 and center_id=#{centerId}")
     List<ProtocolNum> selectSjbhById(@Param("centerId") Integer centerId);
+
+    @Select("select id,center_id,xybh,create_date,update_date from t_xybh_lbs where is_valid=1 and center_id=#{centerId}")
+    List<ProtocolNum> selectSjbhLbsById(Integer centerId);
 }

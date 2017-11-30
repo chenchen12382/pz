@@ -6,6 +6,7 @@ import com.fh.dao.ProtocolNumDao;
 import com.fh.dao.UserDao;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.dto.ProtocolNumQuery;
+import com.fh.exception.ParamException;
 import com.fh.model.ProtocolNum;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
@@ -74,8 +75,12 @@ public class ProtocolNumService {
 		List<ProtocolNum> result;
 		if(type==1) {
 			result = protocolNumDao.selectXybhById(centerId);
-		}else{
+		}else if(type==2){
 			result = protocolNumDao.selectSjbhById(centerId);
+		}else if(type==3){
+			result = protocolNumDao.selectSjbhLbsById(centerId);
+		}else {
+			throw new ParamException("选择失败！联系管理员");
 		}
 		return result;
 

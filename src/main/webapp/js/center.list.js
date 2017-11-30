@@ -32,11 +32,13 @@ function  saveExcel() {
     var data = {"centerId":centerId};
     var xybh = $("#upExl").val();
     var sjbh = $("#upSjbh").val();
-    if(xybh != "" && sjbh !=""){
+    var sjbh_lbs = $("#upLbs").val();
+    if((xybh!=""&&sjbh!="")||(xybh!=""&&sjbh_lbs!="")||(sjbh!=""&&sjbh_lbs!="") ){
+
         $.messager.alert("系统提示", "只能选择一个文件上传！");
         return;
     }
-    if(xybh == "" && sjbh == ""){
+    if(xybh == "" && sjbh == ""&&sjbh_lbs==""){
         $.messager.alert("系统提示", "请选择文件上传！");
         return;
     }
@@ -51,7 +53,7 @@ function  saveExcel() {
         success: function(result){
             // result = JSON.parse(result);
             if(result.resultCode == 1) {
-                $.messager.alert("系统提示", "文件上传成功！");
+                $.messager.alert("系统提示", result.resultMessage);
                 // closeCustomerDialog();
                 // $("#dg").datagrid("reload");
                 $("#src").val(result.result);
