@@ -14,12 +14,11 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 public interface ReportDao {
 
 	PageList<Report> selectForPage(ReportQuery query, PageBounds buildPageBounds);
+	PageList<Report> adminSelectPage(ReportQuery query, PageBounds buildPageBounds);
 	PageList<Report> selectCenterList(ReportQuery query, PageBounds pageBounds);
-	
-	
 	@Insert("insert into tb_reportforms (name,phone_num,center,plan_num,arrive_num, "
 			+ " in_num,source,order_num,money,analysis,is_valid,create_date,update_date) "
-			+ " values (#{name},#{phoneNum},#{center},#{planNum},#{arriveNum}, "
+			+ " values  ( #{name},#{phoneNum},#{center},#{planNum},#{arriveNum}, "
 			+ " #{inNum},#{source},#{orderNum},#{money},#{analysis},1,now(),now()) ")
 	void insert(Report report);
 	
