@@ -22,6 +22,7 @@
 	<div id="tb">
         <div>
             &nbsp;中心：&nbsp;<input type="text" id="s_center"  size="15" onkeydown="if(event.keyCode==13) searchCenter()"/>
+            &nbsp;收据编号：&nbsp;<input type="text" id="s_sjbh"  size="15" onkeydown="if(event.keyCode==13) searchCenter()"/>
             <a href="javascript:searchCenter()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
         </div>
 

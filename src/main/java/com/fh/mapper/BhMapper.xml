@@ -11,7 +11,26 @@
         <if test="@Ognl@isNotEmpty(center)">
             and t2.center like '%${center}%'
         </if>
+        <if test="@Ognl@isNotEmpty(bh)">
+            and sjbh like '%${bh}%'
+        </if>
+
       ORDER by sjbh
+
+
+    </select>
+
+    <select id="selectXybhLbs" resultType="ProtocolNum" >
+
+        select xybh,center,t1.create_date,t1.update_date from t_xybh_lbs t1 LEFT JOIN t_center t2 ON t1.center_id=t2.id
+        where t1.is_valid = 1 and t2.is_valid = 1
+        <if test="@Ognl@isNotEmpty(center)">
+            and t2.center like '%${center}%'
+        </if>
+        <if test="@Ognl@isNotEmpty(bh)">
+            and xybh like '%${bh}%'
+        </if>
+        ORDER by xybh
 
 
     </select>
@@ -23,10 +42,14 @@
         <if test="@Ognl@isNotEmpty(center)">
             and t2.center like '%${center}%'
         </if>
+        <if test="@Ognl@isNotEmpty(bh)">
+            and xybh like '%${bh}%'
+        </if>
         ORDER by xybh
 
 
     </select>
+
 
 
 

@@ -45,4 +45,6 @@ public interface ProtocolNumDao {
 
     @Select("select id,center_id,xybh,create_date,update_date from t_xybh_lbs where is_valid=1 and center_id=#{centerId}")
     List<ProtocolNum> selectSjbhLbsById(Integer centerId);
+
+    PageList<ProtocolNum> selectXybhLbs(ProtocolNumQuery query, PageBounds pageBounds);
 }

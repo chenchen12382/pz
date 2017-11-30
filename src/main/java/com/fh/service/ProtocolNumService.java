@@ -85,4 +85,18 @@ public class ProtocolNumService {
 		return result;
 
 	}
+
+	/**
+	 * 乐博士协议编号
+	 * @param query
+	 * @return
+	 */
+    public Map<String,Object> selectXybhLbs(ProtocolNumQuery query) {
+		PageList<ProtocolNum> protocolNum = protocolNumDao.selectXybhLbs(query,query.buildPageBounds());
+		Map<String, Object> result = new HashMap<>();
+		result.put("rows", protocolNum);
+		result.put("total", protocolNum.getPaginator().getTotalCount());
+		return result;
+
+    }
 }

@@ -3,6 +3,7 @@ package com.fh.service;
 import com.fh.base.AssertUtil;
 import com.fh.base.BaseQuery;
 import com.fh.dao.CenterDao;
+import com.fh.dto.ProtocolNumQuery;
 import com.fh.exception.ParamException;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
@@ -35,9 +36,9 @@ public class CenterService {
     private CenterDao centerDao;
 
 
-    public Map<String, Object> selectForPage(BaseQuery query) {
+    public Map<String, Object> selectForPage(ProtocolNumQuery query) {
 
-        PageList<Center> centers = centerDao.selectAll(query.buildPageBounds());
+        PageList<Center> centers = centerDao.selectAll(query,query.buildPageBounds());
         Map<String, Object> result = new HashMap<>();
         result.put("rows", centers);
         result.put("total", centers.getPaginator().getTotalCount());

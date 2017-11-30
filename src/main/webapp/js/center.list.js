@@ -54,6 +54,9 @@ function  saveExcel() {
             // result = JSON.parse(result);
             if(result.resultCode == 1) {
                 $.messager.alert("系统提示", result.resultMessage);
+                $("#upExl").val('');
+                 $("#upSjbh").val('');
+                 $("#upLbs").val('');
                 // closeCustomerDialog();
                 // $("#dg").datagrid("reload");
                 $("#src").val(result.result);
@@ -63,6 +66,7 @@ function  saveExcel() {
             }
         }
     });
+
 
 
 }
@@ -141,4 +145,13 @@ function deletecenters() {
             });
         }
     });
+}
+
+function searchCenter() {
+    var center = $("#s_center").val();
+    // var sjbh = $("#s_sjbh").val();
+    // var over = $("#over").datebox('getValue');
+
+    var data = { "center":center};
+    $("#dg").datagrid('load', data);
 }

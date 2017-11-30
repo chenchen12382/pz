@@ -23,8 +23,9 @@ function deleteSjbhs() {
 
 function searchCenter() {
     var center = $("#s_center").val();
+    var sjbh = $("#s_sjbh").val();
     // var over = $("#over").datebox('getValue');
 
-    var data = { "center":center};
+    var data = { "center":center,"bh":sjbh};
     $("#dg").datagrid('load', data);
 }

@@ -23,8 +23,9 @@ function deleteXybhs() {
 
 function searchCenter() {
     var center = $("#s_center").val();
+    var xybh = $("#lbs_xybh").val();
     // var over = $("#over").datebox('getValue');
 
-    var data = { "center":center};
+    var data = { "center":center,"bh":xybh};
     $("#dg").datagrid('load', data);
 }

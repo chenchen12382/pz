@@ -21,10 +21,22 @@
 	<#--工具栏-->
 	<div id="tb">
 		<div>
+            <div>
+                &nbsp;中心：&nbsp;<input type="text" id="s_center"  size="15" onkeydown="if(event.keyCode==13) searchCenter()"/>
+                <a href="javascript:searchCenter()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+            </div>
+	<#if userPermissions?seq_contains('904001') >
 	        <a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">创建</a>
+		</#if>
+<#if userPermissions?seq_contains('904002') >
 	        <a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+</#if>
+<#if userPermissions?seq_contains('904003') >
 	        <a href="javascript:deletecenters()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+</#if>
+<#if userPermissions?seq_contains('904004') >
             <a href="javascript:openExcelDialog()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量导入</a>
+</#if>
 	    </div>
 	</div>
 	

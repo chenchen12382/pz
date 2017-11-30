@@ -2,7 +2,6 @@ $(document).ready(function() {
     $("#saleClass").combobox({ // 层级改变
         // 层级改变时触发
         onChange:function(saleClass) { // select的change事件
-
              if(saleClass=="亲子课"||saleClass=="幼小衔接"||saleClass=="启稚课程"){
                  $('#xybh').combobox('reload','/protocol/find_all?type=1');
              }else {
@@ -13,6 +12,20 @@ $(document).ready(function() {
 
     });
 })
+
+
+// $(function () {
+//     $("#xybh").combobox({
+//         onChange:function(xybh) { // select的change事件
+//             if($("#saleClass").val()==''){
+//                 $.messager.alert("系统提示", "请先选择销售课程！");
+//             }
+//         }
+//     });
+// })
+
+
+
 
 $(document).ready(function() {
     $("#xybhMode").combobox({ // 层级改变

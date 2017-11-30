@@ -1,5 +1,6 @@
 package com.fh.dao;
 
+import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
@@ -16,9 +17,7 @@ import java.util.List;
  */
 public interface CenterDao {
 
-
-    @Select("select id,center,district,create_date,update_date from t_center where is_valid=1 order by district  ")
-    PageList<Center> selectAll(PageBounds pageBounds);
+    PageList<Center> selectAll(ProtocolNumQuery query, PageBounds pageBounds);
 
     @Insert("insert into t_center (center,district,is_valid,create_date,update_date )  values " +
             " (#{center},#{district},1,now(),now())")

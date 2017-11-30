@@ -37,6 +37,8 @@ public class ProtocolNumController extends BaseController {
                 return "xybh";
             case 2:
                 return "sjbh";
+            case 3:
+                return "xybh_lbs";
         }
     }
 
@@ -70,6 +72,14 @@ public class ProtocolNumController extends BaseController {
         protocolNumService.deleteBatchXybh(ids);
         return success("删除成功");
     }
+
+    @RequestMapping("list_xybh_lbs")
+    @ResponseBody
+    public Map<String,Object> selectXybhLbs(ProtocolNumQuery query){
+        Map<String,Object> result = protocolNumService.selectXybhLbs(query);
+        return result;
+    }
+
 
 
     @RequestMapping("find_all")

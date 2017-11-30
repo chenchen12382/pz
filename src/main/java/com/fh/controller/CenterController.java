@@ -6,6 +6,7 @@ import com.fh.base.BaseQuery;
 import com.fh.base.ResultInfo;
 import com.fh.dao.CenterDao;
 import com.fh.dao.CenterTotalDao;
+import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
 import com.fh.service.CenterService;
@@ -42,7 +43,7 @@ public class CenterController extends BaseController {
     @RequirePermissions(permission = "9040")
     @RequestMapping("list")
     @ResponseBody
-    public Map<String,Object> selectForPage(BaseQuery query){
+    public Map<String,Object> selectForPage(ProtocolNumQuery query){
         Map<String,Object> result = centerService.selectForPage(query);
         return result;
     }
