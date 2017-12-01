@@ -9,5 +9,5 @@
 <script type="text/javascript" src="${ctx}/js/common.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.form.js"></script>
 <script>
-          var ctx = "${ctx}/";
+          var ctx = "${ctx}";
 </script>

@@ -2,10 +2,11 @@ $(document).ready(function() {
     $("#saleClass").combobox({ // 层级改变
         // 层级改变时触发
         onChange:function(saleClass) { // select的change事件
+            // alert(ctx);
              if(saleClass=="亲子课"||saleClass=="幼小衔接"||saleClass=="启稚课程"){
-                 $('#xybh').combobox('reload','/protocol/find_all?type=1');
+                 $('#xybh').combobox('reload',ctx+'/protocol/find_all?type=1');
              }else {
-                 $("#xybh").combobox("reload", "/protocol/find_all?type=3");
+                 $("#xybh").combobox("reload", ctx+"/protocol/find_all?type=3");
                  // $("#xybh").combobox("reload");
              }
         }
@@ -34,9 +35,9 @@ $(document).ready(function() {
         onChange:function(xybhMode) { // select的change事件
             // $('#h_xybh').attr('hidden', false);
             if(xybhMode==1){
-                $('#zf_xybh').combobox('reload','/protocol/find_all?type=1');
+                $('#zf_xybh').combobox('reload',ctx+'/protocol/find_all?type=1');
             }else if(xybhMode==2) {
-                $("#zf_xybh").combobox("reload", "/protocol/find_all?type=3");
+                $("#zf_xybh").combobox("reload", ctx+"/protocol/find_all?type=3");
                 // $("#xybh").combobox("reload");
             }
         }
@@ -71,9 +72,21 @@ $(document).ready(function() {
             console.log(i);
             if(v == "亲子课" || v=="幼小衔接") {
                 document.getElementById('sp').innerHTML='节';
-
-            } else {
+            $('#saleNum').numberbox("enable");
+            }else if(v=='英语游戏一个月' ){
+                document.getElementById('sp').innerHTML='单';
+                $('#saleNum').val('1');
+                // alert($('#saleNum').val())
+                $('#saleNum').numberbox("disable");
+            }
+            else if(v=='英语游戏三个月' ){
+                document.getElementById('sp').innerHTML='单';
+                $('#saleNum').val('1');
+                $('#saleNum').numberbox("disable");
+            }
+            else {
                 document.getElementById('sp').innerHTML='月';
+                $('#saleNum').numberbox("enable");
             }
 
         }
@@ -425,20 +438,8 @@ function saveCustomer() {
     var id = $("#id").val();
     var payMode = $("#payMode").combobox('getValue');
     var source = $("#source").combobox('getValue');
-    // var xybh = $("#xybh").numberbox('getValue');
-    // var sjbh = $("#sjbh").numberbox('getValue');
-    //
-    // if(xybh.trim().length != 10){
-    //     $.messager.alert("系统提示",'请填写完整的协议编号,为10位数字！');
-    //     return;
-    // }
-    //
-    // if(sjbh.trim().length != 6){
-    //     $.messager.alert("系统提示",'请填写完整的收据编号,为6位数字！');
-    //     return;
-    // }
 
-
+    // alert($('#saleNum').val())
     if (payMode == 0){
         $.messager.alert("系统提示",'请选择支付方式');
         return;

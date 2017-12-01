@@ -190,8 +190,11 @@ public class FinanceService {
 
         //时间匹配
 
-        if(query.getStart()!=null){
+        if(query.getStart()!=null && query.getOver()==null){
            query.setOver(new Date());
+        }
+        if (query.getStart()!=null && query.getOver()!=null){
+            query.setOver(DateUtil.getMaxTimeOfDay(query.getOver()));
         }
 
         if(query.getStart()==null){
@@ -414,6 +417,18 @@ public class FinanceService {
                 makeFinance(finance,priceClasses);
             }
 
+        }
+
+        if(saleClass.equals("英语游戏一个月")){
+            classHour=1;
+            PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+            makeFinance(finance,priceClasses);
+        }
+
+        if(saleClass.equals("英语游戏三个月")){
+            classHour=3;
+            PriceClass priceClasses = priceClassDao.findByClassHour(classHour, saleClass);
+            makeFinance(finance,priceClasses);
         }
         
     }

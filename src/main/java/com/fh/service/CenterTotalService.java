@@ -43,16 +43,31 @@ public class CenterTotalService {
     public List bulidList(CenterTotalQuery query, String userName) {
         //时间判断
         Integer time=query.getTime();
-        if(time==null){
-            time=1;
+        if(query.getStart()!=null&&query.getOver()!=null){
+            DateUtil.getMinTimeOfDay(query.getStart());
+            DateUtil.getMaxTimeOfDay(query.getOver());
         }
-        if(time==0){
-            //当天数据
-            query.setStart(DateUtil.getMinTimeOfDay(new Date()));
-        }else{
-            query.setStart(DateUtil.getFirstDayOfDate(new Date()));
+        if(query.getStart()!=null&&query.getOver()==null){
+            query.setOver(new Date());
         }
-        query.setOver(new Date());
+        if (query.getStart()==null){
+            query.setStart(DateUtil.getFisrtDayOfMonth(new Date()));
+            query.setOver(new Date());
+        }
+
+        if(time==null&&query.getStart()==null) {
+            time = 1;
+
+            if (time == 0) {
+                //当天数据
+                query.setStart(DateUtil.getMinTimeOfDay(new Date()));
+            } else {
+                query.setStart(DateUtil.getFirstDayOfDate(new Date()));
+            }
+            query.setOver(new Date());
+        }
+
+
 
         //查询区域 中心
         List<String> centers = new ArrayList<>();
