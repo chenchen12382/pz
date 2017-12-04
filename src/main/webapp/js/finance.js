@@ -554,7 +554,7 @@ function closeAgreementDialog() {
 // 保存作废单据
 function saveRestMoney() {
 
-    var url = ctx+"finance/add";
+    var url = "add";
 
     var id = $("#r_id").val();
     if (id==null) {
