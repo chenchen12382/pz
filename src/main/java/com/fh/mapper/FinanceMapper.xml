@@ -71,6 +71,9 @@
                 and create_date BETWEEN #{start} AND #{over}
 
             </if>
+            <if test="@Ognl@isNotEmpty(sProperty)">
+                and property = #{sProperty}
+            </if>
             order by id DESC
 
         </where>

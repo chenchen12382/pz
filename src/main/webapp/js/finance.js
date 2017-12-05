@@ -75,13 +75,13 @@ $(document).ready(function() {
             $('#saleNum').numberbox("enable");
             }else if(v=='英语游戏一个月' ){
                 document.getElementById('sp').innerHTML='单';
-                $('#saleNum').val('1');
+                $('#saleNum').numberbox('setValue',1);
                 // alert($('#saleNum').val())
                 $('#saleNum').numberbox("disable");
             }
             else if(v=='英语游戏三个月' ){
                 document.getElementById('sp').innerHTML='单';
-                $('#saleNum').val('1');
+                $('#saleNum').numberbox('setValue',3);
                 $('#saleNum').numberbox("disable");
             }
             else {
@@ -226,8 +226,12 @@ function searchDayReport() {
     var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
     var over = $("#over").datebox('getValue');
+    var sProperty = $("#s_property").combobox('getValue');
+    if(sProperty==0){
+        sProperty=null;
+    }
 
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over}
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"sProperty":sProperty};
 
     $("#dg").datagrid('load', data);
 
@@ -381,6 +385,7 @@ function openRestMoneyDialog() {
     }
 
     $("#r_fm").form('load', row); // form 赋值
+    $('#r_sjbh').combobox('setValue','');
     $("#restdlg").dialog('open').dialog('setTitle', "增加尾款");
 
 }
@@ -524,6 +529,11 @@ function saveAgreement() {
     if (id != null && $.trim(id).length > 0 && !isNaN(id)) { // 判断是否为数字
         url = "update_agreement";
     }
+    var hybh = $("#zf_hybh").val();
+    if(hybh.length==0){
+        $.messager.alert("系统提示", "请填写备注！");
+        return;
+    }
 
     $("#a_fm").form("submit",{
         url: url, // 相对路径
@@ -536,6 +546,9 @@ function saveAgreement() {
                 $.messager.alert("系统提示", "保存成功！");
                 closeAgreementDialog();
                 $("#dg").datagrid("reload");
+                $('#zf_xybh').combobox('reload','');
+                $('#zf_xybh').combobox('reload','');
+
             }else{
                 $.messager.alert("系统提示",result.resultMessage);
                 return;
@@ -551,7 +564,7 @@ function closeAgreementDialog() {
 }
 
 
-// 保存作废单据
+// 保存尾款
 function saveRestMoney() {
 
     var url = "add";
@@ -562,15 +575,18 @@ function saveRestMoney() {
     }
     var restMoney = $("#restMoney").numberbox("getValue");
     var selectedRows = $("#dg").datagrid('getSelections');
+    var sjbh = $('#r_sjbh').combobox('getValue');
     var row = selectedRows[0];
     row.realMoney=restMoney;
     row.property="尾款";
+    row.sjbh=sjbh;
 
     $.post(url,row,function (result) {
         if(result.resultCode == 1) {
             $.messager.alert("系统提示", "保存成功！");
             closeRestMoneyDialog();
             $("#dg").datagrid("reload");
+            $('#r_sjbh').combobox('reload','');
         }else{
             $.messager.alert("系统提示",result.resultMessage);
             return;

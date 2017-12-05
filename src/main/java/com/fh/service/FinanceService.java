@@ -630,13 +630,15 @@ public class FinanceService {
         //设置协议编号收据编号为不可用
         centerDao.deleteSjbh(finance.getSjbh());
         String xybh=finance.getXybh();
-        if(xybh.contains("PZ")){
-            centerDao.deleteXybh(xybh);
-        }else if(xybh.contains("PL")){
-            centerDao.deleteXybhLbs(xybh);
-        }else{
-            throw new ParamException("格式错误!请联系财务");
+        if(xybh!="") {
+            if (xybh.contains("PZ")) {
+                centerDao.deleteXybh(xybh);
+            }
+            if (xybh.contains("PL")) {
+                centerDao.deleteXybhLbs(xybh);
+            }
         }
+
     }
 
 }

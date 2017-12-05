@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <#include "include/common.header.ftl" >
 </head>
@@ -66,6 +66,13 @@
 	        &nbsp;课程：&nbsp;<input type="text" id="s_class" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
             &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchDayReport()"/>
             &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchDayReport()"/>
+            <br/>
+            &nbsp;付款性质：&nbsp;<select class="easyui-combobox" id="s_property" name="s_property"  editable="false" panelHeight="auto" style="width:150px" onkeydown="if(event.keyCode==13) searchFinance()" >
+            <option value="0">请选择...</option>
+            <option value="全款">全款</option>
+            <option value="订金">订金</option>
+            <option value="尾款">尾款</option>
+        </select>
 	    </select>
 	        <a href="javascript:searchDayReport()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
             <#--<a href="javascript:fileDownload()" class="easyui-linkbutton" id="download" iconCls="icon-download" plain="true">导出excel</a>-->
@@ -242,7 +249,7 @@
                 </tr>
                 <tr >
                     <td>协议编号：</td>
-                   <td> <input class="easyui-combobox" id="zf_xybh" name="xybh" data-options="editable:false,valueField:'xybh',textField:'xybh'" /></td>
+                   <td> <input class="easyui-combobox" id="zf_xybh" name="xybh" data-options="editable:false,valueField:'xybh',textField:'xybh'"/></td>
                 </tr>
                 <tr>
                     <td>收据编号：</td>
@@ -269,7 +276,7 @@
 
 	<#--尾款弹出框-->
 	<#--弹出框-->
-    <div id="restdlg" class="easyui-dialog" style="width:600px;height:250px;padding: 10px 20px"
+    <div id="restdlg" class="easyui-dialog" style="width:400px;height:250px;padding: 10px 20px"
          closed="true" buttons="#restdlg-buttons">
 
         <form id="r_fm" method="post">
@@ -284,11 +291,11 @@
 
                 <tr>
                     <td>协议编号：</td>
-                    <td colspan="4"><input type="text" class="easyui-validatebox" id="r_xybh" name="xybh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                    <td colspan="4"><input type="text" class="easyui-validatebox" id="r_xybh" name="xybh"  readonly="readonly"/>&nbsp;&nbsp;</td>
                 </tr>
                 <tr>
                     <td>收据编号：</td>
-                    <td colspan="4"><input type="text" class="easyui-validatebox" id="r_sjbh" name="sjbh" style="width: 300px" readonly="readonly"/>&nbsp;&nbsp;<font color="red">只能填写数字</font></td>
+                    <td colspan="4"><input  class="easyui-combobox" id="r_sjbh" name="sjbh"  data-options="editable:false,valueField:'sjbh',textField:'sjbh',url:'${ctx}/protocol/find_all/?type=2'" />&nbsp;&nbsp;</td>
                 </tr>
                 <tr>
                     <td>尾款：</td>
