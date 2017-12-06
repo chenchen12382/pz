@@ -25,12 +25,12 @@
                 <li class="ui-border-t" data-href="centerTotal/mobile_index">
                   业绩统计
                 </li>
-                <li class="ui-border-t" data-href="icon.html">
-                  事业部业绩汇总
-                </li>
-                <li class="ui-border-t" data-href="layout.html">
-                  当月各中心收入
-                </li>
+                <#--<li class="ui-border-t" data-href="icon.html">-->
+                    <#--关联账户权限-->
+                <#--</li>-->
+                <#--<li class="ui-border-t" data-href="layout.html">-->
+                  <#--当月各中心收入-->
+                <#--</li>-->
             </ul>
         </div>
     </div>

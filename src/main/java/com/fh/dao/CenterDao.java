@@ -3,12 +3,10 @@ package com.fh.dao;
 import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
+import com.fh.vo.CenterVO;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -63,4 +61,17 @@ public interface CenterDao {
 
     @Update("update t_xybh_lbs set is_valid= 0 where xybh=#{xybh}")
     void deleteXybhLbs(String xybh);
+
+    @Select("select id,center from t_center  where is_valid=1 ")
+    List<CenterVO> findAllCenter();
+
+    @Insert("insert into t_permission_center (user_id,center_id,create_date,update_date,is_valid) values " +
+            " (#{userId},#{centerId},now(),now(),1 )")
+    void addCenterPermission(@Param("userId") Integer userId, @Param("centerId") Integer centerId);
+
+    @Delete("delete from t_permission_center where user_id=#{userId} and center_id=#{centerId}")
+    void deleteCenterPermission(@Param("userId") Integer userId, @Param("centerId") Integer centerId);
+
+    @Select("select count(1) from t_permission_center where user_id=#{userId} and center_id=#{centerId}")
+    Integer count(@Param("userId") Integer userId, @Param("centerId") Integer centerId);
 }

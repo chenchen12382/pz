@@ -7,6 +7,8 @@ import com.fh.dto.ProtocolNumQuery;
 import com.fh.exception.ParamException;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
+import com.fh.vo.CenterVO;
+import com.fh.vo.ModuleVO;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -206,5 +208,37 @@ public class CenterService {
             throw new ParamException("文件有误,只能上传xls格式的excel文件!");
 
         }
+    }
+
+
+    /**
+     * 查找所有center
+     * @return
+     * @param userId
+     */
+    public List<CenterVO> findAllCenter(Integer userId) {
+        List<CenterVO> centerVOS= centerDao.findAllCenter();
+//        Integer count = centerDao.findCenterPermission(userId,);
+        for (CenterVO centerVO : centerVOS) {
+            Integer count = centerDao.count(userId, centerVO.getId());
+            if (count == null ||count == 0) {
+                centerVO.setChecked(false);
+            } else {
+                centerVO.setChecked(true);
+            }
+        }
+        return centerVOS;
+
+    }
+
+    //中心角色关联
+    public void addDoRelate(Integer userId, Integer centerId, boolean checked) {
+        //选中 插入数据
+        if(checked){
+            centerDao.addCenterPermission(userId,centerId);
+        }else{
+            centerDao.deleteCenterPermission(userId,centerId);
+        }
+
     }
 }

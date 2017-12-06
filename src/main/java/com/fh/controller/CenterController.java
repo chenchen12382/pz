@@ -10,9 +10,11 @@ import com.fh.dto.ProtocolNumQuery;
 import com.fh.model.Center;
 import com.fh.model.ProtocolNum;
 import com.fh.service.CenterService;
+import com.fh.vo.CenterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -85,4 +87,21 @@ public class CenterController extends BaseController {
         centerService.readExcel(xybh,sjbh,upLbs,protocolNum);
         return success("导入成功");
     }
+
+
+    @RequestMapping("relate_permission")
+    public String relatePermission(Integer userId,Model model){
+        List<CenterVO> centerVOs = centerService.findAllCenter(userId);
+        model.addAttribute("centerId",userId);
+        model.addAttribute("centers",centerVOs);
+        return "center_mobile";
+    }
+
+    @RequestMapping("dorelate")
+    @ResponseBody
+    public ResultInfo dorelate(Integer userId,Integer centerId ,boolean checked){
+        centerService.addDoRelate(userId,centerId,checked);
+        return success("操作成功");
+    }
+
 }

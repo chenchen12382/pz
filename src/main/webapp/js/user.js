@@ -90,3 +90,16 @@ function deleteUser(){
         }
     });
 }
+
+
+// 关联权限
+function relatePermissions() {
+    var selectedRows = $("#dg").datagrid("getSelections");
+    if(selectedRows.length != 1) {
+        $.messager.alert("系统提示","请选择一条要编辑的数据！");
+        return;
+    }
+    var userId = selectedRows[0].id;
+    var url = 'center/relate_permission?userId=' + userId;
+    window.parent.openTab('关联手机业绩权限', url, 'icon-user');
+}

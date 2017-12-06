@@ -55,8 +55,8 @@ public class CenterTotalService {
             query.setOver(new Date());
         }
 
-        if(time==null&&query.getStart()==null) {
-            time = 1;
+        if(time!=null) {
+//            time = 1;
 
             if (time == 0) {
                 //当天数据
@@ -75,7 +75,9 @@ public class CenterTotalService {
         if (role.equals("中心管理员")) {
             String center = userDao.findUserCenter(userName);
             centers.add(center);
-        } else {
+        } else if (role.equals("区域总监")||role.equals("投资人")){
+            centers = centerTotalDao.findByPermissionCenter(userName);
+        }else {
             centers = centerTotalDao.selectAllCenter();
         }
         List<CenterTotal> centerTotals = new ArrayList<>();
