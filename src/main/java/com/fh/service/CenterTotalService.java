@@ -1,5 +1,6 @@
 package com.fh.service;
 
+import com.fh.base.BaseQuery;
 import com.fh.dao.CenterTotalDao;
 import com.fh.dao.UserDao;
 import com.fh.dto.CenterTotalQuery;
@@ -71,7 +72,12 @@ public class CenterTotalService {
 
         //查询区域 中心
         List<String> centers = new ArrayList<>();
-        String role = userDao.findUserRole(userName);
+        String role="";
+        if(!userName.equals("dd_message")) {
+            role = userDao.findUserRole(userName);
+        }else {
+            role="";
+        }
         if (role.equals("中心管理员")) {
             String center = userDao.findUserCenter(userName);
             centers.add(center);
@@ -106,5 +112,20 @@ public class CenterTotalService {
         centerTotal.setRealTotal(realTotals);
         result.add(centerTotal);
         return result;
+    }
+
+    public String findCenterTotalToday(CenterTotalQuery query) {
+          query.setTime(0);
+          String userName = "dd_message";
+
+          List<CenterTotal> centerTotals = selectForMobilePage(query,userName);
+
+          String result = "各中心收入统计 \n";
+          for (CenterTotal centerTotal:centerTotals){
+              result+= "中心:"+centerTotal.getCenter()+" 总订单:"+centerTotal.getOrderTotal()+" 总收入:"+centerTotal.getRealTotal()+"\n";
+
+          }
+          return  result;
+
     }
 }

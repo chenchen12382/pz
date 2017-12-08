@@ -141,6 +141,12 @@ public class FinanceController extends BaseController{
 
     }
 
+    /**
+     * 审核报表状态添加
+     * @param state
+     * @param id
+     * @return
+     */
     @RequestMapping("examine_insert")
     @ResponseBody
     public ResultInfo examineInsert(Integer state,Integer id){
