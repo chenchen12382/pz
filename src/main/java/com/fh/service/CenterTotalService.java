@@ -114,18 +114,23 @@ public class CenterTotalService {
         return result;
     }
 
-    public String findCenterTotalToday(CenterTotalQuery query) {
+    public String findCenterTotalToday() {
+
+        CenterTotalQuery query = new CenterTotalQuery();
           query.setTime(0);
           String userName = "dd_message";
 
           List<CenterTotal> centerTotals = selectForMobilePage(query,userName);
 
           String result = "各中心收入统计 \n";
-          for (CenterTotal centerTotal:centerTotals){
-              result+= "中心:"+centerTotal.getCenter()+" 总订单:"+centerTotal.getOrderTotal()+" 总收入:"+centerTotal.getRealTotal()+"\n";
+          for (int i=0;i<centerTotals.size();i++){
+              if(i==centerTotals.size()-1){
+                  result+=centerTotals.get(i).getCenter()+"--总订单:"+centerTotals.get(i).getOrderTotal()+"总收入:"+centerTotals.get(i).getRealTotal()+"\n";
+              }else {
+                  result+="中心:"+centerTotals.get(i).getCenter()+" 订单:"+centerTotals.get(i).getOrderTotal()+" 收入:"+centerTotals.get(i).getRealTotal()+"\n";
+              }
 
           }
           return  result;
-
     }
 }

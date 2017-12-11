@@ -52,7 +52,7 @@ public interface UserDao {
     int updatePassword(@Param(value = "userId") Integer userId, @Param(value = "password") String password);
 
 	@Select("SELECT t3.role_name FROM t_user t1 LEFT JOIN t_user_role t2 ON t1.id = t2.user_id LEFT JOIN t_role t3 ON t2.role_id = t3.id " +
-			"WHERE t1.user_name = #{userName}")
+			"WHERE t1.user_name = #{userName} and t1.is_valid=1 and t2.is_valid=1 and t3.is_valid=1")
 	String findUserRole(@Param("userName") String userName);
 
 	@Select("select center from t_user where user_name = #{userName} and is_valid = 1")
