@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.dao.AnalyzeTotalDao">
+
+    <select id="selectForPage" resultType="CenterTotal" >
+      SELECT t1.center,sum(t2.phone_num) as totalPhoneNum,sum(t2.plan_num) as totalPlanNum,SUM(t2.arrive_num) as totalArriveNum,sum(t2.in_num) as totalInNum,
+      sum(t2.order_num) as totalOrderNum,sum(t2.money) as totalMoney  from t_center t1 LEFT JOIN tb_reportforms t2 on t1.center = t2.center
+         <where> t1.is_valid = 1 and t2.is_valid = 1 
+        <if test="@Ognl@isNotEmpty(start)">       
+               and t2.create_date BETWEEN #{start} AND #{over}
+        </if>
+         <if test="@Ognl@isNotEmpty(center)">       
+               and t1.center = #{center}        
+        </if>
+        </where>
+    </select>
+    <select id="selectAllCenter" resultType="String">
+        SELECT center from t_center where is_valid = 1
+
+
+    </select>
+
+
+
+</mapper>
