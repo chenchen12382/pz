@@ -37,6 +37,7 @@ public class CenterTotalController extends BaseController {
     @ResponseBody
     public Map<String, Object> selectForPage(CenterTotalQuery query, HttpServletRequest request){
         String userName = CookieUtil.getCookieValue(request,"userName");
+
         Map<String,Object> result=centerTotalService.selectForPage(query,userName);
         return result;
 

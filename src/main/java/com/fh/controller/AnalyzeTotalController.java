@@ -2,7 +2,6 @@ package com.fh.controller;
 import com.fh.base.BaseController;
 import com.fh.dto.AnalyzeTotalQuery;
 import com.fh.service.AnalyzeTotalService;
-import com.fh.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,31 +28,9 @@ public class AnalyzeTotalController extends BaseController {
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectForPage(AnalyzeTotalQuery query, HttpServletRequest request){
-        String userName = CookieUtil.getCookieValue(request,"userName");
-        Map<String,Object> result=analyzeTotalService.selectForPage(query,userName);
+        Map<String,Object> result=analyzeTotalService.selectForPage(query);
         return result;
 
     }
-
-
- /* @RequestMapping("mobile_index")
-    public String mIndex(CenterTotalQuery query,Model model,HttpServletRequest request ){
-        String userName = CookieUtil.getCookieValue(request,"userName");
-        List<CenterTotal> result=analyzeTotalService.selectForMobilePage(query,userName);
-        model.addAttribute("centerTotals",result);
-
-       return "center_total_m";
-    }
-
-    @RequestMapping("m_list")
-    @ResponseBody
-    public List<CenterTotal> mList(CenterTotalQuery query,Model model,HttpServletRequest request ){
-        String userName = CookieUtil.getCookieValue(request,"userName");
-        List<CenterTotal> result=centerTotalService.selectForMobilePage(query,userName);
-//        model.addAttribute("centerTotals",result);
-        return result;
-//        return "center_total_m";
-    }
-*/
 
 }

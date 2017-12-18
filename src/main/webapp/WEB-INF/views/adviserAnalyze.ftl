@@ -10,7 +10,7 @@
 	    <thead>
 	    <tr>
 	        <th field="cb" checkbox="true" align="center"></th>
-	        <th field="id" width="50" align="center">编号</th>
+	       <#-- <th field="id" width="50" align="center">编号</th>-->
 	        <th field="center" width="100" align="center">中心</th>
 	        <th field="totalPhoneNum" width="100" align="center" >电话总量</th>
 	        <th field="totalPlanNum" width="100" align="center">邀约总量</th>
@@ -25,17 +25,13 @@
 	<#--工具栏-->
 	<div id="tb">
 	    <div>
-	         &nbsp;中心：&nbsp;<input type="text" id="center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>
-             &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchProgress()"/>
-             &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchProgress()"/>
-	        <a href="javascript:searchProgress()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+	        <#--  &nbsp;中心：&nbsp;<input type="text" id="center" size="20" onkeydown="if(event.keyCode==13) searchProgress()"/>-->
+             &nbsp;开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchReport()"/>
+             &nbsp;结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchReport()"/>
+	        <a href="javascript:searchReport()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	    </div>
 	</div>
-	<#--弹出框按钮-->
-	<div id="dlg-buttons">
-	    <a href="javascript:saveReport()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-	    <a href="javascript:closeReportDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-	</div>	
+	
 	<script src="${ctx}/js/report.js" ></script>
 </body>
 </html>

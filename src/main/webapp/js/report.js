@@ -1,25 +1,20 @@
 
 // 搜索
-function searchProgress() {
+function searchReport() {
     var start = $("#start").datebox('getValue');
     var over = $("#over").datebox('getValue');
     var center = $("#center").val();
     if(start>over){
-
         alert("开始时间不能大于结束时间！")
-    }
-    if(sPayMode == 0){
-        sPayMode = null ;
-    }
-
-    if(sProperty == 0){
-        sProperty = null;
     }
     var data = {"start":start,"over":over,"center":center};
     $("#dg").datagrid('load', data);
 
 }
-/*// 搜索
+
+
+
+//搜索
 function searchProgress() {
 	var data = {
 			center: $("#center").val(),
@@ -28,7 +23,7 @@ function searchProgress() {
 	}
 	$("#dg").datagrid('load', data);
 }
-*/
+
 // 弹出框弹出
 function openReportAddDialog() {
 	$("#dlg").dialog('open').dialog('setTitle', "业绩录入");

@@ -33,7 +33,7 @@
 	</select>
 	
    <select id="selectCenterList" resultType="report">
-        
+          
       	select t1.id,t1.name,t1.phone_num,t1.plan_num,t1.arrive_num,t1.in_num,t1.source,t1.order_num ,t1.money,t1.analysis,
           	t2.user_name
 	        from  tb_reportforms t1

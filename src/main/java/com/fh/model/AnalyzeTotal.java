@@ -4,7 +4,7 @@ import com.fh.base.BaseModel;
 
 /*中心顾问业绩汇总*/
 public class AnalyzeTotal extends BaseModel{
-	private String center;//中心
+	private String  center;//中心
 	private Integer totalPhoneNum;//电话总量
 	private Integer totalPlanNum;//邀约总人数
 	private Integer totalArriveNum;//实到总人数

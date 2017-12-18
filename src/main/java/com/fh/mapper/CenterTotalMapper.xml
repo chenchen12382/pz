@@ -11,11 +11,7 @@
         where t1.is_valid = 1 and t2.is_valid = 1 and t1.center = #{center}
         <if test="@Ognl@isNotEmpty(start)">
             and t2.create_date BETWEEN #{start} AND #{over}
-
         </if>
-
-
-
     </select>
 
     <select id="selectAllCenter" resultType="String">

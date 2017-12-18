@@ -1,6 +1,6 @@
 package com.fh.service;
 
-import com.fh.base.BaseQuery;
+
 import com.fh.dao.CenterTotalDao;
 import com.fh.dao.UserDao;
 import com.fh.dto.CenterTotalQuery;
