@@ -74,8 +74,8 @@ public class FinanceController extends BaseController{
 
     @RequestMapping("update")
     @ResponseBody
-    public ResultInfo update(Finance finance){
-        financeService.update(finance);
+    public ResultInfo update(Finance finance,HttpServletRequest request){
+        financeService.update(finance,request);
         return success("更新成功");
 
     }

@@ -127,7 +127,7 @@ public class CenterTotalService {
               if(i==centerTotals.size()-1){
                   result+=centerTotals.get(i).getCenter()+"--总订单:"+centerTotals.get(i).getOrderTotal()+"总收入:"+centerTotals.get(i).getRealTotal()+"\n";
               }else {
-                  result+="中心:"+centerTotals.get(i).getCenter()+" 订单:"+centerTotals.get(i).getOrderTotal()+" 收入:"+centerTotals.get(i).getRealTotal()+"\n";
+                  result+="\n中心:"+centerTotals.get(i).getCenter()+" 订单:"+centerTotals.get(i).getOrderTotal()+" 收入:"+centerTotals.get(i).getRealTotal()+"\n";
               }
 
           }

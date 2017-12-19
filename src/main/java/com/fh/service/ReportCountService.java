@@ -7,6 +7,7 @@ import com.fh.dto.ReportCountQuery;
 import com.fh.model.District;
 import com.fh.model.ReportCount;
 import com.fh.util.DateUtil;
+import com.fh.util.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -149,18 +150,33 @@ public class ReportCountService {
         List<String> center = centerDao.selectAllCenter();
         List total = new ArrayList();
         buildQueryTime(query);
+        Map<String,Integer> temp = new HashMap<>();
         for (int i=0;i<center.size();i++){
             String  d = center.get(i);
             query.setCenter(d);
             Integer count = reportCountDao.findTotalByCenter(query);
             if(count != null) {
-                total.add(count);
+                temp.put(d,count);
+//                total.add(count);
             }else {
-                total.add(0);
+                temp.put(d,0);
+//                total.add(0);
             }
         }
+        Map<String,Integer> shotForUtil= MapUtil.sortMap(temp);
+
+        //遍历map
+//        Map<String, Integer> map = new HashMap<>();
+
+        List<String> shotCenter = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : shotForUtil.entrySet()) {
+              shotCenter.add(entry.getKey());
+              total.add(entry.getValue());
+//            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        }
+
         Map<String,Object> result = new HashMap<>();
-        result.put("center",center);
+        result.put("center",shotCenter);
         result.put("total",total);
         return result;
 

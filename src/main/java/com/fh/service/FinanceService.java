@@ -454,16 +454,22 @@ public class FinanceService {
     }
 
 
-    public void update(Finance finance) {
+    public void update(Finance finance, HttpServletRequest request) {
         chickParams(finance);
         Integer id = finance.getId();
         AssertUtil.intIsNotEmpty(id,"请选择记录进行删除");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date createDate=financeDao.findCreateDate(id);
-        String dateFromDB=sdf.format(createDate);
-        String now = sdf.format(new Date());
-        if(!dateFromDB.equals(now)){
-            throw new ParamException("您不能修改不是当天的记录");
+        String userName=CookieUtil.getCookieValue(request,"userName");
+        String role=userDao.findUserRole(userName);
+        if(!role.equals("系统管理员")) {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date createDate = financeDao.findCreateDate(id);
+            String dateFromDB = sdf.format(createDate);
+            String now = sdf.format(new Date());
+            if (!dateFromDB.equals(now)) {
+                throw new ParamException("您不能修改不是当天的记录");
+            }
+
         }
 
         buildFinance(finance);

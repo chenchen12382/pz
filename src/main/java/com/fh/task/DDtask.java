@@ -2,8 +2,6 @@ package com.fh.task;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.fh.controller.IndexController;
-import com.fh.dto.CenterTotalQuery;
 import com.fh.service.CenterTotalService;
 import com.fh.util.HttpUtil;
 import org.apache.http.HttpEntity;
