@@ -44,6 +44,4 @@ public class DDtask {
         String centerTotals = centerTotalService.findCenterTotalToday();
         TaskUtil.task(centerTotals,"065009136424245699");
     }
-
-
 }
