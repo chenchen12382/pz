@@ -121,7 +121,6 @@ public class CenterTotalService {
           String userName = "dd_message";
 
           List<CenterTotal> centerTotals = selectForMobilePage(query,userName);
-
           String result = "各中心收入统计 \n";
           for (int i=0;i<centerTotals.size();i++){
               if(i==centerTotals.size()-1){

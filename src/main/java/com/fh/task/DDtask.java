@@ -2,6 +2,7 @@ package com.fh.task;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.fh.service.AnalyzeTotalService;
 import com.fh.service.CenterTotalService;
 import com.fh.util.HttpUtil;
 import com.fh.util.TaskUtil;
@@ -28,10 +29,12 @@ import java.util.Map;
  */
 @Component
 public class DDtask {
-
     @Autowired
     private CenterTotalService centerTotalService;
-
+    
+    @Autowired
+    private AnalyzeTotalService analyzeTotalService;
+    
     @Scheduled(cron="0 0 19  * * ? ")
     public void dayReportMessage() {
         String centerTotals = centerTotalService.findCenterTotalToday();
@@ -39,10 +42,10 @@ public class DDtask {
     }
 
 
-    @Scheduled(cron="0 0 19  * * ? ")
+    @Scheduled(cron="0 0 17  * * ? ")
     public void gwMessage() {
-        String centerTotals = centerTotalService.findCenterTotalToday();
-        TaskUtil.task(centerTotals,"065009136424245699");
+        String analyzeTotals = analyzeTotalService.findCenterTotalToday();
+        TaskUtil.task(analyzeTotals,"065009136424245699");
     }
 
 
