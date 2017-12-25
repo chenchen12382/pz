@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fh.base.BaseQuery;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.model.CenterTotal;
+import com.fh.service.AnalyzeTotalService;
 import com.fh.service.CenterTotalService;
 import com.fh.util.DateUtil;
 import com.fh.util.HttpUtil;
@@ -47,7 +48,10 @@ public class IndexController extends BaseController {
 
     @Autowired
     private CenterTotalService centerTotalService;
-
+    
+    @Autowired
+    private AnalyzeTotalService analyzeTotalService;
+    
     @RequestMapping("index")
     public String index() {
 
@@ -160,6 +164,13 @@ public class IndexController extends BaseController {
 //
 //
 //    }
-
+    @RequestMapping("test1")
+    @ResponseBody
+    public String test1(){
+    	String result=analyzeTotalService.findAnalyzeTotalToday(null);
+    	return result;
+    	
+    	
+    }
 
 }

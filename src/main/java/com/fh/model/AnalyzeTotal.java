@@ -2,7 +2,14 @@ package com.fh.model;
 
 import com.fh.base.BaseModel;
 
-/*中心顾问业绩汇总*/
+ /*中
+ * 心
+ * 顾
+ * 问
+ * 业
+ * 绩
+ * 汇
+ * 总*/
 public class AnalyzeTotal extends BaseModel{
 	private String  center;//中心
 	private Integer totalPhoneNum;//电话总量
