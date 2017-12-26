@@ -23,4 +23,18 @@
 
     </select>
 
+
+    <select id="selectCenterToDD" resultType="Report">
+        SELECT center,plan_num,arrive_num,order_num from tb_reportforms where is_valid = 1
+        <if test="@Ognl@isNotEmpty(start)">
+            and create_date BETWEEN #{start} AND #{over}
+        </if>
+
+
+    </select>
+
+
+
+
+
 </mapper>

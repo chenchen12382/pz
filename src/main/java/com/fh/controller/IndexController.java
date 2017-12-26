@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fh.base.BaseQuery;
+import com.fh.dto.AnalyzeTotalQuery;
 import com.fh.dto.CenterTotalQuery;
 import com.fh.model.CenterTotal;
 import com.fh.service.AnalyzeTotalService;
@@ -164,13 +165,12 @@ public class IndexController extends BaseController {
 //
 //
 //    }
-    @RequestMapping("test1")
-    @ResponseBody
-    public String test1(){
-    	String result=analyzeTotalService.findAnalyzeTotalToday(null);
-    	return result;
-    	
-    	
-    }
+//    @RequestMapping("test1")
+//    @ResponseBody
+//    public String test1(AnalyzeTotalQuery query){
+//    	String result=analyzeTotalService.findAnalyzeTotalToday(query);
+//    	return result;
+//
+//    }
 
 }

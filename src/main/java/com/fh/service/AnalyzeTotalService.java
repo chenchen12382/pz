@@ -1,5 +1,6 @@
 package com.fh.service;
 
+import com.fh.model.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fh.dao.AnalyzeTotalDao;
@@ -45,58 +46,18 @@ public class AnalyzeTotalService {
     
 	
 	/*钉钉推送*/
-	public String findAnalyzeTotalToday(AnalyzeTotalQuery query) {	
-		// 时间判断	
-		List<AnalyzeTotal> analyzeTotals = bulidList(query);
-		String result = "顾问业绩汇总 \n";
-		for (int i = 0; i < analyzeTotals.size(); i++) {
-			if (i == analyzeTotals.size() - 1) {
-				result+= "\n中心:"+analyzeTotals.get(i).getCenter() + "--总邀约:" + analyzeTotals.get(i).getTotalArriveNum()
-					+ "总实到人数:" + analyzeTotals.get(i).getTotalInNum() +  "总下单量:" + analyzeTotals.get(i).getTotalOrderNum() +"\n";
-			} 
+	public String findAnalyzeTotalToday() {
+		AnalyzeTotalQuery query = new AnalyzeTotalQuery();
+		query.setStart(DateUtil.getMinTimeOfDay(new Date()));
+		query.setOver(DateUtil.getMaxTimeOfDay(new Date()));
+
+		List<Report> analyzeTotals =analyzeTotalDao.selectCenterToDD();
+		String result = "";
+		for (int i =0 ;i<analyzeTotals.size();i++){
+
+			result+="中心:"+analyzeTotals.get(i).getCenter()+" 邀约量:"+analyzeTotals.get(i).getPlanNum()+" 到访人数:"+analyzeTotals.get(i).getArriveNum()+
+					" 下单人数:"+analyzeTotals.get(i).getOrderNum()+"\n";
 		}
 		return result;
-	}
-
-
-	private List<AnalyzeTotal> bulidList(AnalyzeTotalQuery query) {
-		// 时间判断
-		Integer time = query.getTime();
-		if (query.getStart() != null && query.getOver() != null) {
-			DateUtil.getMinTimeOfDay(query.getStart());
-			DateUtil.getMaxTimeOfDay(query.getOver());
-		}
-		if (query.getStart() != null && query.getOver() == null) {
-			query.setOver(new Date());
-		}
-		if (query.getStart() == null) {
-			query.setStart(DateUtil.getFisrtDayOfMonth(new Date()));
-			query.setOver(new Date());
-		}
-
-		if (time != null) {
-			// time = 1;
-			if (time == 0) {
-				// 当天数据
-				query.setStart(DateUtil.getMinTimeOfDay(new Date()));
-			} else {
-				query.setStart(DateUtil.getFirstDayOfDate(new Date()));
-			}
-			query.setOver(new Date());
-		}
- 
-		// 查询中心
-		List<String> centers = new ArrayList<>();	
-		centers = analyzeTotalDao.selectAllCenter();	
-		List<AnalyzeTotal> analyzeTotals = new ArrayList<>();		
-		for (int i = 0; i < centers.size(); i++) {
-			query.setCenter(centers.get(i));
-			List<AnalyzeTotal> selectForDB = analyzeTotalDao.selectForPage(query);
-			if (selectForDB.get(0) == null) {
-				continue;
-			}
-			analyzeTotals.addAll(selectForDB);
-		}
-		return analyzeTotals;
 	}
 }

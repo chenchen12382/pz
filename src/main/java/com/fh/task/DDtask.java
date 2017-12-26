@@ -42,9 +42,9 @@ public class DDtask {
     }
 
 
-    @Scheduled(cron="0 0 12  * * ? ")
+    @Scheduled(cron="0 3 16  * * ? ")
     public void gwMessage() {
-        String analyzeTotals = analyzeTotalService.findAnalyzeTotalToday(null);
+        String analyzeTotals = analyzeTotalService.findAnalyzeTotalToday();
         TaskUtil.task(analyzeTotals,"065009136424245699");
     }
 
