@@ -13,5 +13,6 @@ public interface AnalyzeTotalDao {
 	 List<AnalyzeTotal> selectForPage(AnalyzeTotalQuery query);
 
 
-	List<Report> selectCenterToDD();
+	List<Report> selectCenterToDD(AnalyzeTotalQuery query);
+	
 }

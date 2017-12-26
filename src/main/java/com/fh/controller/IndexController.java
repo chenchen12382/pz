@@ -168,7 +168,7 @@ public class IndexController extends BaseController {
 //    @RequestMapping("test1")
 //    @ResponseBody
 //    public String test1(AnalyzeTotalQuery query){
-//    	String result=analyzeTotalService.findAnalyzeTotalToday(query);
+//    	String result=analyzeTotalService.findAnalyzeTotalToday();
 //    	return result;
 //
 //    }

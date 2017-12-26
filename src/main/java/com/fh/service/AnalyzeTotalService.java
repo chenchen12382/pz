@@ -51,8 +51,9 @@ public class AnalyzeTotalService {
 		query.setStart(DateUtil.getMinTimeOfDay(new Date()));
 		query.setOver(DateUtil.getMaxTimeOfDay(new Date()));
 
-		List<Report> analyzeTotals =analyzeTotalDao.selectCenterToDD();
-		String result = "";
+		List<Report> analyzeTotals =analyzeTotalDao.selectCenterToDD(query);
+		
+		  String result = "各中心顾问业绩统计: \n";
 		for (int i =0 ;i<analyzeTotals.size();i++){
 
 			result+="中心:"+analyzeTotals.get(i).getCenter()+" 邀约量:"+analyzeTotals.get(i).getPlanNum()+" 到访人数:"+analyzeTotals.get(i).getArriveNum()+
