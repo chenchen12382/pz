@@ -13,11 +13,11 @@ public class PrintContract extends BaseModel{
   private String centerName;
   private String contractType;
   private String fName;
-  private Integer fPhone;
+  private String fPhone;
   private  String fMail;
   private String fWork;
   private String mName;
-  private Integer mPhone;
+  private String mPhone;
   private  String mMail;
   private  String mWork;
   private String bName;
@@ -60,13 +60,6 @@ public class PrintContract extends BaseModel{
         this.fName = fName;
     }
 
-    public Integer getfPhone() {
-        return fPhone;
-    }
-
-    public void setfPhone(Integer fPhone) {
-        this.fPhone = fPhone;
-    }
 
     public String getfMail() {
         return fMail;
@@ -92,11 +85,19 @@ public class PrintContract extends BaseModel{
         this.mName = mName;
     }
 
-    public Integer getmPhone() {
+    public String getfPhone() {
+        return fPhone;
+    }
+
+    public void setfPhone(String fPhone) {
+        this.fPhone = fPhone;
+    }
+
+    public String getmPhone() {
         return mPhone;
     }
 
-    public void setmPhone(Integer mPhone) {
+    public void setmPhone(String mPhone) {
         this.mPhone = mPhone;
     }
 

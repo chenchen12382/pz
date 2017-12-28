@@ -17,13 +17,38 @@ function openModifyDialog() {
 
 
 function showPrint() {
+    var selectedRows = $("#dg").datagrid("getSelections");
+    if(selectedRows.length != 1) {
+        $.messager.alert("系统提示","只能选择一条数据打印！");
+        return;
+    }
+    var row = selectedRows[0];
+    // alert(row.fName);
+    document.getElementById('fName_p').innerHTML=row.fName;
+    document.getElementById('mName_p').innerHTML=row.mName;
+    document.getElementById('f_phone').innerHTML=row.fPhone;
+    document.getElementById('m_phone').innerHTML=row.mPhone;
+    document.getElementById('f_email').innerHTML=row.fMail;
+    document.getElementById('m_email').innerHTML=row.mMail;
+    document.getElementById('f_addr').innerHTML=row.fWork;
+    document.getElementById('m_addr').innerHTML=row.mWork;
+    // document.getElementById('m_address').innerHTML=row.mName;
+    // document.getElementById('m_address').innerHTML=row.mName;
+    document.getElementById('b_name').innerHTML=row.bName;
+    document.getElementById('b_nName').innerHTML=row.bNikeName;
+    document.getElementById('b_day').innerHTML=row.bBirthday;
+    document.getElementById('b_sex').innerHTML=row.bSex;
 
-    // var id = $("#id").val();
-    // if(id==null||id.length>1){
-    //     $.messager.alert("系统提示", "请选择一条数据打印！");
-    // }
-    //
-    // var selectedRows = $("#dg").datagrid('getSelections');
+
+    // $('#fName_p').val(row.fName);
+
+
+
+
+
+
+
+
     $("#ddd").jqprint();
 
 }
