@@ -103,6 +103,11 @@ public class IndexController extends BaseController {
 
     }
 
+    @RequestMapping("QRcode")
+    public String QRcode(){
+        return "mobile/QRcode";
+    }
+
 //   @RequestMapping("dd_test")
 //    public void message() {
 //        String test = HttpUtil.gettoken();
