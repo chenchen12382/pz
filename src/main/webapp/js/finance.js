@@ -27,9 +27,10 @@ $(document).ready(function() {
 
 
 
-
 $(document).ready(function() {
     $("#xybhMode").combobox({ // 层级改变
+
+
 
         // 层级改变时触发
         onChange:function(xybhMode) { // select的change事件
@@ -366,6 +367,17 @@ function openModifyDialog() {
     }else{
         $("#fm").form('load', row); // form 赋值
         $("#dlg").dialog('open').dialog('setTitle', "修改营收日报");
+        // var saleClass = document.getElementById('saleClass');
+        // var saleClass = $('saleClass').combobox('getText');
+        var saleClass=row.saleClass;
+        if (saleClass!=null){
+            if(saleClass=="亲子课"||saleClass=="幼小衔接"||saleClass=="启稚课程"){
+                $('#xybh').combobox('reload',ctx+'/protocol/find_all?type=1');
+            }else {
+                $("#xybh").combobox("reload", ctx+"/protocol/find_all?type=3");
+                // $("#xybh").combobox("reload");
+            }
+        }
     }
 
 }

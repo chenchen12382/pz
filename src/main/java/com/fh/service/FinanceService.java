@@ -460,6 +460,10 @@ public class FinanceService {
         AssertUtil.intIsNotEmpty(id,"请选择记录进行删除");
         String userName=CookieUtil.getCookieValue(request,"userName");
         String role=userDao.findUserRole(userName);
+
+
+
+
         if(!role.equals("系统管理员")) {
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -474,8 +478,21 @@ public class FinanceService {
 
         buildFinance(finance);
 
-        financeDao.update(finance);
 
+        Finance f=financeDao.selectForId(id);
+        //修改协议编号还原
+        String xybh = f.getXybh();
+        if(!xybh.equals(finance.getXybh())){
+            if (xybh.contains("PZ")) {
+                centerDao.updateXybh(xybh);
+            }
+            if (xybh.contains("PL")) {
+                centerDao.updateXybhLbs(xybh);
+            }
+        }
+
+        financeDao.update(finance);
+        deleteXYSJ(finance);
 
     }
 

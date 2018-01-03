@@ -74,4 +74,10 @@ public interface CenterDao {
 
     @Select("select count(1) from t_permission_center where user_id=#{userId} and center_id=#{centerId}")
     Integer count(@Param("userId") Integer userId, @Param("centerId") Integer centerId);
+
+    @Update("update t_xybh set is_valid=1 where xybh=#{xybh}")
+    void updateXybh(@Param("xybh") String xybh);
+
+    @Update("update t_xybh_lbs set is_valid= 1 where xybh=#{xybh}")
+    void updateXybhLbs(@Param("xybh") String xybh);
 }
