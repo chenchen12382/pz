@@ -99,9 +99,6 @@
 
     </insert>
 
-
-
-
     <!--<insert id="insertBatch">-->
         <!--insert into t_user_role (-->
           <!--user_id, role_id, create_date, update_date, is_valid-->

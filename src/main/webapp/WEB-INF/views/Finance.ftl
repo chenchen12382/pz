@@ -30,7 +30,7 @@
         <th field="discount" width="100" align="center" formatter="formatDiscount">折扣</th>
         <th field="payMode" width="100" align="center" >支付方式</th>
         <th field="property" width="80" align="center">付款性质</th>
-        <#--<th field="contractTime" width="100" align="center">签约时间</th>-->
+        <th field="contractTime" width="100" align="center">签约时间</th>
         <th field="cardNum" width="100" align="center" >银行卡号</th>
         <th field="counselor" width="100" align="center" >顾问/老师</th>
         <th field="teacher" width="100" align="center" formatter="formatTeacher">职位</th>
