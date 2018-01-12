@@ -227,12 +227,14 @@ function searchDayReport() {
     var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
     var over = $("#over").datebox('getValue');
+    var qstart = $("#qstart").datebox('getValue');
+    var qover = $("#qover").datebox('getValue');
     var sProperty = $("#s_property").combobox('getValue');
     if(sProperty==0){
         sProperty=null;
     }
 
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"sProperty":sProperty};
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"qstart":qstart,"qover":qover,"sProperty":sProperty};
 
     $("#dg").datagrid('load', data);
 
