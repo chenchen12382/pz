@@ -33,8 +33,11 @@
             </if>
             <if test="@Ognl@isNotEmpty(start)">
                 and create_date BETWEEN #{start} AND #{over}
-
             </if>
+          <!-- 签约时间 -->
+            <if test="@Ognl@isNotEmpty(qstart)">
+                and contract_time BETWEEN #{qstart} AND #{qover}
+            </if>          
             <if test="@Ognl@isNotEmpty(sPayMode)">
                 and pay_mode = #{sPayMode}
             </if>
@@ -69,8 +72,7 @@
             </if>
             <if test="@Ognl@isNotEmpty(start)">
                 and create_date BETWEEN #{start} AND #{over}
-
-            </if>
+            </if>       
             <if test="@Ognl@isNotEmpty(sProperty)">
                 and property = #{sProperty}
             </if>

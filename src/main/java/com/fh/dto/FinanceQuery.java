@@ -15,10 +15,14 @@ public class FinanceQuery extends BaseQuery {
     private String center;
     private String userCenter;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date start;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date start;//录入时间
+	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date over;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date qstart;//签约时间
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date qover;
     private String sPayMode; //支付方式
 
     private String sProperty; // 付款性质
@@ -87,4 +91,19 @@ public class FinanceQuery extends BaseQuery {
     public void setsProperty(String sProperty) {
         this.sProperty = sProperty;
     }
+    public Date getQstart() {
+  		return qstart;
+  	}
+
+  	public void setQstart(Date qstart) {
+  		this.qstart = qstart;
+  	}
+
+  	public Date getQover() {
+  		return qover;
+  	}
+
+  	public void setQover(Date qover) {
+  		this.qover = qover;
+  	}
 }
