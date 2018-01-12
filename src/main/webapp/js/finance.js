@@ -227,14 +227,12 @@ function searchDayReport() {
     var saleClass = $("#s_class").val();
     var start = $("#start").datebox('getValue');
     var over = $("#over").datebox('getValue');
-    var qstart = $("#qstart").datebox('getValue');
-    var qover = $("#qover").datebox('getValue');
     var sProperty = $("#s_property").combobox('getValue');
     if(sProperty==0){
         sProperty=null;
     }
 
-    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"qstart":qstart,"qover":qover,"sProperty":sProperty};
+    var data = {'name': name, "saleClass": saleClass,"start":start,"over":over,"sProperty":sProperty};
 
     $("#dg").datagrid('load', data);
 
@@ -248,9 +246,18 @@ function searchFinance() {
     var sProperty = $("#s_property").combobox('getValue');
     var over = $("#over").datebox('getValue');
     var center = $("#center").val();
+    var qstart = $("#qstart").datebox('getValue');
+    var qover = $("#qover").datebox('getValue');
     if(start>over){
 
         alert("开始时间不能大于结束时间！")
+    }
+    if(sPayMode == 0){
+        sPayMode = null ;
+    }
+    if(qstart>qover){
+
+        alert("签约开始时间不能大于签约结束时间！")
     }
     if(sPayMode == 0){
         sPayMode = null ;
@@ -261,7 +268,7 @@ function searchFinance() {
     }
 
 
-    var data = {"saleClass": saleClass,"start":start,"over":over,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
+    var data = {"saleClass": saleClass,"start":start,"over":over,"qstart":qstart,"qover":qover,"center":center,"sPayMode":sPayMode,"sProperty":sProperty};
     $("#dg").datagrid('load', data);
 
 }
