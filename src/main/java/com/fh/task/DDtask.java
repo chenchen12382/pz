@@ -38,7 +38,7 @@ public class DDtask {
     @Scheduled(cron="0 0 19  * * ? ")
     public void dayReportMessage() {
         String centerTotals = centerTotalService.findCenterTotalToday();
-        TaskUtil.task(centerTotals,"13120007601222355");
+        TaskUtil.task(centerTotals,"13120007601222355|0262681145785834|046021380423352691|103927254723352752|603769051177168|10392725401054131");
     }
 
 
