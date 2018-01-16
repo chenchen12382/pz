@@ -26,7 +26,9 @@ public class HttpUtil {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         // 创建httppost
-        HttpGet get = new HttpGet("https://oapi.dingtalk.com/gettoken?corpid=ding99fa8e98ae730cdc&corpsecret=23NCa4twtF30gOGGq5ipvhFi3nKjC850yHJSC5Wj0j3PcjpeJoz4aQjpM_Ql-0tM");
+
+        //
+        HttpGet get = new HttpGet("https://oapi.dingtalk.com/gettoken?corpid= 你的钉钉corpid ");
         String accessToken="";
         try {
             CloseableHttpResponse response = httpclient.execute(get);
