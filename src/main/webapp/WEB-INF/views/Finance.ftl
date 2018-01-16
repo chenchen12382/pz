@@ -68,10 +68,10 @@
         <option value="尾款">尾款</option>
         </select>
         </br>
-        &nbsp;录入开始时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>
-        &nbsp;录入结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
-        &nbsp;签约开始时间：&nbsp;<input type="text" id="qstart" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>
-        &nbsp;签约结束时间：&nbsp;<input type="text" id="qover" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;录入时间：&nbsp;<input type="text" id="start" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;至结束时间：&nbsp;<input type="text" id="over" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;签约时间：&nbsp;<input type="text" id="qstart" class="easyui-datebox" size="15"  onkeydown="if(event.keyCode==13) searchFinance()"/>
+        &nbsp;至结束时间：&nbsp;<input type="text" id="qover" class="easyui-datebox" size="15" onkeydown="if(event.keyCode==13) searchFinance()"/>
         </select>
         <a href="javascript:searchFinance()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
         <a href="javascript:fileDownload()" class="easyui-linkbutton" id="download" iconCls="icon-download" plain="true">导出excel</a>
