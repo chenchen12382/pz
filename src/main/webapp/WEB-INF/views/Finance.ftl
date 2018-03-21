@@ -13,8 +13,8 @@
         <th field="cb" checkbox="true" align="center"></th>
         <th field="center" width="50" align="center">中心</th>
         <th field="name" width="80" align="center">客户姓名</th>
-        <th field="xybh" width="100" align="center"  >协议编号</th>
-        <th field="sjbh" width="100" align="center"  >收据编号</th>
+        <th field="xybh" width="100" align="center">协议编号</th>
+        <th field="sjbh" width="100" align="center">收据编号</th>
         <th field="hybh" width="100" align="center">会员编号 </th>
         <th field="saleClass" width="80" align="center">销售课程</th>
         <th field="saleNum" width="60" align="center">销售数量 </th>

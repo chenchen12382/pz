@@ -13,8 +13,8 @@
 			        <th field="cb" checkbox="true" align="center"></th>
                     <#--<th field="id" width="30" align="center">编号</th>-->
                     <th field="name" width="50" align="center">客户姓名</th>
-                    <th field="xybh" width="100" align="center"  >协议编号</th>
-			        <th field="sjbh" width="100" align="center"  >收据编号</th>
+                    <th field="xybh" width="100" align="center">协议编号</th>
+			        <th field="sjbh" width="100" align="center">收据编号</th>
 			        <th field="hybh" width="100" align="center">会员编号 </th>
 					<th field="saleClass" width="80" align="center">销售课程</th>
 			        <th field="saleNum" width="60" align="center">销售数量 </th>
@@ -27,7 +27,7 @@
                     <th field="contractTime" width="100" align="center">签约时间</th>
 			        <th field="price" width="80" align="center">课程单价</th>
 			        <th field="shouldMoney" width="80" align="center">标准金额</th>
-			        <th field="realMoney " width="100" align="center" >实际金额</th>
+			        <th field="realMoney" width="100" align="center" >实际金额</th>
 			        <th field="discount" width="100" align="center" formatter="formatDiscount" >折扣</th>
 			        <th field="payMode" width="100" align="center" >支付方式</th>
                     <th field="property" width="80" align="center">付款性质</th>
