@@ -112,11 +112,11 @@
         update t_finance SET
         xybh=#{xybh},sjbh=#{sjbh},hybh=#{hybh},name=#{name},sale_class=#{saleClass},sale_num=#{saleNum},
         agreement=#{agreement},price=#{price},real_money=#{realMoney},discount=#{discount},pay_mode=#{payMode},property=#{property},contract_time=#{contractTime},
-        card_num=#{cardNum},counselor=#{counselor},promotion=#{promotion},gift=#{gift},source=#{source},
+        card_num=#{cardNum},counselor=#{counselor},promotion=#{promotion},gift=#{gift},source=#{source},update_date=now()
         <if test="@Ognl@isNotEmpty(src)">
-        src=#{src}
+        ,src=#{src}
         </if>
-        update_date=now()
+
 
         <where>
             id=#{id}
