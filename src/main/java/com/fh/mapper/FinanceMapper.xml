@@ -76,6 +76,11 @@
             <if test="@Ognl@isNotEmpty(sProperty)">
                 and property = #{sProperty}
             </if>
+            <!-- 签约时间 -->
+            <if test="@Ognl@isNotEmpty(qstart)">
+                and contract_time BETWEEN #{qstart} AND #{qover}
+            </if>     
+            
             order by id DESC
 
         </where>

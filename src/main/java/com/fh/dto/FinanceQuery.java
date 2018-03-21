@@ -19,6 +19,8 @@ public class FinanceQuery extends BaseQuery {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date over;
     
+	
+	
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date qstart;//签约时间
     @DateTimeFormat(pattern="yyyy-MM-dd")
